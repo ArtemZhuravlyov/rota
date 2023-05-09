@@ -1,1 +1,11 @@
-<p>dashboard-layout works!</p>
+<mat-toolbar color="primary">
+  <span>Rotasheet</span>
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer mode="side" opened>Main menu</mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
