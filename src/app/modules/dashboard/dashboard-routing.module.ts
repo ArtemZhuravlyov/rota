@@ -7,6 +7,17 @@ const routes: Routes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     component: DashboardLayoutComponent,
+    children: [
+      {
+        path: NavigationPaths.EMPTY_PATH,
+        pathMatch: 'full',
+        redirectTo: NavigationPaths.EMPLOYEE
+      },
+      {
+        path: NavigationPaths.EMPLOYEE,
+        loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)
+      }
+    ]
   },
 ];
 
