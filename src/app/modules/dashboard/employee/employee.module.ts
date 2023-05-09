@@ -6,12 +6,12 @@ import { SubMenuModule } from '../../../shared/modules/sub-menu/sub-menu.module'
 
 @NgModule({
   declarations: [
-    EmployeeComponent
+    EmployeeComponent,
   ],
   imports: [
     CommonModule,
     EmployeeRoutingModule,
-    SubMenuModule
+    SubMenuModule,
   ]
 })
 export class EmployeeModule { }

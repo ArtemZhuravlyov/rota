@@ -1,0 +1,29 @@
+<ng-container *ngIf="icon else simpleButton">
+  <ng-container *ngIf="!isFabButton && !isIconButton">
+    <button mat-stroked-button [color]="colorTheme">
+    <span>
+      {{ title }}
+      <mat-icon>{{icon}}</mat-icon>
+    </span>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="isIconButton">
+    <button mat-icon-button [color]="colorTheme">
+      <mat-icon>{{icon}}</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="isFabButton">
+    <button mat-fab [color]="colorTheme">
+      <mat-icon>{{icon}}</mat-icon>
+    </button>
+  </ng-container>
+</ng-container>
+
+<ng-template #simpleButton>
+  <button mat-stroked-button [color]="colorTheme">
+    {{ title }}
+  </button>
+</ng-template>
+
