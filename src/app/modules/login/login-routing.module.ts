@@ -3,23 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { NavigationPaths } from '../../core/enums/navigation-paths.enum';
 
 const routes: Routes = [
   {
-    path: '',
+    path: NavigationPaths.EMPTY_PATH,
     component: LoginLayoutComponent,
     children: [
       {
-        path: '',
-        redirectTo: 'sign-in',
+        path: NavigationPaths.EMPTY_PATH,
+        redirectTo: NavigationPaths.SIGN_IN,
         pathMatch: 'full',
       },
       {
-        path: 'sign-in',
+        path: NavigationPaths.SIGN_IN,
         component: SignInComponent
       },
       {
-        path: 'registration',
+        path: NavigationPaths.REGISTRATION,
         component: RegistrationComponent
       }
     ]
