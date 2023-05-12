@@ -1,0 +1,27 @@
+<div class="auth-container">
+    <div class="left-side">
+        <div class="background-image" [style.background-image]="imgUrl"></div>
+        <div class="logo">
+            <span class="logo__first-part">ROTA</span>
+            <span class="logo__second-part">SHEET</span>
+        </div>
+        <div class="logo__information">
+            {{ logoInformation }}
+        </div>
+    </div>
+    <div class="right-side">
+        <div class="content">
+            <div class="form-title">
+                <h2>{{ title }}</h2>
+                <span class="subtitle">{{ subtitle }}</span>
+                <a *ngIf="redirectRoute" [href]="redirectRoute"> {{ redirectText }}</a>
+            </div>
+            <div class="form">
+                <ng-content></ng-content>
+            </div>
+        </div>
+        <div class="footer">
+            <span>Copyright. © RotaSheet 2022 | <a [href]="'#'">Privacy Policy</a> | <a [href]="'#'">Terms of Service</a></span>
+        </div>
+    </div>
+</div>

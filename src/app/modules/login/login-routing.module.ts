@@ -4,6 +4,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { NavigationPaths } from '../../core/enums/navigation-paths.enum';
+import { CompanyComponent } from "./company/company.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: NavigationPaths.REGISTRATION,
         component: RegistrationComponent
+      },
+      {
+        path: NavigationPaths.COMPANY,
+        component: CompanyComponent
       }
     ]
   },
