@@ -1,0 +1,8 @@
+<mat-form-field class="test" appearance="outline">
+    <span>{{ field.label }}</span>
+    <input #input (input)="setFormValue(input.value)"
+           [placeholder]="'Enter ' + field.label"
+           [type]="field.inputType ?? 'text'"
+           matInput
+    >
+</mat-form-field>

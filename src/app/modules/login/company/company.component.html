@@ -1,0 +1,15 @@
+<app-login-page
+        [title]="title"
+        [subtitle]="subtitle"
+        [logoInformation]="logoInformation"
+        [imgUrl]="imgUrl"
+>
+    <app-form-builder
+            [formFields]="formFields"
+            [formData]="data"
+            (valueChangeWhenFormIsValid)="formResult = $event"
+            (isValid)="formIsValid = $event"
+    ></app-form-builder>
+    <button mat-button [disabled]="!formIsValid" (click)="onSubmit()">Continue</button>
+    <button mat-button [routerLink]="'../registration'">Back</button>
+</app-login-page>

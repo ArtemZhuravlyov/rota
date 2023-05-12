@@ -1,1 +1,15 @@
-<p>sign-in works!</p>
+<app-login-page
+        [title]="title"
+        [subtitle]="subtitle"
+        [logoInformation]="logoInformation"
+        [redirectText]="redirectText"
+        [redirectRoute]="redirectRoute"
+        [imgUrl]="imgUrl"
+>
+  <app-form-builder
+    [formFields]="formFields"
+    (valueChangeWhenFormIsValid)="formResult = $event"
+    (isValid)="formIsValid = $event"
+  ></app-form-builder>
+  <button mat-button [disabled]="!formIsValid" (click)="onSubmit()">GO</button>
+</app-login-page>
