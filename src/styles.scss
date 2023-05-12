@@ -1,2 +1,28 @@
+@use '@angular/material' as mat;
+@import "src/app/core/styles/material-custom/color-variables";
+@import "src/app/core/styles/material-custom/constants";
+@import "src/app/core/styles/material-custom/material";
+
+
+@include mat.core();
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; color: $text-gray}
+
+$my-primary: mat.define-palette($green-primary, 500);
+$my-accent: mat.define-palette($accent, 700);
+
+$my-typography: mat.define-typography-config(
+        $font-family: 'Source Sans Pro',
+);
+
+$my-theme: mat.define-light-theme((
+        color: (
+                primary: $my-primary,
+                accent: $my-accent,
+        ),
+        density: 0,
+));
+
+@include mat.typography-hierarchy($my-typography);
+@include mat.all-component-themes($my-theme);

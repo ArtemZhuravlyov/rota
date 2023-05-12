@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { ButtonTypeEnum } from "../../../core/enums/button-type.enum";
 
 @Component({
   selector: 'app-button',
@@ -10,7 +11,11 @@ import { ThemePalette } from '@angular/material/core';
 export class ButtonComponent {
   @Input() title!: string;
   @Input() colorTheme: ThemePalette = 'primary';
-  @Input() icon?: string;
+  @Input() icon!: string;
+  @Input() badgeInfo?: string | number;
+  @Input() btnType!: keyof typeof ButtonTypeEnum;
   @Input() isIconButton = false;
-  @Input() isFabButton = false;
+  @Input() isBadgeShowed = false;
+
+  buttonTypeEnum = ButtonTypeEnum;
 }

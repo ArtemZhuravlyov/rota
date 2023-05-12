@@ -1,0 +1,20 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.sub-menu-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 55px;
+  text-decoration: unset;
+  padding-left: 20px;
+  color: $text-dark-gray;
+  font-size: 15px;
+  line-height: 21px;
+}
+
+.active-button {
+  background: #DCE4EB;
+  font-weight: 600;
+  border-right: solid;
+  padding-left: 30px;
+}

@@ -14,9 +14,21 @@ const routes: Routes = [
         redirectTo: NavigationPaths.EMPLOYEE
       },
       {
+        path: NavigationPaths.COMPANY,
+        loadChildren: () => import('./company/company.module').then(m => m.CompanyModule)
+      },
+      {
         path: NavigationPaths.EMPLOYEE,
         loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)
-      }
+      },
+      {
+        path: NavigationPaths.DOCUMENTS,
+        loadChildren: () => import('./documents/documents.module').then(m => m.DocumentsModule)
+      },
+      {
+        path: NavigationPaths.USER_ACCOUNT,
+        loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule)
+      },
     ]
   },
 ];

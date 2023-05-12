@@ -1,0 +1,26 @@
+@import 'src/app/core/styles/material-custom/constants';
+
+button {
+  .flex-container {
+    display: flex;
+    align-items: center;
+    letter-spacing: 0;
+
+    mat-icon {
+      margin-left: 40px;
+    }
+  }
+
+  ::ng-deep mat-icon {
+    color: $text-gray;
+
+    .mat-badge-content{
+      font-size: 10px!important;
+      right: -11px!important;
+      top: 4px!important;
+      width: 20px!important;
+      height: 20px!important;
+    }
+  }
+
+}

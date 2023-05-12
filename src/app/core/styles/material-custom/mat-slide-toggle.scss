@@ -1,0 +1,48 @@
+@use '@material/switch/switch' as mdc-switch;
+@use '@material/switch/switch-theme' as mdc-switch-theme;
+@import "src/app/core/styles/material-custom/constants";
+
+.mdc-switch__icons {
+  display: none;
+}
+
+.mdc-switch--checked .mdc-switch__track {
+  border: $primary 1px solid;
+}
+
+.mat-mdc-slide-toggle {
+
+  .mdc-switch {
+
+    @include  mdc-switch-theme.theme((
+      //handle color
+            disabled-selected-handle-color: $primary,
+            disabled-unselected-handle-color: $gray,
+
+            selected-handle-color: $primary,
+            selected-focus-handle-color: $primary,
+            selected-hover-handle-color: $primary,
+            selected-pressed-handle-color: $primary,
+
+            unselected-handle-color: $gray,
+            unselected-focus-handle-color: $gray,
+            unselected-hover-handle-color: $gray,
+            unselected-pressed-handle-color: $gray,
+
+      //tracks color
+            disabled-selected-track-color: $light-green,
+            disabled-unselected-track-color: $background-gray,
+
+            selected-track-color: $light-green,
+            selected-focus-track-color: $light-green,
+            selected-hover-track-color: $light-green,
+            selected-pressed-track-color: $light-green,
+
+            unselected-track-color: $background-gray,
+            unselected-focus-track-color: $background-gray,
+            unselected-hover-track-color: $background-gray,
+            unselected-pressed-track-color: $background-gray,
+    ));
+
+  }
+}

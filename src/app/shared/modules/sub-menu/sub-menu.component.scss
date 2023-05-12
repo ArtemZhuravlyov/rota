@@ -1,5 +1,12 @@
 @import "src/app/core/styles/mixins/layout";
+@import "src/app/core/styles/material-custom/constants";
 
 :host {
   @include full-height;
+}
+
+.sub-menu {
+  width: 220px;
+  background-color: $background-gray;
+  padding-top: 16px;
 }

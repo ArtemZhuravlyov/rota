@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { employeesSubMenuConfig } from "../../../shared/utils/employees-sub-menu-config";
 
 @Component({
   selector: 'app-employee',
@@ -8,4 +9,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class EmployeeComponent {
 
+  employeesSubMenuConfig = employeesSubMenuConfig;
 }

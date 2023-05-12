@@ -1,0 +1,55 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.header-container {
+  display: flex;
+  height: 60px;
+
+  .logo {
+    height: calc(100% - 20px);
+    width: 220px;
+    background-color: #1C9F56;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 26px;
+    padding-top: 20px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: #FFFFFF;
+
+    .secondary-text {
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 4.32px;
+    }
+  }
+
+  .company-setting-btn {
+    margin: 10px 10px;
+  }
+
+  .profile-actions {
+    display: flex;
+    margin: 10px 40px 0 auto;
+
+    .profile-info {
+      display: flex;
+      align-items: center;
+
+      .profile-name {
+        margin: 0 10px 0 0;
+      }
+
+      .profile-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #F3F4F6;
+        border-radius: 100%;
+      }
+
+    }
+  }
+
+}

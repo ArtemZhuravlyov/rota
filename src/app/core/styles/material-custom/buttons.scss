@@ -1,0 +1,9 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.mdc-button--outlined {
+  border: 1px solid $green-border!important;
+  background-color: $light-green!important;
+  color: $text-dark-gray!important;
+  font-weight: 600;
+  font-size: 15px;
+}

@@ -25,7 +25,7 @@ const routes: Routes = [
         component: RegistrationComponent
       },
       {
-        path: NavigationPaths.COMPANY,
+        path: NavigationPaths.LOGIN_COMPANY,
         component: CompanyComponent
       }
     ]

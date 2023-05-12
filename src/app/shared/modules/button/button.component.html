@@ -1,29 +1,31 @@
-<ng-container *ngIf="icon else simpleButton">
-  <ng-container *ngIf="!isFabButton && !isIconButton">
-    <button mat-stroked-button [color]="colorTheme">
-    <span>
-      {{ title }}
-      <mat-icon>{{icon}}</mat-icon>
-    </span>
-    </button>
-  </ng-container>
+<ng-container>
+  <ng-container [ngSwitch]="btnType">
 
-  <ng-container *ngIf="isIconButton">
-    <button mat-icon-button [color]="colorTheme">
-      <mat-icon>{{icon}}</mat-icon>
+    <button mat-stroked-button *ngSwitchCase="buttonTypeEnum.stroked" [color]="colorTheme">
+        <div class="flex-container">
+          {{ title }}
+          <mat-icon *ngIf="isIconButton"  [svgIcon]="icon"></mat-icon>
+        </div>
     </button>
-  </ng-container>
 
-  <ng-container *ngIf="isFabButton">
-    <button mat-fab [color]="colorTheme">
+    <button mat-icon-button *ngSwitchCase="buttonTypeEnum.icon" [color]="colorTheme">
+      <mat-icon *ngIf="isBadgeShowed" [matBadge]="badgeInfo" matBadgeColor="warn" [svgIcon]="icon"></mat-icon>
+      <mat-icon *ngIf="!isBadgeShowed" [svgIcon]="icon"></mat-icon>
+    </button>
+
+    <button mat-fab *ngSwitchCase="buttonTypeEnum.fab" [color]="colorTheme">
       <mat-icon>{{icon}}</mat-icon>
     </button>
+
+    <button mat-flat-button *ngSwitchCase="buttonTypeEnum.flat" color="primary">
+      <div class="flex-container">
+        {{ title }}
+        <mat-icon *ngIf="isIconButton"  [svgIcon]="icon"></mat-icon>
+      </div>
+    </button>
+
   </ng-container>
 </ng-container>
 
-<ng-template #simpleButton>
-  <button mat-stroked-button [color]="colorTheme">
-    {{ title }}
-  </button>
-</ng-template>
+
 

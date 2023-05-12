@@ -1,5 +1,7 @@
 <mat-drawer-container>
-  <mat-drawer mode="side" opened>Sub menu</mat-drawer>
+  <mat-drawer class="sub-menu" mode="side" opened>
+    <ng-content select="[nav-buttons]"></ng-content>
+  </mat-drawer>
 
   <mat-drawer-content>
     <ng-content></ng-content>

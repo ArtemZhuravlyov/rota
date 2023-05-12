@@ -1,5 +1,49 @@
 @import "src/app/core/styles/mixins/layout";
+@import "src/app/core/styles/material-custom/constants";
 
 :host {
   @include full-height;
+}
+
+.side-menu {
+  width: 220px;
+  padding-top: 70px;
+
+  .navigation-link {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 15px;
+    line-height: 21px;
+    text-decoration: none;
+    color: $text-dark-gray;
+
+    mat-icon {
+      margin-left: 20px;
+      margin-right: 16px;
+    }
+  }
+
+  .bottom-actions {
+    position: absolute;
+    bottom: 0;
+
+    mat-slide-toggle {
+      font-size: 14px;
+      line-height: 21px;
+      margin-left: 20px;
+    }
+  }
+}
+
+.active-link {
+  color: $primary!important;
+  background-color: $background-green-active;
+  font-weight: 600;
+  border-right: solid;
+
+  mat-icon {
+    margin-left: 30px!important;
+  }
 }

@@ -1,3 +1,7 @@
 <app-sub-menu>
-  <p>employee works!</p>
+  <ng-container nav-buttons>
+    <app-sub-menu-button *ngFor="let button of employeesSubMenuConfig" [title]="button.title" [link]="button.routerLink"></app-sub-menu-button>
+  </ng-container>
+
+  <router-outlet></router-outlet>
 </app-sub-menu>

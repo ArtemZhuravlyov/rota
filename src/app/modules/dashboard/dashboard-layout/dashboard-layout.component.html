@@ -1,9 +1,29 @@
-<mat-toolbar color="primary">
-  <span>Rotasheet</span>
-</mat-toolbar>
+<app-header></app-header>
 
 <mat-drawer-container>
-  <mat-drawer mode="side" opened>Main menu</mat-drawer>
+  <mat-drawer class="side-menu" mode="side" opened>
+<!--    <form>-->
+<!--      <mat-form-field appearance="outline">-->
+<!--        <mat-icon matIconPrefix svgIcon="settings"></mat-icon>-->
+<!--        <input matInput placeholder="Search">-->
+<!--      </mat-form-field>-->
+<!--    </form>-->
+
+    <a class="navigation-link" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.routerLink" routerLinkActive="active-link">
+      <mat-icon [svgIcon]="tab.icon!"></mat-icon>
+      {{tab.title}}
+    </a>
+
+    <div class="bottom-actions">
+      <mat-slide-toggle>Dark Mode</mat-slide-toggle>
+
+      <a class="navigation-link" [routerLink]="'settings'">
+        <mat-icon svgIcon="settings"></mat-icon>
+        Settings
+      </a>
+    </div>
+
+  </mat-drawer>
 
   <mat-drawer-content>
     <router-outlet></router-outlet>
