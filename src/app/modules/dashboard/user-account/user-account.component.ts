@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { userAccountSubMenuConfig } from "../../../shared/utils/user-account-sub-menu-config";
+import { userAccountSubMenuConfig } from "./configs/user-account-sub-menu-config";
 
 @Component({
   selector: 'app-user-account',

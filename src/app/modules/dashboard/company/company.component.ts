@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { companySubMenuConfig } from "../../../shared/utils/company-sub-menu-config";
+import { companySubMenuConfig } from "./configs/company-sub-menu-config";
 
 @Component({
   selector: 'app-company',

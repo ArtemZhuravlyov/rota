@@ -1,6 +1,6 @@
 export enum ButtonTypeEnum {
-    icon = 'icon' ,
-    stroked = 'stroked',
-    flat = 'flat',
-    fab = 'fab',
+    ICON = 'ICON' ,
+    STROKED = 'STROKED',
+    FLAT = 'FLAT',
+    FAB = 'FAB',
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { documentsSubMenuConfig } from "../../../shared/utils/documents-sub-menu-config";
+import { documentsSubMenuConfig } from "./configs/documents-sub-menu-config";
 
 @Component({
   selector: 'app-documents',

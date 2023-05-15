@@ -12,8 +12,10 @@
   line-height: 21px;
 }
 
+
+
 .active-button {
-  background: #DCE4EB;
+  background: $button-background-active;
   font-weight: 600;
   border-right: solid;
   padding-left: 30px;

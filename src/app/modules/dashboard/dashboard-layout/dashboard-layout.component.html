@@ -9,7 +9,7 @@
 <!--      </mat-form-field>-->
 <!--    </form>-->
 
-    <a class="navigation-link" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.routerLink" routerLinkActive="active-link">
+    <a class="navigation-link d-flex justify-content-start align-items-center" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.routerLink" routerLinkActive="active-link">
       <mat-icon [svgIcon]="tab.icon!"></mat-icon>
       {{tab.title}}
     </a>

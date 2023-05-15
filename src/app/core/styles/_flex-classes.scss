@@ -1,32 +1,52 @@
-.flex-center {
+
+.d-flex {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-}
-
-.flex-start {
-  display: flex;
+.justify-content-start {
   justify-content: start;
 }
 
-.flex-direction-row {
-  display: flex;
+.justify-content-end {
+  justify-content: end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.align-items-start {
+  align-items: start;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-end {
+  align-items: end;
+}
+
+.flex-row {
   flex-direction: row;
 }
 
-.flex-grow {
-  flex-grow: 1;
+.flex-row-reverse {
+  flex-direction: row-reverse;
 }
 
-.btn-row {
-  display: flex;
+.flex-column {
+  flex-direction: column;
+}
 
-  &.flex-end {
-    justify-content: flex-end;
-  }
+.flex-column-reverse {
+  flex-direction: column-reverse;
 }

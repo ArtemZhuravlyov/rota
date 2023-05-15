@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { dashboardTabsConfig } from "../../../shared/utils/dashboard-tabs-config";
+import { dashboardTabsConfig } from "./configs/dashboard-tabs-config";
 
 @Component({
   selector: 'app-dashboard-layout',

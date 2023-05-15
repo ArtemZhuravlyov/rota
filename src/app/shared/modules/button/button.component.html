@@ -1,23 +1,23 @@
 <ng-container>
   <ng-container [ngSwitch]="btnType">
 
-    <button mat-stroked-button *ngSwitchCase="buttonTypeEnum.stroked" [color]="colorTheme">
+    <button mat-stroked-button *ngSwitchCase="buttonTypeEnum.STROKED" [color]="colorTheme">
         <div class="flex-container">
           {{ title }}
           <mat-icon *ngIf="isIconButton"  [svgIcon]="icon"></mat-icon>
         </div>
     </button>
 
-    <button mat-icon-button *ngSwitchCase="buttonTypeEnum.icon" [color]="colorTheme">
+    <button mat-icon-button *ngSwitchCase="buttonTypeEnum.ICON" [color]="colorTheme">
       <mat-icon *ngIf="isBadgeShowed" [matBadge]="badgeInfo" matBadgeColor="warn" [svgIcon]="icon"></mat-icon>
       <mat-icon *ngIf="!isBadgeShowed" [svgIcon]="icon"></mat-icon>
     </button>
 
-    <button mat-fab *ngSwitchCase="buttonTypeEnum.fab" [color]="colorTheme">
+    <button mat-fab *ngSwitchCase="buttonTypeEnum.FAB" [color]="colorTheme">
       <mat-icon>{{icon}}</mat-icon>
     </button>
 
-    <button mat-flat-button *ngSwitchCase="buttonTypeEnum.flat" color="primary">
+    <button mat-flat-button *ngSwitchCase="buttonTypeEnum.FLAT" color="primary">
       <div class="flex-container">
         {{ title }}
         <mat-icon *ngIf="isIconButton"  [svgIcon]="icon"></mat-icon>

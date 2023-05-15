@@ -7,14 +7,14 @@
   .logo {
     height: calc(100% - 20px);
     width: 220px;
-    background-color: #1C9F56;
+    background-color: $background-green;
     text-align: center;
     text-transform: uppercase;
     font-size: 26px;
     padding-top: 20px;
     font-weight: 700;
     letter-spacing: 0;
-    color: #FFFFFF;
+    color: $text-white;
 
     .secondary-text {
       font-weight: 500;
@@ -45,7 +45,7 @@
         justify-content: center;
         width: 40px;
         height: 40px;
-        background-color: #F3F4F6;
+        background-color: $background-profile-gray;
         border-radius: 100%;
       }
 
