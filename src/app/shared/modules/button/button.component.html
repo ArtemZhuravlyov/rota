@@ -1,26 +1,32 @@
 <ng-container>
   <ng-container [ngSwitch]="btnType">
 
-    <button mat-stroked-button *ngSwitchCase="buttonTypeEnum.STROKED" [color]="colorTheme">
+    <button mat-stroked-button *ngSwitchCase="buttonTypeEnum.STROKED" [color]="colorTheme" [disabled]="disabled">
         <div class="flex-container">
-          {{ title }}
+          {{ title | translate }}
           <mat-icon *ngIf="isIconButton"  [svgIcon]="icon"></mat-icon>
         </div>
     </button>
 
-    <button mat-icon-button *ngSwitchCase="buttonTypeEnum.ICON" [color]="colorTheme">
+    <button mat-icon-button *ngSwitchCase="buttonTypeEnum.ICON" [color]="colorTheme" [disabled]="disabled">
       <mat-icon *ngIf="isBadgeShowed" [matBadge]="badgeInfo" matBadgeColor="warn" [svgIcon]="icon"></mat-icon>
       <mat-icon *ngIf="!isBadgeShowed" [svgIcon]="icon"></mat-icon>
     </button>
 
-    <button mat-fab *ngSwitchCase="buttonTypeEnum.FAB" [color]="colorTheme">
+    <button mat-fab *ngSwitchCase="buttonTypeEnum.FAB" [color]="colorTheme" [disabled]="disabled">
       <mat-icon>{{icon}}</mat-icon>
     </button>
 
-    <button mat-flat-button *ngSwitchCase="buttonTypeEnum.FLAT" color="primary">
+    <button mat-flat-button *ngSwitchCase="buttonTypeEnum.FLAT" color="primary" [disabled]="disabled">
       <div class="flex-container">
-        {{ title }}
+        {{ title | translate }}
         <mat-icon *ngIf="isIconButton"  [svgIcon]="icon"></mat-icon>
+      </div>
+    </button>
+
+    <button mat-button *ngSwitchDefault color="primary">
+      <div class="flex-container">
+        {{ title | translate }}
       </div>
     </button>
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationPaths } from './core/enums/navigation-paths.enum';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { AuthGuard } from "@core/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: NavigationPaths.HOME,
-    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
+    canActivate: [AuthGuard]
   },
   {
     path: NavigationPaths.LOGIN,
@@ -18,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: NavigationPaths.DASHBOARD,
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [AuthGuard]
   },
 ];
 

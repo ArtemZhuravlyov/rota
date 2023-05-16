@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginPageComponent } from './login-page.component';
-
-
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -12,7 +11,8 @@ import { LoginPageComponent } from './login-page.component';
     LoginPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TranslateModule
   ]
 })
 export class LoginPageModule { }

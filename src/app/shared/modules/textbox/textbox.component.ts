@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
-import { FormField } from "../../../core/types/form-builder.model";
+import { InputType } from "@core/types/form-builder.model";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
@@ -16,8 +16,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
   ]
 })
 export class TextboxComponent implements ControlValueAccessor {
-  @Input() field!: FormField;
-  @Input() fieldData!: any;
+  @Input() label = '';
+  @Input() inputType: InputType | undefined = 'text';
+  @Input() placeholder: string | undefined = '';
 
   setFormValue(value: string): void {
     this.onChange(value);

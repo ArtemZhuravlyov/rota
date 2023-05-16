@@ -5,6 +5,8 @@ export interface FormField {
   key: string;
   label: string;
   componentType: ComponentType;
+  data?: any;
+  placeholder?: string;
   inputType?: InputType;
   validators?: ValidatorFn[];
   formValidators?: ValidatorFn[];
@@ -12,8 +14,7 @@ export interface FormField {
 
 export type ComponentType = typeof ComponentTypeEnum[keyof typeof ComponentTypeEnum];
 
-type InputType = 'email' | 'text' | 'password';
+export type InputType = 'email' | 'text' | 'password';
 
-export type FormData = any;// Record<string, number | string | boolean | { [key: string]: string | DropdownOptions[] }> | undefined;
+export type DropdownOptions = Record<string, string | number>;
 
-export type DropdownOptions = { displayName: string; value: string | number };

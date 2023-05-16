@@ -8,8 +8,9 @@
 >
   <app-form-builder
     [formFields]="formFields"
-    (valueChangeWhenFormIsValid)="formResult = $event"
-    (isValid)="isValid = $event"
+    (createdForm)="form = $event"
   ></app-form-builder>
-  <button mat-button [disabled]="!isValid" (click)="onSubmit()">Continue</button>
+  <app-button [disabled]="form.invalid" (click)="onSubmit()" [title]="'CONTINUE' | translate"
+              [btnType]="'STROKED'"
+  ></app-button>
 </app-login-page>

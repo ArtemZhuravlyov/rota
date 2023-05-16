@@ -10,8 +10,8 @@ export class LoginPageComponent {
   @Input() imgUrl!: string;
   @Input() subtitle!: string;
   @Input() title!: string;
-  @Input() redirectRoute!: string;
-  @Input() redirectText!: string;
   @Input() logoInformation!: string;
+  @Input() redirectRoute: string | null = null;
+  @Input() redirectText: string = '';
   @Input() isLogin: boolean = false;
 }

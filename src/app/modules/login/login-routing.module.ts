@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
-import { NavigationPaths } from '../../core/enums/navigation-paths.enum';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { CompanyComponent } from "./company/company.component";
+import { PasswordRecoveryComponent } from "@app/modules/login/password-recovery/password-recovery.component";
 
 const routes: Routes = [
   {
@@ -18,15 +19,19 @@ const routes: Routes = [
       },
       {
         path: NavigationPaths.SIGN_IN,
-        component: SignInComponent
+        component: SignInComponent,
       },
       {
         path: NavigationPaths.REGISTRATION,
-        component: RegistrationComponent
+        component: RegistrationComponent,
       },
       {
-        path: NavigationPaths.LOGIN_COMPANY,
+        path: NavigationPaths.REGISTRATION_COMPANY,
         component: CompanyComponent
+      },
+      {
+        path: NavigationPaths.PASSWORD_RECOVERY,
+        component: PasswordRecoveryComponent
       }
     ]
   },

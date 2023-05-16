@@ -6,7 +6,8 @@ export enum NavigationPaths {
   LOGIN = 'login',
   SIGN_IN = 'sign-in',
   REGISTRATION = 'registration',
-  LOGIN_COMPANY = 'login-company',
+  REGISTRATION_COMPANY = 'registration-company',
+  PASSWORD_RECOVERY = 'password-recovery',
 
   // Dashboard's paths
   DASHBOARD = 'dashboard',

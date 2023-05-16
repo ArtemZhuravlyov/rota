@@ -1,15 +1,14 @@
 <app-login-page
-        [title]="title"
-        [subtitle]="subtitle"
-        [logoInformation]="logoInformation"
-        [redirectText]="redirectText"
-        [redirectRoute]="redirectRoute"
-        [imgUrl]="imgUrl"
+  [title]="title"
+  [subtitle]="subtitle"
+  [logoInformation]="logoInformation"
+  [redirectText]="redirectText"
+  [redirectRoute]="redirectRoute"
+  [imgUrl]="imgUrl"
 >
   <app-form-builder
     [formFields]="formFields"
-    (valueChangeWhenFormIsValid)="formResult = $event"
-    (isValid)="formIsValid = $event"
+    (createdForm)="form = $event"
   ></app-form-builder>
-  <button mat-button [disabled]="!formIsValid" (click)="onSubmit()">GO</button>
+    <app-button [disabled]="form.invalid" (click)="onSubmit()" [title]="'LOGIN' | translate"></app-button>
 </app-login-page>

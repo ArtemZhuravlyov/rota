@@ -1,15 +1,16 @@
 <app-login-page
-        [title]="title"
-        [subtitle]="subtitle"
-        [logoInformation]="logoInformation"
-        [imgUrl]="imgUrl"
+  [title]="title"
+  [subtitle]="subtitle"
+  [logoInformation]="logoInformation"
+  [imgUrl]="imgUrl"
 >
-    <app-form-builder
-            [formFields]="formFields"
-            [formData]="data"
-            (valueChangeWhenFormIsValid)="formResult = $event"
-            (isValid)="formIsValid = $event"
-    ></app-form-builder>
-    <button mat-button [disabled]="!formIsValid" (click)="onSubmit()">Continue</button>
-    <button mat-button [routerLink]="'../registration'">Back</button>
+  <app-form-builder
+    [formFields]="formFields"
+    (createdForm)="form = $event"
+  ></app-form-builder>
+  <div class="action-buttons d-flex flex-column align-items-center justify-content-between">
+    <app-button [disabled]="form.invalid" (click)="onSubmit()" [title]="'CONTINUE' | translate"
+                [btnType]="'STROKED'"></app-button>
+    <app-button [routerLink]="'../registration'" [title]="'BACK' | translate" [btnType]="'STROKED'"></app-button>
+  </div>
 </app-login-page>

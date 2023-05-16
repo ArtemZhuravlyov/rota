@@ -1,22 +1,26 @@
-import { Injectable } from "@angular/core";
-import { environment } from "../../../../environments/environment";
+import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-import { CompanyRegister, Country, Industry } from "../../types/company.interface";
+import { CompanyRegister, CompanyRegisterResult, Country, Industry } from "../../types/company.interface";
+import { ENVIRONMENT } from "@app/app.module";
+import { Environment } from "@core/types/environment";
 
 @Injectable({ providedIn: 'root' })
 export class CompanyService {
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    @Inject(ENVIRONMENT) private env: Environment,
+  ) {
   }
-  get country(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${environment.apiUrlCompany}country`);
+  getCountry(): Observable<Country[]> {
+    return this.http.get<Country[]>(`${this.env.apiUrlCompany}/country`);
   }
 
-  get industry(): Observable<Industry[]> {
-    return this.http.get<Industry[]>(`${environment.apiUrlCompany}industry`);
+  getIndustry(): Observable<Industry[]> {
+    return this.http.get<Industry[]>(`${this.env.apiUrlCompany}/industry`);
   }
 
-  registerCompany(body: CompanyRegister, userId: string): Observable<any> {
-    return this.http.post(`${environment.apiUrlCompany}company/register/${userId}`, body)
+  registerCompany(body: CompanyRegister, userId: string): Observable<CompanyRegisterResult> {
+    return this.http.post<CompanyRegisterResult>(`${this.env.apiUrlCompany}/company/register/${userId}`, body);
   }
 }

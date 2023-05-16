@@ -8,7 +8,7 @@
   "ENTER_PASSWORD": "Enter password",
   "FORGOT_PASSWORD": "Forgot password",
   "SIGN_IN": "Sign in",
-  "COPYRIGHT": "Copyright",
+  "COPYRIGHT": "Copyright.",
   "PRIVACY_POLICY": "Privacy policy",
   "TERMS_OF_SERVICE": "Terms of Service",
   "PLEASE_ENTER_YOUR_EMAIL": "Please, enter your registered email and we will send you the reset link",
@@ -23,6 +23,7 @@
   "LAST_NAME": "Last name",
   "ENTER_LAST_NAME": "Enter last name",
   "VERIFY_PASSWORD": "Verify password",
+  "ENTER_VERIFY_PASSWORD": "Repeat password",
   "CONTINUE": "Continue",
   "COMPANY": "Company",
   "COMPANY_CREATE_INFO": "Here we are displaying comment that been added to the table earlier.",
@@ -32,5 +33,6 @@
   "COUNTRY": "Country",
   "SELECT": "Select",
   "INDUSTRY": "Industry",
-  "BACK": "Back"
+  "BACK": "Back",
+  "NONE": "None"
 }

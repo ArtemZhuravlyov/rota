@@ -18,3 +18,7 @@ export interface CompanyRegister {
   industryId: string;
   countryId: string;
 }
+
+export interface CompanyRegisterResult {
+  id: string;
+}

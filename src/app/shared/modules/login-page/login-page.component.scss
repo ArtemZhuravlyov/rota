@@ -1,7 +1,7 @@
 @import "src/app/core/styles/material-custom/constants";
 @import "src/app/core/styles/flex-classes";
 
-$padding-side: 100px;
+$padding-side: 80px;
 $padding-top-bottom: 80px;
 $footer-height: 50px;
 
@@ -16,8 +16,6 @@ $footer-height: 50px;
   width: 100vw;
 }
 
-.left-side, .right-side {
-}
 
 .left-side {
   position: relative;
@@ -95,6 +93,7 @@ $footer-height: 50px;
     .subtitle {
       font-size: 17px;
       line-height: 24px;
+      width: 360px;
     }
   }
 

@@ -5,18 +5,17 @@
       <div *ngSwitchCase="componentType.TEXTBOX">
         <app-textbox
           [formControlName]="formField.key"
-          [field]="formField"
-          [fieldData]="formData![formField.key]"
+          [label]="formField.label"
+          [inputType]="formField.inputType"
+          [placeholder]="formField.placeholder"
         ></app-textbox>
       </div>
       <div *ngSwitchCase="componentType.DROPDOWN">
 
         <app-dropdown
           [formControlName]="formField.key"
-          [data]="formData![formField.key]"
-          [field]="formField"
-          [valueField]="'value'"
-          [textField]="'displayName'"
+          [title]="formField.label"
+          [data]="formField.data"
         ></app-dropdown>
       </div>
 

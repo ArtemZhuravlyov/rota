@@ -1,15 +1,15 @@
 <mat-form-field appearance="outline">
-  <mat-label>Select {{ field.label }}</mat-label>
-  <mat-select [(value)]="value" (valueChange)="setFormValue($event)">
-    <mat-option>None</mat-option>
-    <ng-container *ngIf="isObservable(data); else simply">
+  <mat-label>{{ 'Select' | translate}} {{ title | translate }}</mat-label>
+  <mat-select (valueChange)="setFormValue($event)">
+    <mat-option>{{ 'NONE' | translate }}</mat-option>
+    <ng-container *ngIf="isObservable(data); else defaultType">
       <ng-container *ngIf="data | async as asyncData">
         <mat-option *ngFor="let value of asyncData" [value]="value[valueField]">
           {{ value[textField] }}
         </mat-option>
       </ng-container>
     </ng-container>
-    <ng-template #simply>
+    <ng-template #defaultType>
       <mat-option *ngFor="let value of data" [value]="value[valueField]">
         {{ value[textField] }}
       </mat-option>

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
-import { FormField } from "../../core/types/form-builder.model";
+import { DropdownOptions } from "@core/types/form-builder.model";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { Observable } from "rxjs";
 
@@ -17,11 +17,10 @@ import { Observable } from "rxjs";
   ]
 })
 export class DropdownComponent implements ControlValueAccessor {
-  @Input() field!: FormField;
-  @Input() data!: any[] & Observable<any[]>;
-  @Input() valueField!: string
-  @Input() textField!: string;
-  value = '';
+  @Input() title = ''
+  @Input() data!: DropdownOptions[] & Observable<DropdownOptions[]>;
+  @Input() valueField = 'value';
+  @Input() textField = 'displayName';
 
   isObservable(data: any) {
     return data instanceof Observable;

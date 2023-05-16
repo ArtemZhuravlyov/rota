@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TextboxComponent } from './textbox.component';
 import { MaterialModule } from "../material.module";
 import { FormsModule } from "@angular/forms";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule } from "@angular/forms";
     CommonModule,
     MaterialModule,
     FormsModule,
+    TranslateModule,
   ]
 })
 export class TextboxModule { }

@@ -1,27 +1,25 @@
 <div class="auth-container">
-    <div class="left-side">
-        <div class="background-image" [style.background-image]="imgUrl"></div>
-        <div class="logo">
-            <span class="logo__first-part">ROTA</span>
-            <span class="logo__second-part">SHEET</span>
+  <div class="left-side d-flex justify-content-center align-items-center">
+    <div class="background-image" [style.background-image]="imgUrl"></div>
+    <div class="logo">rota <span class="secondary-text">sheet</span></div>
+    <div class="information">{{ logoInformation }}</div>
+  </div>
+  <div class="right-side">
+    <div class="content d-flex justify-content-center align-items-center">
+      <div class="form-header">
+        <div class="form-title"><span>{{ title | translate }}</span></div>
+        <div class="subtitle">
+          <span>{{ subtitle | translate }}</span>
+          <a *ngIf="redirectRoute" [href]="redirectRoute"> {{ redirectText | translate }}</a>
         </div>
-        <div class="logo__information">
-            {{ logoInformation }}
-        </div>
+      </div>
+      <div class="form d-flex justify-content-center align-items-center">
+        <ng-content></ng-content>
+      </div>
     </div>
-    <div class="right-side">
-        <div class="content">
-            <div class="form-title">
-                <h2>{{ title }}</h2>
-                <span class="subtitle">{{ subtitle }}</span>
-                <a *ngIf="redirectRoute" [href]="redirectRoute"> {{ redirectText }}</a>
-            </div>
-            <div class="form">
-                <ng-content></ng-content>
-            </div>
-        </div>
-        <div class="footer">
-            <span>Copyright. © RotaSheet 2022 | <a [href]="'#'">Privacy Policy</a> | <a [href]="'#'">Terms of Service</a></span>
-        </div>
+    <div class="footer d-flex justify-content-center align-items-center">
+      <span>{{ 'COPYRIGHT' | translate }} © RotaSheet 2022 | <a [href]="'#'">{{ 'PRIVACY_POLICY' | translate }}</a> | <a
+        [href]="'#'">{{ 'TERMS_OF_SERVICE' | translate }}</a></span>
     </div>
+  </div>
 </div>
