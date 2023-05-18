@@ -7,10 +7,19 @@
   [imgUrl]="imgUrl"
 >
   <app-form-builder
+    [width]="480"
     [formFields]="formFields"
     (createdForm)="form = $event"
-  ></app-form-builder>
-  <app-button [disabled]="form.invalid" (click)="onSubmit()" [title]="'CONTINUE' | translate"
-              [btnType]="'STROKED'"
-  ></app-button>
+  >
+    <app-button
+      [disabled]="form.invalid"
+      (click)="onSubmit()"
+      [title]="'CONTINUE'"
+      [icon]="'arrow_right_alt'"
+      [isIconButton]="true"
+      [iconPosition]="'beforeText'"
+      [iconColor]="'white'"
+      [size]="'large'"
+    ></app-button>
+  </app-form-builder>
 </app-login-page>

@@ -8,6 +8,7 @@ export const matchFieldsValue = (controlName: string, matchingControlName: strin
     if (control.value === matchingControl.value) {
       return null;
     } else {
+      formGroup.controls[matchingControlName].setErrors({ mustMath: 'Error' })
       return { mustMatch: true };
     }
   }

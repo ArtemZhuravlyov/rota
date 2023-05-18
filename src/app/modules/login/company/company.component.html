@@ -5,12 +5,30 @@
   [imgUrl]="imgUrl"
 >
   <app-form-builder
+    [width]="480"
     [formFields]="formFields"
     (createdForm)="form = $event"
-  ></app-form-builder>
-  <div class="action-buttons d-flex flex-column align-items-center justify-content-between">
-    <app-button [disabled]="form.invalid" (click)="onSubmit()" [title]="'CONTINUE' | translate"
-                [btnType]="'STROKED'"></app-button>
-    <app-button [routerLink]="'../registration'" [title]="'BACK' | translate" [btnType]="'STROKED'"></app-button>
-  </div>
+  >
+    <div class="action-buttons d-flex flex-column align-items-center justify-content-between">
+      <app-button
+        [disabled]="form.invalid"
+        (click)="onSubmit()"
+        [title]="'CONTINUE'"
+        [icon]="'arrow_forward'"
+        [iconPosition]="'after-text'"
+        [size]="'large'"
+        [btnType]="'FLAT'"
+        [isIconButton]="true"
+        [iconColor]="'white'"
+      ></app-button>
+      <app-button
+        [routerLink]="'../registration'"
+        [title]="'BACK'"
+        [btnType]="'FLAT'"
+        [size]="'large'"
+        [icon]="'arrow_back'"
+        [iconPosition]="'beforeText'"
+      ></app-button>
+    </div>
+  </app-form-builder>
 </app-login-page>

@@ -1,0 +1,148 @@
+@import "src/app/core/styles/material-custom/constants";
+
+:host {
+  width: 100%;
+
+  ::ng-deep {
+    .input-focus {
+      .mat-icon {
+        color: $primary !important;
+        background: $white;
+      }
+
+      .password-icon {
+        color: $text-gray !important;
+      }
+
+      .input-icon-error {
+        color: $border-error !important;
+      }
+
+
+      .mat-mdc-text-field-wrapper {
+        background: $background-focus-input;
+      }
+    }
+
+    .mdc-notched-outline__leading {
+      display: none;
+    }
+
+    .mdc-notched-outline__trailing {
+      border: 1px solid $green-border !important;
+      border-radius: 10px !important;
+    }
+
+    .mat-mdc-text-field-wrapper, .mat-mdc-form-field-infix, .mat-mdc-form-field-flex {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      min-height: 52px;
+      height: 52px;
+      border-radius: 10px;
+
+
+      &:hover {
+        .mat-icon {
+          color: $text-dark-gray;
+        }
+
+        .input-icon-error {
+          .mat-icon {
+            color: $border-error;
+          }
+        }
+      }
+    }
+
+    .mat-mdc-text-field-wrapper {
+      padding: 0 8px;
+    }
+
+    .mat-icon {
+      min-height: 36px;
+      min-width: 36px;
+      color: $text-gray;
+      background: $light-gray;
+      border-radius: 99px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+input {
+  font-size: 15px !important;
+  line-height: 21px !important;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  padding-left: 8px;
+
+}
+
+.field-label {
+  font-weight: normal;
+  font-size: 15px !important;
+  line-height: 21px !important;
+  padding-bottom: 10px;
+}
+
+.input-icons {
+  .input-icon-success {
+    color: $primary !important;
+    background: transparent !important;
+  }
+
+  .password-icon {
+    color: $text-gray !important;
+    background: transparent !important;
+  }
+
+
+  .input-icon-error {
+    color: $border-error;
+    background: transparent !important;
+  }
+}
+
+.input-password {
+  letter-spacing: 1px;
+  font-size: 50px;
+}
+
+.input-error {
+  ::ng-deep {
+
+    .mdc-notched-outline__trailing {
+      border-color: $border-error !important;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      background: $background-error-input !important;
+
+      .mat-icon {
+        background: $background-error-icon;
+        color: $border-error;
+      }
+    }
+  }
+}
+
+.input-success {
+  ::ng-deep {
+
+    .mdc-notched-outline__trailing {
+      border-color: $white !important;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      border-radius: 10px;
+      background: $white;
+
+      .mat-icon {
+        color: $primary !important;
+        background: $background-success-icon;
+      }
+    }
+  }
+}

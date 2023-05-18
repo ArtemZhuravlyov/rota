@@ -23,21 +23,23 @@ export class CompanyComponent {
   formFields: FormField[] = [
     {
       key: 'name',
-      label: 'Company Name',
+      label: 'COMPANY_NAME',
       componentType: 'textbox',
       inputType: 'text',
       validators: [Validators.required],
+      placeholder: 'Enter'
     },
     {
       key: 'address',
-      label: 'Address',
+      label: 'ADDRESS',
       componentType: 'textbox',
       inputType: 'text',
       validators: [Validators.required],
+      placeholder: 'Enter'
     },
     {
       key: 'countryId',
-      label: 'Country',
+      label: 'COUNTRY',
       componentType: 'dropdown',
       validators: [Validators.required],
       data: this.companyService.getCountry().pipe(
@@ -50,7 +52,7 @@ export class CompanyComponent {
     },
     {
       key: 'industryId',
-      label: 'Industry',
+      label: 'INDUSTRY',
       componentType: 'dropdown',
       validators: [Validators.required],
       data: this.companyService.getIndustry().pipe(

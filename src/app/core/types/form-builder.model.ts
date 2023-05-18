@@ -10,6 +10,7 @@ export interface FormField {
   inputType?: InputType;
   validators?: ValidatorFn[];
   formValidators?: ValidatorFn[];
+  icon?: string;
 }
 
 export type ComponentType = typeof ComponentTypeEnum[keyof typeof ComponentTypeEnum];

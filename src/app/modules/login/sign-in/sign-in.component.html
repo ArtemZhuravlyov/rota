@@ -10,5 +10,5 @@
     [formFields]="formFields"
     (createdForm)="form = $event"
   ></app-form-builder>
-    <app-button [disabled]="form.invalid" (click)="onSubmit()" [title]="'LOGIN' | translate"></app-button>
+    <app-button [disabled]="form.invalid" (click)="onSubmit()" [title]="'LOGIN'"></app-button>
 </app-login-page>

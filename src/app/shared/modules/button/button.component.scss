@@ -1,19 +1,28 @@
 @import 'src/app/core/styles/material-custom/constants';
 
 button {
+  width: 100%;
+  border-radius: 10px;
+
   .flex-container {
     display: flex;
     align-items: center;
     letter-spacing: 0;
+  }
 
-    mat-icon {
+  .default {
+    .mat-icon {
       margin-left: 40px;
     }
   }
 
-  ::ng-deep mat-icon {
-    color: $text-gray;
+  .after-text {
+    .mat-icon {
+      margin-left: 5px;
+    }
+  }
 
+  ::ng-deep mat-icon {
     .mat-badge-content{
       font-size: 10px!important;
       right: -11px!important;
@@ -22,5 +31,12 @@ button {
       height: 20px!important;
     }
   }
+}
 
+.small {
+  height: 40px!important;
+}
+
+.large {
+  height: 52px!important;
 }

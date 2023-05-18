@@ -28,6 +28,7 @@ export class SignInComponent {
       inputType: 'email',
       placeholder: 'ENTER_EMAIL',
       validators: [Validators.required, Validators.email],
+      icon: 'mail'
     },
     {
       key: 'password',
@@ -35,7 +36,8 @@ export class SignInComponent {
       componentType: 'textbox',
       inputType: 'password',
       placeholder: 'ENTER_PASSWORD',
-      validators: [Validators.required]
+      validators: [Validators.required],
+      icon: 'lock',
     }
   ];
 

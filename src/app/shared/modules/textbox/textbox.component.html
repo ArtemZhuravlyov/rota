@@ -1,8 +1,36 @@
-<mat-form-field class="test" appearance="outline">
+<div class="d-flex justify-content-center flex-column" [style.width]="width">
+  <div class="field-label">
     <span>{{ label | translate }}</span>
+  </div>
+  <mat-form-field
+    (focusin)="isFocus = true"
+    (focusout)="isFocus = false"
+    [ngClass]="{
+      'input-focus': isFocus && formControl.valid,
+      'input-success': formControl.valid && formControl.dirty && !isFocus,
+      'input-error': formControl.invalid && formControl.touched,
+    }"
+    appearance="outline"
+  >
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
     <input #input (input)="setFormValue(input.value)"
            [placeholder]="placeholder! | translate"
-           [type]="inputType!"
+           [type]="isShowPassword ? 'text' : inputType!"
            matInput
     >
-</mat-form-field>
+    <div class="d-flex flex-row input-icons">
+      <mat-icon class="input-icon-success" *ngIf="formControl?.valid && formControl.dirty && !isFocus"
+                matSuffix>
+        {{ 'check_circle' }}
+      </mat-icon>
+      <mat-icon class="input-icon-error" *ngIf="formControl?.invalid && formControl.touched"
+                matSuffix>
+        {{ 'cancel' }}
+      </mat-icon>
+      <mat-icon class="password-icon" (click)="isShowPassword = !isShowPassword" *ngIf="inputType === 'password'"
+                matSuffix>
+        {{ isShowPassword ? 'visibility' : 'visibility_off' }}
+      </mat-icon>
+    </div>
+  </mat-form-field>
+</div>

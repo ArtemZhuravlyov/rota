@@ -4,3 +4,17 @@
   align-items: center;
   flex-direction: column;
 }
+
+:host {
+  ::ng-deep {
+    app-textbox, app-button, app-dropdown {
+      width: 100%;
+    }
+
+  }
+
+  div {
+    width: 100%;
+  }
+}
+

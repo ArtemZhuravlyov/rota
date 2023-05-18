@@ -1,4 +1,4 @@
-<div class="form" [formGroup]="form">
+<div class="form" [formGroup]="form" [ngStyle]="{ width: width ? width + 'px' : '', height: height ? height + 'px': '' }" >
 
   <ng-container *ngFor="let formField of formFields">
     <ng-container [ngSwitch]="formField.componentType">
@@ -8,6 +8,9 @@
           [label]="formField.label"
           [inputType]="formField.inputType"
           [placeholder]="formField.placeholder"
+          [icon]="formField.icon"
+          [formControl]="$any(form.controls[formField.key])"
+          [width]="'100%'"
         ></app-textbox>
       </div>
       <div *ngSwitchCase="componentType.DROPDOWN">
@@ -19,21 +22,22 @@
         ></app-dropdown>
       </div>
 
-      <!--            <div *ngSwitchCase="componentType.TEXT">-->
-      <!--                text-->
-      <!--            </div>-->
-      <!--            <div *ngSwitchCase="componentType.DATEPICKER">-->
-      <!--                datepicker-->
-      <!--            </div>-->
+      <div *ngSwitchCase="componentType.TEXT">
+          text
+      </div>
+      <div *ngSwitchCase="componentType.DATEPICKER">
+          datepicker
+      </div>
 
-      <!--            <div *ngSwitchCase="componentType.NUMERIC">-->
-      <!--                numeric-->
-      <!--            </div>-->
-      <!--            <div *ngSwitchCase="componentType.RADIO">-->
-      <!--                radio-->
-      <!--            </div>-->
+      <div *ngSwitchCase="componentType.NUMERIC">
+          numeric
+      </div>
+      <div *ngSwitchCase="componentType.RADIO">
+          radio
+      </div>
 
     </ng-container>
   </ng-container>
 
+  <ng-content></ng-content>
 </div>

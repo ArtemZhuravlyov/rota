@@ -12,6 +12,8 @@ import { ComponentTypeEnum } from "@core/enums/component-type.enum";
 export class FormBuilderComponent implements OnInit {
   @Input() formFields: FormField[] = [];
   @Output() createdForm = new EventEmitter();
+  @Input() height: number | null = 0;
+  @Input() width: number | null = 0;
 
   form!: FormGroup;
 
@@ -24,7 +26,6 @@ export class FormBuilderComponent implements OnInit {
     this.createFormBuilder();
     this.generateFormFields();
     this.addValidatorsForFormField();
-    this.form.valueChanges.subscribe(() => console.log(this.form.errors))
   }
 
   private createFormBuilder(): void {

@@ -4,7 +4,7 @@ import { FormBuilderComponent } from "./form-builder.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { TextboxModule } from "../textbox/textbox.module";
 import { MaterialModule } from "../material.module";
-import { DropdownModule } from "../../dropdown/dropdown.module";
+import { DropdownModule } from "@shared/modules/dropdown/dropdown.module";
 
 @NgModule({
   declarations: [FormBuilderComponent],

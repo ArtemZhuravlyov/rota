@@ -28,7 +28,8 @@ export class RegistrationComponent {
       componentType: 'textbox',
       inputType: 'text',
       placeholder: 'ENTER_FIRST_NAME',
-      validators: [Validators.required]
+      validators: [Validators.required],
+      icon: 'person_outline'
     },
     {
       key: 'lastName',
@@ -36,7 +37,8 @@ export class RegistrationComponent {
       componentType: "textbox",
       inputType: 'text',
       placeholder: 'ENTER_LAST_NAME',
-      validators: [Validators.required]
+      validators: [Validators.required],
+      icon: 'person_outline',
     },
     {
       key: 'email',
@@ -44,7 +46,8 @@ export class RegistrationComponent {
       componentType: "textbox",
       inputType: 'email',
       placeholder: 'ENTER_EMAIL',
-      validators: [Validators.required, Validators.email]
+      validators: [Validators.required, Validators.email],
+      icon: 'mail',
     },
     {
       key: 'password',
@@ -52,7 +55,8 @@ export class RegistrationComponent {
       componentType: "textbox",
       inputType: 'password',
       placeholder: 'ENTER_PASSWORD',
-      validators: [Validators.required]
+      validators: [Validators.required, Validators.minLength(6)],
+      icon: 'lock',
     },
     {
       key: 'verifyPassword',
@@ -62,6 +66,7 @@ export class RegistrationComponent {
       inputType: 'password',
       formValidators: [matchFieldsValue('password', 'verifyPassword')],
       validators: [Validators.required],
+      icon: 'lock',
     },
   ]
 
