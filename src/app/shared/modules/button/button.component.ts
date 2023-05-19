@@ -36,8 +36,8 @@ export class ButtonComponent {
   }
   @Input() size: ButtonSize = 'small';
 
-  disabledBtnIconColor =  '#CDD2D9';
-  _iconColor = '#CDD2D9';
+  disabledBtnIconColor =  'gray';
+  _iconColor!: string;
 
   buttonTypeEnum = ButtonTypeEnum;
 }

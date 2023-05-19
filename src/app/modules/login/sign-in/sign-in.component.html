@@ -5,10 +5,13 @@
   [redirectText]="redirectText"
   [redirectRoute]="redirectRoute"
   [imgUrl]="imgUrl"
+  [isLogoPositionTop]="true"
 >
   <app-form-builder
+    [width]="480"
     [formFields]="formFields"
     (createdForm)="form = $event"
-  ></app-form-builder>
+  >
     <app-button [disabled]="form.invalid" (click)="onSubmit()" [title]="'LOGIN'"></app-button>
+  </app-form-builder>
 </app-login-page>

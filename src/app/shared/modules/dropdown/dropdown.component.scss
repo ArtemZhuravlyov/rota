@@ -2,14 +2,15 @@
 
 :host {
   ::ng-deep {
-    .mdc-notched-outline__leading, .mdc-notched-outline__trailing, .mdc-notched-outline__notch {
-      border: none!important;
+    .mdc-notched-outline__leading, .mdc-notched-outline__trailing, .mdc-notched-outline__notch, {
+      border: none !important;
     }
 
-    .mat-mdc-text-field-wrapper {
-      border: 1px solid $green-border!important;
+    .mat-mdc-text-field-wrapper, {
+      border: 1px solid $green-border !important;
       border-radius: 10px;
       height: 52px;
+      min-height: 52px;
     }
   }
 }
@@ -19,4 +20,67 @@
   font-size: 15px !important;
   line-height: 21px !important;
   padding-bottom: 10px;
+}
+
+::ng-deep {
+  .mdc-list-item__primary-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mdc-list-item {
+    margin: 0 5px;
+  }
+
+  .mdc-list-item--selected {
+    border-radius: 10px;
+    position: relative;
+
+    &:after {
+      content: '';
+      left: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background: $background-dropdown-selected;
+      opacity: 0.05;
+    }
+  }
+}
+
+::ng-deep {
+  .mat-mdc-form-field-infix {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 52px;
+  }
+
+  .mat-mdc-option {
+    background: transparent !important;
+  }
+
+  .mdc-text-field--focused {
+    background: $background-focus-input;
+
+    .mat-mdc-select-arrow {
+      transform: rotate(180deg);
+      transition: transform 0.2s;
+    }
+  }
+
+  .mat-mdc-select-arrow {
+    background: $white;
+
+    svg {
+      color: transparent;
+      background: url('../../../../assets/icons/arrow.svg') center center;
+      background-size: cover;
+    }
+  }
+}
+
+img {
+  margin-right: 5px;
 }

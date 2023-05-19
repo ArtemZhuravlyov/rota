@@ -25,10 +25,13 @@ export class TextboxComponent implements ControlValueAccessor {
   @Input() placeholder: string | undefined = '';
   @Input() width: string | undefined;
   @Input() icon: string | undefined;
+  @Input() maxLength: number | undefined;
+  @Input() hintText: string | undefined;
+  @Input() hintLink: string | undefined;
 
   isShowPassword = false;
   isFocus = false;
-
+  value = ''
   setFormValue(value: string): void {
     this.onChange(value);
     this.onTouch();

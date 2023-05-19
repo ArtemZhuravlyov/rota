@@ -11,6 +11,9 @@ export interface FormField {
   validators?: ValidatorFn[];
   formValidators?: ValidatorFn[];
   icon?: string;
+  hint?: string;
+  hintLink?: string;
+  maxLength?: number;
 }
 
 export type ComponentType = typeof ComponentTypeEnum[keyof typeof ComponentTypeEnum];

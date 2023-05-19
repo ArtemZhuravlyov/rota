@@ -1,7 +1,7 @@
 <div class="auth-container">
-  <div class="left-side d-flex justify-content-center align-items-center">
+  <div class="left-side d-flex align-items-center" [ngClass]="{ 'justify-content-center': !isLogoPositionTop }">
     <div class="background-image" [style.background-image]="imgUrl"></div>
-    <div class="logo">rota <span class="secondary-text">sheet</span></div>
+    <div [ngClass]="{ 'logo': true, 'logo-top': isLogoPositionTop }">rota <span class="secondary-text">sheet</span></div>
     <div class="information">{{ logoInformation }}</div>
   </div>
   <div class="right-side">

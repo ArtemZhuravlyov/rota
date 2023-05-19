@@ -27,7 +27,8 @@ export class CompanyComponent {
       componentType: 'textbox',
       inputType: 'text',
       validators: [Validators.required],
-      placeholder: 'Enter'
+      placeholder: 'Enter',
+      maxLength: 500,
     },
     {
       key: 'address',
@@ -35,7 +36,8 @@ export class CompanyComponent {
       componentType: 'textbox',
       inputType: 'text',
       validators: [Validators.required],
-      placeholder: 'Enter'
+      placeholder: 'Enter',
+      maxLength: 500,
     },
     {
       key: 'countryId',
@@ -45,7 +47,7 @@ export class CompanyComponent {
       data: this.companyService.getCountry().pipe(
         map((countries: Country[]) =>
           countries.map(country =>
-            ({ displayName: country.name, value: country.id })
+            ({ displayName: country.name, value: country.id, countryFlag: country.countryFlag })
           )
         )
       ),

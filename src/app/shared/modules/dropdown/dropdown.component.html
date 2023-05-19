@@ -2,13 +2,14 @@
   <div class="field-label">
     <span>{{ title | translate }}</span>
   </div>
-  <mat-form-field  appearance="outline">
-    <mat-select [placeholder]="'SELECT' | translate" (valueChange)="setFormValue($event)">
-      <mat-option>{{ 'NONE' | translate }}</mat-option>
+  <mat-form-field appearance="outline">
+    <img *ngIf="currentIcon" src="{{ currentIcon | country }}">
+    <mat-select [(ngModel)]="selectedValue" [placeholder]="'SELECT' | translate" (valueChange)="setFormValue($event)">
       <ng-container *ngIf="isObservable(data); else defaultType">
         <ng-container *ngIf="data | async as asyncData">
           <mat-option *ngFor="let value of asyncData" [value]="value[valueField]">
-            {{ value[textField] }}
+            <img *ngIf="value['countryFlag']" src="{{ $any(value['countryFlag']) | country }}">
+            <span>{{ value[textField] }}</span>
           </mat-option>
         </ng-container>
       </ng-container>

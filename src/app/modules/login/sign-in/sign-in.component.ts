@@ -28,7 +28,7 @@ export class SignInComponent {
       inputType: 'email',
       placeholder: 'ENTER_EMAIL',
       validators: [Validators.required, Validators.email],
-      icon: 'mail'
+      icon: 'mail',
     },
     {
       key: 'password',
@@ -38,6 +38,8 @@ export class SignInComponent {
       placeholder: 'ENTER_PASSWORD',
       validators: [Validators.required],
       icon: 'lock',
+      hint: 'FORGOT_PASSWORD_LINK',
+      hintLink: `../${NavigationPaths.PASSWORD_RECOVERY}`
     }
   ];
 
@@ -47,6 +49,7 @@ export class SignInComponent {
     private authService: AuthService,
     private route: Router,
   ) {
+    console.log(this.authService.getCurrentUser());
   }
 
   onSubmit(): void {

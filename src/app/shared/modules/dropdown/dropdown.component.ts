@@ -21,6 +21,9 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input() data!: DropdownOptions[] & Observable<DropdownOptions[]>;
   @Input() valueField = 'value';
   @Input() textField = 'displayName';
+  selectedValue: string = '';
+
+  currentIcon: string | null = null;
 
   isObservable(data: any) {
     return data instanceof Observable;

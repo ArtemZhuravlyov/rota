@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, signal } from "@angular/core";
 import { AuthRegistration, AuthSignIn, AuthUser } from "../../types/auth.interface";
-import { Observable, ReplaySubject, tap } from "rxjs";
+import { Observable, tap } from "rxjs";
 import { TOKEN_NAME } from "@shared/utils/token-getter";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { ENVIRONMENT } from "@app/app.module";
@@ -13,7 +13,7 @@ import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private user$ = new ReplaySubject<AuthUser>(1);
+  private user = signal<AuthUser | undefined>(undefined);
 
   constructor(
     private http: HttpClient,
@@ -23,8 +23,8 @@ export class AuthService {
   ) {
   }
 
-  getCurrentUser$(): Observable<AuthUser> {
-    return this.user$.asObservable();
+  getCurrentUser(): AuthUser | undefined {
+    return this.user();
   }
 
   registration(body: AuthRegistration): Observable<AuthUser> {
@@ -53,9 +53,8 @@ export class AuthService {
     localStorage.setItem(TOKEN_NAME, token);
   }
 
-
   private setOptions(authUser: AuthUser): void {
     this.setToken(authUser.jwtToken);
-    this.user$.next(authUser);
+    this.user.set(authUser);
   }
 }

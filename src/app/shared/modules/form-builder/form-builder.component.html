@@ -11,6 +11,9 @@
           [icon]="formField.icon"
           [formControl]="$any(form.controls[formField.key])"
           [width]="'100%'"
+          [hintText]="formField.hint"
+          [hintLink]="formField.hintLink"
+          [maxLength]="formField.maxLength"
         ></app-textbox>
       </div>
       <div *ngSwitchCase="componentType.DROPDOWN">

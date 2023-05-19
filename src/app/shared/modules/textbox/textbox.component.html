@@ -1,6 +1,12 @@
 <div class="d-flex justify-content-center flex-column" [style.width]="width">
-  <div class="field-label">
+  <div class="field-label d-flex justify-content-between">
     <span>{{ label | translate }}</span>
+      <ng-template [ngIf]="maxLength && isFocus">
+        <span>{{ input.value.length }} / {{ maxLength }}</span>
+      </ng-template>
+      <ng-template [ngIf]="hintText?.length">
+        <a [routerLink]="hintLink">{{ hintText! | translate }}</a>
+      </ng-template>
   </div>
   <mat-form-field
     (focusin)="isFocus = true"
@@ -12,12 +18,15 @@
     }"
     appearance="outline"
   >
-    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
-    <input #input (input)="setFormValue(input.value)"
+    <mat-icon class="prefix-icon" *ngIf="icon">{{ icon }}</mat-icon>
+    <input #input [formControl]="formControl" (input)="setFormValue(input.value)"
            [placeholder]="placeholder! | translate"
            [type]="isShowPassword ? 'text' : inputType!"
            matInput
     >
+    <mat-error>
+      <app-input-error [errors]="formControl.errors!"></app-input-error>
+    </mat-error>
     <div class="d-flex flex-row input-icons">
       <mat-icon class="input-icon-success" *ngIf="formControl?.valid && formControl.dirty && !isFocus"
                 matSuffix>

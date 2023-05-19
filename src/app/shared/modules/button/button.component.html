@@ -18,7 +18,6 @@
       [class]="size"
       mat-icon-button
       *ngSwitchCase="buttonTypeEnum.ICON"
-      [color]="colorTheme"
       [disabled]="disabled"
     >
       <mat-icon *ngIf="isBadgeShowed" [matBadge]="badgeInfo" matBadgeColor="warn">{{ icon }}</mat-icon>

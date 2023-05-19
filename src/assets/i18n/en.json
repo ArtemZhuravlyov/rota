@@ -7,6 +7,7 @@
   "PASSWORD": "Password",
   "ENTER_PASSWORD": "Enter password",
   "FORGOT_PASSWORD": "Forgot password",
+  "FORGOT_PASSWORD_LINK": "Forgot password?",
   "SIGN_IN": "Sign in",
   "COPYRIGHT": "Copyright.",
   "PRIVACY_POLICY": "Privacy policy",
@@ -58,5 +59,9 @@
   "EMPLOYEE_DOCUMENT": "Employee Document",
   "USER": "User",
   "ROLE": "Role",
-  "NONE": "None"
+  "FIELD_REQUIRED": "Field is required",
+  "SYMBOL_ERROR": "Can’t use the “`” symbol in this field. Please, fix this error.",
+  "PASSWORD_ERROR": "This password is too weak. Please, add such symbols like #,$,& or other.",
+  "REPEAT_PASSWORD_ERROR": "Passwords are not matching",
+  "EMAIL_ERROR": "It seems you forgot to type the “@” symbol. Please, fix this error."
 }

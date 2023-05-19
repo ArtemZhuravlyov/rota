@@ -5,19 +5,10 @@
 
   ::ng-deep {
     .input-focus {
-      .mat-icon {
-        color: $primary !important;
-        background: $white;
+      .prefix-icon {
+        color: $primary!important;
+        background: $white!important;
       }
-
-      .password-icon {
-        color: $text-gray !important;
-      }
-
-      .input-icon-error {
-        color: $border-error !important;
-      }
-
 
       .mat-mdc-text-field-wrapper {
         background: $background-focus-input;
@@ -43,14 +34,8 @@
 
 
       &:hover {
-        .mat-icon {
+        .prefix-icon {
           color: $text-dark-gray;
-        }
-
-        .input-icon-error {
-          .mat-icon {
-            color: $border-error;
-          }
         }
       }
     }
@@ -117,10 +102,14 @@ input {
       border-color: $border-error !important;
     }
 
+    .mat-mdc-form-field-error-wrapper {
+      padding: 0;
+    }
+
     .mat-mdc-text-field-wrapper {
       background: $background-error-input !important;
 
-      .mat-icon {
+      .prefix-icon {
         background: $background-error-icon;
         color: $border-error;
       }
@@ -139,7 +128,7 @@ input {
       border-radius: 10px;
       background: $white;
 
-      .mat-icon {
+      .prefix-icon {
         color: $primary !important;
         background: $background-success-icon;
       }

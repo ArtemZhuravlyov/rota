@@ -1,0 +1,21 @@
+<ng-container [ngSwitch]="true">
+  <ng-container *ngSwitchCase="hasOwnPropertyInError('minlength')">
+    {{ 'PASSWORD_ERROR' | translate }}
+  </ng-container>
+
+  <ng-container *ngSwitchCase="hasOwnPropertyInError('email')">
+    {{ 'EMAIL_ERROR' | translate }}
+  </ng-container>
+
+  <ng-container *ngSwitchCase="hasOwnPropertyInError('mustMath')">
+    {{ 'REPEAT_PASSWORD_ERROR' | translate }}
+  </ng-container>
+
+  <ng-container *ngSwitchCase="hasOwnPropertyInError('excludeSymbols')">
+    {{ 'SYMBOL_ERROR' | translate }}
+  </ng-container>
+
+  <ng-container *ngSwitchCase="hasOwnPropertyInError('required')">
+    {{ 'FIELD_REQUIRED' | translate }}
+  </ng-container>
+</ng-container>

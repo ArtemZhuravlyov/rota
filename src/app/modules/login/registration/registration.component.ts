@@ -6,6 +6,7 @@ import { AuthService } from "@core/services/account/auth.service";
 import { Router } from "@angular/router";
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 import { matchFieldsValue } from "@shared/utils/custom-validators/match-fields-value";
+import { excludeSymbols } from "@shared/utils/custom-validators/exclude-symbols";
 
 @Component({
   selector: 'app-registration',
@@ -28,7 +29,7 @@ export class RegistrationComponent {
       componentType: 'textbox',
       inputType: 'text',
       placeholder: 'ENTER_FIRST_NAME',
-      validators: [Validators.required],
+      validators: [Validators.required, excludeSymbols(['`'])],
       icon: 'person_outline'
     },
     {

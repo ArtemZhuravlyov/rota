@@ -13,5 +13,5 @@ export class LoginPageComponent {
   @Input() logoInformation!: string;
   @Input() redirectRoute: string | null = null;
   @Input() redirectText: string = '';
-  @Input() isLogin: boolean = false;
+  @Input() isLogoPositionTop = false;
 }
