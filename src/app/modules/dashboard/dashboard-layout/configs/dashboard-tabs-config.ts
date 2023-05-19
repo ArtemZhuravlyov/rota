@@ -1,5 +1,5 @@
-import { MenusConfig } from "../../../../core/types/menus-config";
-import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
+import { MenusConfig } from "@core/types/menus-config";
+import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 
 export const dashboardTabsConfig: MenusConfig[] = [
     {

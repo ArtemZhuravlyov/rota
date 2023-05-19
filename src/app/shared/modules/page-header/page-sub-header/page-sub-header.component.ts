@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ButtonTypeEnum } from "../../../../core/enums/button-type.enum";
+import { ButtonTypeEnum } from "@core/enums/button-type.enum";
 
 @Component({
   selector: 'app-page-sub-header',

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { WorkScheduleRoutingModule } from './work-schedule-routing.module';
 import { WorkScheduleComponent } from './work-schedule.component';
-import { PageHeaderModule } from "../../../../shared/modules/page-header/page-header.module";
+import { PageHeaderModule } from "@shared/modules/page-header/page-header.module";
 
 
 @NgModule({

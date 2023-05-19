@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { GradeCategoryRoutingModule } from './grade-category-routing.module';
 import { GradeCategoryComponent } from './grade-category.component';
-import { PageHeaderModule } from "../../../../shared/modules/page-header/page-header.module";
+import { PageHeaderModule } from "@shared/modules/page-header/page-header.module";
 
 
 @NgModule({

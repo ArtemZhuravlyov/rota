@@ -29,6 +29,9 @@ export class ButtonComponent {
         break;
       case "white":
         this._iconColor = '#FFFFFF';
+        break;
+      default:
+        this._iconColor = '#221F1F';
     }
   }
   @Input() size: ButtonSize = 'small';

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Observable, tap } from "rxjs";
-import { Breadcrumb } from "../../../core/types/breadcrumb";
-import { BreadcrumbService } from "../../../core/services/breadcrumb/breadcrumb.service";
+import { Observable } from "rxjs";
+import { Breadcrumb } from "@core/types/breadcrumb";
+import { BreadcrumbService } from "@core/services/breadcrumb/breadcrumb.service";
 
 @Component({
   selector: 'app-page-header',
