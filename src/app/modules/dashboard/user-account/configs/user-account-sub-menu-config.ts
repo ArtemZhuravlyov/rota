@@ -3,15 +3,15 @@ import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
 
 export const userAccountSubMenuConfig: MenusConfig[] = [
   {
-    title: 'User',
+    title: 'USER',
     routerLink: NavigationPaths.USER,
   },
   {
-    title: 'Role',
+    title: 'ROLE',
     routerLink: NavigationPaths.ROLE,
   },
   {
-    title: 'Company',
+    title: 'COMPANY',
     routerLink: NavigationPaths.COMPANY,
   },
 ];

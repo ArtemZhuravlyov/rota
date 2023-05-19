@@ -3,39 +3,39 @@ import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
 
 export const companySubMenuConfig: MenusConfig[] = [
     {
-        title: 'Company',
+        title: 'COMPANY_LIST',
         routerLink: `./${NavigationPaths.EMPTY_PATH}`,
     },
     {
-        title: 'Bank Account',
+        title: 'BANK_ACCOUNT',
         routerLink: NavigationPaths.BANK_ACCOUNT,
     },
     {
-        title: 'Group / Function /Division',
+        title: 'GROUP_MORE',
         routerLink: NavigationPaths.GROUP,
     },
     {
-        title: 'Department',
+        title: 'DEPARTMENT',
         routerLink: NavigationPaths.DEPARTMENT,
     },
     {
-        title: 'Grade Category',
+        title: 'GRADE_CATEGORY',
         routerLink: NavigationPaths.GRADE_CATEGORY,
     },
     {
-        title: 'Position',
+        title: 'POSITION',
         routerLink: NavigationPaths.POSITION,
     },
     {
-        title: 'Benefit',
+        title: 'BENEFIT',
         routerLink: NavigationPaths.BENEFIT,
     },
     {
-        title: 'Work Schedule',
+        title: 'WORK_SCHEDULE',
         routerLink: NavigationPaths.WORK_SCHEDULE,
     },
     {
-        title: 'Pay Structure',
+        title: 'PAY_STRUCTURE',
         routerLink: NavigationPaths.PAY_STRUCTURE,
     },
 ]

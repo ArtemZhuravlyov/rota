@@ -1,1 +1,10 @@
-<p>company-info works!</p>
+<app-page-header [title]="'COMPANY_LIST'">
+  <div class="action-buttons">
+    <app-button [btnType]="ButtonTypeEnum.FLAT" [isIconButton]="true" [title]="'Create New'" [icon]="'add_box'" [size]="'large'"></app-button>
+  </div>
+</app-page-header>
+
+<div>
+  <app-data-table></app-data-table>
+</div>
+

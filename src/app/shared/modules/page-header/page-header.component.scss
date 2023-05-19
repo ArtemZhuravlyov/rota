@@ -1,0 +1,59 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.page-header {
+  margin-top: 25px;
+
+  .heading {
+    font-size: 24px;
+    line-height: 35px;
+    font-weight: 600;
+    color: $text-dark-gray;
+    margin: 0 0 0 30px;
+  }
+
+  .breadcrumbs {
+    ul {
+      list-style-type: none;
+      padding-left: 30px;
+      margin: 0;
+    }
+
+    li {
+      display: inline-block;
+      position: relative;
+      padding-right: 30px;
+      margin: 0;
+    }
+    li:after {
+      content: '>';
+      position: absolute;
+      display: inline-block;
+      right: 0;
+      width: 2em;
+      text-align: center;
+    }
+    li:last-child {
+      a {
+        color: $selected-gray;
+      }
+    }
+    li:last-child:after {
+      content: '';
+    }
+
+    a {
+      font-size: 14px;
+      line-height: 20px;
+      text-decoration: none;
+      display: inline-block;
+      color: $text-teal;
+      white-space: nowrap;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+  }
+
+}

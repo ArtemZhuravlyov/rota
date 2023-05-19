@@ -3,15 +3,15 @@ import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
 
 export const documentsSubMenuConfig: MenusConfig[] = [
   {
-    title: 'Folder Management',
+    title: 'FOLDER_MANAGEMENT',
     routerLink: NavigationPaths.FOLDER_MANAGEMENT,
   },
   {
-    title: 'Document Management',
+    title: 'DOCUMENT_MANAGEMENT',
     routerLink: NavigationPaths.DOCUMENT_MANAGEMENT,
   },
   {
-    title: 'Employee Document',
+    title: 'EMPLOYEE_DOCUMENT',
     routerLink: NavigationPaths.EMPLOYEE_DOCUMENT,
   },
 ];

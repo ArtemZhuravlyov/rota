@@ -3,19 +3,19 @@ import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
 
 export const employeesSubMenuConfig: MenusConfig[] = [
   {
-    title: 'Employment Type',
+    title: 'EMPLOYMENT_TYPE',
     routerLink: NavigationPaths.EMPLOYMENT_TYPE,
   },
   {
-    title: 'Employee Record',
+    title: 'EMPLOYEE_RECORD',
     routerLink: NavigationPaths.EMPLOYEE_RECORD,
   },
   {
-    title: 'Organization Chart',
+    title: 'ORGANIZATION_CHART',
     routerLink: NavigationPaths.ORGANIZATION_CHART,
   },
   {
-    title: 'Import Verification',
+    title: 'IMPORT_VERIFICATION',
     routerLink: NavigationPaths.IMPORT_VERIFICATION,
   },
 ];

@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     pathMatch: 'full',
-    redirectTo: NavigationPaths.HOME
+    redirectTo: NavigationPaths.DASHBOARD
   },
   {
     path: NavigationPaths.HOME,

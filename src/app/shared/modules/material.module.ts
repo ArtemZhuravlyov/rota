@@ -8,9 +8,8 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from "@angular/platform-browser";
 import { MatInputModule } from "@angular/material/input";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { SubMenuButtonComponent } from './sub-menu-button/sub-menu-button.component';
-import { RouterLink, RouterLinkActive } from "@angular/router";
 import { MatSelectModule } from "@angular/material/select";
+import { MatTableModule } from "@angular/material/table";
 
 const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -20,21 +19,17 @@ const MATERIAL_MODULES = [
   MatSelectModule,
   MatInputModule,
   MatSlideToggleModule,
+  MatTableModule,
 ]
 
 @NgModule({
-  declarations: [
-    SubMenuButtonComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     ...MATERIAL_MODULES,
-    RouterLink,
-    RouterLinkActive
   ],
   exports: [
     ...MATERIAL_MODULES,
-    SubMenuButtonComponent
   ]
 })
 export class MaterialModule {

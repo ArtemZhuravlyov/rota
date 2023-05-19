@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ButtonTypeEnum } from "../../../../core/enums/button-type.enum";
+import { CompanyService } from "../../../../core/services/company/company.service";
+import { AuthService } from "../../../../core/services/account/auth.service";
 
 @Component({
   selector: 'app-company-info',
@@ -7,5 +10,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyInfoComponent {
+
+  protected readonly ButtonTypeEnum = ButtonTypeEnum;
+
+  constructor(
+    private readonly companyService: CompanyService,
+    private readonly authService: AuthService,
+    ) {
+    // companyService.getCompany().subscribe( res => console.log(res))
+  }
 
 }

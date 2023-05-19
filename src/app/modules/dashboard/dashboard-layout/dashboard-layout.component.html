@@ -11,7 +11,7 @@
 
     <a class="navigation-link d-flex justify-content-start align-items-center" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.routerLink" routerLinkActive="active-link">
       <mat-icon [svgIcon]="tab.icon!"></mat-icon>
-      {{tab.title}}
+      {{tab.title | translate}}
     </a>
 
     <div class="bottom-actions">

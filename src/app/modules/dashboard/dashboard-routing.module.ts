@@ -11,23 +11,27 @@ const routes: Routes = [
       {
         path: NavigationPaths.EMPTY_PATH,
         pathMatch: 'full',
-        redirectTo: NavigationPaths.EMPLOYEE
+        redirectTo: NavigationPaths.EMPLOYEE,
       },
       {
         path: NavigationPaths.COMPANY,
-        loadChildren: () => import('./company/company.module').then(m => m.CompanyModule)
+        loadChildren: () => import('./company/company.module').then(m => m.CompanyModule),
+        data: {breadcrumb: 'COMPANY'},
       },
       {
         path: NavigationPaths.EMPLOYEE,
-        loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)
+        loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
+        data: {breadcrumb: 'EMPLOYEE'},
       },
       {
         path: NavigationPaths.DOCUMENTS,
-        loadChildren: () => import('./documents/documents.module').then(m => m.DocumentsModule)
+        loadChildren: () => import('./documents/documents.module').then(m => m.DocumentsModule),
+        data: {breadcrumb: 'DOCUMENTS'},
       },
       {
         path: NavigationPaths.USER_ACCOUNT,
-        loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule)
+        loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule),
+        data: {breadcrumb: 'USER_ACCOUNT'},
       },
     ]
   },

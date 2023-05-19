@@ -1,8 +1,8 @@
-@import "src/app/core/styles/mixins/layout";
 @import "src/app/core/styles/material-custom/constants";
 
-:host {
-  @include full-height;
+mat-drawer-container {
+  height: calc(100vh - 60px);
+  width: calc(100vw - 220px);
 }
 
 .sub-menu {
