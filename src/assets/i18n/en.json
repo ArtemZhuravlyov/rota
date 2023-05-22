@@ -63,5 +63,10 @@
   "SYMBOL_ERROR": "Can’t use the “`” symbol in this field. Please, fix this error.",
   "PASSWORD_ERROR": "This password is too weak. Please, add such symbols like #,$,& or other.",
   "REPEAT_PASSWORD_ERROR": "Passwords are not matching",
-  "EMAIL_ERROR": "It seems you forgot to type the “@” symbol. Please, fix this error."
+  "EMAIL_ERROR": "It seems you forgot to type the “@” symbol. Please, fix this error.",
+  "CREATE_NEW": "Create New",
+  "NAME": "Name",
+  "PHONE": "Phone",
+  "LOCATION": "Location",
+  "ACTIONS": "Actions"
 }

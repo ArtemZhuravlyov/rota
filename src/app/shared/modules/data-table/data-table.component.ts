@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ColumnType, TableAction, TableActionTypes, TableConfig } from '@core/types/data-table';
+import { ButtonTypeEnum } from "@core/enums/button-type.enum";
+
 
 @Component({
   selector: 'app-data-table',
@@ -6,20 +9,44 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./data-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DataTableComponent {
+export class DataTableComponent implements OnInit {
+  @Input({required: true}) tableData!: any[];
+  @Input({required: true}) tableConfig!: TableConfig;
+  @Input() hasCheckboxColumn = false;
+  @Output() actionClicked = new EventEmitter<TableAction>();
+  readonly ColumnType = ColumnType;
+  readonly ButtonTypeEnum = ButtonTypeEnum;
 
-  displayedColumns: string[] = ['position', 'name'];
-  dataSource: any = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  defaultActionConfig = [
+    { icon: 'visibility', type: TableActionTypes.VIEW },
+    { icon: 'edit', type: TableActionTypes.EDIT },
+    { icon: 'delete', type: TableActionTypes.DELETE },
   ];
 
+  columns: string[] = [];
+  selectedItems = new Set<string>();
+
+  ngOnInit(): void {
+    this.columns = this.tableConfig.map(col => col.columnName);
+  }
+
+  onAction(action: TableAction): void {
+    this.actionClicked.emit(action);
+  }
+
+  selectAll(): void {
+    if (this.tableData.length === this.selectedItems.size) {
+      this.selectedItems.clear();
+    } else {
+      this.tableData.forEach(item => this.selectedItems.add(item.id));
+    }
+  }
+
+  addToSelected(id: string): void {
+    if (this.selectedItems.has(id)) {
+      this.selectedItems.delete(id);
+    } else {
+      this.selectedItems.add(id);
+    }
+  }
 }

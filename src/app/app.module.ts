@@ -11,12 +11,13 @@ import { AuthInterceptor } from "@core/interceptors/auth.interceptor";
 import { JwtModule } from "@auth0/angular-jwt";
 import { tokenGetter } from "@shared/utils/token-getter";
 import { environment } from "../environments/environment";
+import { Environment } from '@core/types/environment';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-export const ENVIRONMENT = new InjectionToken('ENV');
+export const ENVIRONMENT = new InjectionToken<Environment>('ENV');
 
 @NgModule({
   declarations: [

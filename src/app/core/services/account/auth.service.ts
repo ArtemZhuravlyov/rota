@@ -24,8 +24,12 @@ export class AuthService {
   ) {
   }
 
-  getCurrentUser(): AuthUser | undefined {
+  getCurrentUser(): AuthUser {
     return this.user();
+  }
+
+  getCurrentUserId(): string {
+    return this.getCurrentUser().userId;
   }
 
   registration(body: AuthRegistration): Observable<AuthUser> {

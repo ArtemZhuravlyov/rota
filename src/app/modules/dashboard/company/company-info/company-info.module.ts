@@ -7,6 +7,7 @@ import { PageHeaderModule } from "@shared/modules/page-header/page-header.module
 import { MaterialModule } from "@shared/modules/material.module";
 import { ButtonModule } from "@shared/modules/button/button.module";
 import { DataTableModule } from "@shared/modules/data-table/data-table.module";
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { DataTableModule } from "@shared/modules/data-table/data-table.module";
     MaterialModule,
     ButtonModule,
     DataTableModule,
+    TranslateModule,
   ]
 })
 export class CompanyInfoModule { }

@@ -21,14 +21,17 @@ export class ButtonComponent {
   @Input() iconPosition: IconPosition = 'default';
   @Input() set iconColor(color: IconColor) {
     switch (color) {
-      case "gray":
+      case 'gray':
         this._iconColor = '#CDD2D9';
         break;
-      case "primary":
+      case 'primary':
         this._iconColor = '#1C9F56';
         break;
-      case "white":
+      case 'white':
         this._iconColor = '#FFFFFF';
+        break;
+      case 'red':
+        this._iconColor = '#FF0000';
         break;
       default:
         this._iconColor = '#221F1F';

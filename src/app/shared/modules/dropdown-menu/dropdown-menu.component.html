@@ -1,0 +1,14 @@
+<app-button
+  [btnType]="ButtonTypeEnum.ICON"
+  [size]="'small'"
+  [icon]="menuIcon"
+  [matMenuTriggerFor]="menu"
+></app-button>
+
+<mat-menu
+  #menu="matMenu"
+  [xPosition]="xPosition"
+  [yPosition]="yPosition"
+>
+  <ng-content></ng-content>
+</mat-menu>

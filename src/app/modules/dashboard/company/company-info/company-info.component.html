@@ -1,10 +1,20 @@
 <app-page-header [title]="'COMPANY_LIST'">
   <div class="action-buttons">
-    <app-button [btnType]="ButtonTypeEnum.FLAT" [isIconButton]="true" [title]="'Create New'" [icon]="'add_box'" [size]="'large'"></app-button>
+    <app-button
+      [btnType]="ButtonTypeEnum.FLAT"
+      [isIconButton]="true"
+      title="{{'CREATE_NEW' | translate}}"
+      [icon]="'add_box'"
+      [size]="'large'"
+    ></app-button>
   </div>
 </app-page-header>
 
-<div>
-  <app-data-table></app-data-table>
-</div>
+<app-data-table
+  *ngIf="(companies$ | async) as companies"
+  [tableData]="companies"
+  [tableConfig]="companyListConfig"
+  (actionClicked)="onActionClicked($event)"
+  [hasCheckboxColumn]="true"
+></app-data-table>
 

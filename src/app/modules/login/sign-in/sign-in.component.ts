@@ -50,9 +50,7 @@ export class SignInComponent {
   constructor(
     private authService: AuthService,
     private route: Router,
-  ) {
-    console.log(this.authService.getCurrentUser());
-  }
+  ) { }
 
   onSubmit(): void {
     this.authService.signIn(this.form.value)
