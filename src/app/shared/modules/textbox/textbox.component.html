@@ -1,38 +1,50 @@
-<div class="d-flex justify-content-center flex-column" [style.width]="width">
+<div class="d-flex justify-content-center flex-column" [ngStyle]="styleConfig">
+
   <div class="field-label d-flex justify-content-between">
     <span>{{ label | translate }}</span>
-      <ng-template [ngIf]="maxLength && isFocus">
-        <span>{{ input.value.length }} / {{ maxLength }}</span>
-      </ng-template>
-      <ng-template [ngIf]="hintText?.length">
-        <a [routerLink]="hintLink">{{ hintText! | translate }}</a>
-      </ng-template>
+    <ng-template [ngIf]="maxLength && isFocus">
+      <span>{{ value.length }} / {{ maxLength }}</span>
+    </ng-template>
+    <ng-template [ngIf]="hintText?.length && hintLink?.length">
+      <a class="hint-link" [routerLink]="hintLink">{{ hintText! | translate }}</a>
+    </ng-template>
   </div>
+
   <mat-form-field
+    [ngStyle]="styleConfig"
     (focusin)="isFocus = true"
     (focusout)="isFocus = false"
     [ngClass]="{
       'input-focus': isFocus && formControl.valid,
-      'input-success': formControl.valid && formControl.dirty && !isFocus,
+      'input-success': formControl.valid && formControl.dirty && !isFocus && extendedValidation,
       'input-error': formControl.invalid && formControl.touched,
     }"
     appearance="outline"
   >
     <mat-icon class="prefix-icon" *ngIf="icon">{{ icon }}</mat-icon>
-    <input #input [formControl]="formControl" (input)="setFormValue(input.value)"
-           [placeholder]="placeholder! | translate"
-           [type]="isShowPassword ? 'text' : inputType!"
-           matInput
-    >
+    <textarea [maxlength]="+maxLength!" #textarea *ngIf="inputType === 'textarea'; else simpleInput"
+              [formControl]="formControl" (input)="setFormValue(textarea.value)"
+              [placeholder]="placeholder! | translate" matInput>
+    </textarea>
+
+    <ng-template #simpleInput>
+      <input #input [maxlength]="+maxLength!" [formControl]="formControl" (input)="setFormValue(input.value)"
+             [placeholder]="placeholder! | translate"
+             [type]="isShowPassword ? 'text' : inputType!" matInput
+      >
+    </ng-template>
+
     <mat-error>
       <app-input-error [errors]="formControl.errors!"></app-input-error>
     </mat-error>
-    <div class="d-flex flex-row input-icons">
-      <mat-icon class="input-icon-success" *ngIf="formControl?.valid && formControl.dirty && !isFocus"
+
+    <div class="d-flex flex-row input-icons" *ngIf="inputType !== 'textarea'">
+      <mat-icon class="input-icon-success"
+                *ngIf="formControl?.valid && formControl.dirty && !isFocus && extendedValidation"
                 matSuffix>
         {{ 'check_circle' }}
       </mat-icon>
-      <mat-icon class="input-icon-error" *ngIf="formControl?.invalid && formControl.touched"
+      <mat-icon class="input-icon-error" *ngIf="formControl?.invalid && formControl.touched && extendedValidation"
                 matSuffix>
         {{ 'cancel' }}
       </mat-icon>
@@ -41,5 +53,6 @@
         {{ isShowPassword ? 'visibility' : 'visibility_off' }}
       </mat-icon>
     </div>
+
   </mat-form-field>
 </div>

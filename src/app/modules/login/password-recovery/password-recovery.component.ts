@@ -38,7 +38,7 @@ export class PasswordRecoveryComponent {
 
   onSubmit(): void {
     this.accountService.passwordRecovery(this.form.value).subscribe(() => {
-      this.route.navigate(['..', NavigationPaths.DASHBOARD]);
+      this.route.navigate([NavigationPaths.LOGIN, NavigationPaths.PASSWORD_RECOVERY_SUCCESS]);
     })
   }
 }

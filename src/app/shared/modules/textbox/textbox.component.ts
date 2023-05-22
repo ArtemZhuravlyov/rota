@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+} from '@angular/core';
 import { InputType } from "@core/types/form-builder.model";
 import {
   ControlValueAccessor, FormControl,
@@ -23,16 +28,18 @@ export class TextboxComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() inputType: InputType | undefined = 'text';
   @Input() placeholder: string | undefined = '';
-  @Input() width: string | undefined;
   @Input() icon: string | undefined;
   @Input() maxLength: number | undefined;
   @Input() hintText: string | undefined;
   @Input() hintLink: string | undefined;
+  @Input() styleConfig:  { [key: string]: string } | undefined = {};
+  @Input() extendedValidation: boolean = false;
 
   isShowPassword = false;
   isFocus = false;
   value = ''
   setFormValue(value: string): void {
+    this.value = value;
     this.onChange(value);
     this.onTouch();
   }

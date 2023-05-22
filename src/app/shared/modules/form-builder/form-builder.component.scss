@@ -10,11 +10,13 @@
     app-textbox, app-button, app-dropdown {
       width: 100%;
     }
-
   }
 
   div {
     width: 100%;
   }
-}
 
+  .action-btn {
+    padding: 20px 0;
+  }
+}

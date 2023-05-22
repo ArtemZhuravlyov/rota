@@ -29,6 +29,7 @@ export class SignInComponent {
       placeholder: 'ENTER_EMAIL',
       validators: [Validators.required, Validators.email],
       icon: 'mail',
+      extendedValidation: true,
     },
     {
       key: 'password',
@@ -39,7 +40,8 @@ export class SignInComponent {
       validators: [Validators.required],
       icon: 'lock',
       hint: 'FORGOT_PASSWORD_LINK',
-      hintLink: `../${NavigationPaths.PASSWORD_RECOVERY}`
+      hintLink: `../${NavigationPaths.PASSWORD_RECOVERY}`,
+      extendedValidation: true,
     }
   ];
 

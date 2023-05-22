@@ -14,7 +14,7 @@ const USER = 'USER';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private user = signal<AuthUser | undefined>(undefined);
+  private user = signal<AuthUser>({} as AuthUser);
 
   constructor(
     private http: HttpClient,

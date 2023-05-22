@@ -14,6 +14,9 @@ import { ButtonModule } from "@shared/modules/button/button.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { PasswordRecoveryComponent } from "@app/modules/login/password-recovery/password-recovery.component";
 import { TextboxModule } from "@shared/modules/textbox/textbox.module";
+import {
+  PasswordRecoverySuccessComponent
+} from "@app/modules/login/password-recovery-success/password-recovery-success.component";
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { TextboxModule } from "@shared/modules/textbox/textbox.module";
     RegistrationComponent,
     CompanyComponent,
     PasswordRecoveryComponent,
+    PasswordRecoverySuccessComponent,
   ],
   imports: [
     RouterModule,

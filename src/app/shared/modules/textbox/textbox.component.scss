@@ -7,7 +7,7 @@
     .input-focus {
       .prefix-icon {
         color: $primary!important;
-        background: $white!important;
+        background: $white;
       }
 
       .mat-mdc-text-field-wrapper {
@@ -25,13 +25,13 @@
     }
 
     .mat-mdc-text-field-wrapper, .mat-mdc-form-field-infix, .mat-mdc-form-field-flex {
-      padding: 0;
+      padding-bottom: 0!important;
+      padding-top: 0!important;
       display: flex;
       align-items: center;
       min-height: 52px;
-      height: 52px;
+      height: 100%;
       border-radius: 10px;
-
 
       &:hover {
         .prefix-icon {
@@ -55,83 +55,96 @@
       justify-content: center;
     }
   }
-}
 
-input {
-  font-size: 15px !important;
-  line-height: 21px !important;
-  font-family: 'Source Sans Pro', sans-serif !important;
-  padding-left: 8px;
-
-}
-
-.field-label {
-  font-weight: normal;
-  font-size: 15px !important;
-  line-height: 21px !important;
-  padding-bottom: 10px;
-}
-
-.input-icons {
-  .input-icon-success {
-    color: $primary !important;
-    background: transparent !important;
+  input {
+    font-size: 15px !important;
+    line-height: 21px !important;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    padding-left: 8px;
   }
 
-  .password-icon {
-    color: $text-gray !important;
-    background: transparent !important;
+  .field-label {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+    padding-bottom: 10px;
   }
 
-
-  .input-icon-error {
-    color: $border-error;
-    background: transparent !important;
-  }
-}
-
-.input-password {
-  letter-spacing: 1px;
-  font-size: 50px;
-}
-
-.input-error {
-  ::ng-deep {
-
-    .mdc-notched-outline__trailing {
-      border-color: $border-error !important;
+  .input-icons {
+    .input-icon-success {
+      color: $primary;
+      background: transparent;
     }
 
-    .mat-mdc-form-field-error-wrapper {
-      padding: 0;
+    .password-icon {
+      color: $text-gray;
+      background: transparent;
     }
 
-    .mat-mdc-text-field-wrapper {
-      background: $background-error-input !important;
 
-      .prefix-icon {
-        background: $background-error-icon;
-        color: $border-error;
+    .input-icon-error {
+      color: $border-error;
+      background: transparent;
+    }
+  }
+
+  .input-password {
+    letter-spacing: 1px;
+    font-size: 50px;
+  }
+
+  .input-error {
+    ::ng-deep {
+
+      .mdc-notched-outline__trailing {
+        border-color: $border-error !important;
+      }
+
+      .mat-mdc-form-field-error-wrapper {
+        padding: 0;
+      }
+
+      .mat-mdc-text-field-wrapper {
+        background: $background-error-input !important;
+
+        .prefix-icon {
+          background: $background-error-icon;
+          color: $border-error;
+        }
       }
     }
   }
-}
 
-.input-success {
-  ::ng-deep {
+  .input-success {
+    ::ng-deep {
 
-    .mdc-notched-outline__trailing {
-      border-color: $white !important;
-    }
+      .mdc-notched-outline__trailing {
+        border-color: $white !important;
+      }
 
-    .mat-mdc-text-field-wrapper {
-      border-radius: 10px;
-      background: $white;
+      .mat-mdc-text-field-wrapper {
+        border-radius: 10px;
+        background: $white;
 
-      .prefix-icon {
-        color: $primary !important;
-        background: $background-success-icon;
+        .prefix-icon {
+          color: $primary;
+          background: $background-success-icon;
+        }
       }
     }
   }
+  .hint-link {
+    &:hover {
+      color: $background-dropdown-selected;
+    }
+  }
+
+  textarea {
+    resize: none;
+    height: 100% !important;
+    padding: 8px !important;
+    font-family: 'Source Sans Pro', sans-serif !important;
+  }
 }
+
+

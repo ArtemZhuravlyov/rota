@@ -8,6 +8,7 @@ export enum NavigationPaths {
   REGISTRATION = 'registration',
   REGISTRATION_COMPANY = 'registration-company',
   PASSWORD_RECOVERY = 'password-recovery',
+  PASSWORD_RECOVERY_SUCCESS = 'password-recovery-success',
 
   // Dashboard's paths
   DASHBOARD = 'dashboard',

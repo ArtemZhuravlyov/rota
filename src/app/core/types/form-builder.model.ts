@@ -14,11 +14,13 @@ export interface FormField {
   hint?: string;
   hintLink?: string;
   maxLength?: number;
+  styleConfig?:  { [key: string]: string };
+  extendedValidation?: boolean;
 }
 
 export type ComponentType = typeof ComponentTypeEnum[keyof typeof ComponentTypeEnum];
 
-export type InputType = 'email' | 'text' | 'password';
+export type InputType = 'email' | 'text' | 'password' | 'textarea';
 
 export type DropdownOptions = Record<string, string | number>;
 

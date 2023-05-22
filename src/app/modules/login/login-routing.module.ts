@@ -6,6 +6,9 @@ import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { CompanyComponent } from "./company/company.component";
 import { PasswordRecoveryComponent } from "@app/modules/login/password-recovery/password-recovery.component";
+import {
+  PasswordRecoverySuccessComponent
+} from "@app/modules/login/password-recovery-success/password-recovery-success.component";
 
 const routes: Routes = [
   {
@@ -32,6 +35,10 @@ const routes: Routes = [
       {
         path: NavigationPaths.PASSWORD_RECOVERY,
         component: PasswordRecoveryComponent
+      },
+      {
+        path: NavigationPaths.PASSWORD_RECOVERY_SUCCESS,
+        component: PasswordRecoverySuccessComponent
       }
     ]
   },
