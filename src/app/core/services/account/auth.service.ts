@@ -9,6 +9,7 @@ import { Environment } from "@core/types/environment";
 import { Router } from "@angular/router";
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 
+const USER = 'USER';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -40,11 +41,11 @@ export class AuthService {
   }
 
   checkUserAuth(): boolean {
-    console.log(this.jwtHelper)
     if (this.jwtHelper.isTokenExpired()) {
       this.route.navigate([`${NavigationPaths.LOGIN}/${NavigationPaths.SIGN_IN}`]);
       return false;
     } else {
+      this.user.set(this.getUserFormStorage());
       return true;
     }
   }
@@ -53,8 +54,18 @@ export class AuthService {
     localStorage.setItem(TOKEN_NAME, token);
   }
 
+  private setUserLocalStorage(user: AuthUser): void {
+    localStorage.setItem(USER, JSON.stringify(user))
+  }
+
+  private getUserFormStorage(): AuthUser {
+    return JSON.parse(localStorage.getItem(USER) ?? '');
+  }
+
+
   private setOptions(authUser: AuthUser): void {
     this.setToken(authUser.jwtToken);
     this.user.set(authUser);
+    this.setUserLocalStorage(authUser);
   }
 }
