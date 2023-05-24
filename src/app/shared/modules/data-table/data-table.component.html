@@ -82,7 +82,6 @@
   <ng-container *ngFor="let action of defaultActionConfig">
     <app-button
       [btnType]="ButtonTypeEnum.ICON"
-      [size]="'small'"
       [isIconButton]="true"
       [icon]="action.icon"
       (click)="onAction({ action: action.type, payload: element})"

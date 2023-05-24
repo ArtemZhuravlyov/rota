@@ -1,7 +1,13 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
-import { ButtonSize, IconColor, IconPosition } from "@core/types/button.interface";
+import { Style, ButtonTheme, IconPosition } from "@core/types/button.interface";
 
 @Component({
   selector: 'app-button',
@@ -11,36 +17,24 @@ import { ButtonSize, IconColor, IconPosition } from "@core/types/button.interfac
 })
 export class ButtonComponent {
   @Input() title!: string;
-  @Input() colorTheme: ThemePalette = 'primary';
-  @Input() icon!: string;
-  @Input() badgeInfo?: string | number;
   @Input() btnType!: keyof typeof ButtonTypeEnum;
-  @Input() disabled = false;
+  @Input() colorTheme: ButtonTheme = 'primary';
+  @Input() icon!: string;
+  @Input() styleConfig: Style = { }
+  @Input() badgeInfo?: string | number;
   @Input() isIconButton = false;
   @Input() isBadgeShowed = false;
-  @Input() iconPosition: IconPosition = 'default';
-  @Input() set iconColor(color: IconColor) {
-    switch (color) {
-      case 'gray':
-        this._iconColor = '#CDD2D9';
-        break;
-      case 'primary':
-        this._iconColor = '#1C9F56';
-        break;
-      case 'white':
-        this._iconColor = '#FFFFFF';
-        break;
-      case 'red':
-        this._iconColor = '#FF0000';
-        break;
-      default:
-        this._iconColor = '#221F1F';
+  @Input() iconPosition: IconPosition = 'after-text';
+  @Input() iconStyleConfig!: Style
+  @Input() disabled = false;
+  @Output() btnClick = new EventEmitter<void>;
+
+  @HostListener('click')
+  onClick(): void {
+    if (!this.disabled) {
+      this.btnClick.emit();
     }
   }
-  @Input() size: ButtonSize = 'small';
-
-  disabledBtnIconColor =  'gray';
-  _iconColor!: string;
 
   buttonTypeEnum = ButtonTypeEnum;
 }

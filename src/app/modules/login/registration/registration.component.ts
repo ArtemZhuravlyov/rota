@@ -19,7 +19,7 @@ export class RegistrationComponent {
   subtitle = 'ALREADY_HAVE_AN_ACCOUNT';
   logoInformation = 'Slogan of your company goes right underneath the logo, this is just a placeholder text.';
   redirectText = 'LOGIN';
-  redirectRoute = `${NavigationPaths.LOGIN}/${NavigationPaths.SIGN_IN}`;
+  redirectRoute = `../${NavigationPaths.SIGN_IN}`;
   imgUrl = ImageUrl.REGISTRATION;
 
   formFields: FormField[] = [

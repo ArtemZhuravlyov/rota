@@ -1,70 +1,81 @@
-<ng-container>
+<div [class]="colorTheme" [style]="styleConfig" [ngClass]="{ disabled: disabled }">
   <ng-container [ngSwitch]="btnType">
     <button
-      [class]="size"
+      [style]="styleConfig"
       mat-stroked-button
       *ngSwitchCase="buttonTypeEnum.STROKED"
-      [color]="colorTheme"
       [disabled]="disabled"
     >
       <div [class]="'flex-container ' + iconPosition">
         {{ title | translate }}
-        <mat-icon [style.color]="disabled ? disabledBtnIconColor : _iconColor"
-                  *ngIf="isIconButton">{{ icon }}</mat-icon>
+        <mat-icon [style]="iconStyleConfig" *ngIf="isIconButton">{{ icon }}</mat-icon>
       </div>
     </button>
 
     <button
-      [class]="size"
       mat-icon-button
+      [style]="styleConfig"
       *ngSwitchCase="buttonTypeEnum.ICON"
       [disabled]="disabled"
     >
-      <mat-icon *ngIf="isBadgeShowed" [matBadge]="badgeInfo" matBadgeColor="warn">{{ icon }}</mat-icon>
-      <mat-icon [style.color]="disabled ? disabledBtnIconColor : _iconColor"
-                *ngIf="!isBadgeShowed">{{ icon }}</mat-icon>
+      <mat-icon
+        *ngIf="isBadgeShowed"
+        [matBadge]="badgeInfo"
+        [style]="iconStyleConfig"
+        matBadgeColor="warn"
+      >{{ icon }}</mat-icon>
+      <mat-icon [style]="iconStyleConfig" *ngIf="!isBadgeShowed">{{ icon }}</mat-icon>
     </button>
 
     <button
-      [class]="size"
+      [style]="styleConfig"
       mat-fab
       *ngSwitchCase="buttonTypeEnum.FAB"
-      [color]="colorTheme"
       [disabled]="disabled"
     >
-      <mat-icon [style.color]="disabled ? disabledBtnIconColor : _iconColor">{{ icon }}</mat-icon>
+      <mat-icon>{{ icon }}</mat-icon>
     </button>
 
     <ng-container
       *ngSwitchCase="buttonTypeEnum.FLAT"
     >
-      <button *ngIf="iconPosition === 'beforeText'" [class]="size" mat-fab extended [color]="colorTheme">
-        <mat-icon>{{ icon }}</mat-icon>
+      <button
+        *ngIf="iconPosition === 'beforeText'"
+        [style]="styleConfig"
+        [disabled]="disabled"
+        mat-fab extended>
+        <mat-icon [style]="iconStyleConfig">{{ icon }}</mat-icon>
         {{ title | translate }}
       </button>
+
       <button
-        *ngIf="iconPosition === 'default' || iconPosition === 'after-text'"
-        [class]="size"
+        *ngIf="iconPosition === 'after-text'"
+        [style]="styleConfig"
         mat-flat-button
-        color="primary"
+        class="flat-button"
         [disabled]="disabled"
       >
         <div [class]="'flex-container ' + iconPosition">
           {{ title | translate }}
-          <mat-icon [style.color]="disabled ? disabledBtnIconColor : _iconColor"
-                   >{{ icon }}</mat-icon>
+          <mat-icon [style]="iconStyleConfig">{{ icon }}</mat-icon>
         </div>
       </button>
+
     </ng-container>
 
-    <button [class]="size" mat-flat-button *ngSwitchDefault [color]="colorTheme">
+    <button
+      [style]="styleConfig"
+      mat-flat-button *ngSwitchDefault
+      class="flat-button"
+      [disabled]="disabled"
+    >
       <div [class]="'flex-container ' + iconPosition">
         {{ title | translate }}
       </div>
     </button>
 
   </ng-container>
-</ng-container>
+</div>
 
 
 

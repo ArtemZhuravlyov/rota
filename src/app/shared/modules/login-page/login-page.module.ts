@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginPageComponent } from './login-page.component';
 import { TranslateModule } from "@ngx-translate/core";
+import { RouterLink } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { TranslateModule } from "@ngx-translate/core";
   ],
   imports: [
     CommonModule,
-    TranslateModule
+    TranslateModule,
+    RouterLink
   ]
 })
 export class LoginPageModule { }

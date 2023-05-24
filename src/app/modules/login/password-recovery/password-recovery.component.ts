@@ -24,7 +24,9 @@ export class PasswordRecoveryComponent {
       label: 'EMAIL',
       placeholder: 'ENTER_EMAIL',
       componentType: 'textbox',
-      validators: [Validators.required, Validators.email]
+      validators: [Validators.required, Validators.email],
+      icon: 'mail',
+      extendedValidation: true,
     }
   ]
 

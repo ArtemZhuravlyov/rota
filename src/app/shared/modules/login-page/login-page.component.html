@@ -13,7 +13,7 @@
         <div class="form-title"><span>{{ title | translate }}</span></div>
         <div class="subtitle">
           <span>{{ subtitle | translate }}</span>
-          <a class="link" *ngIf="redirectRoute" [href]="redirectRoute"> {{ redirectText | translate }}</a>
+          <a class="link" *ngIf="redirectRoute" [routerLink]="redirectRoute"> {{ redirectText | translate }}</a>
         </div>
       </div>
       <div class="form d-flex justify-content-center align-items-center">
@@ -21,8 +21,8 @@
       </div>
     </div>
     <div class="footer d-flex justify-content-center align-items-center">
-      <span>{{ 'COPYRIGHT' | translate }} © RotaSheet 2022 | <a class="link" [href]="'#'">{{ 'PRIVACY_POLICY' | translate }}</a> | <a class="link"
-        [href]="'#'">{{ 'TERMS_OF_SERVICE' | translate }}</a></span>
+      <span>{{ 'COPYRIGHT' | translate }} © RotaSheet 2022 | <a class="link" [routerLink]="'dashboard'">{{ 'PRIVACY_POLICY' | translate }}</a> | <a class="link"
+        [routerLink]="'dashboard'">{{ 'TERMS_OF_SERVICE' | translate }}</a></span>
     </div>
   </div>
 </div>

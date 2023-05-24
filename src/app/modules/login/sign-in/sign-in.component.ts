@@ -17,7 +17,7 @@ export class SignInComponent {
   subtitle = 'DONT_HAVE_AN_ACCOUNT';
   logoInformation = 'Slogan of your company goes right underneath the logo, this is just a placeholder text.';
   redirectText = 'REGISTER_NOW';
-  redirectRoute = `${NavigationPaths.LOGIN}/${NavigationPaths.REGISTRATION}`;
+  redirectRoute = `../${NavigationPaths.REGISTRATION}`;
   imgUrl = ImageUrl.SIGN_IN;
 
   formFields: FormField[] = [

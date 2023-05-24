@@ -1,5 +1,11 @@
-export type IconPosition = 'default' | 'after-text' | 'right' | 'left' | 'beforeText';
+export type IconPosition = 'after-text' | 'right' | 'left' | 'beforeText';
 
-export type ButtonSize = 'small' | 'large';
+export type ButtonTheme = 'primary' | 'basic' | 'warn';
 
-export type IconColor = 'gray' | 'white' | 'primary' | 'red';
+export interface Style {
+  height?: string;
+  width?: string;
+  color?: string;
+  background?: string;
+  'border-radius'?: string;
+}

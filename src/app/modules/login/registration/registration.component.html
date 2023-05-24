@@ -13,14 +13,13 @@
   >
     <app-button
       [disabled]="form.invalid"
-      (click)="onSubmit()"
+      (btnClick)="onSubmit()"
       [title]="'CONTINUE'"
       [icon]="'arrow_forward'"
       [btnType]="'FLAT'"
       [isIconButton]="true"
       [iconPosition]="'after-text'"
-      [iconColor]="'white'"
-      [size]="'large'"
+      [styleConfig]="{ height: '52px' }"
     ></app-button>
   </app-form-builder>
 </app-login-page>

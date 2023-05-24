@@ -14,10 +14,8 @@ export class FormBuilderComponent implements OnInit {
   @Output() createdForm = new EventEmitter();
   @Input() height: number | null = 0;
   @Input() width: number | null = 0;
-  @Input() styleConfig: { [key: string]: string } | undefined = {};
 
   form!: FormGroup;
-
   componentType = ComponentTypeEnum;
 
   constructor(private fb: FormBuilder) {

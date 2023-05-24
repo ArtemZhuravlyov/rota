@@ -11,23 +11,23 @@
   >
     <div class="action-buttons d-flex flex-column align-items-center justify-content-between">
       <app-button
+        (btnClick)="onSubmit()"
         [disabled]="form.invalid"
-        (click)="onSubmit()"
         [title]="'CONTINUE'"
         [icon]="'arrow_forward'"
         [iconPosition]="'after-text'"
-        [size]="'large'"
         [btnType]="'FLAT'"
         [isIconButton]="true"
-        [iconColor]="'white'"
+        [styleConfig]="{ height: '52px' }"
       ></app-button>
       <app-button
         [routerLink]="'../registration'"
         [title]="'BACK'"
         [btnType]="'FLAT'"
-        [size]="'large'"
         [icon]="'arrow_back'"
         [iconPosition]="'beforeText'"
+        [colorTheme]="'basic'"
+        [styleConfig]="{ height: '52px' }"
       ></app-button>
     </div>
   </app-form-builder>
