@@ -1,36 +1,146 @@
 @import "src/app/core/styles/material-custom/constants";
 
 :host {
+  app-search {
+    width: 100%;
+  }
+
   ::ng-deep {
     .mdc-notched-outline__leading, .mdc-notched-outline__trailing, .mdc-notched-outline__notch, {
       border: none !important;
     }
 
-    .mat-mdc-text-field-wrapper, {
+    .mat-mdc-select-value-text, .mat-mdc-select-placeholder  {
+      font-size: 15px !important;
+      line-height: 21px !important;
+      font-family: "Source Sans Pro", sans-serif !important;
+    }
+
+    .dropdown-selected {
+      .mat-mdc-select-value-text {
+        color: $primary!important;
+      }
+    }
+
+    .mat-mdc-form-field-infix {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      height: 52px;
+      min-height: 52px;
+    }
+
+    .mat-mdc-text-field-wrapper {
       border: 1px solid $green-border !important;
       border-radius: 10px;
       height: 52px;
       min-height: 52px;
+
+
+      &:hover {
+      background: $white;
+        .icon-arrow {
+          background: $background-focus-input;
+        }
+      }
+    }
+
+    .icon-arrow {
+      .mat-mdc-form-field-icon-suffix {
+        height: 36px !important;
+        width: 36px !important;
+      }
+    }
+
+    .mat-mdc-select-arrow-wrapper {
+      display: none;
     }
   }
-}
 
-.field-label {
-  font-weight: normal;
-  font-size: 15px !important;
-  line-height: 21px !important;
-  padding-bottom: 10px;
+  .field-label {
+    font-weight: normal;
+    font-size: 15px !important;
+    line-height: 21px !important;
+    padding-bottom: 10px;
+  }
+
+  .icon-arrow {
+    font-size: 24px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    height: 20px;
+    width: 20px;
+    border-radius: 99px;
+  }
+
+  .icon-arrow-open {
+    transform: rotate(180deg);
+    transition: transform 0.2s;
+    background: $white;
+    color: $primary;
+  }
+
+  .icon-arrow-selected {
+    background: $white;
+  }
+
+  .prefix-icon {
+    margin: 0 5px 0 10px;
+  }
 }
 
 ::ng-deep {
-  .mdc-list-item__primary-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  app-search-input {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+    background: none;
+    &:after {
+      content: '';
+      left: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background: $background-dropdown-selected;
+      opacity: 0.05;
+    }
   }
 
-  .mdc-list-item {
-    margin: 0 5px;
+  .mat-mdc-option-active {
+    background: transparent!important;
+  }
+
+  .cdk-overlay-pane {
+    border-radius: 10px !important;
+  }
+
+  .mat-mdc-select-panel {
+    border-radius: 10px !important;
+    padding: 8px 8px 8px 8px !important;
+  }
+
+  .mat-mdc-option {
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding: 0 10px !important;
+
+    .mdc-list-item__primary-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px !important;
+      line-height: 21px !important;
+      font-family: "Source Sans Pro", sans-serif !important;
+
+      img {
+        padding-right: 10px;
+      }
+    }
   }
 
   .mdc-list-item--selected {
@@ -47,40 +157,10 @@
       opacity: 0.05;
     }
   }
-}
-
-::ng-deep {
-  .mat-mdc-form-field-infix {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    height: 52px;
-  }
-
-  .mat-mdc-option {
-    background: transparent !important;
-  }
-
-  .mdc-text-field--focused {
-    background: $background-focus-input;
-
-    .mat-mdc-select-arrow {
-      transform: rotate(180deg);
-      transition: transform 0.2s;
+  .not-found-option {
+    .mdc-list-item__primary-text {
+      width: 100%;
+      text-align: center;
     }
   }
-
-  .mat-mdc-select-arrow {
-    background: $white;
-
-    svg {
-      color: transparent;
-      background: url('../../../../assets/icons/arrow.svg') center center;
-      background-size: cover;
-    }
-  }
-}
-
-img {
-  margin-right: 5px;
 }

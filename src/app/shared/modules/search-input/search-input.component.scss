@@ -1,0 +1,53 @@
+@import "src/app/core/styles/material-custom/constants";
+
+:host {
+  ::ng-deep {
+    .mdc-notched-outline__leading {
+      display: none;
+    }
+
+    .mdc-notched-outline__trailing {
+      border: none !important;
+      border-radius: 10px !important;
+    }
+
+    .input-focus {
+      .mat-mdc-form-field-flex, .mat-mdc-form-field-infix, .mat-mdc-text-field-wrapper {
+        background: $background-search-input;
+        border: 1 solid $green-border !important;
+
+        .icon-prefix {
+          color: $primary;
+        }
+
+        .close-icon {
+          color: $text-gray;
+        }
+      }
+    }
+
+    .mat-mdc-text-field-wrapper, .mat-mdc-form-field-infix, .mat-mdc-form-field-flex {
+      padding-bottom: 0 !important;
+      padding-top: 0 !important;
+      display: flex;
+      align-items: center;
+      min-height: 40px;
+      height: 100%;
+      border-radius: 10px;
+      background: $background-login-gray;
+
+      &:hover {
+        .icon-prefix {
+          color: $text-dark-gray!important;
+
+        }
+        color: $text-dark-gray!important;
+      }
+    }
+  }
+}
+
+.icon-prefix {
+  color: $text-gray;
+}
+

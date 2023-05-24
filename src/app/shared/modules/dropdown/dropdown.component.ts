@@ -21,18 +21,25 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input() data!: DropdownOptions[] & Observable<DropdownOptions[]>;
   @Input() valueField = 'value';
   @Input() textField = 'displayName';
-  selectedValue: string = '';
+  @Input() iconField = 'icon';
+  @Input() filterable = true;
 
+  selectedValue: string = '';
   currentIcon: string | null = null;
+  searchValue: string = '';
+  isOpen = false;
 
   isObservable(data: any) {
     return data instanceof Observable;
   }
 
-  setFormValue(value: string): void {
-    this.onChange(value);
+  setFormValue(data: DropdownOptions) {
+    this.currentIcon = data[this.iconField] as string;
+    this.selectedValue = data[this.valueField] as string;
+    this.onChange(data[this.valueField]);
     this.onTouch();
   }
+
   onChange: any = () => {};
   onTouch: any = () => {};
   registerOnChange(fn: any): void {

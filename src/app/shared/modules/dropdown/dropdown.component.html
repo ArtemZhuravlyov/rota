@@ -2,22 +2,63 @@
   <div class="field-label">
     <span>{{ title | translate }}</span>
   </div>
-  <mat-form-field appearance="outline">
-    <img *ngIf="currentIcon" src="{{ currentIcon | country }}">
-    <mat-select [(ngModel)]="selectedValue" [placeholder]="'SELECT' | translate" (valueChange)="setFormValue($event)">
+
+  <mat-form-field appearance="outline" [ngClass]="{
+      'dropdown-selected': !!selectedValue.length,
+    }">
+    <img class="prefix-icon" *ngIf="currentIcon" matPrefix [src]="currentIcon | country">
+    <mat-select
+      (opened)="isOpen = true"
+      (closed)="isOpen = false"
+      [placeholder]="'SELECT' | translate"
+    >
       <ng-container *ngIf="isObservable(data); else defaultType">
+
+        <app-search-input
+          (keydown)="$event.stopPropagation()"
+          *ngIf="filterable"
+          [styleConfig]="{ width: '100%' }"
+          (valueChanged)="searchValue = $event"
+        ></app-search-input>
+
         <ng-container *ngIf="data | async as asyncData">
-          <mat-option *ngFor="let value of asyncData" [value]="value[valueField]">
-            <img *ngIf="value['countryFlag']" src="{{ $any(value['countryFlag']) | country }}">
+          <mat-option
+            class="not-found-option"
+            [disabled]="true"
+            *ngIf="!(asyncData | filter:searchValue).length"
+          >
+            <span>{{ 'NOT_FOUND' | translate }}</span>
+          </mat-option>
+
+          <mat-option
+            (click)="setFormValue(value)"
+            *ngFor="let value of asyncData | filter:searchValue"
+            [value]="value[valueField]"
+          >
+            <img *ngIf="value['icon']" [src]="value['icon'] | country">
             <span>{{ value[textField] }}</span>
           </mat-option>
         </ng-container>
+
       </ng-container>
+
       <ng-template #defaultType>
         <mat-option *ngFor="let value of data" [value]="value[valueField]">
           {{ value[textField] }}
         </mat-option>
       </ng-template>
+
     </mat-select>
+
+    <mat-icon
+      matSuffix
+      class="icon-arrow"
+      [ngClass]="{
+        'icon-arrow-open': isOpen,
+        'icon-arrow-selected': !!selectedValue.length
+      }"
+    >keyboard_arrow_down
+    </mat-icon>
+
   </mat-form-field>
 </div>

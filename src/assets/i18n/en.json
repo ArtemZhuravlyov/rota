@@ -68,5 +68,7 @@
   "NAME": "Name",
   "PHONE": "Phone",
   "LOCATION": "Location",
-  "ACTIONS": "Actions"
+  "ACTIONS": "Actions",
+  "SEARCH": "Search",
+  "NOT_FOUND": "Not found"
 }

@@ -50,7 +50,7 @@ export class CompanyComponent {
       data: this.companyService.getCountry().pipe(
         map((countries: Country[]) =>
           countries.map(country =>
-            ({ displayName: country.name, value: country.id, countryFlag: country.countryFlag })
+            ({ displayName: country.name, value: country.id, icon: country.countryFlag })
           )
         )
       ),

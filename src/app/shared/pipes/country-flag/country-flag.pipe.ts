@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'country'
 })
 export class CountryFlagPipe implements PipeTransform {
-  transform(countyFlag: string): string {
-    return `https://flagsapi.com/${countyFlag}/flat/32.png`
+  transform(icon: string | number, isCountry?: boolean): string {
+    return `https://flagsapi.com/${icon}/flat/32.png`
   }
 }
