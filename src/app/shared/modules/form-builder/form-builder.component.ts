@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { FormField } from "@core/types/form-builder.model";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ComponentTypeEnum } from "@core/enums/component-type.enum";
+import { Style } from "@core/types/style-model";
 
 @Component({
   selector: 'app-form-builder',
@@ -11,9 +12,9 @@ import { ComponentTypeEnum } from "@core/enums/component-type.enum";
 })
 export class FormBuilderComponent implements OnInit {
   @Input() formFields: FormField[] = [];
+  @Input() styleConfig: Style = {};
   @Output() createdForm = new EventEmitter();
-  @Input() height: number | null = 0;
-  @Input() width: number | null = 0;
+
 
   form!: FormGroup;
   componentType = ComponentTypeEnum;

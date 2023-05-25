@@ -7,7 +7,8 @@ import {
   Output,
 } from '@angular/core';
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
-import { Style, ButtonTheme, IconPosition } from "@core/types/button.interface";
+import { ButtonTheme, IconPosition } from "@core/types/button.interface";
+import { Style } from "@core/types/style-model";
 
 @Component({
   selector: 'app-button',
@@ -20,12 +21,12 @@ export class ButtonComponent {
   @Input() btnType!: keyof typeof ButtonTypeEnum;
   @Input() colorTheme: ButtonTheme = 'primary';
   @Input() icon!: string;
-  @Input() styleConfig: Style = { }
+  @Input() styleConfig: Style = {}
   @Input() badgeInfo?: string | number;
   @Input() isIconButton = false;
   @Input() isBadgeShowed = false;
   @Input() iconPosition: IconPosition = 'after-text';
-  @Input() iconStyleConfig!: Style
+  @Input() iconStyleConfig: Style = {};
   @Input() disabled = false;
   @Output() btnClick = new EventEmitter<void>;
 

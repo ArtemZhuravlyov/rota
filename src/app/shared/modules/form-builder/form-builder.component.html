@@ -1,5 +1,5 @@
 <div class="form" [formGroup]="form"
-     [ngStyle]="{ width: width ? width + 'px' : '', height: height ? height + 'px': '' }">
+     [ngStyle]="styleConfig">
 
   <ng-container *ngFor="let formField of formFields" [ngSwitch]="formField.componentType">
     <div *ngSwitchCase="componentType.TEXTBOX">
@@ -50,6 +50,6 @@
   </ng-container>
 
   <div class="action-btn">
-    <ng-content ></ng-content>
+    <ng-content></ng-content>
   </div>
 </div>

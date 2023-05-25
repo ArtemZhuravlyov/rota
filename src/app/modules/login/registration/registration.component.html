@@ -7,7 +7,7 @@
   [imgUrl]="imgUrl"
 >
   <app-form-builder
-    [width]="480"
+    [styleConfig]="{ width: '100%', 'max-width': '480px' }"
     [formFields]="formFields"
     (createdForm)="form = $event"
   >
