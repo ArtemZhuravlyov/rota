@@ -16,46 +16,17 @@
         }
       }
 
-      .mdc-notched-outline__leading {
-        display: none;
-      }
-
-      .mdc-notched-outline__trailing {
-        border: 1px solid $green-border !important;
-        border-radius: 10px !important;
-      }
-
-      .mat-mdc-text-field-wrapper, .mat-mdc-form-field-infix, .mat-mdc-form-field-flex {
-        padding-bottom: 0 !important;
-        padding-top: 0 !important;
-        display: flex;
-        align-items: center;
-        min-height: 52px;
-        height: 100%;
-        border-radius: 10px;
-
-        &:hover {
-          .prefix-icon {
-            color: $text-dark-gray;
-          }
-        }
-      }
-
-      .mat-mdc-text-field-wrapper {
-        padding: 0 8px;
-      }
-
-      .mat-icon {
-        min-height: 36px;
-        min-width: 36px;
-        color: $text-gray;
-        background: $light-gray;
-        border-radius: 99px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+    .mat-icon {
+      min-height: 36px;
+      min-width: 36px;
+      color: $text-gray;
+      background: $light-gray;
+      border-radius: 99px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+  }
 
     input {
       font-size: 15px !important;

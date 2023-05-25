@@ -4,22 +4,22 @@ import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 export const dashboardTabsConfig: MenusConfig[] = [
     {
         title: 'COMPANY',
-        icon: 'question',
+        icon: 'dashboard',
         routerLink: NavigationPaths.COMPANY,
     },
     {
         title: 'EMPLOYEES',
-        icon: 'question',
+        icon: 'diversity_3',
         routerLink: NavigationPaths.EMPLOYEE,
     },
     {
         title: 'DOCUMENTS',
-        icon: 'question',
+        icon: 'description',
         routerLink: NavigationPaths.DOCUMENTS,
     },
     {
         title: 'USER_ACCOUNT',
-        icon: 'question',
+        icon: 'person_4',
         routerLink: NavigationPaths.USER_ACCOUNT,
     },
 ]

@@ -12,9 +12,10 @@
     </div>
 
     <ng-content></ng-content>
+    <a *ngIf="isBackBtnShowed" class="back-btn d-flex align-items-center" [routerLink]="NavigationPaths.BACK"><mat-icon>keyboard_backspace</mat-icon>{{ 'BACK' | translate}}</a>
   </div>
 
-  <app-page-sub-header></app-page-sub-header>
+  <app-page-sub-header *ngIf="isSubHeaderShowed"></app-page-sub-header>
 </ng-container>
 
 

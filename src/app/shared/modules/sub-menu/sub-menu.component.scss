@@ -3,6 +3,10 @@
 mat-drawer-container {
   height: calc(100vh - 60px);
   width: calc(100vw - 220px);
+
+  mat-drawer-content {
+    background-color: $background-login-gray;
+  }
 }
 
 .sub-menu {

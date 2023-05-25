@@ -2,30 +2,33 @@
 
 .page-header {
   margin-top: 25px;
+  margin-left: 30px;
+  margin-right: 40px;
 
   .heading {
     font-size: 24px;
     line-height: 35px;
     font-weight: 600;
     color: $text-dark-gray;
-    margin: 0 0 0 30px;
+    margin: 0;
   }
 
   .breadcrumbs {
     ul {
       list-style-type: none;
-      padding-left: 30px;
+      padding: 0;
       margin: 0;
     }
 
     li {
+      font-family: 'Material Icons';
       display: inline-block;
       position: relative;
       padding-right: 30px;
       margin: 0;
     }
     li:after {
-      content: '>';
+      content: 'chevron_right';
       position: absolute;
       display: inline-block;
       right: 0;
@@ -42,6 +45,7 @@
     }
 
     a {
+      font-family: 'Source Sans Pro', sans-serif;
       font-size: 14px;
       line-height: 20px;
       text-decoration: none;
@@ -54,6 +58,11 @@
       text-decoration: underline;
     }
 
+  }
+
+  .back-btn {
+    color: $text-gray;
+    text-decoration: unset;
   }
 
 }

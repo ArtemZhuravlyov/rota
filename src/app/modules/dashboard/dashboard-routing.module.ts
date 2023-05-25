@@ -11,7 +11,7 @@ const routes: Routes = [
       {
         path: NavigationPaths.EMPTY_PATH,
         pathMatch: 'full',
-        redirectTo: NavigationPaths.EMPLOYEE,
+        redirectTo: NavigationPaths.COMPANY,
       },
       {
         path: NavigationPaths.COMPANY,

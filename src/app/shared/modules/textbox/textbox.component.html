@@ -21,7 +21,7 @@
     }"
     appearance="outline"
   >
-    <mat-icon class="prefix-icon" *ngIf="icon">{{ icon }}</mat-icon>
+    <mat-icon class="prefix-icon material-icons-outlined" *ngIf="icon">{{ icon }}</mat-icon>
     <textarea [maxlength]="+maxLength!" #textarea *ngIf="inputType === 'textarea'; else simpleInput"
               [formControl]="formControl" (input)="setFormValue(textarea.value)"
               [placeholder]="placeholder! | translate" matInput>
@@ -39,16 +39,16 @@
     </mat-error>
 
     <div class="d-flex flex-row input-icons" *ngIf="inputType !== 'textarea'">
-      <mat-icon class="input-icon-success"
+      <mat-icon class="input-icon-success material-icons-outlined"
                 *ngIf="formControl?.valid && formControl.dirty && !isFocus && extendedValidation"
                 matSuffix>
         {{ 'check_circle' }}
       </mat-icon>
-      <mat-icon class="input-icon-error" *ngIf="formControl?.invalid && formControl.touched && extendedValidation"
+      <mat-icon class="input-icon-error material-icons-outlined" *ngIf="formControl?.invalid && formControl.touched && extendedValidation"
                 matSuffix>
         {{ 'cancel' }}
       </mat-icon>
-      <mat-icon class="password-icon" (click)="isShowPassword = !isShowPassword" *ngIf="inputType === 'password'"
+      <mat-icon class="password-icon material-icons-outlined" (click)="isShowPassword = !isShowPassword" *ngIf="inputType === 'password'"
                 matSuffix>
         {{ isShowPassword ? 'visibility' : 'visibility_off' }}
       </mat-icon>

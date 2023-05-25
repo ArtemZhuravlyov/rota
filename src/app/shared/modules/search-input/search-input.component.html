@@ -1,6 +1,6 @@
 <div [class.input-focus]="isFocus">
   <mat-form-field appearance="outline" [ngStyle]="styleConfig">
-    <mat-icon class="icon-prefix" matPrefix>search</mat-icon>
+    <mat-icon class="icon-prefix material-icons-outlined" matPrefix>search</mat-icon>
     <input (focusin)="isFocus = true" (focusout)="isFocus = false"  #input matInput
            (input)="valueChanged.emit(input.value)">
     <app-button class="close-icon" *ngIf="input.value.length" matSuffix [isIconButton]="true" [btnType]="'ICON'"

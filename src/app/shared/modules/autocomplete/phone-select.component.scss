@@ -1,0 +1,28 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.phone-input::-webkit-outer-spin-button,
+.phone-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.phone-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.selected-phone {
+  width: 86px;
+  background-color: $background-login-gray;
+  border-radius: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+
+  .phone-code {
+    color: $primary;
+    margin-left: 6px;
+  }
+}
+
+.country-flag {
+  margin-right: 12px;
+}

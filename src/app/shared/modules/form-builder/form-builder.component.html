@@ -26,6 +26,14 @@
       ></app-dropdown>
     </div>
 
+    <div *ngSwitchCase="componentType.PHONE">
+      <app-phone-select
+        [formControlName]="formField.key"
+        [title]="formField.label"
+        [data]="formField.data"
+      ></app-phone-select>
+    </div>
+
     <div *ngSwitchCase="componentType.TEXT">
       text
     </div>

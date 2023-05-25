@@ -10,15 +10,15 @@
 <!--    </form>-->
 
     <a class="navigation-link d-flex justify-content-start align-items-center" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.routerLink" routerLinkActive="active-link">
-      <mat-icon [svgIcon]="tab.icon!"></mat-icon>
+      <mat-icon class="material-icons-outlined">{{tab.icon}}</mat-icon>
       {{tab.title | translate}}
     </a>
 
-    <div class="bottom-actions">
+    <div class="bottom-actions d-flex flex-column">
       <mat-slide-toggle>Dark Mode</mat-slide-toggle>
 
-      <a class="navigation-link" [routerLink]="'settings'">
-        <mat-icon svgIcon="settings"></mat-icon>
+      <a class="navigation-link d-flex justify-content-start align-items-center" [routerLink]="'settings'">
+        <mat-icon class="material-icons-outlined">settings</mat-icon>
         Settings
       </a>
     </div>

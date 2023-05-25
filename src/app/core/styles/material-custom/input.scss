@@ -1,0 +1,30 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.mdc-notched-outline__leading {
+  display: none;
+}
+
+.mdc-notched-outline__trailing {
+  border: 1px solid $green-border !important;
+  border-radius: 10px !important;
+}
+
+.mat-mdc-text-field-wrapper, .mat-mdc-form-field-infix, .mat-mdc-form-field-flex {
+  padding-bottom: 0!important;
+  padding-top: 0!important;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  height: 100%;
+  border-radius: 10px;
+
+  &:hover {
+    .prefix-icon {
+      color: $text-dark-gray;
+    }
+  }
+}
+
+.mat-mdc-text-field-wrapper {
+  padding: 0 8px;
+}

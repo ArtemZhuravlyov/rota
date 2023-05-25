@@ -7,9 +7,9 @@ import { Breadcrumb } from "../../types/breadcrumb";
   providedIn: 'root'
 })
 export class BreadcrumbService {
-  private readonly _breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>([]);
+  private readonly breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>([]);
 
-  readonly breadcrumbs$ = this._breadcrumbs$.asObservable();
+  readonly breadcrumbs = this.breadcrumbs$.asObservable();
 
   constructor(private router: Router) {
     this.initBreadcrumbs();
@@ -19,7 +19,7 @@ export class BreadcrumbService {
     let breadcrumbs: Breadcrumb[] = [];
     this.addBreadcrumb(this.router.routerState.snapshot.root, [], breadcrumbs);
 
-    this._breadcrumbs$.next(breadcrumbs);
+    this.breadcrumbs$.next(breadcrumbs);
 
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd)
@@ -28,7 +28,7 @@ export class BreadcrumbService {
       const root = this.router.routerState.snapshot.root;
       this.addBreadcrumb(root, [], breadcrumbs);
 
-      this._breadcrumbs$.next(breadcrumbs);
+      this.breadcrumbs$.next(breadcrumbs);
     });
   }
 

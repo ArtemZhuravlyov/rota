@@ -1,5 +1,6 @@
 export enum NavigationPaths {
   EMPTY_PATH = '',
+  BACK = '..',
   HOME = 'home',
 
   // Login's paths
@@ -26,6 +27,7 @@ export enum NavigationPaths {
   BENEFIT = 'benefit',
   WORK_SCHEDULE = 'work-schedule',
   PAY_STRUCTURE = 'pay-structure',
+  CREATE_COMPANY = 'create-company',
 
   //Employees sub-menu  paths
   EMPLOYMENT_TYPE = 'employment-type',

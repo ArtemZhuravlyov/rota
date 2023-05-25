@@ -64,11 +64,15 @@
   "PASSWORD_ERROR": "This password is too weak. Please, add such symbols like #,$,& or other.",
   "REPEAT_PASSWORD_ERROR": "Passwords are not matching",
   "EMAIL_ERROR": "It seems you forgot to type the “@” symbol. Please, fix this error.",
+  "NEW_COMPANY": "New Company",
   "CREATE_NEW": "Create New",
   "NAME": "Name",
   "PHONE": "Phone",
   "LOCATION": "Location",
+  "SAVE": "Save",
+  "CANCEL": "Cancel",
   "ACTIONS": "Actions",
   "SEARCH": "Search",
-  "NOT_FOUND": "Not found"
+  "NOT_FOUND": "Not found",
+  "ADD_COMPANY_INFO": "Add Company Information"
 }

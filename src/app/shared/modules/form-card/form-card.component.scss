@@ -1,0 +1,10 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.form-card {
+  max-width: 480px;
+  width: 100%;
+  margin: 27px auto 30px;
+  background: $white;
+  padding: 40px 80px 60px;
+  border-radius: 10px;
+}
