@@ -8,7 +8,7 @@
     >
       <div [class]="'flex-container ' + iconPosition">
         {{ title | translate }}
-        <mat-icon class="material-icons-outlined" [style]="iconStyleConfig" *ngIf="isIconButton">{{ icon }}</mat-icon>
+        <mat-icon class="material-icons-outlined" [style]="iconStyleConfig" *ngIf="isIconButton" [svgIcon]="icon"></mat-icon>
       </div>
     </button>
 
@@ -24,8 +24,9 @@
         [matBadge]="badgeInfo"
         [style]="iconStyleConfig"
         matBadgeColor="warn"
-      >{{ icon }}</mat-icon>
-      <mat-icon class="material-icons-outlined" [style]="iconStyleConfig" *ngIf="!isBadgeShowed">{{ icon }}</mat-icon>
+        [svgIcon]="icon"
+      ></mat-icon>
+      <mat-icon class="material-icons-outlined" [style]="iconStyleConfig" *ngIf="!isBadgeShowed" [svgIcon]="icon"></mat-icon>
     </button>
 
     <button
@@ -34,7 +35,7 @@
       *ngSwitchCase="buttonTypeEnum.FAB"
       [disabled]="disabled"
     >
-      <mat-icon class="material-icons-outlined">{{ icon }}</mat-icon>
+      <mat-icon class="material-icons-outlined" [svgIcon]="icon"></mat-icon>
     </button>
 
     <ng-container
@@ -45,7 +46,7 @@
         [style]="styleConfig"
         [disabled]="disabled"
         mat-fab extended>
-        <mat-icon class="material-icons-outlined" [style]="iconStyleConfig">{{ icon }}</mat-icon>
+        <mat-icon class="material-icons-outlined" [style]="iconStyleConfig" [svgIcon]="icon"></mat-icon>
         {{ title | translate }}
       </button>
 
@@ -58,7 +59,7 @@
       >
         <div [class]="'flex-container ' + iconPosition">
           {{ title | translate }}
-          <mat-icon class="material-icons-outlined" [style]="iconStyleConfig">{{ icon }}</mat-icon>
+          <mat-icon class="material-icons-outlined" [style]="iconStyleConfig" [svgIcon]="icon"></mat-icon>
         </div>
       </button>
 
