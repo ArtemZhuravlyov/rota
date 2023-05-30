@@ -5,8 +5,9 @@ import { ImageUrl } from "@core/enums/image-url";
 import { CompanyService } from "@core/services/company/company.service";
 import { map } from "rxjs";
 import { Country, Industry } from "@core/types/company.interface";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
+import { AuthService } from "@core/services/account/auth.service";
 
 @Component({
   selector: 'app-company',
@@ -19,6 +20,7 @@ export class CompanyComponent {
   subtitle = 'COMPANY_CREATE_INFO';
   logoInformation = 'Slogan of your company goes right underneath the logo, this is just a placeholder text.';
   imgUrl = ImageUrl.COMPANY;
+  routerLinkToRegistration = [NavigationPaths.BACK, NavigationPaths.REGISTRATION];
 
   formFields: FormField[] = [
     {
@@ -71,17 +73,24 @@ export class CompanyComponent {
   ];
 
   form!: FormGroup;
-  userId!: string;
 
   constructor(
     private companyService: CompanyService,
     private route: Router,
-    private activatedRoute: ActivatedRoute,
+    private authService: AuthService,
   ) {
-    this.activatedRoute.queryParams.subscribe(({ userId }) => this.userId = userId)
   }
+
   onSubmit(): void {
-      this.companyService.registerCompany(this.form.value, this.userId)
-        .subscribe(() => this.route.navigate([`../${NavigationPaths.DASHBOARD}`]));
+    this.form.disable();
+    this.companyService.registerCompany(this.form.value, this.authService.getCurrentUser().userId)
+      .subscribe({
+        complete: () => this.route.navigate([NavigationPaths.BACK, NavigationPaths.DASHBOARD]),
+        error: () => this.form.enable()
+      });
+  }
+
+  backToRegister(): void {
+    this.route.navigate([NavigationPaths.BACK, NavigationPaths.REGISTRATION]);
   }
 }

@@ -22,7 +22,7 @@ $footer-height: 50px;
   @include media-request(desktop-tablet, max) {
     width: 100%;
     height: auto;
-    min-height: 440px;
+    min-height: 660px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@ $footer-height: 50px;
   @include media-request(tablet-mobile, max) {
     width: 100%;
     height: auto;
-    min-height: 300px;
+    min-height: 340px;
   }
 
   position: relative;
@@ -121,6 +121,7 @@ $footer-height: 50px;
   background: $background-login-gray;
 
   .link {
+    color: $text-teal;
     margin: 0 5px;
     &:hover {
       color: $background-dropdown-selected
@@ -139,6 +140,7 @@ $footer-height: 50px;
     }
 
     .subtitle {
+      color: $selected-gray;
       font-size: 17px;
       line-height: 22px;
       width: 360px;
@@ -159,6 +161,7 @@ $footer-height: 50px;
 
   .footer {
     height: $footer-height;
+    color: $text-gray;
 
     @include media-request(tablet-mobile, max) {
       font-size: 12px;

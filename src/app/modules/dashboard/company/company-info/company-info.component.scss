@@ -1,14 +1,12 @@
-
-.action-buttons {
-
+::ng-deep .action-buttons {
   app-button {
-    ::ng-deep button {
+    button {
       width: 150px;
       height: 50px;
       border-radius: 10px;
 
       mat-icon {
-        color: white!important;
+        color: white !important;
       }
     }
   }

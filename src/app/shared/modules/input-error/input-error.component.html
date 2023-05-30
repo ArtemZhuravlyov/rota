@@ -1,6 +1,11 @@
 <ng-container [ngSwitch]="true">
-  <ng-container *ngSwitchCase="hasOwnPropertyInError('minlength')">
-    {{ 'PASSWORD_ERROR' | translate }}
+  <ng-container *ngSwitchCase="hasOwnPropertyInError('registerPasswordError')">
+    <span class="mobile-error">{{ 'REGISTER_PASSWORD_ERROR_SHORT' | translate }}</span>
+    <span class="desktop-error">{{ 'REGISTER_PASSWORD_ERROR' | translate }}</span>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="hasOwnPropertyInError('LoginPasswordError')">
+    {{ 'LOGIN_PASSWORD_ERROR' | translate }}
   </ng-container>
 
   <ng-container *ngSwitchCase="hasOwnPropertyInError('email')">
@@ -11,11 +16,7 @@
     {{ 'REPEAT_PASSWORD_ERROR' | translate }}
   </ng-container>
 
-  <ng-container *ngSwitchCase="hasOwnPropertyInError('excludeSymbols')">
+  <ng-container *ngSwitchCase="hasOwnPropertyInError('excludeSymbolsValidator')">
     {{ 'SYMBOL_ERROR' | translate }}
-  </ng-container>
-
-  <ng-container *ngSwitchCase="hasOwnPropertyInError('required')">
-    {{ 'FIELD_REQUIRED' | translate }}
   </ng-container>
 </ng-container>

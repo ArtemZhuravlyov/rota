@@ -17,11 +17,11 @@
         border: 1 solid $green-border !important;
 
         .icon-prefix {
-          color: $primary;
+          color: $primary!important;
         }
 
         .close-icon {
-          color: $text-gray;
+          color: $text-gray!important;
         }
       }
     }
@@ -38,7 +38,7 @@
 
       &:hover {
         .icon-prefix {
-          color: $text-dark-gray!important;
+          color: $text-dark-gray;
 
         }
         color: $text-dark-gray!important;

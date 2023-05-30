@@ -5,6 +5,7 @@ import { FormGroup, Validators } from "@angular/forms";
 import { AccountService } from "@core/services/account/account.service";
 import { Router } from "@angular/router";
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
+import { emailValidator } from "@shared/utils/custom-validators/email.validator";
 
 @Component({
   selector: 'app-password-recovery',
@@ -24,7 +25,7 @@ export class PasswordRecoveryComponent {
       label: 'EMAIL',
       placeholder: 'ENTER_EMAIL',
       componentType: 'textbox',
-      validators: [Validators.required, Validators.email],
+      validators: [Validators.required, emailValidator()],
       icon: 'mail',
       extendedValidation: true,
     }
@@ -35,12 +36,17 @@ export class PasswordRecoveryComponent {
   constructor(
     private accountService: AccountService,
     private route: Router,
-    ) {
+  ) {
   }
 
   onSubmit(): void {
-    this.accountService.passwordRecovery(this.form.value).subscribe(() => {
-      this.route.navigate([NavigationPaths.LOGIN, NavigationPaths.PASSWORD_RECOVERY_SUCCESS]);
-    })
+    this.form.disable();
+    this.accountService.passwordRecovery(this.form.value)
+      .subscribe({
+        complete: () => {
+          this.route.navigate([NavigationPaths.LOGIN, NavigationPaths.PASSWORD_RECOVERY_SUCCESS]);
+        },
+        error: () => this.form.enable(),
+      })
   }
 }

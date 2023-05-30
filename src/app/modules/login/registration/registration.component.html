@@ -12,13 +12,13 @@
     (createdForm)="form = $event"
   >
     <app-button
-      [disabled]="form.invalid"
+      [disabled]="!form.valid"
       (btnClick)="onSubmit()"
       [title]="'CONTINUE'"
       [icon]="'arrow_forward'"
       [btnType]="'FLAT'"
       [isIconButton]="true"
-      [iconPosition]="'after-text'"
+      [iconPosition]="'afterText'"
       [styleConfig]="{ height: '52px' }"
     ></app-button>
   </app-form-builder>

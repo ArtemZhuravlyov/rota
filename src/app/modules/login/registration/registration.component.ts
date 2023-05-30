@@ -1,12 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormField } from "@core/types/form-builder.model";
 import { FormGroup, Validators } from "@angular/forms";
 import { ImageUrl } from "@core/enums/image-url";
 import { AuthService } from "@core/services/account/auth.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
-import { matchFieldsValue } from "@shared/utils/custom-validators/match-fields-value";
-import { excludeSymbols } from "@shared/utils/custom-validators/exclude-symbols";
+import { matchFieldsValueValidator } from "@shared/utils/custom-validators/match-fields-value.validator";
+import { excludeSymbolsValidator } from "@shared/utils/custom-validators/exclude-symbols.validator";
+import { passwordValidator } from "@shared/utils/custom-validators/password.validator";
+import { emailValidator } from "@shared/utils/custom-validators/email.validator";
 
 @Component({
   selector: 'app-registration',
@@ -14,12 +16,12 @@ import { excludeSymbols } from "@shared/utils/custom-validators/exclude-symbols"
   styleUrls: ['./registration.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements AfterViewInit, OnInit {
   title = 'REGISTER';
   subtitle = 'ALREADY_HAVE_AN_ACCOUNT';
   logoInformation = 'Slogan of your company goes right underneath the logo, this is just a placeholder text.';
   redirectText = 'LOGIN';
-  redirectRoute = `../${NavigationPaths.SIGN_IN}`;
+  redirectRoute = [NavigationPaths.BACK, NavigationPaths.SIGN_IN];
   imgUrl = ImageUrl.REGISTRATION;
 
   formFields: FormField[] = [
@@ -29,7 +31,7 @@ export class RegistrationComponent {
       componentType: 'textbox',
       inputType: 'text',
       placeholder: 'ENTER_FIRST_NAME',
-      validators: [Validators.required, excludeSymbols(['`'])],
+      validators: [Validators.required, excludeSymbolsValidator(['`'])],
       icon: 'person_outline',
       extendedValidation: true,
     },
@@ -49,7 +51,7 @@ export class RegistrationComponent {
       componentType: "textbox",
       inputType: 'email',
       placeholder: 'ENTER_EMAIL',
-      validators: [Validators.required, Validators.email],
+      validators: [Validators.required, emailValidator()],
       icon: 'mail',
       extendedValidation: true,
     },
@@ -59,7 +61,7 @@ export class RegistrationComponent {
       componentType: "textbox",
       inputType: 'password',
       placeholder: 'ENTER_PASSWORD',
-      validators: [Validators.required, Validators.minLength(6)],
+      validators: [Validators.required, passwordValidator()],
       icon: 'lock',
       extendedValidation: true,
     },
@@ -69,7 +71,7 @@ export class RegistrationComponent {
       placeholder: 'ENTER_VERIFY_PASSWORD',
       componentType: "textbox",
       inputType: 'password',
-      formValidators: [matchFieldsValue('password', 'verifyPassword')],
+      formValidators: [matchFieldsValueValidator('password', 'verifyPassword')],
       validators: [Validators.required],
       icon: 'lock',
       extendedValidation: true,
@@ -77,16 +79,60 @@ export class RegistrationComponent {
   ]
 
   form!: FormGroup;
+  isEdit = false;
 
   constructor(
     private authService: AuthService,
-    private route: Router
-  ) {
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
+
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(({ edit }) => {
+      if (edit) {
+        this.isEdit = edit
+        this.addDataForFormField();
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    this.subscriberForPasswordChange();
   }
 
   onSubmit(): void {
-    this.authService.registration(this.form.value).subscribe(({ userId }) => {
-      this.route.navigate([`/${NavigationPaths.LOGIN}`, NavigationPaths.REGISTRATION_COMPANY], { queryParams: { userId } });
+    let body = this.form.value;
+    this.form.disable();
+
+    if (this.isEdit) {
+      this.authService.checkUserAuth();
+      body = { ...body, id: this.authService.getCurrentUser().userId };
+    }
+
+    this.authService.registration(body)
+      .subscribe({
+          complete: () => this.route.navigate([NavigationPaths.LOGIN, NavigationPaths.REGISTRATION_COMPANY]),
+          error: () => this.form.enable(),
+        }
+      );
+  }
+
+  private addDataForFormField(): void {
+    const { displayName, email } = this.authService.getCurrentUser();
+    const [firstName, lastName] = displayName.split(' ');
+    const data = { firstName, lastName, email } as Record<string, string>;
+    this.formFields = this.formFields.map(field => {
+      field.data = data[field.key];
+      return field;
     });
+  }
+
+  private subscriberForPasswordChange(): void {
+    const controlPassword = this.form?.get('password');
+    const controlVerifyPassword = this.form?.get('verifyPassword');
+
+    controlPassword?.valueChanges.subscribe(() => {
+      controlVerifyPassword?.updateValueAndValidity();
+    })
   }
 }

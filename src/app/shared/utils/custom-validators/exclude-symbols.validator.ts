@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
-export const excludeSymbols = (symbols: string[], flags?: string): ValidatorFn => {
+export const excludeSymbolsValidator = (symbols: string[], flags?: string): ValidatorFn => {
   return (control: AbstractControl): ValidationErrors | null => {
     const reg = new RegExp('[' +
       symbols
@@ -10,7 +10,7 @@ export const excludeSymbols = (symbols: string[], flags?: string): ValidatorFn =
       flags
     );
 
-    const result = (control.value as string).match(reg);
+    const result = (control.value as string)?.match(reg);
 
     if (!result) {
       return null;

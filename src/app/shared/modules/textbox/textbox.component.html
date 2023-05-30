@@ -16,21 +16,31 @@
     (focusout)="isFocus = false"
     [ngClass]="{
       'input-focus': isFocus && formControl.valid,
-      'input-success': formControl.valid && formControl.dirty && !isFocus && extendedValidation,
+      'input-success': formControl.valid && !isFocus && extendedValidation,
       'input-error': formControl.invalid && formControl.touched,
     }"
     appearance="outline"
   >
     <mat-icon class="prefix-icon material-icons-outlined" *ngIf="icon">{{ icon }}</mat-icon>
-    <textarea [maxlength]="+maxLength!" #textarea *ngIf="inputType === 'textarea'; else simpleInput"
-              [formControl]="formControl" (input)="setFormValue(textarea.value)"
-              [placeholder]="placeholder! | translate" matInput>
+    <textarea
+      [name]="label"
+      autocomplete="off"
+      [maxlength]="+maxLength!"
+      #textarea *ngIf="inputType === 'textarea'; else simpleInput"
+      [formControl]="formControl"
+      (input)="setFormValue(textarea.value)"
+      [placeholder]="placeholder! | translate" matInput>
     </textarea>
 
     <ng-template #simpleInput>
-      <input #input [maxlength]="+maxLength!" [formControl]="formControl" (input)="setFormValue(input.value)"
-             [placeholder]="placeholder! | translate"
-             [type]="isShowPassword ? 'text' : inputType!" matInput
+      <input
+        [name]="label"
+        #input
+        [maxlength]="+maxLength!"
+        [formControl]="formControl"
+        (input)="setFormValue(input.value)"
+        [placeholder]="placeholder! | translate"
+        [type]="isShowPassword ? 'text' : inputType" matInput
       >
     </ng-template>
 
@@ -40,15 +50,17 @@
 
     <div class="d-flex flex-row input-icons" *ngIf="inputType !== 'textarea'">
       <mat-icon class="input-icon-success material-icons-outlined"
-                *ngIf="formControl?.valid && formControl.dirty && !isFocus && extendedValidation"
+                *ngIf="formControl?.valid && formControl && !isFocus && extendedValidation"
                 matSuffix>
         {{ 'check_circle' }}
       </mat-icon>
-      <mat-icon class="input-icon-error material-icons-outlined" *ngIf="formControl?.invalid && formControl.touched && extendedValidation"
+      <mat-icon class="input-icon-error material-icons-outlined"
+                *ngIf="formControl?.invalid && formControl.touched && extendedValidation"
                 matSuffix>
         {{ 'cancel' }}
       </mat-icon>
-      <mat-icon class="password-icon material-icons-outlined" (click)="isShowPassword = !isShowPassword" *ngIf="inputType === 'password'"
+      <mat-icon class="password-icon material-icons-outlined" (click)="isShowPassword = !isShowPassword"
+                *ngIf="inputType === 'password'"
                 matSuffix>
         {{ isShowPassword ? 'visibility' : 'visibility_off' }}
       </mat-icon>

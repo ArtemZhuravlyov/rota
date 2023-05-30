@@ -12,16 +12,18 @@
     <div class="action-buttons d-flex flex-column align-items-center justify-content-between">
       <app-button
         (btnClick)="onSubmit()"
-        [disabled]="form.invalid"
+        [disabled]="!form.valid"
         [title]="'CONTINUE'"
         [icon]="'arrow_forward'"
-        [iconPosition]="'after-text'"
+        [iconPosition]="'afterText'"
         [btnType]="'FLAT'"
         [isIconButton]="true"
         [styleConfig]="{ height: '52px' }"
       ></app-button>
       <app-button
-        [routerLink]="'../registration'"
+        [routerLink]="routerLinkToRegistration"
+        [queryParams]="{ edit: true }"
+        (btnClick)="backToRegister()"
         [title]="'BACK'"
         [btnType]="'FLAT'"
         [icon]="'arrow_back'"

@@ -49,5 +49,4 @@ export class DropdownComponent implements ControlValueAccessor {
     this.onTouch = fn;
   }
   writeValue(obj: any): void { }
-
 }

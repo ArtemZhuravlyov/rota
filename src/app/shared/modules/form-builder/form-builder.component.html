@@ -6,15 +6,16 @@
       <app-textbox
         [formControlName]="formField.key"
         [label]="formField.label"
-        [inputType]="formField.inputType"
-        [placeholder]="formField.placeholder"
-        [icon]="formField.icon"
+        [inputType]="formField.inputType!"
+        [placeholder]="formField.placeholder!"
+        [icon]="formField.icon!"
         [formControl]="$any(form.controls[formField.key])"
-        [styleConfig]="formField.styleConfig"
-        [hintText]="formField.hint"
-        [hintLink]="formField.hintLink"
-        [maxLength]="formField.maxLength"
+        [styleConfig]="formField.styleConfig!"
+        [hintText]="formField.hint!"
+        [hintLink]="formField.hintLink!"
+        [maxLength]="formField.maxLength!"
         [extendedValidation]="formField.extendedValidation ?? false"
+        [defaultValue]="formField.data"
       ></app-textbox>
     </div>
     <div *ngSwitchCase="componentType.DROPDOWN">

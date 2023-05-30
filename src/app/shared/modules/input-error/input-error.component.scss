@@ -1,0 +1,21 @@
+@import "src/app/core/styles/media-mixin";
+:host {
+  @include media-request(desktop-tablet, max) {
+    .desktop-error {
+      display: none;
+    }
+  }
+
+  @include media-request(desktop-tablet, min) {
+    .mobile-error {
+      display: none;
+    }
+  }
+
+
+  @include media-request(tablet-mobile, max) {
+    .mobile-error {
+      font-size: 11px;
+    }
+  }
+}

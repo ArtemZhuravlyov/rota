@@ -61,7 +61,7 @@
   "ROLE": "Role",
   "FIELD_REQUIRED": "Field is required",
   "SYMBOL_ERROR": "Can’t use the “`” symbol in this field. Please, fix this error.",
-  "PASSWORD_ERROR": "This password is too weak. Please, add such symbols like #,$,& or other.",
+  "REGISTER_PASSWORD_ERROR": "This password is too weak. Please, add such symbols like #,$,& or other.",
   "REPEAT_PASSWORD_ERROR": "Passwords are not matching",
   "EMAIL_ERROR": "It seems you forgot to type the “@” symbol. Please, fix this error.",
   "NEW_COMPANY": "New Company",
@@ -74,5 +74,7 @@
   "ACTIONS": "Actions",
   "SEARCH": "Search",
   "NOT_FOUND": "Not found",
-  "ADD_COMPANY_INFO": "Add Company Information"
+  "ADD_COMPANY_INFO": "Add Company Information",
+  "LOGIN_PASSWORD_ERROR": "Incorrect password",
+  "REGISTER_PASSWORD_ERROR_SHORT": "This password is too weak. Try such symbols as #,$,& or other."
 }

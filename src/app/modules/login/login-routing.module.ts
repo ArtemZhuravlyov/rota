@@ -9,6 +9,7 @@ import { PasswordRecoveryComponent } from "@app/modules/login/password-recovery/
 import {
   PasswordRecoverySuccessComponent
 } from "@app/modules/login/password-recovery-success/password-recovery-success.component";
+import { existsRegisteredCompanyGuard } from "@core/guards/exists-registered-company.guard";
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
       },
       {
         path: NavigationPaths.REGISTRATION_COMPANY,
-        component: CompanyComponent
+        component: CompanyComponent,
+        canActivate: [existsRegisteredCompanyGuard]
       },
       {
         path: NavigationPaths.PASSWORD_RECOVERY,

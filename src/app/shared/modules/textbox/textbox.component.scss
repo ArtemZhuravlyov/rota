@@ -6,6 +6,10 @@
   .textbox {
     ::ng-deep {
       .input-focus {
+        input[type="text"], input[type="password"], input[type="email"] {
+          -webkit-box-shadow: 0 0 0 1000px $background-focus-input inset;
+          -moz-box-shadow: 0 0 0 1000px $background-focus-input inset;
+        }
         .prefix-icon {
           color: $primary !important;
           background: $white;
@@ -67,7 +71,10 @@
 
     .input-error {
       ::ng-deep {
-
+        input[type="text"], input[type="password"], input[type="email"] {
+          -webkit-box-shadow: 0 0 0 1000px $background-error-input inset;
+          -moz-box-shadow: 0 0 0 1000px $background-error-input inset;
+        }
         .mdc-notched-outline__trailing {
           border-color: $border-error !important;
         }
@@ -89,6 +96,10 @@
 
     .input-success {
       ::ng-deep {
+        input[type="text"], input[type="password"], input[type="email"] {
+          -webkit-box-shadow: 0 0 0 1000px $white inset;
+          -moz-box-shadow: 0 0 0 1000px $white inset;
+        }
 
         .mdc-notched-outline__trailing {
           border-color: $white !important;
@@ -107,6 +118,7 @@
     }
 
     .hint-link {
+      color: $text-teal;
       &:hover {
         color: $background-dropdown-selected;
       }
@@ -121,7 +133,4 @@
       font-family: 'Source Sans Pro', sans-serif !important;
     }
   }
-
 }
-
-

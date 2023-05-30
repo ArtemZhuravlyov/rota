@@ -12,7 +12,7 @@ export interface FormField {
   formValidators?: ValidatorFn[];
   icon?: string;
   hint?: string;
-  hintLink?: string;
+  hintLink?: string | string[];
   maxLength?: number;
   styleConfig?:  { [key: string]: string };
   extendedValidation?: boolean;

@@ -8,12 +8,12 @@
   [isLogoPositionTop]="true"
 >
   <app-form-builder
-    [styleConfig]="{ width: '100%', 'max-width': '480px' }"
+    [styleConfig]="{ width: '100%', 'max-width': '520px' }"
     [formFields]="formFields"
     (createdForm)="form = $event"
   >
     <app-button
-      [disabled]="form.invalid"
+      [disabled]="!form.valid"
       (btnClick)="onSubmit()"
       [title]="'LOGIN'"
       [styleConfig]="{ height: '52px'}"

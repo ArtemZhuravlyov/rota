@@ -9,9 +9,9 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class LoginPageComponent {
   @Input() imgUrl!: string;
   @Input() subtitle!: string;
-  @Input() title!: string;
+  @Input() title: string = '';
   @Input() logoInformation!: string;
-  @Input() redirectRoute: string | null = null;
+  @Input() redirectRoute: string[] | string | null = null;
   @Input() redirectText: string = '';
   @Input() isLogoPositionTop = false;
 }

@@ -25,7 +25,7 @@ export class ButtonComponent {
   @Input() badgeInfo?: string | number;
   @Input() isIconButton = false;
   @Input() isBadgeShowed = false;
-  @Input() iconPosition: IconPosition = 'after-text';
+  @Input() iconPosition: IconPosition = 'afterText';
   @Input() iconStyleConfig: Style = {};
   @Input() disabled = false;
   @Output() btnClick = new EventEmitter<void>;
