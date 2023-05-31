@@ -24,7 +24,6 @@
     <mat-icon class="prefix-icon material-icons-outlined" *ngIf="icon">{{ icon }}</mat-icon>
     <textarea
       [name]="label"
-      autocomplete="off"
       [maxlength]="+maxLength!"
       #textarea *ngIf="inputType === 'textarea'; else simpleInput"
       [formControl]="formControl"
@@ -34,13 +33,13 @@
 
     <ng-template #simpleInput>
       <input
-        [name]="label"
         #input
         [maxlength]="+maxLength!"
         [formControl]="formControl"
         (input)="setFormValue(input.value)"
         [placeholder]="placeholder! | translate"
-        [type]="isShowPassword ? 'text' : inputType" matInput
+        [type]="isShowPassword ? 'text' : inputType"
+        matInput
       >
     </ng-template>
 
