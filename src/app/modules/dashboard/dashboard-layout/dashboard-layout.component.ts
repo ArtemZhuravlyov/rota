@@ -10,4 +10,15 @@ import { dashboardTabsConfig } from "./configs/dashboard-tabs-config";
 export class DashboardLayoutComponent {
 
   dashboardTabsConfig = dashboardTabsConfig;
+  isExpanded = true;
+
+  toggleMenu(event: boolean): void {
+    this.isExpanded = event;
+  }
+  filterTabs(searchText: string): void {
+    this.dashboardTabsConfig = dashboardTabsConfig.filter(
+      tab => tab?.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+  }
+
 }

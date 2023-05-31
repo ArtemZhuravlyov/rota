@@ -1,0 +1,36 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.side-menu-toggle {
+  position: absolute;
+  height: calc(100% - 60px);
+  z-index: 2;
+  cursor: pointer;
+  width: 26px;
+
+  .inner-container {
+    background: $white 0 0 no-repeat padding-box;
+    box-shadow: 0 10px 20px $box-shadow-menu;
+    position: absolute;
+    left: 13px;
+    width: 5px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .toggle-btn {
+      position: absolute;
+      left: -15px;
+      width: 26px;
+      height: 26px;
+      color: $toggle-btn-color;
+      background-color: $white;
+      border: 1px solid $border-toggle-btn;
+      border-radius: 100%;
+    }
+  }
+}
+
+.hidden {
+  opacity: 0;
+  transition: all ease 500ms;
+}

@@ -11,8 +11,8 @@
 }
 
 .side-menu {
-  width: 220px;
-  padding-top: 70px;
+  max-width: 220px;
+  width: 100%;
 
   .navigation-link {
     height: 55px;
@@ -37,6 +37,11 @@
       margin-left: 20px;
     }
   }
+
+  .side-menu-toggle {
+    position: absolute;
+    z-index: 100;
+  }
 }
 
 .active-link {
@@ -48,4 +53,23 @@
   mat-icon {
     margin-left: 30px!important;
   }
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 13px;
+  margin-top: 15px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.full {
+  width: 220px;
+}
+
+.collapsed {
+  width: 80px;
 }

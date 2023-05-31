@@ -52,6 +52,61 @@ export class MaterialModule {
       'excel',
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/excel.svg"),
     );
-
+    this.matIconRegistry.addSvgIcon(
+      'settings',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/settings.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'search',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/search.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'export',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/export.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'print',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/print.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'add',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/add.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'help',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/help.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'notifications',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/notifications.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'filter',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/filter.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'success',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/success.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'cancel',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/cancel.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'general',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/general.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'employee',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/employees.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'documents',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/documents.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'learning',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/learning.svg"),
+    );
   }
 }

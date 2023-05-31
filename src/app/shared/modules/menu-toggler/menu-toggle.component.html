@@ -1,0 +1,12 @@
+<div class="side-menu-toggle"
+     [class.hidden]="showToggle"
+     [ngStyle]="{left: isExpanded ? '207px' : '67px' , height: height}"
+>
+  <div class="inner-container">
+    <div class="toggle-btn d-flex justify-content-center align-items-center"
+         (click)="toggleSideMenu()"
+    >
+      <mat-icon>{{isExpanded ? 'chevron_left' : 'chevron_right'}}</mat-icon>
+    </div>
+  </div>
+</div>

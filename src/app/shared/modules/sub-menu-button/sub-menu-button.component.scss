@@ -10,9 +10,13 @@
   color: $text-dark-gray;
   font-size: 15px;
   line-height: 21px;
+
+  .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
-
-
 
 .active-button {
   background: $button-background-active;

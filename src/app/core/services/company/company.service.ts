@@ -39,6 +39,9 @@ export class CompanyService {
     return this.http.post<CompanyRegisterResult>(`${this.env.apiUrlCompany}/company/register/${userId}`, body);
   }
 
+  createCompany(body: CompanyRegister, userId: string): Observable<CompanyRegisterResult> {
+    return this.http.post<CompanyRegisterResult>(`${this.env.apiUrlCompany}/company/create/${userId}`, body);
+  }
   getCompany(userId: string): Observable<CompanyResponse> {
     return this.http.post<CompanyResponse>(`${this.env.apiUrlCompany}/company/${userId}`, {})
   }

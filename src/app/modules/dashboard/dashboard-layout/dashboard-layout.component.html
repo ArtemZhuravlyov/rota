@@ -1,31 +1,32 @@
 <app-header></app-header>
 
+<app-menu-toggle [expandedState]="isExpanded" (onToggle)="toggleMenu($event)" [height]="'calc(100% - 60px)'"></app-menu-toggle>
+
 <mat-drawer-container>
-  <mat-drawer class="side-menu" mode="side" opened>
-<!--    <form>-->
-<!--      <mat-form-field appearance="outline">-->
-<!--        <mat-icon matIconPrefix svgIcon="settings"></mat-icon>-->
-<!--        <input matInput placeholder="Search">-->
-<!--      </mat-form-field>-->
-<!--    </form>-->
+  <mat-drawer class="side-menu" mode="side" [ngClass]="isExpanded ? 'full' : 'collapsed'" opened>
+
+    <app-search-input *ngIf="isExpanded; else searchCollapsed" [styleConfig]="{width: '200px', height: '40px', margin: '15px 8px 0'}" (valueChanged)="filterTabs($event)"></app-search-input>
 
     <a class="navigation-link d-flex justify-content-start align-items-center" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.routerLink" routerLinkActive="active-link">
-      <mat-icon class="material-icons-outlined">{{tab.icon}}</mat-icon>
-      {{tab.title | translate}}
+      <mat-icon [svgIcon]="tab.icon!"></mat-icon>
+      <span *ngIf="isExpanded">{{tab.title | translate}}</span>
     </a>
 
     <div class="bottom-actions d-flex flex-column">
-      <mat-slide-toggle>Dark Mode</mat-slide-toggle>
+      <mat-slide-toggle><span *ngIf="isExpanded">Dark Mode</span></mat-slide-toggle>
 
       <a class="navigation-link d-flex justify-content-start align-items-center" [routerLink]="'settings'">
         <mat-icon class="material-icons-outlined">settings</mat-icon>
-        Settings
+        <span *ngIf="isExpanded">Settings</span>
       </a>
     </div>
-
   </mat-drawer>
 
-  <mat-drawer-content>
+  <mat-drawer-content [ngStyle]="{'margin-left': isExpanded ? '220px' : '80px'}">
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
+
+<ng-template #searchCollapsed>
+  <mat-icon class="search-icon" (click)="toggleMenu(true)">search</mat-icon>
+</ng-template>

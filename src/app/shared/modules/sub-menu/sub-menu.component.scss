@@ -2,7 +2,7 @@
 
 mat-drawer-container {
   height: calc(100vh - 60px);
-  width: calc(100vw - 220px);
+  width: 100%;
 
   mat-drawer-content {
     background-color: $background-login-gray;
@@ -13,4 +13,12 @@ mat-drawer-container {
   width: 220px;
   background-color: $background-gray;
   padding-top: 16px;
+}
+
+.full {
+  width: 220px;
+}
+
+.collapsed {
+  width: 80px;
 }

@@ -97,7 +97,7 @@ export class CreateCompanyComponent {
   ) {}
 
   createCompany(): void {
-    this.companyService.registerCompany(this.form.getRawValue(), this.authService.getCurrentUserId()).pipe(
+    this.companyService.createCompany(this.form.getRawValue(), this.authService.getCurrentUserId()).pipe(
       finalize( () => {
         this.router.navigate([NavigationPaths.BACK]);
       })

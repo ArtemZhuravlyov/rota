@@ -8,4 +8,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class SubMenuComponent {
 
+  isExpanded = true;
+
+  toggleMenu(event: boolean): void {
+    this.isExpanded = event;
+  }
 }
