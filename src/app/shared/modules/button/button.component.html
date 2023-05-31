@@ -1,4 +1,4 @@
-<div [class]="colorTheme" [style]="styleConfig" [ngClass]="{ disabled: disabled }">
+<div [class]="colorTheme"  [ngClass]="{ disabled: disabled }">
   <ng-container [ngSwitch]="btnType">
     <button
       [style]="styleConfig"
@@ -17,6 +17,7 @@
       [style]="styleConfig"
       *ngSwitchCase="buttonTypeEnum.ICON"
       [disabled]="disabled"
+      class="icon-btn"
     >
       <mat-icon
         class="material-icons-outlined"
@@ -26,7 +27,7 @@
         matBadgeColor="warn"
         [svgIcon]="icon"
       ></mat-icon>
-      <mat-icon class="material-icons-outlined" [style]="iconStyleConfig" *ngIf="!isBadgeShowed" [svgIcon]="icon"></mat-icon>
+      <mat-icon  [style]="iconStyleConfig" *ngIf="!isBadgeShowed" [svgIcon]="icon"></mat-icon>
     </button>
 
     <button

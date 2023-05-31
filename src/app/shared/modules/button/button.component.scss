@@ -1,10 +1,21 @@
 @import 'src/app/core/styles/material-custom/constants';
 
-div { border-radius: 10px; background: transparent!important; }
+
+.icon-btn {
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+div {
+  border-radius: 10px;
+  background: transparent !important;
+}
 
 button {
   width: 100%;
   border-radius: 10px;
+
 
   .flex-container {
     display: flex;
@@ -13,6 +24,15 @@ button {
   }
 
   ::ng-deep mat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 16px !important;
+      height: 16px !important;
+    }
+
     .mat-badge-content {
       font-size: 10px !important;
       right: -11px !important;
@@ -25,12 +45,14 @@ button {
 
 .disabled {
   button {
-    color: $text-gray!important;
+    color: $text-gray !important;
+
     .mat-icon {
-      color: $text-gray!important;
-      background: initial!important;
+      color: $text-gray !important;
+      background: initial !important;
     }
-    background: rgba(0, 0, 0, 0.12)!important;
+
+    background: rgba(0, 0, 0, 0.12) !important;
   }
 }
 
@@ -38,9 +60,10 @@ button {
   .mdc-icon-button {
     border-radius: 99px;
   }
+
   .mat-mdc-outlined-button {
-      border: 1px solid $green-border;
-      background: $light-green;
+    border: 1px solid $green-border;
+    background: $light-green;
   }
 
   .mdc-fab, .flat-button {
@@ -54,6 +77,7 @@ button {
   .mdc-icon-button {
     border-radius: 99px;
   }
+
   color: $selected-gray;
   border: 1px solid $button-border-error !important;
   border-radius: 10px;
@@ -63,7 +87,7 @@ button {
   }
 
   .mat-mdc-unelevated-button:not(:disabled) {
-    background: #FFEFEF;
+    background: $button-error-background;
   }
 }
 
@@ -74,18 +98,13 @@ button {
 
   .mdc-fab, .flat-button {
     border-radius: 10px;
-    box-shadow: 1px 1px 5px $text-gray!important;
+    box-shadow: 1px 1px 5px $text-gray !important;
     background: $white;
     color: $text-gray;
-    &:hover {
-      color: $text-dark-gray!important;
-    }
-  }
-}
 
-.default {
-  .mat-icon {
-    margin-left: 14px;
+    &:hover {
+      color: $text-dark-gray !important;
+    }
   }
 }
 
