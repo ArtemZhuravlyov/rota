@@ -21,25 +21,28 @@
     }
 
     li {
-      font-family: 'Material Icons';
+      font-family: 'Material Icons', sans-serif;
       display: inline-block;
       position: relative;
       padding-right: 30px;
       margin: 0;
     }
+
     li:after {
       content: 'chevron_right';
       position: absolute;
       display: inline-block;
-      right: 0;
-      width: 2em;
+      top: 2px;
+      right: 10px;
       text-align: center;
     }
+
     li:last-child {
       a {
         color: $selected-gray;
       }
     }
+
     li:last-child:after {
       content: '';
     }
@@ -57,7 +60,6 @@
     a:hover {
       text-decoration: underline;
     }
-
   }
 
   .back-btn {

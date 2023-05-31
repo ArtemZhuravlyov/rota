@@ -1,0 +1,6 @@
+@import "constants";
+
+mat-drawer.mat-drawer-side {
+  border-right: 1px solid $border-sub-drawer;
+  box-shadow: 0 10px 20px $box-shadow-menu;
+}

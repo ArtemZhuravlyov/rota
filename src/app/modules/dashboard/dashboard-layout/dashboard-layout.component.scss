@@ -7,6 +7,12 @@
 
   mat-drawer-container {
     height: calc(100% - 60px);
+
+    mat-drawer {
+      a:first-of-type {
+        margin-top: 10px;
+      }
+    }
   }
 }
 
