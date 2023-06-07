@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import { DropdownOptions } from "@core/types/form-builder.model";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { Observable } from "rxjs";
+import { Style } from "@core/types/style-model";
 
 @Component({
   selector: 'app-dropdown',
@@ -23,6 +24,8 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input() textField = 'displayName';
   @Input() iconField = 'icon';
   @Input() filterable = true;
+  @Input() styleConfig: Style = {};
+  @Output() selectChanged = new EventEmitter();
 
   selectedValue: string = '';
   currentIcon: string | null = null;
@@ -36,6 +39,7 @@ export class DropdownComponent implements ControlValueAccessor {
   setFormValue(data: DropdownOptions) {
     this.currentIcon = data[this.iconField] as string;
     this.selectedValue = data[this.valueField] as string;
+    this.selectChanged.emit(this.selectedValue);
     this.onChange(data[this.valueField]);
     this.onTouch();
   }

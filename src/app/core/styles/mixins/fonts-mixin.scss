@@ -1,0 +1,41 @@
+@import "../material-custom/constants";
+
+$title: 'title';
+$subtitle: 'subtitle';
+$text-middle: 'text-middle';
+$text-middle-bold: 'text-middle-bold';
+$text-small: 'text-small';
+
+@mixin fontStyle($type) {
+  font-family: 'Source Sans Pro', sans-serif;
+
+  @if ($type == $title) {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 35px;
+    color: $text-dark-gray;
+  } @else if ($type == $subtitle) {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+    color: $text-light-gray;
+  } @else if ($type == $text-middle) {
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 24px;
+    color: $text-dark-gray;
+  } @else if ($type == $text-middle-bold) {
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 24px;
+    color: $text-dark-gray;
+  } @else if($type == $text-small) {
+    font-size: 12px;
+    line-height: 17px;
+  } @else {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: $text-dark-gray;
+  }
+}

@@ -1,0 +1,40 @@
+<app-header-content
+  [title]="'DEFAULT_FIELDS_MAPPING'"
+  [subTitle]="'MAPPING_UPLOADING'"
+  [formGroup]="form"
+  [styleConfig]="{ 'max-width': '1166px'}"
+>
+  <div class="content-fields d-flex justify-content-center align-items-center">
+    <div class="container">
+      <div class="title">
+        <div class="column-name" *ngFor="let name of columnNames">
+          <span>{{ name }}</span>
+        </div>
+      </div>
+
+      <div class="row-field"  *ngFor="let rota of rotaSheetFields">
+        <div class="field-name" >
+          <span>{{ rota.name }}</span>
+        </div>
+        <div class="mapping">
+          <span>{{ getType(rota.name) | translate }}</span>
+          <mat-icon [svgIcon]="'long-arrow'"></mat-icon>
+        </div>
+        <div class="select-headers">
+          <app-dropdown [data]="$any(fileFields)"></app-dropdown>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</app-header-content>
+<div class="actions-button d-flex justify-content-around align-items-center">
+  <app-button [title]="'BACK'"
+              (btnClick)="back()"
+              [styleConfig]="{ background: '#E4EDF4', color: '#464646', height: '50px', width: '112px' }"
+  ></app-button>
+  <app-button [styleConfig]="{ height: '52px', width: '132px' }"
+              [title]="'PREVIEW'"
+              [disabled]="!form.valid"
+  ></app-button>
+</div>

@@ -1,10 +1,19 @@
 @import 'src/app/core/styles/material-custom/constants';
+@import "src/app/core/styles/mixins/fonts-mixin";
 
+div { border-radius: 10px; background: transparent!important; }
 
 .icon-btn {
-    display: flex!important;
-    justify-content: center!important;
-    align-items: center!important;
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+}
+
+.little-icon-btn {
+  padding: 0!important;
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
 }
 
 div {
@@ -13,6 +22,7 @@ div {
 }
 
 button {
+  //@include fontStyle(middle-text);
   width: 100%;
   border-radius: 10px;
 
@@ -29,8 +39,8 @@ button {
     align-items: center;
 
     svg {
-      width: 16px !important;
-      height: 16px !important;
+      width: 18px !important;
+      height: 18px !important;
     }
 
     .mat-badge-content {
@@ -45,14 +55,13 @@ button {
 
 .disabled {
   button {
-    color: $text-gray !important;
+    color: $text-gray!important;
 
     .mat-icon {
-      color: $text-gray !important;
+      color: $text-gray!important;
       background: initial !important;
     }
-
-    background: rgba(0, 0, 0, 0.12) !important;
+    background: rgba(0, 0, 0, 0.12)!important;
   }
 }
 
@@ -87,6 +96,7 @@ button {
   }
 
   .mat-mdc-unelevated-button:not(:disabled) {
+    background: #FFEFEF;
     background: $button-error-background;
   }
 }
@@ -98,13 +108,19 @@ button {
 
   .mdc-fab, .flat-button {
     border-radius: 10px;
-    box-shadow: 1px 1px 5px $text-gray !important;
+    box-shadow: 1px 1px 5px $text-gray!important;
     background: $white;
     color: $text-gray;
 
     &:hover {
-      color: $text-dark-gray !important;
+      color: $text-dark-gray!important;
     }
+  }
+}
+
+.default {
+  .mat-icon {
+    margin-left: 14px;
   }
 }
 
@@ -113,3 +129,4 @@ button {
     margin-left: 5px;
   }
 }
+

@@ -1,0 +1,101 @@
+<app-header-content
+  [title]="item.title"
+  [subTitle]="item.subTitle"
+  *ngFor="let item of items"
+  [styleConfig]="{ 'max-width': '900px', 'min-height': '166px' }"
+  [formGroup]="formGroup"
+>
+  <div class="d-flex justify-content-center align-items-center flex-column">
+
+    <div class="input-completed d-flex justify-content-between" *ngIf="item.isDownload;else upload">
+      <div class="template d-flex justify-content-center align-items-center">
+        <mat-icon [svgIcon]="'excel'"></mat-icon>
+        <span>{{ 'TEMPLATE_EXCEL_FILE' | translate }}</span>
+      </div>
+      <div class="btn-download d-flex justify-content-center align-items-center">
+        <app-button
+          class="desktop-btn"
+          [title]="'DOWNLOAD'"
+          [styleConfig]="{ height: '42px', width: '130px' }"
+          [btnType]="'STROKED'"
+          [isIconButton]="true"
+          [icon]="'download-file'"
+          (btnClick)="downloadTemplate()"
+        ></app-button>
+        <app-button
+          class="mobile-btn"
+          [title]="'DOWNLOAD'"
+          [styleConfig]="buttonStyleConfig.mobileBtn"
+          [btnType]="'LITTLE_ICON'"
+          [isIconButton]="true"
+          [icon]="'download-file'"
+          (btnClick)="downloadTemplate()"
+        ></app-button>
+      </div>
+    </div>
+
+    <ng-template #upload>
+      <div
+        class="d-flex justify-content-between"
+        [ngClass]="{
+              'input-error': inputIsError,
+              'input-upload': !formGroup.valid,
+              'input-completed': formGroup.valid
+           }">
+        <div class="file-name">
+          <mat-icon *ngIf="formGroup.valid" [svgIcon]="'excel'"></mat-icon>
+          <span>{{ formGroup.get('file')?.value ? formGroup.get('file')?.value : 'SELECT_FILE' | translate }}</span>
+        </div>
+        <div class="btn-upload d-flex justify-content-center align-items-center">
+
+          <ng-container *ngIf="formGroup.valid; else notSelected">
+            <div class="file-size d-flex justify-content-center align-items-center">
+              <span>{{ selectedFileSize }}</span>
+            </div>
+            <app-button
+              [isIconButton]="true"
+              [btnType]="'LITTLE_ICON'"
+              [icon]="'delete'"
+              (btnClick)="formGroup.reset()"
+              [styleConfig]="{ height: '30px', width: '30px', background: 'white' }"
+            ></app-button>
+          </ng-container>
+
+          <ng-template #notSelected>
+            <app-button
+              class="mobile-btn"
+              [styleConfig]="buttonStyleConfig.mobileBtn"
+              [isIconButton]="true"
+              [btnType]="'LITTLE_ICON'"
+              (btnClick)="input.click()"
+            ></app-button>
+
+            <app-button
+              class="desktop-btn"
+              [styleConfig]="{ width: '134px', height: '44px' }"
+              [title]="'SELECT_FILE'"
+              (btnClick)="input.click()"
+            ></app-button>
+            <input
+              #input
+              class="file-input"
+              (input)="selectFile(input)"
+              type="file"
+              [accept]="['.txt','.pdf', '.doc', '.xlsx']">
+          </ng-template>
+        </div>
+      </div>
+      <div class="information-text" [ngClass]="{ 'error': inputIsError }" *ngIf="!formGroup.valid">
+        <span class="text-note" *ngIf="!inputIsError">{{ 'NOTE' | translate }}</span>
+        <span>{{ (inputIsError ? 'SELECT_FILE_ERROR' : 'MAX_SIZE') | translate }}</span>
+      </div>
+    </ng-template>
+
+  </div>
+</app-header-content>
+<app-button
+  [disabled]="!formGroup.valid"
+  [title]="'NEXT'"
+  [styleConfig]="{ width: '100px' }"
+  (btnClick)="stepNext()"
+></app-button>

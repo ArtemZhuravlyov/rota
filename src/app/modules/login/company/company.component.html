@@ -14,11 +14,12 @@
         (btnClick)="onSubmit()"
         [disabled]="!form.valid"
         [title]="'CONTINUE'"
-        [icon]="'arrow_forward'"
+        [icon]="'long-arrow'"
         [iconPosition]="'afterText'"
         [btnType]="'FLAT'"
         [isIconButton]="true"
         [styleConfig]="{ height: '52px' }"
+        [iconStyleConfig]="{ transform: 'rotate(-90deg)' }"
       ></app-button>
       <app-button
         [routerLink]="routerLinkToRegistration"
@@ -26,10 +27,11 @@
         (btnClick)="backToRegister()"
         [title]="'BACK'"
         [btnType]="'FLAT'"
-        [icon]="'arrow_back'"
+        [icon]="'long-arrow'"
         [iconPosition]="'beforeText'"
         [colorTheme]="'basic'"
         [styleConfig]="{ height: '52px' }"
+        [iconStyleConfig]="{ transform: 'rotate(90deg)' }"
       ></app-button>
     </div>
   </app-form-builder>

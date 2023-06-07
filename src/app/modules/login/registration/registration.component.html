@@ -15,11 +15,12 @@
       [disabled]="!form.valid"
       (btnClick)="onSubmit()"
       [title]="'CONTINUE'"
-      [icon]="'arrow_forward'"
+      [icon]="'long-arrow'"
       [btnType]="'FLAT'"
       [isIconButton]="true"
       [iconPosition]="'afterText'"
       [styleConfig]="{ height: '52px' }"
+      [iconStyleConfig]="{ transform: 'rotate(-90deg)' }"
     ></app-button>
   </app-form-builder>
 </app-login-page>

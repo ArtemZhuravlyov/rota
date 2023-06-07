@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class SearchInputComponent {
   @Input() styleConfig: { [key: string]: string } | undefined;
+  @Input() showClearButton = true;
   @Output() valueChanged = new EventEmitter();
 
   isFocus = false;

@@ -14,8 +14,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatOptionModule } from "@angular/material/core";
-import { MatStepperModule } from "@angular/material/stepper";
 import { DomSanitizer } from "@angular/platform-browser";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatStepperModule } from "@angular/material/stepper";
 
 const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -32,6 +34,9 @@ const MATERIAL_MODULES = [
   MatFormFieldModule,
   MatOptionModule,
   MatSelectModule,
+  MatPaginatorModule,
+  MatStepperModule,
+  MatProgressSpinnerModule
 ]
 
 @NgModule({
@@ -51,6 +56,18 @@ export class MaterialModule {
     this.matIconRegistry.addSvgIcon(
       'excel',
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/excel.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'download',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/download.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'download-file',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/download-file.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'long-arrow',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/long-arrow.svg"),
     );
     this.matIconRegistry.addSvgIcon(
       'settings',
@@ -107,6 +124,74 @@ export class MaterialModule {
     this.matIconRegistry.addSvgIcon(
       'learning',
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/learning.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'delete',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/delete.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'edit',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/edit.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'eye',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/eye.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'more-vert',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/more-vert.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'delete',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/delete.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'warning',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/caution.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'payroll',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/payroll.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'leave',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/leave.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'payment',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/payment.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'performance',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/performance.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'learnings',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/learnings.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'timesheet',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/timesheet.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'scheduling',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/scheduling.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'engagement',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/engagement.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'reports-analytics',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/reports-analytics.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'recruitment',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/recruitment.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'clear',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/clear.svg"),
     );
   }
 }

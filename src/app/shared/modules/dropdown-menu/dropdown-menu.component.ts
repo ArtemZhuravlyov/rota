@@ -11,6 +11,6 @@ import { MenuPositionX, MenuPositionY } from '@angular/material/menu';
 export class DropdownMenuComponent {
   @Input() xPosition: MenuPositionX = 'after';
   @Input() yPosition: MenuPositionY = 'below';
-  @Input() menuIcon: string = 'more_vert';
+  @Input() menuIcon: string = 'more-vert';
   readonly ButtonTypeEnum = ButtonTypeEnum;
 }

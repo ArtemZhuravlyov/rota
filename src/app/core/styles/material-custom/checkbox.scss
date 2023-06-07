@@ -1,0 +1,29 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.mdc-checkbox {
+  width: 24px!important;
+  height: 24px!important;
+  flex: 0 0 24px!important;
+}
+
+.mdc-checkbox__background {
+  background-color: $light-green!important;
+  width: 24px!important;
+  height: 24px!important;
+}
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked)~.mdc-checkbox__background {
+  border: 1px solid $green-border!important;
+}
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background {
+  background-color: $primary!important;
+  border: 2px solid $primary!important;
+  color: $white!important;
+  font-size: 10px!important;
+  border-radius: 6px;
+}
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
+  color: $white!important;
+}

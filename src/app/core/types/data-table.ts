@@ -3,6 +3,7 @@ export type TableConfig = ColumnConfig[];
 interface ColumnConfig {
   columnName: string;
   columnType: typeof ColumnType[keyof typeof ColumnType];
+  hidden?: boolean;
   filedName?: string;
 }
 

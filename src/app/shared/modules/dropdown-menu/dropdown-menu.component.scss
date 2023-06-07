@@ -1,0 +1,11 @@
+@import "src/app/core/styles/material-custom/constants";
+
+::ng-deep .mat-mdc-menu-panel {
+  border-radius: 10px!important;
+  overflow: unset!important;
+}
+
+::ng-deep .mat-mdc-menu-content {
+  border: 1px solid $menu-border;
+  border-radius: 10px;
+}

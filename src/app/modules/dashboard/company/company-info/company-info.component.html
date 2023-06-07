@@ -4,6 +4,7 @@
       [routerLink]="NavigationPaths.CREATE_COMPANY"
       [btnType]="ButtonTypeEnum.FLAT"
       [isIconButton]="true"
+      [styleConfig]="{height: '50px', width: '150px'}"
       title="{{'CREATE_NEW' | translate}}"
       [icon]="'add'"
     ></app-button>
@@ -11,10 +12,11 @@
 </app-page-header>
 
 <app-data-table
-  *ngIf="(companies$ | async) as companies"
-  [tableData]="companies"
+  [data]="companies$ | async"
+  [itemsKey]="'companies'"
   [tableConfig]="companyListConfig"
   (actionClicked)="onActionClicked($event)"
+  (pageChange)="onPageChange($event)"
   [hasCheckboxColumn]="true"
 ></app-data-table>
 

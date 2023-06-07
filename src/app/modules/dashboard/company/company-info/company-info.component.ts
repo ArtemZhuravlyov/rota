@@ -4,10 +4,11 @@ import {CompanyService} from "@core/services/company/company.service";
 import {AuthService} from "@core/services/account/auth.service";
 import {NavigationPaths} from "@core/enums/navigation-paths.enum";
 import {dashboardTabsConfig} from "@app/modules/dashboard/dashboard-layout/configs/dashboard-tabs-config";
-import {map, Observable} from 'rxjs';
-import {Company} from '@core/types/company.interface';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Company, CompanyResponse } from '@core/types/company.interface';
 import {companyListConfig} from '@app/modules/dashboard/company/configs/company-list.config';
 import {TableAction} from '@core/types/data-table';
+import { PageEvent } from "@angular/material/paginator";
 
 @Component({
   selector: 'app-company-info',
@@ -16,22 +17,27 @@ import {TableAction} from '@core/types/data-table';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyInfoComponent implements OnInit {
+  protected readonly NavigationPaths = NavigationPaths;
+  protected readonly dashboardTabsConfig = dashboardTabsConfig;
   readonly companyListConfig = companyListConfig;
   readonly ButtonTypeEnum = ButtonTypeEnum;
-  companies$!: Observable<Company[]>;
+  companies$!: Observable<CompanyResponse>;
+
   constructor(
     private authService: AuthService,
     private companyService: CompanyService
   ) { }
 
   ngOnInit(): void {
-    this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId())
-      .pipe(map(res => res.companies));
+    this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId(), 2, 0)
   }
 
   onActionClicked(action: TableAction): void {
 
   }
-  protected readonly NavigationPaths = NavigationPaths;
-  protected readonly dashboardTabsConfig = dashboardTabsConfig;
+
+  onPageChange({pageSize, pageIndex}: PageEvent): void {
+    this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId(), pageSize, pageIndex)
+  }
+
 }
