@@ -19,9 +19,9 @@ const routes: Routes = [
         data: {breadcrumb: 'COMPANY'},
       },
       {
-        path: NavigationPaths.EMPLOYEE,
+        path: NavigationPaths.EMPLOYEES,
         loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
-        data: {breadcrumb: 'EMPLOYEE'},
+        data: {breadcrumb: 'EMPLOYEES'},
       },
       {
         path: NavigationPaths.DOCUMENTS,

@@ -10,7 +10,7 @@ export const dashboardTabsConfig: MenusConfig[] = [
     {
         title: 'EMPLOYEES',
         icon: 'employee',
-        routerLink: NavigationPaths.EMPLOYEE,
+        routerLink: NavigationPaths.EMPLOYEES,
     },
     {
         title: 'PAYROLL',
