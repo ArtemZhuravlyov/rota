@@ -14,7 +14,7 @@ export enum NavigationPaths {
   // Dashboard's paths
   DASHBOARD = 'dashboard',
   COMPANY = 'company',
-  EMPLOYEE = 'employee',
+  EMPLOYEES = 'employees',
   DOCUMENTS = 'documents',
   USER_ACCOUNT = 'user-account',
   PAYROLL = 'payroll',
@@ -41,11 +41,13 @@ export enum NavigationPaths {
   CREATE_COMPANY = 'create-company',
 
   //Employees sub-menu  paths
-  EMPLOYMENT_TYPE = 'employment-type',
-  EMPLOYEE_RECORD = 'employee-record',
-  ORGANIZATION_CHART = 'organization-chart',
-  IMPORT_VERIFICATION = 'import-verification',
+  EMPLOYEES_LIST = 'employees-list',
   IMPORT_EMPLOYEES = 'import-employees',
+  LOAN_MANAGEMENT = 'loan-management',
+  DIRECTORY = 'directory',
+  ONBOARDING = 'onboarding',
+  OFFBOARDING = 'offboarding',
+  CREATE_NEW_EMPLOYEE = 'create-new',
 
   //Documents sub-menu paths
   FOLDER_MANAGEMENT = 'folder-management',

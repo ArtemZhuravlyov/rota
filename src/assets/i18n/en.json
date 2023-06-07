@@ -118,5 +118,10 @@
   "TIMESHEET": "Timesheet",
   "SCHEDULING": "Scheduling",
   "ENGAGEMENT": "Engagement",
-  "REPORTS_ANALYTICS": "Report & Analytics"
+  "REPORTS_ANALYTICS": "Report & Analytics",
+  "DIRECTORY": "Directory",
+  "ONBOARDING": "Onboarding",
+  "OFFBOARDING": "Offboarding",
+  "LOAN_MANAGEMENT": "Loan Management",
+  "EMPLOYEES_LIST": "Employees List"
 }
