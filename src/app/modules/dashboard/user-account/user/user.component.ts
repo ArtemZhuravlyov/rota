@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 
 @Component({
   selector: 'app-user',
@@ -6,6 +7,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./user.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
+  title = 'USER';
+  routerLinkToImport = [
+    NavigationPaths.BACK,
+    NavigationPaths.IMPORT_USER
+  ];
 
+  constructor() {}
+
+  ngOnInit() {
+
+  }
 }

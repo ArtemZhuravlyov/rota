@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationPaths } from "../../../core/enums/navigation-paths.enum";
+import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 import { UserAccountComponent } from "./user-account.component";
-import { UserComponent } from "./user/user.component";
-import { RoleComponent } from "./role/role.component";
+import { ImportEmployeesComponent } from "@shared/modules/import-employees/import-employees.component";
 
 const routes: Routes = [
   {
@@ -20,11 +19,18 @@ const routes: Routes = [
           },
           {
             path: NavigationPaths.USER,
-            component: UserComponent
+            loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+            data: {breadcrumb: 'USER'}
           },
           {
             path: NavigationPaths.ROLE,
-            component: RoleComponent,
+            loadChildren: () => import('./role/role.module').then(m => m.RoleModule),
+            data: {breadcrumb: 'ROLE'}
+          },
+          {
+            path: NavigationPaths.IMPORT_USER,
+            component: ImportEmployeesComponent,
+            data: { breadcrumb: 'IMPORT_USER' }
           },
         ]
       }

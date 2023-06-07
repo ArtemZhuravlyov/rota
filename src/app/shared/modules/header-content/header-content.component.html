@@ -1,0 +1,12 @@
+<div class="container-header-content" [style]="styleConfig">
+  <div class="header">
+    <div *ngIf="title" class="title">
+      <span>{{ title | translate }}</span>
+    </div>
+    <div *ngIf="subTitle" class="subtitle">
+      <span>{{ subTitle | translate }}</span>
+    </div>
+    <ng-content select="[header]"></ng-content>
+  </div>
+  <ng-content></ng-content>
+</div>

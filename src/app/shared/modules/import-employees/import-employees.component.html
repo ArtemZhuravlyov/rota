@@ -1,0 +1,29 @@
+<app-page-header [title]="title" [isSubHeaderShowed]="false">
+  <app-button
+    [title]="'BACK'"
+    [styleConfig]="{ background:  'transparent', border: 'none', color: '#808080', 'box-shadow': 'none'}"
+    [iconStyleConfig]="{ transform: 'rotate(90deg)' }"
+    [iconPosition]="'beforeText'"
+    [btnType]="'FLAT'"
+    [isIconButton]="true"
+    [icon]="'long-arrow'"
+    (btnClick)="back()"
+  ></app-button>
+</app-page-header>
+
+<div class="import-container d-flex justify-content-center align-items-center">
+  <div class="stepper d-flex justify-content-center align-items-center">
+    <mat-stepper selectedIndex="0" [labelPosition]="'bottom'" linear="true">
+      <mat-step [stepControl]="formGroupUploadFile" [label]="'UPLOAD_FILE' | translate">
+        <app-step-upload-file [formGroup]="formGroupUploadFile" (fileData)="fileData = $event"></app-step-upload-file>
+      </mat-step>
+      <mat-step [stepControl]="formGroupMapping" [label]="'MAP_FIELDS' | translate">
+        <app-step-fields-mapping [form]="formGroupMapping" [fileData]="fileData"></app-step-fields-mapping>
+      </mat-step>
+      <mat-step [stepControl]="formGroupResult" [label]="'PREVIEW_IMPORT' | translate">
+        <app-step-preview [form]="formGroupResult"></app-step-preview>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>
+

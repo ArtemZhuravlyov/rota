@@ -13,6 +13,7 @@ export interface AuthUser {
   registrationStage: string;
   roles: string[];
   userId: string;
+  companyId: string;
 }
 
 export interface AuthSignIn {

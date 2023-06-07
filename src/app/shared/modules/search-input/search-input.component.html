@@ -9,9 +9,19 @@
            placeholder="{{'SEARCH' | translate}}"
            class="search-input"
     >
-    <app-button class="close-icon" *ngIf="input.value.length" matSuffix [isIconButton]="true" [btnType]="'ICON'"
-                [icon]="'clear'"
-                (click)="input.value = ''; valueChanged.emit('')">
-    </app-button>
+    <div matSuffix class="d-flex align-items-center justify-content-center">
+      <ng-container *ngIf="showClearButton else customClearButton">
+        <app-button class="close-icon" *ngIf="input.value.length" [isIconButton]="true" [btnType]="'ICON'"
+                    [icon]="'clear'"
+                    (click)="input.value = ''; valueChanged.emit('')">
+        </app-button>
+      </ng-container>
+
+      <ng-content></ng-content>
+    </div>
   </mat-form-field>
 </div>
+
+<ng-template #customClearButton>
+  <span class="custom-clear" (click)="input.value = ''; valueChanged.emit('')">{{'CLEAR' | translate}}</span>
+</ng-template>

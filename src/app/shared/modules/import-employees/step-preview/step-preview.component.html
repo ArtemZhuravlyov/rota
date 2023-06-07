@@ -1,0 +1,67 @@
+<div>
+  <app-header-content [styleConfig]="{ 'max-width': '900px', height: '280px' }">
+
+    <div class="header" header>
+      <div class="title">
+        <span class="error-count">{{ errorsCount }}</span>
+        <span>{{ 'Errors' | translate }}</span>
+      </div>
+      <div class="subtitle">{{ 'MAPPING_ERROR' | translate }}</div>
+    </div>
+
+    <div class="content">
+      <div class="field-error d-flex justify-content-between"
+           *ngFor="let field of errors; index as i">
+        <div class="d-flex align-items-center">
+          <mat-icon [svgIcon]="'warning'"></mat-icon>
+          <span>{{ field }}</span>
+        </div>
+        <app-button
+          [styleConfig]="{ height: '44px', width: '110px' }"
+          [btnType]="'STROKED'"
+          [title]="'FIX_NOW'"
+        ></app-button>
+      </div>
+    </div>
+
+  </app-header-content>
+
+  <app-header-content [styleConfig]="{ 'max-width': '900px' }">
+
+    <div class="header" header>
+      <div class="title">
+        <span class="import-count">{{ recordsCount }}</span>
+        <span>{{ 'RECORDS_NEED_TO_CREATED' | translate }}</span>
+      </div>
+      <div class="subtitle">{{ 'RECORDS_ALL_IMPORTED' | translate }}</div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <ng-container *ngIf="importRecords$ | async as records; else notImport">
+        <app-progress-spinner [value]="50"></app-progress-spinner>
+        <span class="records-text-processing">{{ 'PROCESSING' | translate }}...</span>
+      </ng-container>
+
+      <ng-template #notImport>
+        <div class="d-flex justify-content-center align-items-center">
+          <app-button
+            [title]="'IMPORT_RECORDS'"
+            [styleConfig]="{ height: '52px' }"
+            (btnClick)="onImportRecords()"
+          ></app-button>
+        </div>
+      </ng-template>
+    </div>
+
+  </app-header-content>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <app-button
+      [title]="'BACK'"
+      (btnClick)="back()"
+      [disabled]="!form.valid"
+      [styleConfig]="{ height: '50px', width: '112px', background: '#E4EDF4', color: '#464646' }"
+    ></app-button>
+  </div>
+
+</div>

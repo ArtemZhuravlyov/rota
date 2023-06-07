@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import {
   CompanyRegister,
   CompanyRegisterResult,
@@ -13,7 +13,6 @@ import { Environment } from "@core/types/environment";
 import { AuthService } from '@core/services/account/auth.service';
 
 
-
 @Injectable({ providedIn: 'root' })
 export class CompanyService {
   constructor(
@@ -22,6 +21,7 @@ export class CompanyService {
     private authService: AuthService
   ) {
   }
+
   getCountry(): Observable<Country[]> {
     return this.http.get<Country[]>(`${this.env.apiUrlCompany}/country`);
   }
@@ -42,7 +42,17 @@ export class CompanyService {
   createCompany(body: CompanyRegister, userId: string): Observable<CompanyRegisterResult> {
     return this.http.post<CompanyRegisterResult>(`${this.env.apiUrlCompany}/company/create/${userId}`, body);
   }
-  getCompany(userId: string): Observable<CompanyResponse> {
-    return this.http.post<CompanyResponse>(`${this.env.apiUrlCompany}/company/${userId}`, {})
+
+  getCompany(userId: string, pageSize?: number, pageIndex?: number): Observable<CompanyResponse> {
+    const params = new HttpParams()
+      .append('pageSize', pageSize!)
+      .append('pageIndex', pageIndex! + 1);
+
+    return this.http.post<CompanyResponse>(`${this.env.apiUrlCompany}/company/${userId}`, {}, { params })
+  }
+
+  exportTemplate(): Observable<any> {
+    const { userId, companyId, } = this.authService.getCurrentUser();
+    return this.http.get(`${this.env.apiUrlCompany}/export/${userId}/${companyId}/download-employee-template`)
   }
 }

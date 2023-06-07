@@ -1,0 +1,36 @@
+@import "src/app/core/styles/material-custom/constants";
+@import "src/app/core/styles/mixins/fonts-mixin";
+
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container-header-content {
+  width: 100%;
+  background: $white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px #00000008;
+  padding: 40px 20px;
+
+  .header {
+
+    .title, .subtitle {
+      text-align: center;
+    }
+
+    .title {
+      @include fontStyle(title);
+
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      @include fontStyle(subtitle);
+      margin-bottom: 30px;
+    }
+  }
+}

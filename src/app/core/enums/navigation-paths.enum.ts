@@ -17,6 +17,17 @@ export enum NavigationPaths {
   EMPLOYEE = 'employee',
   DOCUMENTS = 'documents',
   USER_ACCOUNT = 'user-account',
+  PAYROLL = 'payroll',
+  LEAVE = 'leave',
+  PAYMENT = 'payment',
+  RECRUITMENTS = 'recruitments',
+  PERFORMANCE = 'performance',
+  LEARNINGS = 'learnings',
+  TIMESHEET = 'timesheet',
+  SCHEDULING = 'scheduling',
+  ENGAGEMENT = 'engagement',
+  REPORT_ANALYTICS = 'reports-analytics',
+
 
   //Company sub-menu  paths
   BANK_ACCOUNT = 'bank-account',
@@ -34,6 +45,7 @@ export enum NavigationPaths {
   EMPLOYEE_RECORD = 'employee-record',
   ORGANIZATION_CHART = 'organization-chart',
   IMPORT_VERIFICATION = 'import-verification',
+  IMPORT_EMPLOYEES = 'import-employees',
 
   //Documents sub-menu paths
   FOLDER_MANAGEMENT = 'folder-management',
@@ -42,5 +54,7 @@ export enum NavigationPaths {
 
   // User Account sub-menu paths
   USER = 'user',
-  ROLE = 'role'
+  ROLE = 'role',
+  IMPORT_USER = 'import-user',
+
 }

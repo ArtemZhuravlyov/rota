@@ -5,6 +5,7 @@ import { EmployeeRoutingModule } from './employee-routing.module';
 import { SubMenuModule } from '@shared/modules/sub-menu/sub-menu.module';
 import { MaterialModule } from "@shared/modules/material.module";
 import { SubMenuButtonModule } from "@shared/modules/sub-menu-button/sub-menu-button.module";
+import { ImportEmployeesModule } from "@shared/modules/import-employees/import-employees.module";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SubMenuButtonModule } from "@shared/modules/sub-menu-button/sub-menu-bu
     SubMenuModule,
     MaterialModule,
     SubMenuButtonModule,
+    ImportEmployeesModule,
   ]
 })
 export class EmployeeModule { }

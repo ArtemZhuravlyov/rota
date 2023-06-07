@@ -15,7 +15,7 @@ import { ButtonModule } from "../button/button.module";
         PageSubHeaderComponent
     ],
     exports: [
-        PageHeaderComponent
+        PageHeaderComponent,
     ],
   imports: [
     CommonModule,

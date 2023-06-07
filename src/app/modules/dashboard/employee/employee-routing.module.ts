@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeeComponent } from './employee.component';
-import { NavigationPaths } from '../../../core/enums/navigation-paths.enum';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { EmploymentTypeComponent } from "./employment-type/employment-type.component";
 import { EmployeeRecordComponent } from "./employee-record/employee-record.component";
 import { OrganizationChartComponent } from "./organization-chart/organization-chart.component";
 import { ImportVerificationComponent } from "./import-verification/import-verification.component";
+import { ImportEmployeesComponent } from "@shared/modules/import-employees/import-employees.component";
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
             path: NavigationPaths.IMPORT_VERIFICATION,
             component: ImportVerificationComponent,
           },
+          {
+            path: NavigationPaths.IMPORT_EMPLOYEES,
+            component: ImportEmployeesComponent,
+            data: { breadcrumb: 'IMPORT_EMPLOYEES' }
+          }
         ]
       }
     ]

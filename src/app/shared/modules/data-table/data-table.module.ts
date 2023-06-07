@@ -6,10 +6,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CountryModule } from '@shared/pipes/country/country.module';
 import { ButtonModule } from '@shared/modules/button/button.module';
 import { DropdownMenuModule } from '@shared/modules/dropdown-menu/dropdown-menu.module';
+import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SearchInputModule } from "@shared/modules/search-input/search-input.module";
 
 @NgModule({
   declarations: [
-    DataTableComponent
+    DataTableComponent,
+    CustomPaginatorComponent
   ],
   exports: [
     DataTableComponent
@@ -21,6 +25,9 @@ import { DropdownMenuModule } from '@shared/modules/dropdown-menu/dropdown-menu.
     CountryModule,
     ButtonModule,
     DropdownMenuModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SearchInputModule,
   ]
 })
 export class DataTableModule { }
