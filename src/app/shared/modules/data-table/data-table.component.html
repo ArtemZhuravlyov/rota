@@ -79,10 +79,15 @@
       <tr mat-header-row *matHeaderRowDef="columns"></tr>
       <tr mat-row *matRowDef="let row; columns: columns;"></tr>
   </table>
-  <mat-paginator
-    [length]="tableData?.totalCount || 0"
-    [pageSize]="2"
-  ></mat-paginator>
+
+  <app-custom-paginator
+    class="paginator"
+    *ngIf="tableData.totalCount"
+    [length]="tableData.totalCount"
+    [pageSize]="2">
+  </app-custom-paginator>
+
+
   <app-search-input *ngIf="showSearch" class="table-search" [showClearButton]="false" [styleConfig]="{width: 'calc(100vw - 464px)', 'margin-left': '12px'}">
     <app-button class="close-icon" (btnClick)="toggleSearch()" [isIconButton]="true" [btnType]="'ICON'" [icon]="'clear'"></app-button>
   </app-search-input>

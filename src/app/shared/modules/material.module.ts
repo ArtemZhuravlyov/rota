@@ -191,5 +191,13 @@ export class MaterialModule {
       'clear',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/clear.svg"),
     );
+    this.matIconRegistry.addSvgIcon(
+      'chevron-right',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/chevron-right.svg"),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'chevron-left',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/chevron-left.svg"),
+    );
   }
 }

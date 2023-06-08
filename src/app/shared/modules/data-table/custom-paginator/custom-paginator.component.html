@@ -1,3 +1,7 @@
-<button (click)="previousPage()">prev</button>
-<p>custom-paginator works!</p>
-<button (click)="nextPage()">next</button>
+<div class="wrapper">
+  <app-button [style.visibility]="!length ? 'hidden' : null" [styleConfig]="{width: '30px', height: '30px'}" [disabled]="!hasPreviousPage()" [isIconButton]="true" [btnType]="ButtonTypeEnum.LITTLE_ICON" [icon]="'chevron-left'" (btnClick)="previousPage();control.setValue(pageIndex+1)"></app-button>
+    <div class="d-flex">
+      <span class="page-btn" *ngFor="let bt of generateButtons()" [class.active]="+bt === pageIndex" (click)="bt != '...' && gotoPage(+bt)">{{bt != '...' ? ((+bt)+1).toString() : '...' }}</span>
+    </div>
+  <app-button [style.visibility]="!length ? 'hidden' : null" [styleConfig]="{width: '30px', height: '30px'}"  [disabled]="!hasNextPage()" [isIconButton]="true" [btnType]="ButtonTypeEnum.LITTLE_ICON" [icon]="'chevron-right'" (btnClick)="nextPage();control.setValue(pageIndex+1)"></app-button>
+</div>
