@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable, signal } from "@angular/core";
 import { AuthRegistration, AuthSignIn, AuthUser } from "../../types/auth.interface";
-import { Observable, of, switchMap } from "rxjs";
+import { Observable, of, switchMap, tap } from "rxjs";
 import { TOKEN_NAME } from "@shared/utils/token-getter";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { ENVIRONMENT } from "@app/app.module";
@@ -50,6 +50,7 @@ export class AuthService {
 
   signIn(body: AuthSignIn): Observable<AuthUser> {
     return this.http.post<AuthUser>(`${this.env.apiUrlAccount}/account/login`, body).pipe(
+      tap(user => this.setToken(user.jwtToken)),
       switchMap((authUser: AuthUser) => this.setCompanyId(authUser.userId).pipe(
         switchMap(({ companyId }) => {
           const user = { ...authUser, companyId }
