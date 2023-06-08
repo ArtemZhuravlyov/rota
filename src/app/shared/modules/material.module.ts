@@ -49,149 +49,147 @@ const MATERIAL_MODULES = [
   ]
 })
 export class MaterialModule {
-  constructor(
-    private readonly matIconRegistry: MatIconRegistry,
-    private readonly domSanitizer: DomSanitizer,
-  ){
-    this.matIconRegistry.addSvgIcon(
+
+  static forRoot(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer): void {
+    matIconRegistry.addSvgIcon(
       'excel',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/excel.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/excel.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'download',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/download.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/download.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'download-file',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/download-file.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/download-file.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'long-arrow',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/long-arrow.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/long-arrow.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'settings',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/settings.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/settings.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'search',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/search.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/search.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'export',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/export.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/export.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'print',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/print.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/print.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'add',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/add.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/add.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'help',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/help.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/help.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'notifications',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/notifications.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/notifications.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'filter',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/filter.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/filter.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'success',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/success.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/success.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'cancel',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/cancel.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/cancel.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'general',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/general.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/general.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'employee',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/employees.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/employees.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'documents',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/documents.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/documents.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'learning',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/learning.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/learning.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'delete',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/delete.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/delete.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'edit',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/edit.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/edit.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'eye',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/eye.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/eye.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'more-vert',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/more-vert.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/more-vert.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'delete',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/delete.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/delete.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'warning',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/caution.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/caution.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'payroll',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/payroll.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/payroll.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'leave',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/leave.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/leave.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'payment',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/payment.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/payment.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'performance',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/performance.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/performance.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'learnings',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/learnings.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/learnings.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'timesheet',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/timesheet.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/timesheet.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'scheduling',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/scheduling.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/scheduling.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'engagement',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/engagement.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/engagement.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'reports-analytics',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/reports-analytics.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/reports-analytics.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'recruitment',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/recruitment.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/recruitment.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'clear',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/clear.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/clear.svg"),
     );
   }
 }

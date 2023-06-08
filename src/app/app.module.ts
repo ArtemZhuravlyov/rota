@@ -1,5 +1,5 @@
-import { InjectionToken, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
@@ -12,9 +12,15 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { tokenGetter } from "@shared/utils/token-getter";
 import { environment } from "../environments/environment";
 import { Environment } from '@core/types/environment';
+import { MaterialModule } from "@shared/modules/material.module";
+import { MatIconRegistry } from "@angular/material/icon";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+
+export function matIconsRegistryFactory(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer): void {
+  MaterialModule.forRoot(matIconRegistry, domSanitizer);
 }
 
 export const ENVIRONMENT = new InjectionToken<Environment>('ENV');
@@ -45,6 +51,11 @@ export const ENVIRONMENT = new InjectionToken<Environment>('ENV');
         HttpClientModule
     ],
     providers: [
+      {
+        provide: APP_INITIALIZER,
+        useFactory: matIconsRegistryFactory,
+        deps: [MatIconRegistry, DomSanitizer],
+      },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
