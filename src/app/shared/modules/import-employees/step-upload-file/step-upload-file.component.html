@@ -57,7 +57,7 @@
               [btnType]="'LITTLE_ICON'"
               [icon]="'delete'"
               (btnClick)="formGroup.reset()"
-              [styleConfig]="{ height: '30px', width: '30px', background: 'white' }"
+              [styleConfig]="{ height: '30px', width: '30px', background: 'white', 'color': '#FF0000' }"
             ></app-button>
           </ng-container>
 
@@ -81,7 +81,7 @@
               class="file-input"
               (input)="selectFile(input)"
               type="file"
-              [accept]="['.txt','.pdf', '.doc', '.xlsx']">
+              [accept]="['.xlsx']">
           </ng-template>
         </div>
       </div>
@@ -94,7 +94,7 @@
   </div>
 </app-header-content>
 <app-button
-  [disabled]="!formGroup.valid"
+  [disabled]="!formGroup.valid || inputIsError"
   [title]="'NEXT'"
   [styleConfig]="{ width: '100px' }"
   (btnClick)="stepNext()"

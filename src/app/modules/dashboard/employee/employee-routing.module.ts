@@ -29,13 +29,11 @@ const routes: Routes = [
           {
             path: NavigationPaths.IMPORT_EMPLOYEES,
             component: ImportEmployeesComponent,
-            data: {
-              breadcrumb: 'IMPORT_EMPLOYEES',
-            },
-          },
-        ],
-      },
-    ],
+            data: { breadcrumb: 'IMPORT_EMPLOYEES', title: 'IMPORT_EMPLOYEES' }
+          }
+        ]
+      }
+    ]
   },
 ];
 

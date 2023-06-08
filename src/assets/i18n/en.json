@@ -123,5 +123,7 @@
   "ONBOARDING": "Onboarding",
   "OFFBOARDING": "Offboarding",
   "LOAN_MANAGEMENT": "Loan Management",
-  "EMPLOYEES_LIST": "Employees List"
+  "EMPLOYEES_LIST": "Employees List",
+  "RECORDS_HAS_BEEN_SUCCESSFULLY_IMPORTED": "Records has been successfully imported",
+  "VIEW_EMPLOYEE_RECORDS": "View Employee Records"
 }

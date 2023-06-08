@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import { MatStepper } from "@angular/material/stepper";
 import { FormGroup } from "@angular/forms";
 import { EmployeeService } from "@core/services/employee/employee.service";
@@ -12,7 +12,7 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./step-upload-file.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StepUploadFileComponent implements OnInit {
+export class StepUploadFileComponent {
   @Input() formGroup!: FormGroup;
   @Output() fileData = new EventEmitter();
 
@@ -28,9 +28,6 @@ export class StepUploadFileComponent implements OnInit {
   inputIsError = false;
 
   allowedFileTypes = [
-    'application/msword',
-    'text/txt',
-    'application/pdf',
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
   ];
 
@@ -51,10 +48,6 @@ export class StepUploadFileComponent implements OnInit {
     private authService: AuthService,
     private companyService: CompanyService,
   ) {
-  }
-
-  ngOnInit(): void {
-
   }
 
   selectFile(inputFile: any) {
@@ -99,6 +92,7 @@ export class StepUploadFileComponent implements OnInit {
       const wsname: string = wb.SheetNames[0];
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
       const data = XLSX.utils.sheet_to_json(ws);
+      console.log(data)
       this.fileData.emit(data);
     };
   }

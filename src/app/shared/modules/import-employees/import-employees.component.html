@@ -13,12 +13,12 @@
 
 <div class="import-container d-flex justify-content-center align-items-center">
   <div class="stepper d-flex justify-content-center align-items-center">
-    <mat-stepper selectedIndex="0" [labelPosition]="'bottom'" linear="true">
+    <mat-stepper selectedIndex="0" [labelPosition]="'bottom'" linear="false">
       <mat-step [stepControl]="formGroupUploadFile" [label]="'UPLOAD_FILE' | translate">
         <app-step-upload-file [formGroup]="formGroupUploadFile" (fileData)="fileData = $event"></app-step-upload-file>
       </mat-step>
       <mat-step [stepControl]="formGroupMapping" [label]="'MAP_FIELDS' | translate">
-        <app-step-fields-mapping [form]="formGroupMapping" [fileData]="fileData"></app-step-fields-mapping>
+        <app-step-fields-mapping [form]="formGroupMapping" [fileData]="fileData" [rotaSheetFields]="tableConfig"></app-step-fields-mapping>
       </mat-step>
       <mat-step [stepControl]="formGroupResult" [label]="'PREVIEW_IMPORT' | translate">
         <app-step-preview [form]="formGroupResult"></app-step-preview>

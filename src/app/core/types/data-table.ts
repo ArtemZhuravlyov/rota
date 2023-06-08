@@ -15,7 +15,8 @@ export const ColumnType = {
   INPUT: 'input',
   BOOLEAN: 'boolean',
   CHECKBOX: 'checkbox',
-  COUNTRY: 'country'
+  COUNTRY: 'country',
+  DATE: 'date'
 } as const;
 
 export interface TableAction {

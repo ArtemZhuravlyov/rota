@@ -43,7 +43,7 @@
       </ng-container>
 
       <ng-template #defaultType>
-        <mat-option *ngFor="let value of data" [value]="value[valueField]">
+        <mat-option *ngFor="let value of data" [value]="value[valueField]" (click)="setFormValue(value)">
           {{ value[textField] }}
         </mat-option>
       </ng-template>

@@ -30,7 +30,7 @@ const routes: Routes = [
           {
             path: NavigationPaths.IMPORT_USER,
             component: ImportEmployeesComponent,
-            data: { breadcrumb: 'IMPORT_USER' }
+            data: { breadcrumb: 'IMPORT_USER', title: 'IMPORT_USER' }
           },
         ]
       }

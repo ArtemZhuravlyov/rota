@@ -18,6 +18,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatStepperModule } from "@angular/material/stepper";
+import {MatDialogModule} from "@angular/material/dialog";
 
 const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -36,7 +37,8 @@ const MATERIAL_MODULES = [
   MatSelectModule,
   MatPaginatorModule,
   MatStepperModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule,
 ]
 
 @NgModule({
@@ -191,13 +193,17 @@ export class MaterialModule {
       'clear',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/clear.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+    matIconRegistry.addSvgIcon(
       'chevron-right',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/chevron-right.svg"),
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/chevron-right.svg"),
     );
-    this.matIconRegistry.addSvgIcon(
+   matIconRegistry.addSvgIcon(
       'chevron-left',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/chevron-left.svg"),
+     domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/chevron-left.svg"),
+    );
+    matIconRegistry.addSvgIcon(
+      'check',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/check.svg"),
     );
   }
 }

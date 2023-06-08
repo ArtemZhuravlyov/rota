@@ -37,6 +37,7 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   setFormValue(data: DropdownOptions) {
+    console.log(1)
     this.currentIcon = data[this.iconField] as string;
     this.selectedValue = data[this.valueField] as string;
     this.selectChanged.emit(this.selectedValue);
