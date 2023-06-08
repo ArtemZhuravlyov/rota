@@ -1,0 +1,52 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.wrapper{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  .page-btn {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  .active {
+    background-color: $primary!important;
+    color: $white!important;
+  }
+}
+@import "src/app/core/styles/material-custom/constants";
+
+.wrapper{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  .page-btn {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  .active {
+    background-color: $primary!important;
+    color: $white!important;
+  }
+}

@@ -13,6 +13,7 @@ import { ColumnType, TableAction, TableActionTypes, TableConfig } from '@core/ty
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { tap } from "rxjs";
+import { CustomPaginatorComponent } from "@shared/modules/data-table/custom-paginator/custom-paginator.component";
 
 
 @Component({
@@ -21,12 +22,17 @@ import { tap } from "rxjs";
   styleUrls: ['./data-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DataTableComponent implements OnInit, AfterViewInit {
+export class DataTableComponent implements OnInit {
   @Input({required: true}) set data(tableData: any) {
     if(tableData) {
       this.tableData = tableData;
       this.filteredData = tableData[this.itemsKey];
       this.cdr.detectChanges();
+      this.paginator.page.pipe(
+        tap( res => {
+          this.pageChange.emit(res);
+        }),
+      ).subscribe()
     }
   };
   @Input({required: true}) tableConfig!: TableConfig;
@@ -39,7 +45,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   filteredData: any = [];
   tableData: any = [];
 
-  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
+  @ViewChild(CustomPaginatorComponent, { static: false }) paginator!: MatPaginator;
 
   defaultActionConfig = [
     { icon: 'eye', type: TableActionTypes.VIEW, styleConfig: {
@@ -76,13 +82,13 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     this.columns = this.tableConfig.map(col => col.columnName);
   }
 
-  ngAfterViewInit(): void {
-    this.paginator.page.pipe(
-      tap( res => {
-        this.pageChange.emit(res);
-      }),
-    ).subscribe()
-  }
+  // ngAfterViewInit(): void {
+  //   this.paginator.page.pipe(
+  //     tap( res => {
+  //       this.pageChange.emit(res);
+  //     }),
+  //   ).subscribe()
+  // }
 
   toggleSearch(): void {
     this.showSearch = !this.showSearch;
