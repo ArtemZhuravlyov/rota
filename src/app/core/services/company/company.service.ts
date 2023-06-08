@@ -1,6 +1,6 @@
-import { Inject, Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import {Inject, Injectable} from "@angular/core";
+import {Observable, tap} from "rxjs";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {
   CompanyRegister,
   CompanyRegisterResult,
@@ -8,12 +8,12 @@ import {
   Country,
   Industry
 } from "../../types/company.interface";
-import { ENVIRONMENT } from "@app/app.module";
-import { Environment } from "@core/types/environment";
-import { AuthService } from '@core/services/account/auth.service';
+import {ENVIRONMENT} from "@app/app.module";
+import {Environment} from "@core/types/environment";
+import {AuthService} from '@core/services/account/auth.service';
 
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class CompanyService {
   constructor(
     private http: HttpClient,
@@ -48,11 +48,18 @@ export class CompanyService {
       .append('pageSize', pageSize!)
       .append('pageIndex', pageIndex! + 1);
 
-    return this.http.post<CompanyResponse>(`${this.env.apiUrlCompany}/company/${userId}`, {}, { params })
+    return this.http.post<CompanyResponse>(`${this.env.apiUrlCompany}/company/${userId}`, {}, {params})
   }
 
   exportTemplate(): Observable<any> {
-    const { userId, companyId, } = this.authService.getCurrentUser();
-    return this.http.get(`${this.env.apiUrlCompany}/export/${userId}/${companyId}/download-employee-template`)
+    const {userId, companyId,} = this.authService.getCurrentUser();
+    return this.http.get(`${this.env.apiUrlCompany}/export/${userId}/${companyId}/download-employee-template`,
+      {responseType: 'blob'}).pipe(
+      tap((file: any) => {
+        const blob = new Blob([file], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      })
+    )
   }
 }

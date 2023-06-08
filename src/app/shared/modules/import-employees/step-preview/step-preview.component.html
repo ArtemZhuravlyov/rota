@@ -14,19 +14,20 @@
            *ngFor="let field of errors; index as i">
         <div class="d-flex align-items-center">
           <mat-icon [svgIcon]="'warning'"></mat-icon>
-          <span>{{ field }}</span>
+          <span>{{ i + 1 + '. ' + field }}</span>
         </div>
         <app-button
           [styleConfig]="{ height: '44px', width: '110px' }"
           [btnType]="'STROKED'"
           [title]="'FIX_NOW'"
+          (btnClick)="openDialog()"
         ></app-button>
       </div>
     </div>
 
   </app-header-content>
 
-  <app-header-content [styleConfig]="{ 'max-width': '900px' }">
+  <app-header-content [styleConfig]="{ 'max-width': '900px' }" *ngIf="importProgress < 100; else completed">
 
     <div class="header" header>
       <div class="title">
@@ -38,7 +39,7 @@
 
     <div class="d-flex justify-content-center align-items-center flex-column">
       <ng-container *ngIf="importRecords$ | async as records; else notImport">
-        <app-progress-spinner [value]="50"></app-progress-spinner>
+        <app-progress-spinner [value]="importProgress"></app-progress-spinner>
         <span class="records-text-processing">{{ 'PROCESSING' | translate }}...</span>
       </ng-container>
 
@@ -55,11 +56,31 @@
 
   </app-header-content>
 
+  <ng-template #completed>
+    <app-header-content >
+      <div class="success-container d-flex justify-content-center align-items-center flex-column">
+        <div class="d-flex justify-content-center align-items-center success-import">
+          <mat-icon [svgIcon]="'check'"></mat-icon>
+        </div>
+        <div class="header">
+          <div class="title success-title">
+            <span class="import-count">{{ recordsCount }}</span>
+            <span>{{ 'RECORDS_HAS_BEEN_SUCCESSFULLY_IMPORTED' | translate }}</span>
+          </div>
+        </div>
+        <app-button
+          [title]="'VIEW_EMPLOYEE_RECORDS'"
+          [btnType]="'STROKED'"
+          [styleConfig]="{ 'border-radius': '6px', 'border-color': '#3E77AA80', background: 'transparent', color: '#3E77AA' }"
+        ></app-button>
+      </div>
+    </app-header-content>
+  </ng-template>
+
   <div class="d-flex justify-content-center align-items-center">
     <app-button
       [title]="'BACK'"
       (btnClick)="back()"
-      [disabled]="!form.valid"
       [styleConfig]="{ height: '50px', width: '112px', background: '#E4EDF4', color: '#464646' }"
     ></app-button>
   </div>

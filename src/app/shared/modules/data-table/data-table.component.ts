@@ -1,8 +1,7 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component, ElementRef,
+  Component,
   EventEmitter,
   Input,
   OnInit,
@@ -23,6 +22,7 @@ import { CustomPaginatorComponent } from "@shared/modules/data-table/custom-pagi
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataTableComponent implements OnInit {
+  @Input({required: true}) itemsKey!: string;
   @Input({required: true}) set data(tableData: any) {
     if(tableData) {
       this.tableData = tableData;
@@ -36,7 +36,6 @@ export class DataTableComponent implements OnInit {
     }
   };
   @Input({required: true}) tableConfig!: TableConfig;
-  @Input({required: true}) itemsKey!: string;
   @Input() hasCheckboxColumn = false;
   @Output() actionClicked = new EventEmitter<TableAction>();
   @Output() pageChange = new EventEmitter<PageEvent>();
@@ -82,14 +81,6 @@ export class DataTableComponent implements OnInit {
     this.columns = this.tableConfig.map(col => col.columnName);
   }
 
-  // ngAfterViewInit(): void {
-  //   this.paginator.page.pipe(
-  //     tap( res => {
-  //       this.pageChange.emit(res);
-  //     }),
-  //   ).subscribe()
-  // }
-
   toggleSearch(): void {
     this.showSearch = !this.showSearch;
   }
@@ -112,7 +103,7 @@ export class DataTableComponent implements OnInit {
   }
 
   selectAll(): void {
-    if (this.filteredData.length === this.selectedItems.size) {
+    if (this.filteredData?.length === this.selectedItems.size) {
       this.selectedItems.clear();
     } else {
       this.filteredData.forEach( (item: any) => this.selectedItems.add(item.id));

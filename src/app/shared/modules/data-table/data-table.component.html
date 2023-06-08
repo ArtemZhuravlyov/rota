@@ -6,7 +6,7 @@
         <ng-container *ngSwitchCase="ColumnType.CHECKBOX" [matColumnDef]="col">
           <th mat-header-cell *matHeaderCellDef>
             <mat-checkbox
-              [checked]="filteredData.length === selectedItems.size"
+              [checked]="filteredData?.length === selectedItems.size"
               (click)="selectAll()"
             ></mat-checkbox>
           </th>

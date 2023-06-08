@@ -14,6 +14,17 @@ export class UserComponent implements OnInit {
     NavigationPaths.IMPORT_USER
   ];
 
+  tableConfig = [
+    {
+      fieldName: 'firstName',
+      type: 'SINGLE_TEXT',
+    },
+    {
+      fieldName: 'lastName',
+      type: 'SINGLE_TEXT',
+    }
+  ]
+
   constructor() {}
 
   ngOnInit() {

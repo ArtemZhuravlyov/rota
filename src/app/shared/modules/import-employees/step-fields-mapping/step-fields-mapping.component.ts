@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {MatStepper} from "@angular/material/stepper";
-import {DropdownOptions} from "@core/types/form-builder.model";
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit} from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatStepper } from "@angular/material/stepper";
+import { DropdownOptions } from "@core/types/form-builder.model";
 
 @Component({
   selector: 'app-step-fields-mapping',
@@ -9,30 +9,24 @@ import {DropdownOptions} from "@core/types/form-builder.model";
   styleUrls: ['./step-fields-mapping.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StepFieldsMappingComponent implements OnChanges {
+export class StepFieldsMappingComponent implements OnInit, OnChanges {
   @Input() form!: FormGroup;
   @Input() fileData!: any[];
-  @Input() rotaSheetFields: { name: string, type?: string }[] = [
-    {
-      name: 'Username',
-      type: ''
-    },
-    {
-      name: 'Lastname',
-      type: ''
-    }
-  ]
+  @Input() rotaSheetFields: { fieldName: string, type: string }[] = [];
 
   columnNames = ['RotaSheetField', 'Mapping', 'Upload file Headers']
   fileFields: DropdownOptions[] = [];
 
   constructor(
-    private matStepper: MatStepper,
+    public matStepper: MatStepper,
   ) {
   }
 
-  back(): void {
-    this.matStepper.previous();
+  ngOnInit() {
+    this.rotaSheetFields.forEach((field) => {
+      this.form.addControl(field.fieldName, new FormControl('', Validators.required));
+    })
+    this.form.valueChanges.subscribe((v) => console.log(v))
   }
 
   ngOnChanges(): void {
@@ -41,16 +35,7 @@ export class StepFieldsMappingComponent implements OnChanges {
     }
   }
 
-  getType(field: any): string {
-    switch (field) {
-      case typeof field === 'string':
-        return 'SINGLE_TEXT'
-      case typeof field === 'number':
-        return 'NUMBER';
-      case field instanceof Date:
-        return 'DATE';
-      default:
-        return "SINGLE_TEXT";
-    }
+  nextStep(): void {
+    this.matStepper.next();
   }
 }

@@ -33,6 +33,14 @@
     display: flex;
   }
 
+  .field-name {
+    &:after {
+      margin-left: 2px;
+      content: '*';
+      color: $border-error;
+    }
+  }
+
   .title, {
     height: 50px;
     background: $background-light-blue;
