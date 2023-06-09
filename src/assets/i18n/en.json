@@ -47,7 +47,7 @@
   "BENEFIT": "Benefit",
   "WORK_SCHEDULE": "Work Schedule",
   "PAY_STRUCTURE": "Pay Structure",
-  "GROUP_MORE": "Group / Function /Division",
+  "GROUP_FUNCTION_DIVISION": "Group / Function / Division",
   "EMPLOYEES": "Employees",
   "DOCUMENTS": "Documents",
   "EMPLOYMENT_TYPE": "Employment Type",
@@ -125,5 +125,8 @@
   "LOAN_MANAGEMENT": "Loan Management",
   "EMPLOYEES_LIST": "Employees List",
   "RECORDS_HAS_BEEN_SUCCESSFULLY_IMPORTED": "Records has been successfully imported",
-  "VIEW_EMPLOYEE_RECORDS": "View Employee Records"
+  "VIEW_EMPLOYEE_RECORDS": "View Employee Records",
+  "ADD_DIVISION": "Add Division",
+  "ADD_INFORMATION": "Add Information",
+  "NUMBER_OF_JOB_ROLE": "# of Job Role"
 }

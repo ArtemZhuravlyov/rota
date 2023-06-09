@@ -205,5 +205,9 @@ export class MaterialModule {
       'check',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/check.svg"),
     );
+    matIconRegistry.addSvgIcon(
+      'company-menu-logo',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/company-menu-logo.svg"),
+    );
   }
 }

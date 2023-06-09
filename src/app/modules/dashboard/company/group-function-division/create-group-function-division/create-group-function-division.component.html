@@ -1,0 +1,12 @@
+<app-page-header
+  [title]="'CREATE_NEW'"
+  [isSubHeaderShowed]="false"
+  [isBackBtnShowed]="true"
+></app-page-header>
+
+<app-form-card>
+
+  <h1 class="heading">{{'ADD_DIVISION' | translate}}</h1>
+
+  <app-form-builder [formFields]="groupFunctionDivisionFormConfig"></app-form-builder>
+</app-form-card>
