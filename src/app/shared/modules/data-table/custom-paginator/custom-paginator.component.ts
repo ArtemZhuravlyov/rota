@@ -21,6 +21,7 @@ export class CustomPaginatorComponent extends _MatPaginatorBase<MatPaginatorDefa
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
   control = new FormControl(0);
   countPages = 8;
+
   constructor(
     private intl: MatPaginatorIntl,
     private changeDetectorRef: ChangeDetectorRef,

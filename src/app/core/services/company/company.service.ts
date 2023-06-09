@@ -1,6 +1,6 @@
-import {Inject, Injectable} from "@angular/core";
-import {Observable, tap} from "rxjs";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import { Inject, Injectable } from "@angular/core";
+import { Observable, tap } from "rxjs";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import {
   CompanyRegister,
   CompanyRegisterResult,
@@ -8,10 +8,12 @@ import {
   Country,
   Industry
 } from "../../types/company.interface";
-import {ENVIRONMENT} from "@app/app.module";
-import {Environment} from "@core/types/environment";
-import {AuthService} from '@core/services/account/auth.service';
+import { ENVIRONMENT } from "@app/app.module";
+import { Environment } from "@core/types/environment";
+import { AuthService } from '@core/services/account/auth.service';
 
+const PAGE_SIZE = 10;
+const PAGE_INDEX = 0;
 
 @Injectable({providedIn: 'root'})
 export class CompanyService {
@@ -43,12 +45,19 @@ export class CompanyService {
     return this.http.post<CompanyRegisterResult>(`${this.env.apiUrlCompany}/company/create/${userId}`, body);
   }
 
-  getCompany(userId: string, pageSize?: number, pageIndex?: number): Observable<CompanyResponse> {
-    const params = new HttpParams()
-      .append('pageSize', pageSize!)
-      .append('pageIndex', pageIndex! + 1);
+  getCompany(userId: string, pageSize = PAGE_SIZE, pageIndex = PAGE_INDEX): Observable<CompanyResponse> {
+    let params = new HttpParams();
 
-    return this.http.post<CompanyResponse>(`${this.env.apiUrlCompany}/company/${userId}`, {}, {params})
+    if (pageSize && pageIndex && pageIndex >= 0) {
+      params = params
+        .append('pageSize', pageSize)
+        .append('pageIndex', pageIndex + 1);
+    }
+    return this.http.post<CompanyResponse>(
+      `${this.env.apiUrlCompany}/company/${userId}`,
+      {},
+      { params: params }
+    );
   }
 
   exportTemplate(): Observable<any> {

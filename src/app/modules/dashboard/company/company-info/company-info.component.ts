@@ -29,7 +29,7 @@ export class CompanyInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId(), 2, 0)
+    this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId())
   }
 
   onActionClicked(action: TableAction): void {
