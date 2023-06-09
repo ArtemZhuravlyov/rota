@@ -22,9 +22,9 @@ const routes: Routes = [
             data: {breadcrumb: 'BANK_ACCOUNT'}
           },
           {
-            path: NavigationPaths.GROUP,
-            loadChildren: () => import('./group/group.module').then(m => m.GroupModule),
-            data: {breadcrumb: 'GROUP'}
+            path: NavigationPaths.GROUP_FUNCTION_DIVISION,
+            loadChildren: () => import('./group-function-division/group-function-division.module').then(m => m.GroupFunctionDivisionModule),
+            data: {breadcrumb: 'GROUP_FUNCTION_DIVISION'}
           },
           {
             path: NavigationPaths.DEPARTMENT,

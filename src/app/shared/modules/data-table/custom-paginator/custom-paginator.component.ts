@@ -31,7 +31,6 @@ export class CustomPaginatorComponent extends _MatPaginatorBase<MatPaginatorDefa
   }
 
   ngAfterViewInit() {
-    this.emitPageEvent(0);
     this.control.setValue(1);
 
     this.control.valueChanges
@@ -41,7 +40,9 @@ export class CustomPaginatorComponent extends _MatPaginatorBase<MatPaginatorDefa
         if (page > this.getNumberOfPages()) {
           page = this.getNumberOfPages() - 1;
         } else page = page - 1;
-        if (page != this.pageIndex) this.emitPageEvent(page);
+        if (page != this.pageIndex) {
+          this.emitPageEvent(page);
+        }
       });
   }
 

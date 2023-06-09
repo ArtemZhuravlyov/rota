@@ -11,8 +11,8 @@ export const companySubMenuConfig: MenusConfig[] = [
         routerLink: NavigationPaths.BANK_ACCOUNT,
     },
     {
-        title: 'GROUP_MORE',
-        routerLink: NavigationPaths.GROUP,
+        title: 'GROUP_FUNCTION_DIVISION',
+        routerLink: NavigationPaths.GROUP_FUNCTION_DIVISION,
     },
     {
         title: 'DEPARTMENT',

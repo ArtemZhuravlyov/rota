@@ -31,7 +31,7 @@ export enum NavigationPaths {
 
   //Company sub-menu  paths
   BANK_ACCOUNT = 'bank-account',
-  GROUP = 'group',
+  GROUP_FUNCTION_DIVISION = 'group-function-division',
   DEPARTMENT = 'department',
   GRADE_CATEGORY = 'grade-category',
   POSITION = 'position',
@@ -39,6 +39,8 @@ export enum NavigationPaths {
   WORK_SCHEDULE = 'work-schedule',
   PAY_STRUCTURE = 'pay-structure',
   CREATE_COMPANY = 'create-company',
+  CREATE_NEW_GROUP_FUNCTION_DIVISION = 'create-group-function-division',
+  CREATE_NEW_GRADE_CATEGORY = 'create-grade-category',
 
   //Employees sub-menu  paths
   EMPLOYEES_LIST = 'employees-list',

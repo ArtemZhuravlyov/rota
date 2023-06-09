@@ -84,6 +84,7 @@
     class="paginator"
     *ngIf="tableData.totalCount"
     [length]="tableData.totalCount"
+    (page)="pageChange.emit($event)"
     [pageSize]="2">
   </app-custom-paginator>
 

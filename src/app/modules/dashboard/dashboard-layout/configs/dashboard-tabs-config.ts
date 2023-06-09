@@ -3,8 +3,8 @@ import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 
 export const dashboardTabsConfig: MenusConfig[] = [
     {
-        title: 'General',
-        icon: 'general',
+        title: 'Company',
+        icon: 'company-menu-logo',
         routerLink: NavigationPaths.COMPANY,
     },
     {

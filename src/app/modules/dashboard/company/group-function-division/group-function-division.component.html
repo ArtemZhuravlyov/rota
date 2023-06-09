@@ -1,7 +1,7 @@
-<app-page-header [title]="'GRADE_CATEGORY'">
+<app-page-header [title]="'GROUP_FUNCTION_DIVISION'">
   <div class="action-buttons">
     <app-button
-      [routerLink]="NavigationPaths.CREATE_NEW_GRADE_CATEGORY"
+      [routerLink]="NavigationPaths.CREATE_NEW_GROUP_FUNCTION_DIVISION"
       [btnType]="ButtonTypeEnum.FLAT"
       [isIconButton]="true"
       [styleConfig]="{ height: '50px', width: '150px' }"
@@ -12,9 +12,9 @@
 </app-page-header>
 
 <app-data-table
-  [data]="gradeCategoriesList()"
-  [itemsKey]="'gradeCategories'"
-  [tableConfig]="gradeCategoryTableConfig"
+  [data]="groupFunctionDivisionList()"
+  [itemsKey]="'groupFunctionDivision'"
+  [tableConfig]="groupFunctionDivisionTableConfig"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
   [hasCheckboxColumn]="true"
