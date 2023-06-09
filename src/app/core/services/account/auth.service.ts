@@ -38,6 +38,7 @@ export class AuthService {
 
   registration(body: AuthRegistration): Observable<AuthUser> {
     return this.http.post<AuthUser>(`${this.env.apiUrlAccount}/user/register`, body).pipe(
+      tap(user => this.setToken(user.jwtToken)),
       switchMap((authUser: AuthUser) => this.setCompanyId(authUser.userId).pipe(
         switchMap(({ companyId }) => {
           const user = { ...authUser, companyId }
