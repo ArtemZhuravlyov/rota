@@ -1,2 +1,30 @@
-<app-page-header [title]="'BANK_ACCOUNT'"></app-page-header>
-
+<app-page-header [title]="'BANK_ACCOUNT'">
+  <div class="action-buttons">
+    <app-button
+      [styleConfig]="{height: '50px', width: '150px'}"
+      title="{{'IMPORT' | translate}}"
+      [isIconButton]="true"
+      [icon]="'export'"
+      [iconStyleConfig]="{transform: 'rotate(180deg)'}"
+      [btnType]="ButtonTypeEnum.STROKED">
+    </app-button>
+    <app-button
+      [btnType]="ButtonTypeEnum.FLAT"
+      [isIconButton]="true"
+      [styleConfig]="{height: '50px', width: '150px'}"
+      title="{{'CREATE_NEW' | translate}}"
+      [icon]="'add'"
+      [routerLink]="NavigationPaths.CREATE_BANK_ACCOUNT">
+    </app-button>
+  </div>
+</app-page-header>
+<app-data-table
+  [data]="bankAccounts$ | async"
+  [itemsKey]="'bankAccounts'"
+  [tableConfig]="bankAccountTableConfig"
+  [tableStyle]="tableStyle"
+  [hasCheckboxColumn]="true"
+  [actionConfig]="actionConfig"
+  (actionClicked)="onActionClicked($event)"
+  (pageChange)="onPageChange($event)"
+></app-data-table>
