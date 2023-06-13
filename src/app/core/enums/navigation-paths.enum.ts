@@ -61,4 +61,6 @@ export enum NavigationPaths {
   ROLE = 'role',
   IMPORT_USER = 'import-user',
 
+  // Bank account sub-menu path
+  CREATE_BANK_ACCOUNT = 'create-bank-account'
 }

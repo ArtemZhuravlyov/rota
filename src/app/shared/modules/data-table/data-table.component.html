@@ -1,4 +1,4 @@
-<div class="table-container">
+<div class="table-container" [class]="tableStyle">
   <table mat-table [dataSource]="filteredData" *ngIf="tableData">
     <ng-container *ngFor="let col of columns; index as i">
 
@@ -55,7 +55,7 @@
 
           <td mat-cell *matCellDef="let element">
             <ng-container
-              [ngTemplateOutlet]="defaultActions"
+              [ngTemplateOutlet]="actionButtons"
               [ngTemplateOutletContext]="{element}"
             >
             </ng-container>
@@ -111,9 +111,9 @@
   </div>
 </ng-template>
 
-<ng-template #defaultActions let-element=element>
-  <div class="d-flex justify-content-around">
-    <ng-container *ngFor="let action of defaultActionConfig">
+<ng-template #actionButtons let-element=element>
+  <div class="d-flex action-btns-container">
+    <ng-container *ngFor="let action of actions">
       <app-button
       [btnType]="ButtonTypeEnum.LITTLE_ICON"
       [styleConfig]="action.styleConfig"

@@ -28,12 +28,15 @@ export class DataTableComponent implements OnInit {
   };
   @Input({required: true}) tableConfig!: TableConfig;
   @Input() hasCheckboxColumn = false;
+  @Input() tableStyle!: string;
+  @Input() actionConfig?: any;
   @Output() actionClicked = new EventEmitter<TableAction>();
   @Output() pageChange = new EventEmitter<PageEvent>();
   readonly ColumnType = ColumnType;
   readonly ButtonTypeEnum = ButtonTypeEnum;
   filteredData: any = [];
   tableData: any = [];
+  actions: any;
 
   defaultActionConfig = [
     { icon: 'eye', type: TableActionTypes.VIEW, styleConfig: {
@@ -68,6 +71,7 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.columns = this.tableConfig.map(col => col.columnName);
+    this.setActions();
   }
 
   toggleSearch(): void {
@@ -105,5 +109,9 @@ export class DataTableComponent implements OnInit {
     } else {
       this.selectedItems.add(id);
     }
+  }
+
+  setActions(): void {
+    this.actions = this.actionConfig ?? this.defaultActionConfig;
   }
 }
