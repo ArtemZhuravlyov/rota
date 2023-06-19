@@ -70,6 +70,10 @@ export class MaterialModule {
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/long-arrow.svg"),
     );
     matIconRegistry.addSvgIcon(
+      'arrow',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/arrow.svg")
+    );
+    matIconRegistry.addSvgIcon(
       'settings',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/settings.svg"),
     );
@@ -208,6 +212,46 @@ export class MaterialModule {
     matIconRegistry.addSvgIcon(
       'company-menu-logo',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/company-menu-logo.svg"),
+    );
+    matIconRegistry.addSvgIcon(
+      'benefits',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/benefits.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'email-alerts',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/email-alerts.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'pension',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/pension.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'workflow',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/workflow.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'person',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/person.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'information',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/information.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'access-levels',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/access-levels.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'holidays',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/holidays.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'onboarding',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/onboarding.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'time-tracking',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/time-tracking.svg")
     );
   }
 }

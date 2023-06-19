@@ -10,13 +10,13 @@
     <g id="g2642">
       <g id="g2644" clip-path="url(#clipPath2648)">
         <g id="g2650" transform="translate(341,120)">
-          <path d="m 0,0 v -40 c 0,-33.137 -26.863,-60 -60,-60 h -201 c -33.137,0 -60,26.863 -60,60 v 352 c 0,33.137 26.863,60 60,60 h 201 c 33.137,0 60,-26.863 60,-60 v -40" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path2652"/>
+          <path d="m 0,0 v -40 c 0,-33.137 -26.863,-60 -60,-60 h -201 c -33.137,0 -60,26.863 -60,60 v 352 c 0,33.137 26.863,60 60,60 h 201 c 33.137,0 60,-26.863 60,-60 v -40" style="fill:none;stroke: currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path2652"/>
         </g>
         <g id="g2654" transform="translate(487,255)">
-          <path d="M 0,0 H -271" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path2656"/>
+          <path d="M 0,0 H -271" style="fill:none;stroke: currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path2656"/>
         </g>
         <g id="g2658" transform="translate(438.4268,189)">
-          <path d="m 0,0 44.786,44.787 c 11.716,11.716 11.716,30.71 0,42.426 L 0,132" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path2660"/>
+          <path d="m 0,0 44.786,44.787 c 11.716,11.716 11.716,30.71 0,42.426 L 0,132" style="fill:none;stroke: currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path2660"/>
         </g>
       </g>
     </g>
