@@ -12,5 +12,6 @@ export class DropdownMenuComponent {
   @Input() xPosition: MenuPositionX = 'after';
   @Input() yPosition: MenuPositionY = 'below';
   @Input() menuIcon: string = 'more-vert';
+  @Input() customClass: string | null = null;
   readonly ButtonTypeEnum = ButtonTypeEnum;
 }
