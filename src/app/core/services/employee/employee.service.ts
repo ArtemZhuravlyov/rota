@@ -25,7 +25,6 @@ export class EmployeeService {
   }
 
   createNewEmployee(form: any): any {
-    console.log(form);
   }
 
   recordFile(userId: string, companyId: string, uploadFile: any): RecordFileResult {

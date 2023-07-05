@@ -8,4 +8,17 @@ export const groupFunctionDivisionFormConfig: FormField[] = [
     componentType: ComponentTypeEnum.TEXTBOX,
     label: 'NAME'
   },
+  {
+    key: 'managerId',
+    inputType: 'text',
+    componentType: ComponentTypeEnum.DROPDOWN,
+    label: 'Head of Division'
+  },
+  {
+    key: 'numberOfDepartment',
+    inputType: 'text',
+    componentType: ComponentTypeEnum.TEXTBOX,
+    label: '# of Department',
+    disabled: true
+  },
 ];

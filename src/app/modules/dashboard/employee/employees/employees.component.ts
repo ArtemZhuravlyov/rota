@@ -23,10 +23,8 @@ export class EmployeesComponent {
   constructor(private readonly employeeService: EmployeeService) { }
 
   onActionClicked(event: TableAction): void {
-    console.log(event);
   }
 
   onPageChange(event: PageEvent): void {
-    console.log(event);
   }
 }

@@ -8,5 +8,25 @@
 
   <h1 class="heading">{{'ADD_DIVISION' | translate}}</h1>
 
-  <app-form-builder [formFields]="groupFunctionDivisionFormConfig"></app-form-builder>
+  <app-form-builder [formFields]="groupFunctionDivisionFormConfig" (createdForm)="form = $event"></app-form-builder>
+
+  <div class="d-flex justify-content-around align-items-center">
+    <app-button
+      (click)="addDivision(form)"
+      [btnType]="ButtonTypeEnum.FLAT"
+      [styleConfig]="{width: '150px', height: '50px'}"
+      [isIconButton]="true"
+      [title]="'SAVE' | translate"
+      [icon]="'success'"></app-button>
+    <app-button
+      [routerLink]="NavigationPaths.BACK"
+      [colorTheme]="'warn'"
+      [styleConfig]="{width: '150px', height: '50px'}"
+      [btnType]="ButtonTypeEnum.FLAT"
+      [isIconButton]="true"
+      [title]="'CANCEL' | translate"
+      [icon]="'cancel'"
+    ></app-button>
+  </div>
+
 </app-form-card>

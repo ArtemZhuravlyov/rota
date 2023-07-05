@@ -2,15 +2,30 @@ import { TableConfig } from "@core/types/data-table";
 
 export const groupFunctionDivisionTableConfig: TableConfig = [
   {
-    columnName: 'column1',
-    columnType: 'text',
-    hidden: false,
-    filedName: 'fieldName1'
+    columnName: 'SELECT_ALL',
+    columnType: 'checkbox',
   },
   {
-    columnName: 'column2',
+    columnName: 'NAME',
+    columnType: 'link',
+    action: 'view',
+    hidden: false,
+    filedName: 'name'
+  },
+  {
+    columnName: '# of Department',
     columnType: 'text',
     hidden: false,
-    filedName: 'fieldName2',
+    filedName: 'numberOfDepartment',
   },
+  {
+    columnName: 'Division Head',
+    columnType: 'text',
+    hidden: false,
+    filedName: 'managerTitle',
+  },
+  {
+    columnName: 'ACTIONS',
+    columnType: 'actions',
+  }
 ]

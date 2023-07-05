@@ -15,7 +15,14 @@ const routes: Routes = [
     path: NavigationPaths.CREATE_BANK_ACCOUNT,
     component: CreateBankAccountComponent,
     data: {breadcrumb: 'CREATE_NEW'}
-  }
+  },
+  {
+    path: NavigationPaths.CREATE_BANK_ACCOUNT,
+    loadChildren: () =>
+      import('./create-bank-account/create-bank-account.module')
+        .then(m => m.CreateBankAccountModule),
+    data: { breadcrumb: 'CREATE_NEW' },
+  },
 ];
 
 

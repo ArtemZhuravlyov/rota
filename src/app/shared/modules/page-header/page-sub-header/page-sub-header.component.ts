@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
+import {TableActionTypes} from "@core/types/data-table";
 
 @Component({
   selector: 'app-page-sub-header',
@@ -8,6 +9,12 @@ import { ButtonTypeEnum } from "@core/enums/button-type.enum";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageSubHeaderComponent {
+ @Output() onActionClicked = new EventEmitter();
 
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
+  protected readonly tableActionTypes = TableActionTypes
+
+  buttonAction(action: typeof this.tableActionTypes[keyof typeof this.tableActionTypes]){
+    this.onActionClicked.emit(action)
+  }
 }

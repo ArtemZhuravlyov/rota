@@ -1,9 +1,21 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
+import {
+  AfterContentInit, AfterViewChecked, AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import { DropdownOptions } from "@core/types/form-builder.model";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { Observable } from "rxjs";
 import { Style } from "@core/types/style-model";
-
+interface PreSelectedValue {
+  displayName: string,
+  value: string;
+}
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
@@ -17,7 +29,7 @@ import { Style } from "@core/types/style-model";
     },
   ]
 })
-export class DropdownComponent implements ControlValueAccessor {
+export class DropdownComponent implements ControlValueAccessor, AfterViewChecked{
   @Input() title = ''
   @Input() data!: DropdownOptions[] & Observable<DropdownOptions[]>;
   @Input() valueField = 'value';
@@ -31,13 +43,20 @@ export class DropdownComponent implements ControlValueAccessor {
   currentIcon: string | null = null;
   searchValue: string = '';
   isOpen = false;
+  preselectedValue: string = ''
+
+
+  ngAfterViewChecked() {
+    console.log('AFTERVIEW');
+    this.setPreselectedValue()
+  }
+
 
   isObservable(data: any) {
     return data instanceof Observable;
   }
 
   setFormValue(data: DropdownOptions) {
-    console.log(1)
     this.currentIcon = data[this.iconField] as string;
     this.selectedValue = data[this.valueField] as string;
     this.selectChanged.emit(this.selectedValue);
@@ -54,4 +73,15 @@ export class DropdownComponent implements ControlValueAccessor {
     this.onTouch = fn;
   }
   writeValue(obj: any): void { }
+
+  setPreselectedValue(){
+      if (this.data) {
+        this.data.find((data:any) => {
+          if (data.preSelected) {
+            this.preselectedValue = data.value
+            console.log(this.preselectedValue)
+          }
+        })
+      }
+  }
 }

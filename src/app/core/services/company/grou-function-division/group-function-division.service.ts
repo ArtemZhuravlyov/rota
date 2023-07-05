@@ -5,11 +5,19 @@ import { Environment } from "@core/types/environment";
 import { AuthService } from "@core/services/account/auth.service";
 import { catchError, Observable, throwError } from "rxjs";
 import { createHttpParams } from "@shared/utils/create-http-params";
+import {FormGroup} from "@angular/forms";
+import {TableActionTypes} from "@core/types/data-table";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupFunctionDivisionService {
+
+  user = this.authService.getCurrentUser();
+  form!: FormGroup;
+  selectedDivision = {} as any;
+  action!: typeof TableActionTypes[keyof typeof TableActionTypes];
+  selectedTableAccounts = [] as any;
 
   constructor(
     private http: HttpClient,
@@ -18,11 +26,30 @@ export class GroupFunctionDivisionService {
   ) { }
 
   getDivisionsList(pageSize: number, pageIndex: number): Observable<any> {
-    const { userId, companyId } = this.authService.getCurrentUser();
-    const params = createHttpParams({ pageSize, pageIndex });
-    return this.http.post(`${this.env.apiUrlCompany}/division/${userId}/${companyId}`, {}, { params })
+    const params = createHttpParams({ pageIndex , pageSize });
+    return this.http.post(`${this.env.apiUrlCompany}/division/${this.user.userId}/${this.user.companyId}`, {}, { params })
       .pipe(
         catchError(err => throwError(() => new Error(err))),
       );
+  }
+
+  createDivision(form: any): Observable<any>{
+    return this.http.post(`${this.env.apiUrlCompany}/division/create/${this.user.userId}/${this.user.companyId}`, form)
+      .pipe(
+        catchError(err => throwError(() => new Error(err))),
+      );
+  }
+
+  editDivision(divisionId: string, form: any): Observable<any>{
+    console.log('EDIT DIVISION', form)
+    let body = {...form, id: divisionId}
+    return this.http.post(`${this.env.apiUrlCompany}/division/create/${this.user.userId}/${this.user.companyId}`, body)
+      .pipe(
+        catchError(err => throwError(() => new Error(err))),
+      );
+  }
+
+  deleteDivision(divisionId: string): Observable<any>{
+    return this.http.delete(`${this.env.apiUrlCompany}/division/${this.user.userId}/${this.user.companyId}/${divisionId}`)
   }
 }

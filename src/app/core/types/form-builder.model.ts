@@ -16,6 +16,8 @@ export interface FormField {
   maxLength?: number;
   styleConfig?:  { [key: string]: string };
   extendedValidation?: boolean;
+  disabled?: boolean;
+  preSelectedValue?: any;
 }
 
 export type ComponentType = typeof ComponentTypeEnum[keyof typeof ComponentTypeEnum];

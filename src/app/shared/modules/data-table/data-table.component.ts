@@ -10,6 +10,8 @@ import {
 import { ColumnType, TableAction, TableActionTypes, TableConfig } from '@core/types/data-table';
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
 import { PageEvent } from "@angular/material/paginator";
+import {FormField} from "@core/types/form-builder.model";
+import {FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -30,13 +32,20 @@ export class DataTableComponent implements OnInit {
   @Input() hasCheckboxColumn = false;
   @Input() tableStyle!: string;
   @Input() actionConfig?: any;
+  @Input() formConfig!: FormField[];
+  @Input() isFormIncluded?: boolean;
+  @Input() headerDropdownFilter: boolean = true;
+  @Input() isPrinting: boolean | null = false;
   @Output() actionClicked = new EventEmitter<TableAction>();
   @Output() pageChange = new EventEmitter<PageEvent>();
+  @Output() selectedItemsIds = new EventEmitter()
   readonly ColumnType = ColumnType;
   readonly ButtonTypeEnum = ButtonTypeEnum;
   filteredData: any = [];
   tableData: any = [];
   actions: any;
+  forms: any = [];
+  form!: FormGroup;
 
   defaultActionConfig = [
     { icon: 'eye', type: TableActionTypes.VIEW, styleConfig: {
@@ -59,8 +68,16 @@ export class DataTableComponent implements OnInit {
       'border': '1px solid #E4EDF4',
       'color': '#FF0000'} },
   ];
+
+  formsStyleConfig = {
+    'flex-direction': 'unset'
+  }
+
+  gradeLevelsStyleConfig = {
+    'max-height:': '35px'
+  }
   columns: string[] = [];
-  selectedItems = new Set<string>();
+  selectedItems = new Map;
   showSearch = false;
 
   get configForHiddenCols(): TableConfig {
@@ -97,21 +114,31 @@ export class DataTableComponent implements OnInit {
 
   selectAll(): void {
     if (this.filteredData?.length === this.selectedItems.size) {
-      this.selectedItems.clear();
+      this.selectedItems.clear()
+      this.selectedItemsIds.emit(this.selectedItems)
     } else {
-      this.filteredData.forEach( (item: any) => this.selectedItems.add(item.id));
+      this.filteredData.forEach((item: any) => this.selectedItems.set(item.id, item));
+      this.selectedItemsIds.emit(this.selectedItems)
     }
   }
 
-  addToSelected(id: string): void {
-    if (this.selectedItems.has(id)) {
-      this.selectedItems.delete(id);
+  addToSelected(element: any): void {
+    if (this.selectedItems.has(element.id)) {
+      this.selectedItems.delete(element.id);
+      this.selectedItemsIds.emit(this.selectedItems)
     } else {
-      this.selectedItems.add(id);
+      this.selectedItems.set(element.id, element);
+      this.selectedItemsIds.emit(this.selectedItems)
     }
   }
 
   setActions(): void {
     this.actions = this.actionConfig ?? this.defaultActionConfig;
   }
+
+  createForm(form: FormGroup){
+    this.forms.push(form);
+  }
+
+
 }

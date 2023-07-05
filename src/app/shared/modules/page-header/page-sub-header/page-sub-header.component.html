@@ -3,7 +3,7 @@
     <mat-slide-toggle>Show In-Active</mat-slide-toggle>
   </div>
   <div class="action-buttons d-flex">
-    <app-button [btnType]="ButtonTypeEnum.STROKED" [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}" [title]="'Export'" [isIconButton]="true" [icon]="'export'"></app-button>
-    <app-button [btnType]="ButtonTypeEnum.STROKED" [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}" [title]="'Print'" [isIconButton]="true" [icon]="'print'"></app-button>
+    <app-button [btnType]="ButtonTypeEnum.STROKED" [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}" [title]="'Export'" [isIconButton]="true" [icon]="'export'" (click)="buttonAction('export')"></app-button>
+    <app-button [btnType]="ButtonTypeEnum.STROKED" [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}" [title]="'Print'" [isIconButton]="true" [icon]="'print'" (click)="buttonAction('print')"></app-button>
   </div>
 </div>

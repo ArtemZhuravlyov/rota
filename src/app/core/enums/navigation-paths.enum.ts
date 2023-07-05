@@ -41,6 +41,9 @@ export enum NavigationPaths {
   CREATE_COMPANY = 'create-company',
   CREATE_NEW_GROUP_FUNCTION_DIVISION = 'create-group-function-division',
   CREATE_NEW_GRADE_CATEGORY = 'create-grade-category',
+  GRADE_CATEGORY_LEVELS = 'grade-category-levels',
+  CREATE_NEW_DEPARTMENT = 'create-new-department',
+  CREATE_NEW_POSITION = 'create-new-position',
 
   //Employees sub-menu  paths
   EMPLOYEES_LIST = 'employees-list',

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-sub-menu',
@@ -7,10 +7,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SubMenuComponent {
-
+  @Input() isPrinting!: boolean | null;
   isExpanded = true;
 
   toggleMenu(event: boolean): void {
     this.isExpanded = event;
   }
+
 }
