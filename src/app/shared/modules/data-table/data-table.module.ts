@@ -9,6 +9,7 @@ import { DropdownMenuModule } from '@shared/modules/dropdown-menu/dropdown-menu.
 import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchInputModule } from "@shared/modules/search-input/search-input.module";
+import {FormBuilderModule} from "@shared/modules/form-builder/form-builder.module";
 
 @NgModule({
   declarations: [
@@ -18,16 +19,17 @@ import { SearchInputModule } from "@shared/modules/search-input/search-input.mod
   exports: [
     DataTableComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    TranslateModule,
-    CountryModule,
-    ButtonModule,
-    DropdownMenuModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SearchInputModule,
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        TranslateModule,
+        CountryModule,
+        ButtonModule,
+        DropdownMenuModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SearchInputModule,
+        FormBuilderModule,
+    ]
 })
 export class DataTableModule { }

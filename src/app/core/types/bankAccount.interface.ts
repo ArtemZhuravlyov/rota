@@ -5,4 +5,6 @@ export interface BankAccount {
   swiftCode: string;
   iban: string;
   email: string;
+  id?: string;
+  companyId?: string;
 }

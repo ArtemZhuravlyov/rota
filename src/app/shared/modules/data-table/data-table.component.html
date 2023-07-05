@@ -1,24 +1,24 @@
 <div class="table-container" [class]="tableStyle">
-  <table mat-table [dataSource]="filteredData" *ngIf="tableData">
+  <table mat-table [dataSource]="filteredData" *ngIf="tableData" [class.isPrinting]="isPrinting">
     <ng-container *ngFor="let col of columns; index as i">
 
       <ng-container [ngSwitch]="tableConfig[i].columnType">
-        <ng-container *ngSwitchCase="ColumnType.CHECKBOX" [matColumnDef]="col">
-          <th mat-header-cell *matHeaderCellDef>
-            <mat-checkbox
-              [checked]="filteredData?.length === selectedItems.size"
-              (click)="selectAll()"
-            ></mat-checkbox>
-          </th>
 
-          <td mat-cell *matCellDef="let element">
-            <mat-checkbox
-              [checked]="selectedItems.has(element.id)"
-              (click)="addToSelected(element.id)"
-            ></mat-checkbox>
-          </td>
-        </ng-container>
+          <ng-container *ngSwitchCase="ColumnType.CHECKBOX" [matColumnDef]="col">
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="!isPrinting ? null : {'display': 'none'}">
+              <mat-checkbox
+                [checked]="filteredData?.length === selectedItems.size"
+                (click)="selectAll()"
+              ></mat-checkbox>
+            </th>
 
+            <td mat-cell *matCellDef="let element" [ngStyle]="!isPrinting ? null : {'display': 'none'} ">
+              <mat-checkbox
+                [checked]="selectedItems.has(element.id)"
+                (click)="addToSelected(element)"
+              ></mat-checkbox>
+            </td>
+          </ng-container>
 
         <ng-container *ngSwitchCase="ColumnType.COUNTRY" [matColumnDef]="col">
           <th mat-header-cell [hidden]="tableConfig[i].hidden" *matHeaderCellDef>
@@ -35,7 +35,7 @@
 
         <ng-container *ngSwitchCase="ColumnType.ACTIONS" [matColumnDef]="col">
           <th mat-header-cell *matHeaderCellDef>
-            <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center" *ngIf="!isPrinting">
               {{ tableConfig[i].columnName | translate }}
 
               <div class="actions-container d-flex align-items-center">
@@ -60,34 +60,90 @@
             >
             </ng-container>
           </td>
+          <td mat-footer-cell [hidden]="tableConfig[i].hidden" *matFooterCellDef class="forms">
+            <div class="add-button-green" (click)="onAction({ action: 'add', payload: forms})">
+              <mat-icon>add</mat-icon>
+            </div>
+          </td>
         </ng-container>
 
-        <ng-container *ngSwitchDefault [matColumnDef]="col">
+        <ng-container *ngSwitchCase="ColumnType.DESCRIPTIONS" [matColumnDef]="col">
           <th mat-header-cell [hidden]="tableConfig[i].hidden" *matHeaderCellDef>
-
             <ng-container
               [ngTemplateOutlet]="defaultCellHeader"
               [ngTemplateOutletContext]="{i}"
             ></ng-container>
           </th>
 
-          <td mat-cell [hidden]="tableConfig[i].hidden" *matCellDef="let element"> {{element[tableConfig[i].filedName!]}} </td>
+          <td mat-cell [hidden]="tableConfig[i].hidden" *matCellDef="let element" class="descriptions">
+            <div class="description-table" [ngStyle]="!isPrinting ? null : {'padding-left': '0'}">
+              <div>{{element[tableConfig[i].filedName!]}}</div>
+            </div>
+
+            <div class="view-btn" (click)="onAction({action: 'viewDescription', payload: element})" *ngIf="!isPrinting">
+              <mat-icon [svgIcon]="'eye'"></mat-icon>
+              <span> View </span>
+            </div>
+          </td>
+
+        </ng-container>
+
+        <ng-container *ngSwitchCase="ColumnType.LINK" [matColumnDef]="col">
+          <th mat-header-cell [hidden]="tableConfig[i].hidden" *matHeaderCellDef>
+            <ng-container
+              [ngTemplateOutlet]="defaultCellHeader"
+              [ngTemplateOutletContext]="{i}"
+            ></ng-container>
+          </th>
+
+<!--why tableConfig[i].action is undefined in onAction?-->
+          <td mat-cell [hidden]="tableConfig[i].hidden"
+              *matCellDef="let element"
+              (click)="onAction({ action: 'view', payload: element})"
+              class="link"
+          > {{element[tableConfig[i].filedName!]}}</td>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault [matColumnDef]="col">
+          <th mat-header-cell [hidden]="tableConfig[i].hidden" *matHeaderCellDef>
+            <ng-container
+              [ngTemplateOutlet]="defaultCellHeader"
+              [ngTemplateOutletContext]="{i}"
+            ></ng-container>
+          </th>
+
+          <td mat-cell [hidden]="tableConfig[i].hidden" *matCellDef="let element"> {{element[tableConfig[i].filedName!]}}</td>
+
+          <td mat-footer-cell [hidden]="tableConfig[i].hidden" *matFooterCellDef class="forms">
+
+            <app-form-builder [styleConfig]="gradeLevelsStyleConfig"
+                              [formFields]="[formConfig[i]]"
+                              (createdForm)="createForm(form = $event)"
+                              [actionButtonIncluded]="false"
+            ></app-form-builder>
+          </td>
+
         </ng-container>
       </ng-container>
     </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="columns"></tr>
       <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+
+      <ng-container *ngIf="isFormIncluded">
+        <tr mat-footer-row *matFooterRowDef="columns"></tr>
+      </ng-container>
   </table>
 
-  <app-custom-paginator
-    class="paginator"
-    *ngIf="tableData.totalCount"
-    [length]="tableData.totalCount"
-    (page)="pageChange.emit($event)"
-    [pageSize]="10">
-  </app-custom-paginator>
-
+  <ng-container *ngIf="!isPrinting">
+    <app-custom-paginator
+      class="paginator"
+      *ngIf="tableData.totalCount"
+      [length]="tableData.totalCount"
+      (page)="pageChange.emit($event)"
+      [pageSize]="2">
+    </app-custom-paginator>
+  </ng-container>
 
   <app-search-input *ngIf="showSearch" class="table-search" [showClearButton]="false" [styleConfig]="{width: 'calc(100vw - 464px)', 'margin-left': '12px'}">
     <app-button class="close-icon" (btnClick)="toggleSearch()" [isIconButton]="true" [btnType]="'ICON'" [icon]="'clear'"></app-button>
@@ -95,24 +151,26 @@
 </div>
 
 <ng-template #defaultCellHeader let-i=i>
-  <div class="d-flex align-items-center justify-content-center">
-    <app-dropdown-menu [menuIcon]="'filter'">
-      <div class="filter-container" (click)="$event.stopPropagation()">
-        <h1>{{tableConfig[i].columnName | translate}}</h1>
-        <app-search-input (valueChanged)="filterTable($event, tableConfig[i].filedName!)" [styleConfig]="{width: '200px', height: '40px'}"></app-search-input>
-        <div class="d-flex justify-content-between">
-          <app-button [title]="'APPLY'" [btnType]="ButtonTypeEnum.FLAT" [styleConfig]="{height: '40px', width: '80px', 'margin-top': '10px'}" [isIconButton]="false"></app-button>
-          <app-button [title]="'CLEAR'" [btnType]="ButtonTypeEnum.FLAT" [styleConfig]="{height: '40px', width: '80px', background: '#f5f6f8', color: '#3E77AA', 'margin-top': '10px', 'border': '#3E77AA solid 1px'}" [isIconButton]="false"></app-button>
+  <div class="d-flex align-items-center justify-content-center defaultHeader">
+    <ng-container *ngIf="!isPrinting">
+      <app-dropdown-menu [menuIcon]="'filter'" *ngIf="headerDropdownFilter">
+        <div class="filter-container" (click)="$event.stopPropagation()">
+          <h1>{{tableConfig[i].columnName | translate}}</h1>
+          <app-search-input (valueChanged)="filterTable($event, tableConfig[i].filedName!)" [styleConfig]="{width: '200px', height: '40px'}"></app-search-input>
+          <div class="d-flex justify-content-between">
+            <app-button [title]="'APPLY'" [btnType]="ButtonTypeEnum.FLAT" [styleConfig]="{height: '40px', width: '80px', 'margin-top': '10px'}" [isIconButton]="false"></app-button>
+            <app-button [title]="'CLEAR'" [btnType]="ButtonTypeEnum.FLAT" [styleConfig]="{height: '40px', width: '80px', background: '#f5f6f8', color: '#3E77AA', 'margin-top': '10px', 'border': '#3E77AA solid 1px'}" [isIconButton]="false"></app-button>
+          </div>
         </div>
-      </div>
-    </app-dropdown-menu>
+      </app-dropdown-menu>
+    </ng-container>
 
     {{ tableConfig[i].columnName | translate }}
   </div>
 </ng-template>
 
 <ng-template #actionButtons let-element=element>
-  <div class="d-flex action-btns-container">
+  <div class="d-flex action-btns-container" *ngIf="!isPrinting">
     <ng-container *ngFor="let action of actions">
       <app-button
       [btnType]="ButtonTypeEnum.LITTLE_ICON"
@@ -125,4 +183,3 @@
     </ng-container>
   </div>
 </ng-template>
-

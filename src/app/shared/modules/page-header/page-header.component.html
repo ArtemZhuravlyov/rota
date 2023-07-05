@@ -2,20 +2,27 @@
   <div class="page-header d-flex justify-content-between">
     <div>
       <h1 class="heading">{{ title | translate}}</h1>
-      <div class="breadcrumbs">
-        <ul>
-          <li *ngFor="let breadcrumb of (breadcrumbs$ | async)">
-            <a [routerLink]="breadcrumb.url">{{ breadcrumb.label | translate }}</a>
-          </li>
-        </ul>
-      </div>
+      <ng-container *ngIf="!isPrinting">
+        <div class="breadcrumbs">
+          <ul>
+            <li *ngFor="let breadcrumb of (breadcrumbs$ | async)">
+              <a [routerLink]="breadcrumb.url">{{ breadcrumb.label | translate }}</a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
     </div>
 
-    <ng-content></ng-content>
-    <a *ngIf="isBackBtnShowed" class="back-btn d-flex align-items-center" [routerLink]="NavigationPaths.BACK"><mat-icon>keyboard_backspace</mat-icon>{{ 'BACK' | translate}}</a>
+    <ng-container *ngIf="!isPrinting">
+      <ng-content></ng-content>
+      <a *ngIf="isBackBtnShowed" class="back-btn d-flex align-items-center" [routerLink]="NavigationPaths.BACK"><mat-icon>keyboard_backspace</mat-icon>{{ 'BACK' | translate}}</a>
+    </ng-container>
   </div>
 
-  <app-page-sub-header *ngIf="isSubHeaderShowed"></app-page-sub-header>
+  <ng-container *ngIf="!isPrinting">
+    <app-page-sub-header *ngIf="isSubHeaderShowed" (onActionClicked)="actionClicked($event)"></app-page-sub-header>
+  </ng-container>
+
 </ng-container>
 
 

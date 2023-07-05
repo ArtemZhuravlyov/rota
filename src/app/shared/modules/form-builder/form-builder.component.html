@@ -16,6 +16,7 @@
         [maxLength]="formField.maxLength!"
         [extendedValidation]="formField.extendedValidation ?? false"
         [defaultValue]="formField.data"
+        [class.disabled]="formField.disabled"
       ></app-textbox>
     </div>
     <div *ngSwitchCase="componentType.DROPDOWN">
@@ -24,6 +25,8 @@
         [formControlName]="formField.key"
         [title]="formField.label"
         [data]="formField.data"
+        [class.disabled]="formField.disabled"
+        (selectChanged)="selectChanged($event, formField.key)"
       ></app-dropdown>
     </div>
 
@@ -50,7 +53,10 @@
     </div>
   </ng-container>
 
-  <div class="action-btn">
-    <ng-content></ng-content>
-  </div>
+  <ng-container *ngIf="actionButtonIncluded">
+    <div class="action-btn">
+      <ng-content></ng-content>
+    </div>
+  </ng-container>
+
 </div>

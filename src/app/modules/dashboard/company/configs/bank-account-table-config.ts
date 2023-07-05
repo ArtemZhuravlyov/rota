@@ -7,8 +7,9 @@ export const bankAccountTableConfig: TableConfig = [
   },
   {
     columnName: 'Bank',
-    columnType: 'text',
     filedName: 'bankName',
+    columnType: 'link',
+    action: 'view',
     hidden: false,
   },
   {

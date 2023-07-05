@@ -24,3 +24,8 @@
     padding: 20px 0;
   }
 }
+.disabled{
+ ::ng-deep .mat-mdc-text-field-wrapper{
+    background-color: #F3F3F3;
+  }
+}

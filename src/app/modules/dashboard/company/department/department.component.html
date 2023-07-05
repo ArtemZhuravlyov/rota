@@ -1,1 +1,28 @@
-<app-page-header [title]="'DEPARTMENT'"></app-page-header>
+<app-page-header [title]="'DEPARTMENT'"
+                 [isPrinting]="isPrinting$ | async"
+                 (onActionClicked)="onActionClicked({action: $event, payload: {}})">
+  <div class="action-buttons">
+    <app-button
+      [routerLink]="NavigationPaths.CREATE_NEW_DEPARTMENT"
+      [btnType]="ButtonTypeEnum.FLAT"
+      [isIconButton]="true"
+      [styleConfig]="{ height: '50px', width: '150px' }"
+      [title]="'CREATE_NEW' | translate"
+      [icon]="'add'"
+      (click)="onActionClicked({action: 'add', payload: {}})"
+    ></app-button>
+  </div>
+</app-page-header>
+
+<app-data-table
+  [data]="departmentList$ | async"
+  [itemsKey]="'departments'"
+  [tableConfig]="departmentTableConfig"
+  (actionClicked)="onActionClicked($event)"
+  (pageChange)="onPageChange($event)"
+  [hasCheckboxColumn]="true"
+  [actionConfig]="divisionActionConfig"
+  [isPrinting]="isPrinting$ | async"
+  (selectedItemsIds)="onSelectedTableItems($event)"
+></app-data-table>
+

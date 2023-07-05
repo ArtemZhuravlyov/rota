@@ -11,6 +11,7 @@
       (opened)="isOpen = true"
       (closed)="isOpen = false"
       [placeholder]="'SELECT' | translate"
+      [(value)]=preselectedValue
     >
       <ng-container *ngIf="isObservable(data); else defaultType">
 

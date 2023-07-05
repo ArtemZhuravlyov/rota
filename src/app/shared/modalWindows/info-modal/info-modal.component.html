@@ -1,0 +1,33 @@
+<div class="dialog-wrapper">
+  <div class="close-btn">
+    <app-button
+      (click)="closeModal()"
+      [btnType]="ButtonTypeEnum.ICON"
+      [isIconButton]="true"
+      [styleConfig]="{
+      height: '30px',
+      width: '30px',
+      background: '#F5F6F8',
+      border: '0',
+      color: 'grey' }"
+      [icon]="'clear'"
+      [iconStyleConfig]="{'transform':'scale(3)'}"
+    ></app-button>
+  </div>
+  <div class="text-container">
+    <span class="title">{{data.title}}</span>
+    <span class="title-description">{{data.titleDescription}}</span>
+    <div class="description">
+      {{data.description}}
+    </div>
+    <div class="footer-btn-container">
+      <app-button
+        (click)="closeModal()"
+        [isIconButton]="true"
+        [styleConfig]="{ height: '5vh', width: '8vw' }"
+        [title]="'Close'"
+      ></app-button>
+    </div>
+  </div>
+
+</div>

@@ -2,8 +2,13 @@ import { TableConfig } from "@core/types/data-table";
 
 export const gradeCategoryTableConfig: TableConfig = [
   {
+    columnName: 'SELECT_ALL',
+    columnType: 'checkbox',
+  },
+  {
     columnName: 'NAME',
-    columnType: 'text',
+    columnType: 'link',
+    action: 'view',
     hidden: false,
     filedName: 'name'
   },
@@ -12,5 +17,9 @@ export const gradeCategoryTableConfig: TableConfig = [
     columnType: 'text',
     hidden: false,
     filedName: 'positionCount',
+  },
+  {
+    columnName: 'ACTIONS',
+    columnType: 'actions',
   },
 ];
