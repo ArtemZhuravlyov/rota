@@ -1,0 +1,7 @@
+<app-sub-menu [isPrinting]="isPrinting$ | async">
+  <ng-container nav-buttons *ngIf="!(isPrinting$ | async)">
+    <app-sub-menu-button *ngFor="let button of menuConfig" [title]="button.title" [link]="button.routerLink"></app-sub-menu-button>
+  </ng-container>
+
+  <router-outlet></router-outlet>
+</app-sub-menu>

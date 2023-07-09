@@ -65,5 +65,8 @@ export enum NavigationPaths {
   IMPORT_USER = 'import-user',
 
   // Bank account sub-menu path
-  CREATE_BANK_ACCOUNT = 'create-bank-account'
+  CREATE_BANK_ACCOUNT = 'create-bank-account',
+
+  // Engagement path
+  ORGANOGRAM = 'organogram'
 }
