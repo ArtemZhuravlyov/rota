@@ -36,10 +36,10 @@
 
         <ng-container *ngSwitchCase="ColumnType.ACTIONS" [matColumnDef]="col">
           <th mat-header-cell *matHeaderCellDef>
-            <div class="d-flex align-items-center justify-content-center" *ngIf="!isPrinting">
+            <div class="d-flex align-items-center justify-content-end" *ngIf="!isPrinting">
               {{ tableConfig[i].columnName | translate }}
 
-              <div class="actions-container d-flex align-items-center">
+              <div class="actions-container d-flex align-items-end">
                 <app-button (btnClick)="toggleSearch()" [btnType]="ButtonTypeEnum.ICON" [icon]="'search'"></app-button>
 
                 <app-dropdown-menu [xPosition]="'before'">
@@ -172,12 +172,12 @@
 </ng-template>
 
 <ng-template #actionButtons let-element=element>
-  <div class="d-flex action-btns-container" *ngIf="!isPrinting">
+  <div class="d-flex justify-content-end action-btns-container" *ngIf="!isPrinting">
     <ng-container *ngFor="let action of actions">
       <app-button
       [btnType]="ButtonTypeEnum.LITTLE_ICON"
       [styleConfig]="action.styleConfig"
-      [iconStyleConfig]="{'width': '14px', 'height': '14px', 'line-height': '14px'}"
+      [iconStyleConfig]="{'width': '20px', 'height': '20px', 'line-height': '20px', 'font-size': '16px', 'transform': 'scale(0.9)'}"
       [isIconButton]="true"
       [icon]="action.icon"
       (click)="onAction({ action: action.type, payload: element})"
