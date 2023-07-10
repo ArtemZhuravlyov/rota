@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -12,6 +13,8 @@ import { ButtonTypeEnum } from "@core/enums/button-type.enum";
 import { PageEvent } from "@angular/material/paginator";
 import {FormField} from "@core/types/form-builder.model";
 import {FormGroup} from "@angular/forms";
+import {TableUtil} from "@shared/utils/tableUtil";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 
 
 @Component({
@@ -20,7 +23,7 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./data-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent implements OnInit, AfterViewInit {
   @Input({required: true}) itemsKey!: string;
   @Input({required: true}) set data(tableData: any) {
     if(tableData) {
@@ -36,9 +39,10 @@ export class DataTableComponent implements OnInit {
   @Input() isFormIncluded?: boolean;
   @Input() headerDropdownFilter: boolean = true;
   @Input() isPrinting: boolean | null = false;
+  @Input() exporting$ = new BehaviorSubject([]);
   @Output() actionClicked = new EventEmitter<TableAction>();
   @Output() pageChange = new EventEmitter<PageEvent>();
-  @Output() selectedItemsIds = new EventEmitter()
+  @Output() selectedItemsIds = new EventEmitter();
   readonly ColumnType = ColumnType;
   readonly ButtonTypeEnum = ButtonTypeEnum;
   filteredData: any = [];
@@ -46,6 +50,20 @@ export class DataTableComponent implements OnInit {
   actions: any;
   forms: any = [];
   form!: FormGroup;
+
+  ngAfterViewInit() {
+    this.exporting$.subscribe((table:any) => {
+      console.log('EXPORTING')
+      console.log(table)
+      if (table.length){
+        this.exportTable(table)
+      }
+    })
+  }
+
+  exportTable(table: any) {
+    TableUtil.exportArrayToExcel(table, "Table");
+  }
 
   defaultActionConfig = [
     { icon: 'eye', type: TableActionTypes.VIEW, styleConfig: {

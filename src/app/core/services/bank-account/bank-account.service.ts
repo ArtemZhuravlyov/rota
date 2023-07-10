@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import { ENVIRONMENT } from "@app/app.module";
 import { Environment } from "@core/types/environment";
-import {catchError, map, Observable, Subject, throwError} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable, of, Subject, throwError} from "rxjs";
 import { BankAccount } from "@core/types/bankAccount.interface";
 import {TableActionTypes} from "@core/types/data-table";
 import {AuthService} from "@core/services/account/auth.service";
@@ -15,8 +15,8 @@ export class BankAccountService {
   action!: typeof TableActionTypes[keyof typeof TableActionTypes];
   selectedBankAccount = {} as any;
   user = this.authService.getCurrentUser();
-
   selectedTableAccounts = [] as any;
+  selectedTableAccounts$ = new BehaviorSubject<any>([]);
   totalBankAccountsNumber: number = 0;
 
 
@@ -41,7 +41,6 @@ export class BankAccountService {
 
   editBankAccount(bankAccount: BankAccount, form: BankAccount): Observable<BankAccount>{
     let body = {...form, id: bankAccount.id, companyId: this.user.companyId}
-    console.log('EDIT BANK ACC', 'bankAccount:', bankAccount, 'body:', body)
     return this.http.post<BankAccount>(`${this.env.apiUrlCompany}/bank-account/create/${this.user.userId}/${this.user.companyId}`, body)
       .pipe(
         catchError(err => throwError(() => new Error(err))),

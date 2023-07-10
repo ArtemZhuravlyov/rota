@@ -9,7 +9,7 @@ import { PageEvent } from "@angular/material/paginator";
 import {
   groupFunctionDivisionTableConfig
 } from "@app/modules/dashboard/company/group-function-division/configs/group-function-division-table.config";
-import {BehaviorSubject, map, Observable, of, switchMap, take} from "rxjs";
+import {BehaviorSubject, map, Observable, of, ReplaySubject, switchMap, take} from "rxjs";
 import {
   divisionActionConfig
 } from "@app/modules/dashboard/company/group-function-division/configs/division-action.config";
@@ -38,6 +38,8 @@ export class GroupFunctionDivisionComponent implements OnInit{
   private readonly currentPage = this._currentPage$.asObservable();
   isPrinting$ = this.printService.isPrinting$;
   groupFunctionDivisionList$!: Observable<any>;
+  exporting$ = new BehaviorSubject([])
+  selectedTableAccs$ = this.groupFunctionDivisionService.selectedTableAccounts$
 
   constructor(
     private readonly groupFunctionDivisionService: GroupFunctionDivisionService,
@@ -80,7 +82,14 @@ export class GroupFunctionDivisionComponent implements OnInit{
         this.printService.isPrinting$.next(true);
         break;
       case TableActionTypes.EXPORT:
-        console.log('EXPORT', event.action);
+        let exportTable = this.groupFunctionDivisionService.selectedTableAccounts.map(
+          (r:any) => ({
+            name: r.name,
+            numberOfDepartment: r.departmentCount,
+            divisionHead: r.managerTitle,
+          })
+        )
+        this.exporting$.next(exportTable);
         break;
 
       case TableActionTypes.IMPORT:
@@ -112,6 +121,7 @@ export class GroupFunctionDivisionComponent implements OnInit{
 
   onSelectedTableItems(items: any){
     this.groupFunctionDivisionService.selectedTableAccounts = [...items.values()];
+    this.groupFunctionDivisionService.selectedTableAccounts$.next([...items.values()])
   }
 
 }

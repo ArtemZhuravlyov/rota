@@ -30,8 +30,9 @@ export class GradeCategoryComponent implements OnInit{
   protected readonly isPrinting$ = this.printService.isPrinting$;
   private readonly _currentPage$ = new BehaviorSubject(INITIAL_PAGE);
   private readonly currentPage = this._currentPage$.asObservable();
-
-  gradeCategoriesList$!: Observable<any>
+  exporting$ = new BehaviorSubject([]);
+  gradeCategoriesList$!: Observable<any>;
+  selectedTableAccs$ = this.gradeCategoryService.selectedTableAccounts$
 
   actionConfig = [
     { icon: 'eye', type: TableActionTypes.VIEW, styleConfig: {
@@ -83,7 +84,13 @@ export class GradeCategoryComponent implements OnInit{
         setTimeout(() => window.print(), 100)
         break;
       case TableActionTypes.EXPORT:
-        console.log('EXPORT', event.action);
+        let exportTable = this.gradeCategoryService.selectedTableAccounts.map(
+          (r:any) => ({
+            Name: r.name,
+            NumberOfJobRole: r.positionCount
+          })
+        )
+        this.exporting$.next(exportTable);
         break;
       case TableActionTypes.IMPORT:
         console.log('import', event.action);
@@ -114,5 +121,6 @@ export class GradeCategoryComponent implements OnInit{
 
   onSelectedTableItems(items: any){
     this.gradeCategoryService.selectedTableAccounts = [...items.values()];
+    this.gradeCategoryService.selectedTableAccounts$.next([...items.values()]);
   }
 }

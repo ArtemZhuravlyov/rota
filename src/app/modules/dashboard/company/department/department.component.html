@@ -1,5 +1,6 @@
 <app-page-header [title]="'DEPARTMENT'"
                  [isPrinting]="isPrinting$ | async"
+                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
                  (onActionClicked)="onActionClicked({action: $event, payload: {}})">
   <div class="action-buttons">
     <app-button
@@ -23,6 +24,7 @@
   [hasCheckboxColumn]="true"
   [actionConfig]="divisionActionConfig"
   [isPrinting]="isPrinting$ | async"
+  [exporting$]="exporting$"
   (selectedItemsIds)="onSelectedTableItems($event)"
 ></app-data-table>
 

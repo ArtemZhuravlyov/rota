@@ -1,5 +1,6 @@
 <app-page-header [title]="'GROUP_FUNCTION_DIVISION'"
                  [isPrinting]="isPrinting$ | async"
+                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
                  (onActionClicked)="onActionClicked({action: $event, payload: {}})">
   <div class="action-buttons">
     <app-button
@@ -21,6 +22,7 @@
   [actionConfig]="divisionActionConfig"
   [tableStyle]="'twoButtons'"
   [isPrinting]="isPrinting$ | async"
+  [exporting$]="exporting$"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
   (selectedItemsIds)="onSelectedTableItems($event)"

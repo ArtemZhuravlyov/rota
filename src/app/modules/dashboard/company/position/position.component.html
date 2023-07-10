@@ -1,5 +1,6 @@
 <app-page-header [title]="'POSITION'"
                  [isPrinting]="isPrinting$ | async"
+                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
                  (onActionClicked)="onActionClicked({action: $event, payload: {}})">
   <div class="action-buttons d-flex">
     <app-button
@@ -28,6 +29,7 @@
   [tableStyle]="'positionTableStyle'"
   [actionConfig]="divisionActionConfig"
   [isPrinting]="isPrinting$ | async"
+  [exporting$]="exporting$"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
   (selectedItemsIds)="onSelectedTableItems($event)"
