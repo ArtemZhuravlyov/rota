@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { MenuPositionX, MenuPositionY } from '@angular/material/menu';
 import { Style } from "@core/types/button.interface";
@@ -15,6 +15,5 @@ export class DropdownMenuComponent {
   @Input() buttonStyleConfig: Style = {} as Style;
   @Input() customClass: string | null = null;
   @Input() menuIcon: string = 'more-vert';
-  @Input() customClass: string | null = null;
   readonly ButtonTypeEnum = ButtonTypeEnum;
 }

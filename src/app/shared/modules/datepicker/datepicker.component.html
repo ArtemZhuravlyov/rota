@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center flex-column">
+  <div class="field-label">
+    <span>{{ title | translate }}</span>
+  </div>
+
+<mat-form-field appearance="outline" [ngStyle]="styleConfig">
+  <input matInput [matDatepicker]="picker" [placeholder]="placeholder | translate" [value]="data" (dateChange)="dateValueChanged($event)">
+  <mat-datepicker-toggle matSuffix [for]="picker">
+    <mat-icon matDatepickerToggleIcon>calendar_month</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+</div>

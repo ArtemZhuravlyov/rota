@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, } from '
 import { InputType } from "@core/types/form-builder.model";
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, } from "@angular/forms";
 import { Style } from "@core/types/style-model";
+import {ButtonTypeEnum} from "@core/enums/button-type.enum";
 
 @Component({
   selector: 'app-textbox',
@@ -31,10 +32,14 @@ export class TextboxComponent implements ControlValueAccessor, OnInit {
   @Input() hintDescription = '';
   @Input() styleConfig: Style = {};
   @Input() extendedValidation = false;
+  @Input() button!: string;
+  @Input() dataType = 'number';
 
   isShowPassword = false;
   isFocus = false;
-  value = ''
+  value = '';
+
+  buttonTypeEnum = ButtonTypeEnum;
 
   ngOnInit() {
     this.formControl.setValue(this.defaultValue);
@@ -42,7 +47,12 @@ export class TextboxComponent implements ControlValueAccessor, OnInit {
 
   setFormValue(value: string): void {
     this.value = value;
-    this.onChange(value);
+    if (this.dataType === 'number') {
+      this.onChange(parseInt(value, 10));
+    } else {
+      this.onChange(value);
+    }
+
     this.onTouch();
   }
   onChange: any = () => {};

@@ -15,7 +15,7 @@ export class HeaderComponent {
   buttonTypeEnum = ButtonTypeEnum;
   notificationMenuConfig = NotificationMenuConfig;
   settingsMenuConfig = SettingsMenuConfig;
-  selectedSettings = -1;
+  selectedSettings = 0;
   personMenuConfig = PersonMenuConfig;
   isNotificationsIconClicked = false;
   isSettingsIconClicked = false;

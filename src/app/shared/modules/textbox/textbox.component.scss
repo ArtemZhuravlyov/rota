@@ -10,7 +10,7 @@
           -webkit-box-shadow: 0 0 0 1000px $background-focus-input inset;
           -moz-box-shadow: 0 0 0 1000px $background-focus-input inset;
         }
-        .prefix-icon {
+        .suffix-icon {
           color: $primary !important;
           background: $white;
         }
@@ -138,7 +138,7 @@
 ::ng-deep .hint-menu {
   ::ng-deep .mat-mdc-menu-content {
     border: 1px solid $text-teal!important;
-    padding: 12px;
+    padding: 12px ;
 
     .hint-menu-heading {
       font: normal normal 600 17px/24px Source Sans Pro;
@@ -149,3 +149,4 @@
     }
   }
 }
+

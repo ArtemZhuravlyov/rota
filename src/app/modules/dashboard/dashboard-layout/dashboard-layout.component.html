@@ -1,7 +1,7 @@
 <ng-container *ngIf="!(isPrinting$ | async)">
   <app-header></app-header>
 
-  <app-menu-toggle [expandedState]="isExpanded" (onToggle)="toggleMenu($event)" [height]="'calc(100% - 60px)'"></app-menu-toggle>
+<app-menu-toggle [expandedState]="isExpanded" (onToggle)="toggleMenu($event)" [height]="'calc(100% - 60px)'"></app-menu-toggle>
 
 </ng-container>
 
@@ -13,18 +13,13 @@
 
       <app-search-input *ngIf="isExpanded; else searchCollapsed" [styleConfig]="{width: '200px', height: '40px', margin: '15px 8px 0'}" (valueChanged)="filterTabs($event)"></app-search-input>
 
-      <a class="navigation-link d-flex align-items-center" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.fullRouterLink ?? tab.routerLink" routerLinkActive="active-link">
-        <mat-icon class="tab-icon" [svgIcon]="tab.icon!"></mat-icon>
-        <span *ngIf="isExpanded">{{tab.title | translate}}</span>
-      </a>
+    <a class="navigation-link d-flex align-items-center" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.fullRouterLink ?? tab.routerLink" routerLinkActive="active-link">
+      <mat-icon class="tab-icon" [ngClass]="{'tab-icon': tab.routerLink, 'search': tab.fullRouterLink}" [svgIcon]="tab.icon!"></mat-icon>
+      <span *ngIf="isExpanded">{{tab.title | translate}}</span>
+    </a>
 
-      <!--    <a class="navigation-link d-flex align-items-center" *ngFor="let tab of tabsConfig" [routerLink]="tab.fullRouterLink ?? tab.routerLink" routerLinkActive="active-link">-->
-      <!--      <mat-icon class="search" *ngIf="searchEvent" [svgIcon]="'search'"></mat-icon>-->
-      <!--      <span class="sub-tabs" *ngIf="isExpanded">{{tab.title | translate}}</span>-->
-      <!--    </a>-->
-
-      <div class="bottom-actions d-flex flex-column">
-        <mat-slide-toggle><span *ngIf="isExpanded">Dark Mode</span></mat-slide-toggle>
+    <div class="bottom-actions d-flex flex-column">
+      <mat-slide-toggle><span *ngIf="isExpanded">Dark Mode</span></mat-slide-toggle>
 
       <a class="navigation-link d-flex justify-content-start align-items-center" [routerLink]="NavigationPaths.SETTINGS" routerLinkActive="active-link">
         <mat-icon class="material-icons-outlined">settings</mat-icon>

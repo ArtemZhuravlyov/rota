@@ -22,7 +22,11 @@
               </div>
             </div>
             <div class="actions-button">
-              <app-button [btnType]="buttonTypeEnum.FLAT" [title]="'View All'" [styleConfig]="{height: '36px', width: '86px', background: '#F5F6F8', color: '#3E77AA'}"></app-button>
+              <app-button
+                [btnType]="buttonTypeEnum.FLAT"
+                [title]="'View All' | translate"
+                [styleConfig]="{height: '36px', width: '86px', background: '#F5F6F8', color: '#3E77AA'}"
+              ></app-button>
             </div>
           </div>
         </div>

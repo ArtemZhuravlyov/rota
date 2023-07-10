@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormCardComponent } from './form-card.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 
 
@@ -11,8 +12,9 @@ import { FormCardComponent } from './form-card.component';
     exports: [
         FormCardComponent
     ],
-    imports: [
-        CommonModule
-    ]
+  imports: [
+    CommonModule,
+    MatMenuModule
+  ]
 })
 export class FormCardModule { }

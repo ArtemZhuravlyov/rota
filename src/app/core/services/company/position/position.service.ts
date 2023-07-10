@@ -8,6 +8,7 @@ import {createHttpParams} from "@shared/utils/create-http-params";
 import {GradeCategoryResponse} from "@core/types/grade-category.model";
 import {TableActionTypes} from "@core/types/data-table";
 import {FormGroup} from "@angular/forms";
+import {PositionResponse} from "@core/types/position.model";
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +27,9 @@ export class PositionService {
     private authService: AuthService
   ) { }
 
-  getPositionsList(pageSize: number, pageIndex: number): Observable<any> {
+  getPositionsList(pageSize: number, pageIndex: number): Observable<PositionResponse> {
     const params = createHttpParams({ pageSize, pageIndex });
-    return this.http.post(`${this.env.apiUrlCompany}/position/${this.user.userId}/${this.user.companyId}`, {}, { params })
+    return this.http.post<PositionResponse>(`${this.env.apiUrlCompany}/position/${this.user.userId}/${this.user.companyId}`, {}, { params })
       .pipe(
         catchError(err => throwError(() => new Error(err))),
       );
