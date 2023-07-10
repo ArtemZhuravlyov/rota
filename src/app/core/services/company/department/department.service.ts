@@ -7,6 +7,7 @@ import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import {createHttpParams} from "@shared/utils/create-http-params";
 import {TableActionTypes} from "@core/types/data-table";
 import {FormGroup} from "@angular/forms";
+import {DepartmentResponse} from "@core/types/department.model";
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +26,9 @@ export class DepartmentService {
     private authService: AuthService
   ) { }
 
-  getDepartmentList(pageSize: number, pageIndex: number): Observable<any> {
+  getDepartmentList(pageSize: number, pageIndex: number): Observable<DepartmentResponse> {
     const params = createHttpParams({ pageSize, pageIndex });
-    return this.http.post(`${this.env.apiUrlCompany}/department/${this.user.userId}/${this.user.companyId}`, {}, { params })
+    return this.http.post<DepartmentResponse>(`${this.env.apiUrlCompany}/department/${this.user.userId}/${this.user.companyId}`, {}, { params })
       .pipe(
         catchError(err => throwError(() => new Error(err))),
       );

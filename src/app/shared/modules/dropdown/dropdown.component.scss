@@ -14,6 +14,7 @@
       font-size: 15px !important;
       line-height: 21px !important;
       font-family: "Source Sans Pro", sans-serif !important;
+      padding-left: 8px;
     }
 
     .dropdown-selected {
@@ -62,6 +63,25 @@
     font-size: 15px !important;
     line-height: 21px !important;
     padding-bottom: 10px;
+
+    ::ng-deep .mat-icon {
+      min-height: 36px;
+      min-width: 36px;
+      color: $text-gray;
+      background: $light-gray;
+      border-radius: 99px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .additional-label {
+    margin-left: 40px;
+  }
+
+  ::ng-deep mat-checkbox {
+    margin: -14px 0 -10px 40px;
   }
 
   .icon-arrow {
@@ -113,6 +133,22 @@
 
   .mat-mdc-option-active {
     background: transparent!important;
+  }
+
+  .selected-dropdown {
+    margin-right: 10px;
+  }
+
+  .country-flag {
+    margin-right: 12px;
+  }
+
+  .currency {
+    font-size: 25px;
+  }
+
+  .text-value {
+    margin-left: 10px;
   }
 
   .cdk-overlay-pane {
@@ -167,4 +203,19 @@
 
 ::ng-deep .currency-format {
   font-size: 30px;
+}
+
+::ng-deep .hint-menu {
+  ::ng-deep .mat-mdc-menu-content {
+    border: 1px solid $text-teal!important;
+    padding: 12px ;
+
+    .hint-menu-heading {
+      font: normal normal 600 17px/24px Source Sans Pro;
+    }
+
+    .hint-menu-description {
+      font: normal normal normal 15px/21px Source Sans Pro;
+    }
+  }
 }

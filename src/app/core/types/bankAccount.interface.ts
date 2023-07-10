@@ -8,3 +8,8 @@ export interface BankAccount {
   id?: string;
   companyId?: string;
 }
+
+export interface BankAccountResponse {
+  bankAccounts: BankAccount[];
+  totalCount: number;
+}

@@ -261,5 +261,22 @@ export class MaterialModule {
       'time-tracking',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/time-tracking.svg")
     );
+    matIconRegistry.addSvgIcon(
+      'salary',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/salary.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'google',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/google.svg")
+    );
+    //TEST-ICONS
+    matIconRegistry.addSvgIcon(
+      'nigeria-flag',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/nigeria-flag.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'manager-face',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/manager-face.svg")
+    );
   }
 }

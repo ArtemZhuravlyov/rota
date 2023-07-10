@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center flex-column textbox" [ngStyle]="styleConfig">
 
-  <div class="field-label d-flex justify-content-between">
+  <div class="field-label d-flex justify-content-between align-items-center">
     <span>{{ label | translate }}</span>
     <ng-template [ngIf]="maxLength && isFocus">
       <span>{{ value.length }} / {{ maxLength }}</span>
@@ -27,7 +27,7 @@
     }"
     appearance="outline"
   >
-    <mat-icon class="prefix-icon material-icons-outlined" *ngIf="icon">{{ icon }}</mat-icon>
+    <mat-icon class="suffix-icon material-icons-outlined" *ngIf="icon">{{ icon }}</mat-icon>
     <textarea
       [name]="label"
       [maxlength]="+maxLength!"

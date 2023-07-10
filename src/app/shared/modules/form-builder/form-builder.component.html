@@ -21,16 +21,26 @@
         [extendedValidation]="formField.extendedValidation ?? false"
         [defaultValue]="formField.data"
         [class.disabled]="formField.disabled"
+        [button]="formField.button!"
+        [dataType]="formField.dataType!"
       ></app-textbox>
     </div>
+
     <div *ngSwitchCase="componentType.DROPDOWN">
       <app-dropdown
         [formControlName]="formField.key"
+        [additionalTitle]="formField.additionalTitle!"
+        [checkbox]="formField.checkbox!"
         [formControl]="$any(form.controls[formField.key])"
         [title]="formField.label!"
         [data]="formField.data"
         [class.disabled]="formField.disabled"
         (selectChanged)="selectChanged($event, formField.key)"
+        [styleConfig]="formField.styleConfig!"
+        [placeholder]="formField.placeholder!"
+        [hintMenu]="formField.hintMenu!"
+        [hintHeading]="formField.hintHeading!"
+        [hintDescription]="formField.hintDescription!"
       ></app-dropdown>
     </div>
 
@@ -39,6 +49,8 @@
         [formControlName]="formField.key"
         [title]="formField.label!"
         [data]="formField.data"
+        [placeholder]="formField.placeholder!"
+        [icon]="formField.icon!"
       ></app-phone-select>
     </div>
 
@@ -72,7 +84,13 @@
       text
     </div>
     <div *ngSwitchCase="componentType.DATEPICKER">
-      datepicker
+      <app-datepicker
+        [formControlName]="formField.key"
+        [placeholder]="formField.placeholder!"
+        [title]="formField.label!"
+        [data]="formField.data"
+        [styleConfig]="formField.styleConfig!"
+      ></app-datepicker>
     </div>
 
     <div *ngSwitchCase="componentType.NUMERIC">

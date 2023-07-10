@@ -31,4 +31,9 @@ export class EmployeeService {
     return this.http.post(`${this.env.apiUrlEmployee}/employee/process/${userId}/${companyId}/records`, uploadFile) as RecordFileResult;
   }
 
+  createEmployee(body: any): Observable<any> {
+    const { userId, companyId } = this.authService.getCurrentUser();
+    return this.http.post<any>(`${this.env.apiUrlEmployee}/employee/create/${userId}/${companyId}`, body);
+  }
+
 }

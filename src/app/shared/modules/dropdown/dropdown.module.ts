@@ -7,6 +7,7 @@ import { CountryFlagModule } from "@shared/pipes/country-flag/country-flag.modul
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchInputModule } from "@shared/modules/search-input/search-input.module";
 import { FilterModule } from "@shared/pipes/filter/filter.module";
+import {DropdownMenuModule} from "@shared/modules/dropdown-menu/dropdown-menu.module";
 
 
 
@@ -26,6 +27,7 @@ import { FilterModule } from "@shared/pipes/filter/filter.module";
         SearchInputModule,
         FilterModule,
         ReactiveFormsModule,
+        DropdownMenuModule,
     ]
 })
 export class DropdownModule { }

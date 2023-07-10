@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Style } from "@core/types/style-model";
 
 @Component({
   selector: 'app-form-card',
@@ -8,6 +7,6 @@ import { Style } from "@core/types/style-model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormCardComponent {
-  @Input() styleConfig?: Style;
+  @Input() customClass: string | null = null;
 
 }

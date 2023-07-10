@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import { ENVIRONMENT } from "@app/app.module";
 import { Environment } from "@core/types/environment";
 import {BehaviorSubject, catchError, map, Observable, of, Subject, throwError} from "rxjs";
-import { BankAccount } from "@core/types/bankAccount.interface";
+import {BankAccount, BankAccountResponse} from "@core/types/bankAccount.interface";
 import {TableActionTypes} from "@core/types/data-table";
 import {AuthService} from "@core/services/account/auth.service";
 
@@ -27,12 +27,12 @@ export class BankAccountService {
   ) { }
 
 
-  getBankAccount(userId: string, companyId: string, pageSize?: number, pageIndex?: number): Observable<any> {
+  getBankAccount(userId: string, companyId: string, pageSize?: number, pageIndex?: number): Observable<BankAccountResponse> {
     const params = new HttpParams()
       .append('pageSize', pageSize!)
       .append('pageIndex', pageIndex! + 1);
 
-    return this.http.post(`${this.env.apiUrlCompany}/bank-account/${userId}/${companyId}`, {}, {params})
+    return this.http.post<BankAccountResponse>(`${this.env.apiUrlCompany}/bank-account/${userId}/${companyId}`, {}, {params})
   }
 
   createBankAccount(userId: string, companyId: string, body: BankAccount): Observable<BankAccount> {

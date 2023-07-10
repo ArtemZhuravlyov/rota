@@ -7,6 +7,7 @@ import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import { createHttpParams } from "@shared/utils/create-http-params";
 import {FormGroup} from "@angular/forms";
 import {TableActionTypes} from "@core/types/data-table";
+import {DivisionResponse} from "@core/types/group-function-division.model";
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +27,9 @@ export class GroupFunctionDivisionService {
     private authService: AuthService
   ) { }
 
-  getDivisionsList(pageSize: number, pageIndex: number): Observable<any> {
+  getDivisionsList(pageSize: number, pageIndex: number): Observable<DivisionResponse> {
     const params = createHttpParams({ pageIndex , pageSize });
-    return this.http.post(`${this.env.apiUrlCompany}/division/${this.user.userId}/${this.user.companyId}`, {}, { params })
+    return this.http.post<DivisionResponse>(`${this.env.apiUrlCompany}/division/${this.user.userId}/${this.user.companyId}`, {}, { params })
       .pipe(
         catchError(err => throwError(() => new Error(err))),
       );

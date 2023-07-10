@@ -6,7 +6,8 @@ export const groupFunctionDivisionFormConfig: FormField[] = [
     key: 'name',
     inputType: 'text',
     componentType: ComponentTypeEnum.TEXTBOX,
-    label: 'NAME'
+    label: 'NAME',
+    placeholder: 'ENTER'
   },
   {
     key: 'managerId',

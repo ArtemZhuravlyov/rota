@@ -15,7 +15,6 @@ export class DashboardLayoutComponent {
   dashboardTabsConfig = dashboardTabsConfig;
   isExpanded = true;
   searchEvent = '';
-  tabsConfig = tabsConfig();
   protected readonly isPrinting$ = this.printService.isPrinting$
 
   constructor(private readonly printService: PrintService) {
