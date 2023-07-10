@@ -26,12 +26,12 @@
       <div class="bottom-actions d-flex flex-column">
         <mat-slide-toggle><span *ngIf="isExpanded">Dark Mode</span></mat-slide-toggle>
 
-        <a class="navigation-link d-flex justify-content-start align-items-center" [routerLink]="'settings'">
-          <mat-icon class="material-icons-outlined">settings</mat-icon>
-          <span *ngIf="isExpanded">Settings</span>
-        </a>
-      </div>
-    </mat-drawer>
+      <a class="navigation-link d-flex justify-content-start align-items-center" [routerLink]="NavigationPaths.SETTINGS" routerLinkActive="active-link">
+        <mat-icon class="material-icons-outlined">settings</mat-icon>
+        <span *ngIf="isExpanded">Settings</span>
+      </a>
+    </div>
+  </mat-drawer>
 
   <mat-drawer-content [ngStyle]="{'margin-left': isExpanded ? '220px' : '80px'}">
     <router-outlet></router-outlet>

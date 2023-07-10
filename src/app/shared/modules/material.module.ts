@@ -19,6 +19,8 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatStepperModule } from "@angular/material/stepper";
 import {MatDialogModule} from "@angular/material/dialog";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -39,6 +41,8 @@ const MATERIAL_MODULES = [
   MatStepperModule,
   MatProgressSpinnerModule,
   MatDialogModule,
+  MatTabsModule,
+  MatButtonToggleModule,
 ]
 
 @NgModule({
@@ -212,6 +216,10 @@ export class MaterialModule {
     matIconRegistry.addSvgIcon(
       'company-menu-logo',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/company-menu-logo.svg"),
+    );
+    matIconRegistry.addSvgIcon(
+      'schedule',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/schedule.svg"),
     );
     matIconRegistry.addSvgIcon(
       'benefits',

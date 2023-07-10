@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { dashboardTabsConfig } from "./configs/dashboard-tabs-config";
+import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 import {tabsConfig} from "@shared/utils/tabs-config";
 import {PrintService} from "@core/services/print/print.service";
 
@@ -35,4 +36,5 @@ export class DashboardLayoutComponent {
     }
   }
 
+    protected readonly NavigationPaths = NavigationPaths;
 }

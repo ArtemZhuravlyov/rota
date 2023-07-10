@@ -4,7 +4,7 @@ import { DropdownComponent } from './dropdown.component';
 import { MaterialModule } from "../material.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { CountryFlagModule } from "@shared/pipes/country-flag/country-flag.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchInputModule } from "@shared/modules/search-input/search-input.module";
 import { FilterModule } from "@shared/pipes/filter/filter.module";
 
@@ -17,14 +17,15 @@ import { FilterModule } from "@shared/pipes/filter/filter.module";
   exports: [
     DropdownComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    TranslateModule,
-    CountryFlagModule,
-    FormsModule,
-    SearchInputModule,
-    FilterModule,
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        TranslateModule,
+        CountryFlagModule,
+        FormsModule,
+        SearchInputModule,
+        FilterModule,
+        ReactiveFormsModule,
+    ]
 })
 export class DropdownModule { }

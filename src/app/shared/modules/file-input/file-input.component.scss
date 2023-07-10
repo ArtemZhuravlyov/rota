@@ -1,0 +1,145 @@
+@import "src/app/core/styles/material-custom/constants";
+@import "src/app/core/styles/media-mixin";
+@import "src/app/core/styles/mixins/fonts-mixin";
+
+:host {
+  font-family: Source Sans Pro, 'sans-serif';
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .file-input-container {
+    width: 100%;
+  }
+
+  .file-input {
+    display: none;
+  }
+
+  @include media-request(desktop-tablet, min) {
+    .mobile-btn {
+      display: none;
+    }
+  }
+
+  @include media-request(desktop-tablet, max) {
+    .desktop-btn {
+      display: none;
+    }
+  }
+
+  .file-name {
+    width: 100%;
+
+    input {
+      border: none;
+      width: 100%;
+    }
+  }
+
+  app-header-content {
+    margin-bottom: 30px;
+  }
+
+  .input-completed {
+    max-width: 780px;
+    width: 100%;
+    background: $background-light-blue;
+    border-radius: 10px;
+    height: 52px;
+  }
+
+
+  .template {
+    padding: 16px 0 16px 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    .mat-icon {
+      padding-right: 12px;
+    }
+  }
+
+  .btn-download {
+    padding-right: 5px;
+  }
+
+  .btn-upload {
+    padding: 4px 5px;
+  }
+
+  .input-upload {
+    border: 1px solid $green-border;
+    max-width: 780px;
+    width: 100%;
+    border-radius: 10px;
+    height: 52px;
+    margin-bottom: 10px;
+  }
+
+  .file-name {
+    padding: 16px 0 15px 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+      margin-right: 12px;
+    }
+  }
+
+  .error {
+    color: $border-error !important;
+  }
+
+  .input-error {
+    border: 1px solid $border-error;
+    background: $background-error-input;
+  }
+
+  .information-text {
+    @include fontStyle(subtitle);
+    text-align: left;
+    max-width: 780px;
+    width: 100%;
+    padding-left: 20px;
+  }
+
+  .text-note {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 21px;
+    color: $text-orange;
+    padding-right: 5px;
+  }
+
+  .file-size {
+    @include fontStyle(text-small);
+
+    background: $white;
+    width: 125px;
+    height: 24px;
+    border-radius: 12px;
+    margin-right: 5px;
+
+    :before {
+      content: 'Size: ';
+    }
+  }
+}
+
+.delete-button {
+  width: 30px;
+}
+
+.field-label {
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 21px;
+  padding-bottom: 10px;
+  margin-right: auto;
+}

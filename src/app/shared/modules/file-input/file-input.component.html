@@ -1,0 +1,62 @@
+
+<div class="field-label d-flex justify-content-between">
+  <span>{{ label | translate }}</span>
+</div>
+
+<div class="d-flex justify-content-center align-items-center flex-column file-input-container">
+  <div
+    class="d-flex justify-content-between"
+    [ngClass]="{
+              'input-error': inputIsError,
+              'input-upload': !formControl.valid,
+              'input-completed': formControl.valid
+           }">
+    <div class="file-name">
+      <span>{{ formControl.value ? formControl.value?.name : 'SELECT_FILE' | translate }}</span>
+    </div>
+    <div class="btn-upload d-flex justify-content-end align-items-center">
+
+      <ng-container *ngIf="formControl.valid; else notSelected">
+        <div class="file-size d-flex justify-content-center align-items-center">
+          <span>{{ selectedFileSize }}</span>
+        </div>
+        <app-button
+          class="delete-button"
+          [isIconButton]="true"
+          [btnType]="'LITTLE_ICON'"
+          [icon]="'delete'"
+          (btnClick)="formControl.reset()"
+          [styleConfig]="{ height: '30px', width: '30px', background: 'white', 'color': '#FF0000'}"
+        ></app-button>
+      </ng-container>
+
+      <ng-template #notSelected>
+        <app-button
+          class="mobile-btn"
+          [styleConfig]="buttonStyleConfig.mobileBtn"
+          [isIconButton]="true"
+          [btnType]="'LITTLE_ICON'"
+          (btnClick)="input.click()"
+        ></app-button>
+
+        <app-button
+          class="desktop-btn"
+          [styleConfig]="{ width: '134px', height: '44px' }"
+          [title]="'SELECT_FILE'"
+          (btnClick)="input.click()"
+        ></app-button>
+        <input
+          #input
+          class="file-input"
+          (input)="selectFile(input)"
+          type="file"
+          [accept]="['.img', '.svg', '.jpeg']">
+      </ng-template>
+    </div>
+  </div>
+  <div class="information-text" [ngClass]="{ 'error': inputIsError }" *ngIf="!formControl.valid">
+    <span class="text-note" *ngIf="!inputIsError">{{ 'NOTE' | translate }}</span>
+    <span>{{ (inputIsError ? 'SELECT_FILE_ERROR' : maxFile) | translate }}</span>
+  </div>
+
+</div>

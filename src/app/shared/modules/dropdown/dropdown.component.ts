@@ -9,7 +9,7 @@ import {
   Output
 } from '@angular/core';
 import { DropdownOptions } from "@core/types/form-builder.model";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { Observable } from "rxjs";
 import { Style } from "@core/types/style-model";
 interface PreSelectedValue {
@@ -29,7 +29,8 @@ interface PreSelectedValue {
     },
   ]
 })
-export class DropdownComponent implements ControlValueAccessor, AfterViewChecked{
+export class DropdownComponent implements ControlValueAccessor {
+  @Input() formControl!: FormControl;
   @Input() title = ''
   @Input() data!: DropdownOptions[] & Observable<DropdownOptions[]>;
   @Input() valueField = 'value';
