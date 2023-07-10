@@ -20,7 +20,11 @@
   </div>
 
   <ng-container *ngIf="!isPrinting">
-    <app-page-sub-header *ngIf="isSubHeaderShowed" (onActionClicked)="actionClicked($event)"></app-page-sub-header>
+    <app-page-sub-header *ngIf="isSubHeaderShowed"
+                         [additionalButtonsDisabled]="additionalButtonsDisabled"
+                         (onActionClicked)="actionClicked($event)">
+
+    </app-page-sub-header>
   </ng-container>
 
 </ng-container>

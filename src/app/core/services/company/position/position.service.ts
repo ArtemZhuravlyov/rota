@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ENVIRONMENT} from "@app/app.module";
 import {Environment} from "@core/types/environment";
 import {AuthService} from "@core/services/account/auth.service";
-import {catchError, Observable, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import {createHttpParams} from "@shared/utils/create-http-params";
 import {GradeCategoryResponse} from "@core/types/grade-category.model";
 import {TableActionTypes} from "@core/types/data-table";
@@ -18,6 +18,7 @@ export class PositionService {
   action!: typeof TableActionTypes[keyof typeof TableActionTypes];
   selectedPosition = {} as any;
   selectedTableAccounts = [] as any;
+  selectedTableAccounts$ = new BehaviorSubject<any>([])
 
   constructor(
     private http: HttpClient,

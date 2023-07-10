@@ -75,6 +75,7 @@ export class DropdownComponent implements ControlValueAccessor, AfterViewChecked
   writeValue(obj: any): void { }
 
   setPreselectedValue(){
+    console.log(this.data, 'DATA')
       if (this.data) {
         this.data.find((data:any) => {
           if (data.preSelected) {

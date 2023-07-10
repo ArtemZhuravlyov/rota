@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { ENVIRONMENT } from "@app/app.module";
 import { Environment } from "@core/types/environment";
 import { AuthService } from "@core/services/account/auth.service";
-import {catchError, Observable, ReplaySubject, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, ReplaySubject, throwError} from "rxjs";
 import { createHttpParams } from "@shared/utils/create-http-params";
 import {GradeCategory, GradeCategoryResponse} from "@core/types/grade-category.model";
 
@@ -21,6 +21,7 @@ export class GradeCategoryService {
   selectedGrade$ = new ReplaySubject<GradeCategory>(1);
   user = this.authService.getCurrentUser();
   selectedTableAccounts = [] as any;
+  selectedTableAccounts$ = new BehaviorSubject<any>([]);
 
   getGradeCategoriesList(pageSize: number, pageIndex: number): Observable<GradeCategoryResponse> {
     const params = createHttpParams({ pageSize, pageIndex });

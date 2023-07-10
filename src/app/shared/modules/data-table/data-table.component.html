@@ -1,5 +1,6 @@
 <div class="table-container" [class]="tableStyle">
-  <table mat-table [dataSource]="filteredData" *ngIf="tableData" [class.isPrinting]="isPrinting">
+  <table mat-table [dataSource]="filteredData" *ngIf="tableData" [class.isPrinting]="isPrinting" id="ExampleMaterialTable">
+
     <ng-container *ngFor="let col of columns; index as i">
 
       <ng-container [ngSwitch]="tableConfig[i].columnType">
@@ -148,6 +149,7 @@
   <app-search-input *ngIf="showSearch" class="table-search" [showClearButton]="false" [styleConfig]="{width: 'calc(100vw - 464px)', 'margin-left': '12px'}">
     <app-button class="close-icon" (btnClick)="toggleSearch()" [isIconButton]="true" [btnType]="'ICON'" [icon]="'clear'"></app-button>
   </app-search-input>
+
 </div>
 
 <ng-template #defaultCellHeader let-i=i>

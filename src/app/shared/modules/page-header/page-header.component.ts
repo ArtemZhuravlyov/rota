@@ -17,6 +17,7 @@ export class PageHeaderComponent {
   @Input() isSubHeaderShowed = true;
   @Input() isBackBtnShowed = false;
   @Input() isPrinting!: boolean | null;
+  @Input() additionalButtonsDisabled: boolean = false
   @Output() onActionClicked = new EventEmitter()
 
   protected readonly NavigationPaths = NavigationPaths;

@@ -10,6 +10,7 @@ import {divisionActionConfig} from "@app/modules/dashboard/company/group-functio
 import {ActivatedRoute, Router} from "@angular/router";
 import {PrintService} from "@core/services/print/print.service";
 import {debounceTime} from "rxjs/operators";
+import {BankAccount} from "@core/types/bankAccount.interface";
 
 const INITIAL_PAGE = {
   pageSize: 2,
@@ -32,7 +33,9 @@ export class DepartmentComponent implements OnInit{
 
   private readonly _currentPage$ = new BehaviorSubject(INITIAL_PAGE);
   private readonly currentPage = this._currentPage$.asObservable();
-  departmentList$!: Observable<any>
+  departmentList$!: Observable<any>;
+  exporting$ = new BehaviorSubject([])
+  selectedTableAccs$ = this.departmentService.selectedTableAccounts$;
 
 
 
@@ -78,7 +81,15 @@ export class DepartmentComponent implements OnInit{
         this.printService.isPrinting$.next(true);
         break;
       case TableActionTypes.EXPORT:
-        console.log('EXPORT', event.action);
+        let exportTable = this.departmentService.selectedTableAccounts.map(
+          (r:any) => ({
+            Name: r.name,
+            HeadofDepratment: r.managerTitle,
+            Division: r.divisionName,
+            NumberOfJobRole: r.positionCount
+          })
+        )
+        this.exporting$.next(exportTable);
         break;
 
       case TableActionTypes.IMPORT:
@@ -111,5 +122,6 @@ export class DepartmentComponent implements OnInit{
 
   onSelectedTableItems(items: any){
     this.departmentService.selectedTableAccounts = [...items.values()];
+    this.departmentService.selectedTableAccounts$.next([...items.values()])
   }
 }

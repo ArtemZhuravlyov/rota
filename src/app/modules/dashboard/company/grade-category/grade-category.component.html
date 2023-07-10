@@ -1,5 +1,6 @@
 <app-page-header [title]="'GRADE_CATEGORY'"
                  [isPrinting]="isPrinting$ | async"
+                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
                  (onActionClicked)="onActionClicked({action: $event, payload: {}})">
   <div class="action-buttons">
     <app-button
@@ -21,6 +22,7 @@
   [hasCheckboxColumn]="true"
   [actionConfig]="actionConfig"
   [isPrinting]="isPrinting$ | async"
+  [exporting$]="exporting$"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
   (selectedItemsIds)="onSelectedTableItems($event)"

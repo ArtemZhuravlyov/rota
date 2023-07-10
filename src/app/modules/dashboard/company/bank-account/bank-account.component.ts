@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostListener, OnInit} from '@angular/core';
 import { bankAccountTableConfig } from "@app/modules/dashboard/company/configs/bank-account-table-config";
 import { PageEvent } from "@angular/material/paginator";
-import {map, Observable, of, take} from "rxjs";
+import {BehaviorSubject, map, Observable, of, ReplaySubject, take} from "rxjs";
 import { AuthService } from "@core/services/account/auth.service";
 import { BankAccountService } from "@core/services/bank-account/bank-account.service";
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
@@ -10,6 +10,7 @@ import { ButtonTypeEnum } from "@core/enums/button-type.enum";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PrintService} from "@core/services/print/print.service";
 import {debounceTime} from "rxjs/operators";
+import {BankAccount} from "@core/types/bankAccount.interface";
 
 @Component({
   selector: 'app-bank-account',
@@ -24,7 +25,8 @@ export class BankAccountComponent implements OnInit{
   tableStyle = 'bankAccount'
   bankAccounts$!: Observable<{ bankAccounts: any }>;
   isPrinting$ = this.printService.isPrinting$;
-
+  exporting$ = new BehaviorSubject([]);
+  selectedTableAccs$ = this.bankAccountService.selectedTableAccounts$
 
   constructor(
     private authService: AuthService,
@@ -35,11 +37,16 @@ export class BankAccountComponent implements OnInit{
   ){}
 
   ngOnInit() {
-    this.bankAccounts$ = this.bankAccountService.getBankAccount(this.authService.getCurrentUserId(), this.authService.getCompanyId(), 2, 0)
+   this.setDefaultAccounts();
   }
 
 
   onActionClicked(event: TableAction){
+    let selectedAccounts$ = of(this.bankAccountService.selectedTableAccounts).pipe(
+      map((accounts: any) => ({
+        bankAccounts: accounts,
+        totalCount: accounts.length
+      })));
     switch (event.action){
       case TableActionTypes.DELETE:
         this.bankAccountService.deleteBankAccount(event.payload.id, event.payload).subscribe();
@@ -56,16 +63,20 @@ export class BankAccountComponent implements OnInit{
             window.print()
           }
         })
-        let selectedAccounts$ = of(this.bankAccountService.selectedTableAccounts).pipe(
-          map((accounts: any) => ({
-            bankAccounts: accounts,
-            totalCount: accounts.length
-          })));
         this.bankAccounts$ = selectedAccounts$;
         this.printService.isPrinting$.next(true);
         break;
       case TableActionTypes.EXPORT:
-        console.log('EXPORT', event.action);
+        let exportTable = this.bankAccountService.selectedTableAccounts.map(
+          (r:BankAccount) => ({
+            bank: r.bankName,
+            sortCode: r.sortCode,
+            AccountNumber: r.accountNumber,
+            swift: r.swiftCode,
+            iban: r.iban
+          })
+        )
+        this.exporting$.next(exportTable);
         break;
       case TableActionTypes.IMPORT:
         console.log('import', event.action);
@@ -83,8 +94,8 @@ export class BankAccountComponent implements OnInit{
   @HostListener('window:afterprint', ['$event'])
   onPrintWindowClosed(): void{
     this.printService.isPrinting$.next(false);
-    this.bankAccounts$ = this.bankAccountService.getBankAccount(this.authService.getCurrentUserId(), this.authService.getCompanyId(), 2, 0)
-  }
+    this.setDefaultAccounts()
+     }
 
   onPageChange({pageSize, pageIndex}: PageEvent){
     this.bankAccounts$ = this.bankAccountService.getBankAccount(this.authService.getCurrentUserId(), this.authService.getCompanyId(), pageSize, pageIndex)
@@ -92,6 +103,11 @@ export class BankAccountComponent implements OnInit{
 
   onSelectedTableItems(items: any){
    this.bankAccountService.selectedTableAccounts = [...items.values()];
+   this.bankAccountService.selectedTableAccounts$.next([...items.values()]);
+  }
+
+  setDefaultAccounts(){
+    this.bankAccounts$ = this.bankAccountService.getBankAccount(this.authService.getCurrentUserId(), this.authService.getCompanyId(), 2, 0)
   }
 
   actionConfig = [

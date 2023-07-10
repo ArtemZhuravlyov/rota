@@ -12,6 +12,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {InfoModal, InfoModalComponent} from "@shared/modalWindows/info-modal/info-modal.component";
 import {PrintService} from "@core/services/print/print.service";
 import {debounceTime} from "rxjs/operators";
+import {BankAccount} from "@core/types/bankAccount.interface";
 
 const INITIAL_PAGE = {
   pageSize: 2,
@@ -32,7 +33,8 @@ export class PositionComponent implements OnInit{
   private readonly _currentPage$ = new BehaviorSubject(INITIAL_PAGE);
   private readonly currentPage = this._currentPage$.asObservable();
   protected readonly isPrinting$ = this.printService.isPrinting$;
-
+  exporting$ = new BehaviorSubject([]);
+  selectedTableAccs$ = this.positionService.selectedTableAccounts$
   positionList$!: Observable<any>
 
   constructor(
@@ -81,7 +83,16 @@ export class PositionComponent implements OnInit{
         break;
 
       case TableActionTypes.EXPORT:
-        console.log('EXPORT', event.action);
+        let exportTable = this.positionService.selectedTableAccounts.map(
+          (r:any) => ({
+            name: r.name,
+            gradeLevel: r.gradeLevel,
+            NumberOfEmployee: r.employeeCount,
+            JobDescription: r.jobDescription,
+          })
+        )
+        this.exporting$.next(exportTable);
+
         break;
 
       case TableActionTypes.IMPORT:
@@ -137,6 +148,7 @@ export class PositionComponent implements OnInit{
 
   onSelectedTableItems(items: any){
     this.positionService.selectedTableAccounts = [...items.values()];
+    this.positionService.selectedTableAccounts$.next([...items.values()])
   }
 
 }

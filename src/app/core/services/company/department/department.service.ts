@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ENVIRONMENT} from "@app/app.module";
 import {Environment} from "@core/types/environment";
 import {AuthService} from "@core/services/account/auth.service";
-import {catchError, Observable, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import {createHttpParams} from "@shared/utils/create-http-params";
 import {TableActionTypes} from "@core/types/data-table";
 import {FormGroup} from "@angular/forms";
@@ -17,6 +17,7 @@ export class DepartmentService {
   selectedDepartment = {} as any;
   user = this.authService.getCurrentUser();
   selectedTableAccounts = [] as any;
+  selectedTableAccounts$ = new BehaviorSubject<any>([]);
 
   constructor(
     private http: HttpClient,
