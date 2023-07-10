@@ -34,6 +34,11 @@ const routes: Routes = [
         data: {breadcrumb: 'USER_ACCOUNT'},
       },
       {
+        path: NavigationPaths.SETTINGS,
+        loadChildren: () => import('./settings/settings.module').then( m => m.SettingsModule),
+        data: {breadcrumb: 'SETTINGS'},
+      },
+      {
         path: NavigationPaths.ENGAGEMENT,
         loadChildren: () => import('./engagement/engagement.module').then(m => m.EngagementModule),
         data: {breadcrumb: 'ENGAGEMENT'},

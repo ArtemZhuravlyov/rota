@@ -134,3 +134,18 @@
     }
   }
 }
+
+::ng-deep .hint-menu {
+  ::ng-deep .mat-mdc-menu-content {
+    border: 1px solid $text-teal!important;
+    padding: 12px;
+
+    .hint-menu-heading {
+      font: normal normal 600 17px/24px Source Sans Pro;
+    }
+
+    .hint-menu-description {
+      font: normal normal normal 15px/21px Source Sans Pro;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { ValidatorFn } from "@angular/forms";
 
 export interface FormField {
   key: string;
-  label: string;
+  label?: string;
   componentType: ComponentType;
   data?: any;
   placeholder?: string;
@@ -16,6 +16,12 @@ export interface FormField {
   maxLength?: number;
   styleConfig?:  { [key: string]: string };
   extendedValidation?: boolean;
+  heading?: string;
+  maxFile?: string;
+  hintMenu?: boolean;
+  hintHeading?: string;
+  hintDescription?: string;
+  toggleText?: string;
   disabled?: boolean;
   preSelectedValue?: any;
 }

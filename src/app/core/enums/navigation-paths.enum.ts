@@ -27,6 +27,7 @@ export enum NavigationPaths {
   SCHEDULING = 'scheduling',
   ENGAGEMENT = 'engagement',
   REPORT_ANALYTICS = 'reports-analytics',
+  SETTINGS = 'settings',
 
 
   //Company sub-menu  paths
@@ -63,6 +64,12 @@ export enum NavigationPaths {
   USER = 'user',
   ROLE = 'role',
   IMPORT_USER = 'import-user',
+
+  //SETTINGS
+  WORKFLOW = 'workflow',
+  PAYROLL_ACCOUNTING = 'payroll-accounting',
+  LEAVE_MANAGEMENT = 'leave-management',
+  TRUSTED_DEVICES = 'trusted-devices',
 
   // Bank account sub-menu path
   CREATE_BANK_ACCOUNT = 'create-bank-account',

@@ -1,0 +1,8 @@
+<div class="field-label">
+  <span>{{ label | translate }}</span>
+</div>
+
+<mat-form-field appearance="outline">
+  <input matInput [formControl]="formControl" [(ngModel)]="time" (change)="setFormValue()" type="time"/>
+  <mat-icon matSuffix svgIcon="schedule"></mat-icon>
+</mat-form-field>

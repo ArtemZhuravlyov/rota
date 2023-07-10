@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { MenuPositionX, MenuPositionY } from '@angular/material/menu';
+import { Style } from "@core/types/button.interface";
 
 @Component({
   selector: 'app-dropdown-menu',
@@ -11,6 +12,8 @@ import { MenuPositionX, MenuPositionY } from '@angular/material/menu';
 export class DropdownMenuComponent {
   @Input() xPosition: MenuPositionX = 'after';
   @Input() yPosition: MenuPositionY = 'below';
+  @Input() buttonStyleConfig: Style = {} as Style;
+  @Input() customClass: string | null = null;
   @Input() menuIcon: string = 'more-vert';
   @Input() customClass: string | null = null;
   readonly ButtonTypeEnum = ButtonTypeEnum;

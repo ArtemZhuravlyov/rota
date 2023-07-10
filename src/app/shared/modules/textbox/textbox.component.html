@@ -8,6 +8,12 @@
     <ng-template [ngIf]="hintText?.length && hintLink?.length">
       <a class="hint-link" [routerLink]="hintLink">{{ hintText! | translate }}</a>
     </ng-template>
+    <ng-template [ngIf]="hintMenu">
+      <app-dropdown-menu [customClass]="'hint-menu'" [buttonStyleConfig]="{width: '20px', height: '20px'}" [menuIcon]="'help'">
+        <h1 class="hint-menu-heading">{{hintHeading | translate}}</h1>
+        <p class="hint-menu-description">{{hintDescription | translate}}</p>
+      </app-dropdown-menu>
+    </ng-template>
   </div>
 
   <mat-form-field

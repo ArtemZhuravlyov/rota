@@ -8,9 +8,10 @@
     }">
     <img class="prefix-icon" *ngIf="currentIcon" matPrefix [src]="currentIcon | country" alt="prefix-icon">
     <mat-select
+      [formControl]="formControl"
       (opened)="isOpen = true"
       (closed)="isOpen = false"
-      [placeholder]="'SELECT' | translate"
+      [placeholder]="'SELECT' | translate">
       [(value)]=preselectedValue
     >
       <ng-container *ngIf="isObservable(data); else defaultType">

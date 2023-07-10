@@ -26,6 +26,9 @@ export class TextboxComponent implements ControlValueAccessor, OnInit {
   @Input() maxLength!: number;
   @Input() hintText: string | undefined;
   @Input() hintLink: string | string[] | undefined;
+  @Input() hintMenu: boolean = false;
+  @Input() hintHeading = '';
+  @Input() hintDescription = '';
   @Input() styleConfig: Style = {};
   @Input() extendedValidation = false;
 
