@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { EmployeeComponent } from './employee.component';
-import { NavigationPaths } from '@core/enums/navigation-paths.enum';
-import { ImportEmployeesComponent } from "@shared/modules/import-employees/import-employees.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {EmployeeComponent} from './employee.component';
+import {NavigationPaths} from '@core/enums/navigation-paths.enum';
+import {ImportEmployeesComponent} from "@shared/modules/import-employees/import-employees.component";
 import { TodoComponent } from '@shared/modules/todo/todo.component';
 
 const routes: Routes = [
@@ -33,9 +33,19 @@ const routes: Routes = [
             data: { breadcrumb: 'IMPORT_EMPLOYEES', title: 'IMPORT_EMPLOYEES' }
           },
           {
+            path: NavigationPaths.INFO_EMPLOYEE,
+            loadChildren: () => import('./info-employee/info-employee.module').then(m => m.InfoEmployeeModule),
+            data: {breadcrumb: 'INFO_EMPLOYEE', title: 'INFO_EMPLOYEE'}
+          },
+          {
+            path: NavigationPaths.EDIT_EMPLOYEE,
+            loadChildren: () => import('./edit-employee/edit-employee.module').then(m => m.EditEmployeeModule),
+            data: {breadcrumb: 'EDIT_EMPLOYEE', title: 'EDIT_EMPLOYEE'}
+          },
+          {
             path: '**',
             component: TodoComponent
-          }
+          },
         ]
       }
     ]

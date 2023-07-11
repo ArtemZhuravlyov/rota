@@ -282,6 +282,7 @@
   "SIZE": "Size",
   "ADD": "Add",
   "ADD_POSITION": "Add Position",
+  "EDIT_EMPLOYEE": "Edit Employee",
   "ORGANOGRAM": "Organogram",
   "PREFERRED_TIMEZONE": "Preferred Timezone",
   "PAY_DAY_OPTION": "Pay Day Option",
@@ -300,6 +301,7 @@
   "SORT_CODE_DESCRIPTION": "A sort code is a 6 digit number that identifies your bank.",
   "WHAT_IS_IBAN": "What is IBAN?",
   "IBAN_DESCRIPTION": "An International Bank Account Number – or IBAN – is used worldwide to identify individual accounts. IBANs make it easier to process international payments. You can find your IBAN in the Internet Bank and on your account statement.",
+  "INFO_EMPLOYEE": "Info Employee",
   "DOUBLE_TAXATION_CODE": "Double Taxation Code",
   "DOUBLE_TAXATION_DESCRIPTION": "Double taxation refers to income taxes paid twice on the same income source. It occurs when income is taxed at both the corporate and personal level"
 }

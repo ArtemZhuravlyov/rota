@@ -6,6 +6,8 @@ import { EmployeesRoutingModule } from "@app/modules/dashboard/employee/employee
 import { ButtonModule } from "@shared/modules/button/button.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { DataTableModule } from "@shared/modules/data-table/data-table.module";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -20,6 +22,8 @@ import { DataTableModule } from "@shared/modules/data-table/data-table.module";
     ButtonModule,
     TranslateModule,
     DataTableModule,
+    MatTabsModule,
+    MatIconModule,
   ],
 })
 export class EmployeesModule { }
