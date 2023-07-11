@@ -2,6 +2,10 @@ import { TableConfig } from "@core/types/data-table";
 
 export const employeesListConfig: TableConfig = [
   {
+    columnName: 'SELECT_ALL',
+    columnType: 'checkbox',
+  },
+  {
     columnName: 'FIRST_NAME',
     columnType: 'link',
     hidden: false,
@@ -31,4 +35,8 @@ export const employeesListConfig: TableConfig = [
     hidden: false,
     filedName: 'dob',
   },
+  {
+    columnName: 'ACTIONS',
+    columnType: 'actions',
+  }
 ];
