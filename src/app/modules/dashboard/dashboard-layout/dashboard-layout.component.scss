@@ -63,7 +63,7 @@
 }
 
 .disabled {
-  color: grey !important;
+  filter: opacity(0.5);
   pointer-events: none;
 }
 
