@@ -19,6 +19,8 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatStepperModule } from "@angular/material/stepper";
 import {MatDialogModule} from "@angular/material/dialog";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -39,6 +41,8 @@ const MATERIAL_MODULES = [
   MatStepperModule,
   MatProgressSpinnerModule,
   MatDialogModule,
+  MatTabsModule,
+  MatButtonToggleModule,
 ]
 
 @NgModule({
@@ -214,6 +218,10 @@ export class MaterialModule {
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/company-menu-logo.svg"),
     );
     matIconRegistry.addSvgIcon(
+      'schedule',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/schedule.svg"),
+    );
+    matIconRegistry.addSvgIcon(
       'benefits',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/benefits.svg")
     );
@@ -252,6 +260,68 @@ export class MaterialModule {
     matIconRegistry.addSvgIcon(
       'time-tracking',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/time-tracking.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'salary',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/salary.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'google',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/google.svg")
+    );
+    //TEST-ICONS
+    matIconRegistry.addSvgIcon(
+      'nigeria-flag',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/nigeria-flag.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'manager-face',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/manager-face.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'salary',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/salary.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'google',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/google.svg")
+    );
+    //TEST-ICONS
+    matIconRegistry.addSvgIcon(
+      'nigeria-flag',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/nigeria-flag.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'manager-face',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/manager-face.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'google',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/google.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'safari',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/safari.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'opera',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/opera.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'firefox',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/firefox.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'apple',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/apple.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'windows',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/windows.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'linux',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/linux.svg")
     );
   }
 }

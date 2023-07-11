@@ -21,15 +21,19 @@ export class EmployeeService {
 
   getEmployeesList(): Observable<any> {
     const { companyId, userId } = this.authService.getCurrentUser();
-    return this.http.post(`${this.env.apiUrlEmployee}/employee/${userId}/${companyId}`, {}, {});
+    return this.http.post(`${this.env.apiUrlEmployee}/employee/${userId}/${companyId}`, {isActive: true}, { });
   }
 
   createNewEmployee(form: any): any {
-    console.log(form);
   }
 
   recordFile(userId: string, companyId: string, uploadFile: any): RecordFileResult {
     return this.http.post(`${this.env.apiUrlEmployee}/employee/process/${userId}/${companyId}/records`, uploadFile) as RecordFileResult;
+  }
+
+  createEmployee(body: any): Observable<any> {
+    const { userId, companyId } = this.authService.getCurrentUser();
+    return this.http.post<any>(`${this.env.apiUrlEmployee}/employee/create/${userId}/${companyId}`, body);
   }
 
 }

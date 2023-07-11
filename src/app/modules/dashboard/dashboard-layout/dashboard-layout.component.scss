@@ -45,6 +45,7 @@
   }
 
   .bottom-actions {
+    width: 100%;
     position: absolute;
     bottom: 0;
 
@@ -59,6 +60,11 @@
     position: absolute;
     z-index: 100;
   }
+}
+
+.disabled {
+  filter: opacity(0.5);
+  pointer-events: none;
 }
 
 .active-link {
@@ -90,3 +96,4 @@
 .collapsed {
   width: 80px;
 }
+

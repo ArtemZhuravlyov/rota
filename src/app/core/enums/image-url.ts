@@ -3,5 +3,6 @@ export enum ImageUrl {
   REGISTRATION = 'url("../../../../assets/images/register-image.jpg")',
   SIGN_IN = 'url("../../../../assets/images/login-image.jpg")',
   RECOVERY_PASSWORD = 'url("../../../../assets/images/recovery-password.jpg")',
-  RECOVERY_PASSWORD_SUCCESS = 'url("../../../../assets/images/password-recovery-success.jpg")'
+  RECOVERY_PASSWORD_SUCCESS = 'url("../../../../assets/images/password-recovery-success.jpg")',
+  PROFILE = 'url("../../../../assets/images/profile-image.jpg")'
 }

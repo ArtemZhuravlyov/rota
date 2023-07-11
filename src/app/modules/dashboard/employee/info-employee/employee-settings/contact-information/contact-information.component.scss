@@ -1,0 +1,29 @@
+::ng-deep .card {
+  max-width: 1120px !important;
+
+  ::ng-deep app-form-builder {
+    margin: 0 20px;
+
+    ::ng-deep .action-btn {
+      padding: 3px !important;
+    }
+  }
+
+  .heading {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Source Sans Pro", sans-serif;
+    margin-top: 30px;
+  }
+
+  hr {
+    opacity: 0.3;
+    width: 1074px;
+  }
+}

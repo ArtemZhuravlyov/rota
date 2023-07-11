@@ -20,7 +20,9 @@ import { Style } from "@core/types/style-model";
 export class FormBuilderComponent implements OnInit {
   @Input() formFields: FormField[] = [];
   @Input() styleConfig: Style = {};
+  @Input() actionButtonIncluded: boolean = true;
   @Output() createdForm = new EventEmitter();
+  @Output() selectedFormValue = new EventEmitter();
 
   form!: FormGroup;
   componentType = ComponentTypeEnum;
@@ -32,6 +34,7 @@ export class FormBuilderComponent implements OnInit {
     this.createFormBuilder();
     this.generateFormFields();
     this.addValidatorsForFormField();
+    this.addDisabledForFormField();
   }
 
   private createFormBuilder(): void {
@@ -41,11 +44,23 @@ export class FormBuilderComponent implements OnInit {
 
   private generateFormFields(): void {
     this.formFields.forEach((field) => {
-      this.form.addControl(field.key, new FormControl('', { validators: field.validators ?? [] }));
+      this.form.addControl(field.key, new FormControl(null, { validators: field.validators ?? [] }));
     });
   }
 
   private addValidatorsForFormField(): void {
     this.formFields.forEach(field => this.form.addValidators(field.formValidators ?? []));
+  }
+
+  private addDisabledForFormField(): void {
+    this.formFields.forEach(field => {
+      if (field.disabled) {
+        this.form.controls[field.key].disable();
+      }
+    })
+  }
+
+  selectChanged(value: any, key: any){
+    this.selectedFormValue.emit({key, value})
   }
 }

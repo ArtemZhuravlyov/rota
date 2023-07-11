@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
 import { AuthService } from "@core/services/account/auth.service";
@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { BankAccountService } from "@core/services/bank-account/bank-account.service";
 import { FormField } from "@core/types/form-builder.model";
 import { FormGroup, Validators } from "@angular/forms";
-import { finalize } from "rxjs";
+import {finalize, tap} from "rxjs";
 
 @Component({
   selector: 'app-create-bank-account',
@@ -14,7 +14,7 @@ import { finalize } from "rxjs";
   styleUrls: ['./create-bank-account.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateBankAccountComponent {
+export class CreateBankAccountComponent implements OnInit{
 
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
@@ -76,21 +76,44 @@ export class CreateBankAccountComponent {
       maxLength: 50,
     },
   ];
+
   form!: FormGroup;
 
 
   constructor( private readonly authService: AuthService,
-               private readonly router: Router,
                private readonly bankAccountService: BankAccountService,
-               private readonly activatedRoute: ActivatedRoute
+               private readonly router: Router,
+               private readonly route: ActivatedRoute
                ) {}
 
-  createBakAccount(){
-    this.bankAccountService.createBankAccount(this.authService.getCurrentUserId(), this.authService.getCompanyId(), this.form.getRawValue()).pipe(
-      finalize( () => {
-        this.router.navigate([NavigationPaths.BACK], {relativeTo: this.activatedRoute});
-      })
-    ).subscribe()
+  //need a comment on chat
+  ngOnInit() {
+    setTimeout(() =>  this.addDataToForm(), 100)
   }
 
+  createBakAccount(form: FormGroup){
+    if (this.bankAccountService.action === 'view'){
+      this.bankAccountService.editBankAccount(this.bankAccountService.selectedBankAccount, form.getRawValue()).pipe(
+        tap(() => this.router.navigate(
+          [NavigationPaths.BACK],
+          { relativeTo: this.route }
+        ))
+      ).subscribe();
+    } else {
+      this.bankAccountService.createBankAccount(this.authService.getCurrentUserId(), this.authService.getCompanyId(), form.getRawValue()).pipe(
+        finalize( () => {
+          this.router.navigate([NavigationPaths.BACK], {relativeTo: this.route});
+        })
+      ).subscribe()
+    }
+
+  }
+
+  addDataToForm(){
+    if (Object.keys(this.bankAccountService.selectedBankAccount).length) {
+      Object.keys(this.bankAccountService.selectedBankAccount).forEach((key:any) => {
+        if (this.form.controls[key]) {
+          this.form.controls[key].setValue(this.bankAccountService.selectedBankAccount[key])
+        }
+      })}}
 }

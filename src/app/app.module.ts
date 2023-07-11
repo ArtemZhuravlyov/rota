@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from "@core/interceptors/auth.interceptor";
@@ -14,6 +13,8 @@ import { environment } from "../environments/environment";
 import { Environment } from '@core/types/environment';
 import { MaterialModule } from "@shared/modules/material.module";
 import { MatIconRegistry } from "@angular/material/icon";
+import { InfoModalComponent } from './shared/modalWindows/info-modal/info-modal.component';
+import { ButtonModule } from "@shared/modules/button/button.module";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -28,28 +29,30 @@ export const ENVIRONMENT = new InjectionToken<Environment>('ENV');
 @NgModule({
     declarations: [
         AppComponent,
+        InfoModalComponent,
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            },
-            defaultLanguage: 'en'
-        }),
-        JwtModule.forRoot({
-            config: {
-                tokenGetter: tokenGetter,
-                allowedDomains: [window.location.host],
-                disallowedRoutes: [],
-            },
-        }),
-        HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [window.location.host],
+        disallowedRoutes: [],
+      },
+    }),
+    HttpClientModule,
+    ButtonModule
+  ],
     providers: [
       {
         provide: APP_INITIALIZER,

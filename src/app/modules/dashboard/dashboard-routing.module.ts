@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { TodoComponent } from '@shared/modules/todo/todo.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,20 @@ const routes: Routes = [
         loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule),
         data: {breadcrumb: 'USER_ACCOUNT'},
       },
+      {
+        path: NavigationPaths.SETTINGS,
+        loadChildren: () => import('./settings/settings.module').then( m => m.SettingsModule),
+        data: {breadcrumb: 'SETTINGS'},
+      },
+      {
+        path: NavigationPaths.ENGAGEMENT,
+        loadChildren: () => import('./engagement/engagement.module').then(m => m.EngagementModule),
+        data: {breadcrumb: 'ENGAGEMENT'},
+      },
+      {
+        path: '**',
+        component: TodoComponent
+      }
     ]
   },
 ];

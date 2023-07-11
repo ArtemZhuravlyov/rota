@@ -1,0 +1,25 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.field-label {
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 21px;
+  padding-bottom: 10px;
+}
+
+.text-toggle-container {
+  height: 52px;
+  border: 1px solid $border-light-gray;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+  p {
+    font: normal normal normal 15px/21px Source Sans Pro;
+    margin-left: 20px;
+    margin-bottom: 0;
+  }
+
+  .mat-mdc-slide-toggle {
+    margin-right: 18px;
+  }
+}

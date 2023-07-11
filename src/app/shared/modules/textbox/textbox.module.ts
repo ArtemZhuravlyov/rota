@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TranslateModule } from "@ngx-translate/core";
 import { RouterLink } from "@angular/router";
 import { InputErrorModule } from "@shared/modules/input-error/input-error.module";
+import { DropdownMenuModule } from "@shared/modules/dropdown-menu/dropdown-menu.module";
 
 @NgModule({
   declarations: [
@@ -14,14 +15,15 @@ import { InputErrorModule } from "@shared/modules/input-error/input-error.module
   exports: [
     TextboxComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    TranslateModule,
-    RouterLink,
-    ReactiveFormsModule,
-    InputErrorModule,
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        FormsModule,
+        TranslateModule,
+        RouterLink,
+        ReactiveFormsModule,
+        InputErrorModule,
+        DropdownMenuModule,
+    ]
 })
 export class TextboxModule { }

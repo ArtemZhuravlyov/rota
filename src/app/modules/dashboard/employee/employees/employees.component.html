@@ -13,11 +13,14 @@
   </div>
 </app-page-header>
 
-<app-data-table
-  [data]="employeesList$ | async"
-  [itemsKey]="'employees'"
-  [tableConfig]="employeesListConfig"
-  (actionClicked)="onActionClicked($event)"
-  (pageChange)="onPageChange($event)"
-  [hasCheckboxColumn]="true"
-></app-data-table>
+<div class="table-container">
+  <app-data-table
+    [data]="employeesList$ | async"
+    [itemsKey]="'employees'"
+    [tableConfig]="employeesListConfig"
+    (actionClicked)="onActionClicked($event)"
+    (pageChange)="onPageChange($event)"
+    [hasCheckboxColumn]="true"
+    [tableStyle]="'employee'"
+  ></app-data-table>
+</div>

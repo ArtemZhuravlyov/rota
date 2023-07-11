@@ -1,3 +1,5 @@
+@import "src/app/core/styles/material-custom/constants";
+
 .form {
   display: flex;
   justify-content: center;
@@ -23,4 +25,16 @@
   .action-btn {
     padding: 20px 0;
   }
+}
+.disabled{
+ ::ng-deep .mat-mdc-text-field-wrapper{
+    background-color: #F3F3F3;
+  }
+}
+
+.field-heading {
+  width: 100%;
+  font: normal normal 600 20px/28px Source Sans Pro;
+  color: $text-dark-gray;
+  margin-bottom: 20px;
 }

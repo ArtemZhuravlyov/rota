@@ -1,0 +1,26 @@
+.org-container {
+  position: relative;
+  padding-top: 20px;
+
+  app-button {
+    position: absolute;
+    top: -50px;
+    right: 30px;
+  }
+
+  .expand-btn {
+    .arrow-up, .arrow-down {
+      font-family: 'Material Icons', sans-serif;
+    }
+
+    .arrow-up:after {
+      content: 'expand_less';
+    }
+
+    .arrow-down:after {
+      content: 'expand_more';
+    }
+  }
+}
+
+

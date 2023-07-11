@@ -7,4 +7,7 @@ export const ComponentTypeEnum = {
   DROPDOWN: 'dropdown',
   RADIO: 'radio',
   PHONE: 'phone',
+  FILE: 'file',
+  TOGGLE: 'toggle',
+  TIME: 'time'
 } as const

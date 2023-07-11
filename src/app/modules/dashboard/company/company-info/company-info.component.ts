@@ -30,6 +30,7 @@ export class CompanyInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId())
+    this.companies$.subscribe(r => console.log('companies', r))
   }
 
   onActionClicked(action: TableAction): void {

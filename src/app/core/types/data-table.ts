@@ -5,6 +5,7 @@ interface ColumnConfig {
   columnType: typeof ColumnType[keyof typeof ColumnType];
   hidden?: boolean;
   filedName?: string;
+  action?:  typeof TableActionTypes[keyof typeof TableActionTypes];
 }
 
 export const ColumnType = {
@@ -16,7 +17,9 @@ export const ColumnType = {
   BOOLEAN: 'boolean',
   CHECKBOX: 'checkbox',
   COUNTRY: 'country',
-  DATE: 'date'
+  DATE: 'date',
+  CUSTOM: 'custom',
+  DESCRIPTIONS: 'descriptions'
 } as const;
 
 export interface TableAction {
@@ -27,6 +30,11 @@ export interface TableAction {
 export const TableActionTypes = {
   VIEW: 'view',
   EDIT: 'edit',
-  DELETE: 'delete'
+  DELETE: 'delete',
+  ADD: 'add',
+  VIEWDESCRIPTION: 'viewDescription',
+  PRINT: 'print',
+  EXPORT: 'export',
+  IMPORT: 'import'
 } as const;
 
