@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  documentsTableConfig
-} from "@app/modules/dashboard/employee/edit-employee/employee-profile/documents/configs/documents-table.config";
-import {
   documentsFormConfig
-} from "@app/modules/dashboard/employee/edit-employee/employee-profile/documents/configs/documents-form.config";
+} from "@app/modules/dashboard/employee/info-employee/employee-profile/documents/configs/documents-form.config";
+import {
+  documentsTableConfig
+} from "@app/modules/dashboard/employee/info-employee/employee-profile/documents/configs/documents-table.config";
 
 @Component({
   selector: 'app-documents',

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   paySlipsTableConfig
-} from "@app/modules/dashboard/employee/edit-employee/employee-profile/pay-slips/configs/pay-slips-table.config";
+} from "@app/modules/dashboard/employee/info-employee/employee-profile/pay-slips/configs/pay-slips-table.config";
 
 @Component({
   selector: 'app-pay-slips',

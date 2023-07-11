@@ -38,11 +38,6 @@ const routes: Routes = [
             data: {breadcrumb: 'INFO_EMPLOYEE', title: 'INFO_EMPLOYEE'}
           },
           {
-            path: NavigationPaths.EDIT_EMPLOYEE,
-            loadChildren: () => import('./edit-employee/edit-employee.module').then(m => m.EditEmployeeModule),
-            data: {breadcrumb: 'EDIT_EMPLOYEE', title: 'EDIT_EMPLOYEE'}
-          },
-          {
             path: '**',
             component: TodoComponent
           },

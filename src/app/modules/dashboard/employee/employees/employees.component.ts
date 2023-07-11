@@ -20,7 +20,6 @@ export class EmployeesComponent {
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
   protected readonly employeesListConfig = employeesListConfig;
-  imgUrl = ImageUrl.PROFILE;
 
   employeesList$ = this.employeeService.getEmployeesList();
 
