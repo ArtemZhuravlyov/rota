@@ -10,7 +10,6 @@ import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.co
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchInputModule } from "@shared/modules/search-input/search-input.module";
 import {FormBuilderModule} from "@shared/modules/form-builder/form-builder.module";
-import {MatTableExporterModule} from "mat-table-exporter";
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import {MatTableExporterModule} from "mat-table-exporter";
         FormsModule,
         ReactiveFormsModule,
         SearchInputModule,
-        FormBuilderModule,
-        MatTableExporterModule,
+        FormBuilderModule
     ]
 })
 export class DataTableModule { }

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {NavigationPaths} from "@core/enums/navigation-paths.enum";
 import {ButtonTypeEnum} from "@core/enums/button-type.enum";
 import {departmentFormConfig} from "@app/modules/dashboard/company/department/configs/departmentForm.config";
@@ -19,15 +19,27 @@ import {PositionService} from "@core/services/company/position/position.service"
 })
 export class CreateDepartmentComponent implements OnInit{
 
-  protected readonly departmentFormConfig = departmentFormConfig;
+  departmentFormConfig = departmentFormConfig;
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
-  divisions$ = this.divisionService.getDivisionsList(100,0).pipe(map(
-    obj => obj.divisions
-  ));
+  divisions$ = this.divisionService.getDivisionsList(100,0).pipe(
+    map(obj => {
+      if (obj === null){
+        return {}
+      } else {
+        return obj.divisions
+      }
+    })
+  );
 
   positions$ = this.positionService.getPositionsList(999, 1).pipe(
-    map(obj => obj.positions)
+    map(obj => {
+      if (obj === null){
+        return {}
+      } else {
+        return obj.positions
+      }
+    })
   )
 
   combinedDivisionPositions = combineLatest([this.divisions$, this.positions$])
@@ -40,7 +52,8 @@ export class CreateDepartmentComponent implements OnInit{
     private readonly route: ActivatedRoute,
     private readonly departmentService: DepartmentService,
     private readonly divisionService: GroupFunctionDivisionService,
-    private readonly positionService: PositionService
+    private readonly positionService: PositionService,
+    private readonly cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -77,8 +90,14 @@ export class CreateDepartmentComponent implements OnInit{
   }
 
   addDataToForm(){
-    let divisionsNames = this.divisions.map((division: any) => ({displayName: division.name, value: division.id}))
-    let positions = this.positions.map((position: any) =>({displayName: position.name, value: position.id}))
+    let positions = [] as any[];
+    let divisionsNames = [] as any [];
+    if (this.positions?.length){
+      positions = this.positions.map((position: any) =>({displayName: position.name, value: position.id}))
+    }
+    if (this.divisions?.length){
+      divisionsNames = this.divisions.map((division: any) => ({displayName: division.name, value: division.id}))
+    }
     this.departmentFormConfig.find(r => {
       if (r.key == 'divisionId'){
         r.data = divisionsNames
@@ -103,5 +122,16 @@ export class CreateDepartmentComponent implements OnInit{
         }
       )
     }
+    this.departmentFormConfig = this.departmentFormConfig.map(select => {
+      if (select.data?.length < 1){
+        return {
+          ...select,
+          disabled: true
+        }
+      } else {
+        return select
+      }
+    });
+    this.cdr.detectChanges()
   }
 }

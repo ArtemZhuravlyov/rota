@@ -36,6 +36,13 @@ export class PositionService {
   }
 
   createPosition(form: any): Observable<any>{
+    if (form.jobFamilyId === null){
+      form.jobFamilyId = ''
+    }
+    if (form.jobProfileId === null){
+      form.jobProfileId = ''
+    }
+    console.log('CREATE POSITION', form)
     return this.http.post(`${this.env.apiUrlCompany}/position/create/${this.user.userId}/${this.user.companyId}`, form)
       .pipe(
         catchError(err => throwError(() => new Error(err))),

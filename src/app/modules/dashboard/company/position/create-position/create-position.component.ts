@@ -1,4 +1,8 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef,
+  Component,
+  OnInit
+} from '@angular/core';
 import {NavigationPaths} from "@core/enums/navigation-paths.enum";
 import {ButtonTypeEnum} from "@core/enums/button-type.enum";
 import {positionFormConfig} from "@app/modules/dashboard/company/position/configs/positionForm.config";
@@ -15,16 +19,21 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class CreatePositionComponent implements OnInit{
 
-  protected readonly positionFormConfig = positionFormConfig;
+  positionFormConfig = positionFormConfig;
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
 
   jobFamilyList$ = this.positionService.getJobFamilyList(999, 0).pipe(
-    map((obj:any) => obj.jobFamilies)
+    map((obj:any) => {
+      if (obj === null) {
+        return {}
+      } else {
+        return obj.jobFamilies
+    }})
   )
   positions$ = this.positionService.getPositionsList(999, 1).pipe(
     map(obj => {
-      if (obj == null){
+      if (obj === null){
         return {}
       } else {
         return obj.positions
@@ -43,6 +52,7 @@ export class CreatePositionComponent implements OnInit{
     private readonly positionService: PositionService,
     private readonly router: Router,
     private readonly route: ActivatedRoute,
+    private readonly cdr: ChangeDetectorRef
               ) {
   }
 
@@ -80,8 +90,14 @@ export class CreatePositionComponent implements OnInit{
   }
 
   addDataToForm(){
-    let jobFamily = this.jobFamily.map((category: any) => ({displayName: category.name, value: category.id}))
-    let positions = this.positions.map((position: any) =>({displayName: position.name, value: position.id}))
+    let jobFamily = [] as any[];
+    let positions = [] as any[];
+    if (this.jobFamily?.length){
+      jobFamily = this.jobFamily.map((category: any) => ({displayName: category.name, value: category.id}))
+    }
+    if (this.positions?.length){
+      positions = this.positions.map((position: any) =>({displayName: position.name, value: position.id}))
+    }
     this.positionFormConfig.find(r => {
       if (r.key == 'jobFamilyId'){
         r.data = jobFamily
@@ -108,6 +124,17 @@ export class CreatePositionComponent implements OnInit{
         }
       )
     }
+    this.positionFormConfig = this.positionFormConfig.map(select => {
+      if (select.data?.length < 1){
+        return {
+          ...select,
+          disabled: true
+        }
+      } else {
+       return select
+      }
+    });
+    this.cdr.detectChanges()
   }
 
   formValueChanged(formValue:any){
@@ -117,9 +144,12 @@ export class CreatePositionComponent implements OnInit{
           this.positionFormConfig.find(r => {
             if (r.key == 'jobProfileId'){
               r.data = this.jobProfiles
+              r.disabled = false;
             }
            })
-          })
+        this.cdr.detectChanges()
+      })
+
     }
   }
 }

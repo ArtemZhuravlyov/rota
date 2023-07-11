@@ -12,24 +12,28 @@ export const positionFormConfig: FormField[] = [
     key: 'jobFamilyId',
     inputType: 'text',
     componentType: ComponentTypeEnum.DROPDOWN,
-    label: 'Family Job'
+    label: 'Family Job',
+    data: []
   },
   {
     key: 'jobProfileId',
     inputType: 'text',
     componentType: ComponentTypeEnum.DROPDOWN,
-    label: 'Job Profile'
+    label: 'Job Profile',
+    data: []
   },
   {
     key: 'directReportingLineId',
     inputType: 'text',
     componentType: ComponentTypeEnum.DROPDOWN,
-    label: 'Direct Reporting Line'
+    label: 'Direct Reporting Line',
+    data: []
   },
   {
     key: 'functionalReportingLineId',
     inputType: 'text',
     componentType: ComponentTypeEnum.DROPDOWN,
-    label: 'Functional Reporting Line'
+    label: 'Functional Reporting Line',
+    data: []
   },
 ];

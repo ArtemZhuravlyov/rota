@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from "@core/interceptors/auth.interceptor";
@@ -13,10 +12,9 @@ import { tokenGetter } from "@shared/utils/token-getter";
 import { environment } from "../environments/environment";
 import { Environment } from '@core/types/environment';
 import { MaterialModule } from "@shared/modules/material.module";
-import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
+import { MatIconRegistry } from "@angular/material/icon";
 import { InfoModalComponent } from './shared/modalWindows/info-modal/info-modal.component';
-import {MatButtonModule} from "@angular/material/button";
-import {ButtonModule} from "@shared/modules/button/button.module";
+import { ButtonModule } from "@shared/modules/button/button.module";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -53,9 +51,7 @@ export const ENVIRONMENT = new InjectionToken<Environment>('ENV');
       },
     }),
     HttpClientModule,
-    MatButtonModule,
-    ButtonModule,
-    MatIconModule
+    ButtonModule
   ],
     providers: [
       {
