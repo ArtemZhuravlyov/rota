@@ -54,6 +54,8 @@ export enum NavigationPaths {
   ONBOARDING = 'onboarding',
   OFFBOARDING = 'offboarding',
   CREATE_NEW_EMPLOYEE = 'create-new',
+  EDIT_EMPLOYEE = 'edit-employee',
+  INFO_EMPLOYEE = 'info-employee',
 
   //Documents sub-menu paths
   FOLDER_MANAGEMENT = 'folder-management',

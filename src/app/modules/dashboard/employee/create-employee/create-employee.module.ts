@@ -13,41 +13,12 @@ import {TranslateModule} from "@ngx-translate/core";
 import {ButtonModule} from "@shared/modules/button/button.module";
 import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import {
-  PersonalDetailsComponent
-} from "@app/modules/dashboard/employee/create-employee/employee-settings/personal-details/personal-details.component";
-import {
-  ContactInformationComponent
-} from "@app/modules/dashboard/employee/create-employee/employee-settings/contact-information/contact-information.component";
-import {
-  WorkInformationComponent
-} from "@app/modules/dashboard/employee/create-employee/employee-settings/work-information/work-information.component";
-import {
-  PaymentInformationComponent
-} from "@app/modules/dashboard/employee/create-employee/employee-settings/payment-information/payment-information.component";
 import {DataTableModule} from "@shared/modules/data-table/data-table.module";
-import { QualificationsComponent } from './employee-profile/qualifications/qualifications.component';
-import { PaySlipsComponent } from './employee-profile/pay-slips/pay-slips.component';
-import { DocumentsComponent } from './employee-profile/documents/documents.component';
-import { CompensationsComponent } from './employee-profile/compensations/compensations.component';
-import { StatutoryContributionsComponent } from './employee-profile/statutory-contributions/statutory-contributions.component';
-import { BenefitsComponent } from './employee-profile/benefits/benefits.component';
-import { SalaryReviewsComponent } from './employee-profile/salary-reviews/salary-reviews.component';
+import {RouterLink} from "@angular/router";
 
 @NgModule({
   declarations: [
     CreateEmployeeComponent,
-    PersonalDetailsComponent,
-    ContactInformationComponent,
-    WorkInformationComponent,
-    PaymentInformationComponent,
-    QualificationsComponent,
-    PaySlipsComponent,
-    DocumentsComponent,
-    CompensationsComponent,
-    StatutoryContributionsComponent,
-    BenefitsComponent,
-    SalaryReviewsComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +33,7 @@ import { SalaryReviewsComponent } from './employee-profile/salary-reviews/salary
     MatInputModule,
     MatCheckboxModule,
     DataTableModule,
+    RouterLink,
   ]
 })
 export class CreateEmployeeModule { }

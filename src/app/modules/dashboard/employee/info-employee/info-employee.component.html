@@ -1,0 +1,39 @@
+<app-page-header [title]="'EMPLOYEES'" [isSubHeaderShowed]="false" [isBackBtnShowed]="true"></app-page-header>
+
+<mat-tab-group animationDuration="0ms" class="settings-tab-group">
+  <mat-tab label="Contact Information">
+    <ng-template matTabContent>
+      <app-contact-information></app-contact-information>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Work Information">
+    <ng-template matTabContent>
+      <app-work-information></app-work-information>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Payment Information">
+    <ng-template matTabContent>
+      <app-payment-information></app-payment-information>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+
+<div class="action-container">
+  <app-button
+    [btnType]="buttonTypeEnum.FLAT"
+    [isIconButton]="true"
+    [styleConfig]="{height: '50px', width: '150px'}"
+    [icon]="'success'"
+    [title]="'SAVE' | translate"
+  ></app-button>
+
+  <app-button
+    [colorTheme]="'warn'"
+    [styleConfig]="{width: '150px', height: '50px'}"
+    [btnType]="buttonTypeEnum.FLAT"
+    [isIconButton]="true"
+    [title]="'CANCEL' | translate"
+    [icon]="'cancel'"
+    [routerLink]="'/dashboard/employees'"
+  ></app-button>
+</div>
