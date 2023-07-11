@@ -13,7 +13,12 @@
 
       <app-search-input *ngIf="isExpanded; else searchCollapsed" [styleConfig]="{width: '200px', height: '40px', margin: '15px 8px 0'}" (valueChanged)="filterTabs($event)"></app-search-input>
 
-    <a class="navigation-link d-flex align-items-center" *ngFor="let tab of dashboardTabsConfig" [routerLink]="tab.fullRouterLink ?? tab.routerLink" routerLinkActive="active-link">
+    <a class="navigation-link d-flex align-items-center"
+       *ngFor="let tab of dashboardTabsConfig"
+       [routerLink]="tab.fullRouterLink ?? tab.routerLink"
+       routerLinkActive="active-link"
+       [class.disabled]="tab.isDisabled"
+    >
       <mat-icon class="tab-icon" [ngClass]="{'tab-icon': tab.routerLink, 'search': tab.fullRouterLink}" [svgIcon]="tab.icon!"></mat-icon>
       <span *ngIf="isExpanded">{{tab.title | translate}}</span>
     </a>

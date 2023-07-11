@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { TodoComponent } from '@shared/modules/todo/todo.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
         loadChildren: () => import('./engagement/engagement.module').then(m => m.EngagementModule),
         data: {breadcrumb: 'ENGAGEMENT'},
       },
+      {
+        path: '**',
+        component: TodoComponent
+      }
     ]
   },
 ];

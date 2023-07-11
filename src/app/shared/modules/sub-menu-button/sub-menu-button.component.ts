@@ -10,4 +10,5 @@ export class SubMenuButtonComponent {
 
   @Input() title!: string;
   @Input() link!: string;
+  @Input() isDisabled: boolean | undefined = false;
 }

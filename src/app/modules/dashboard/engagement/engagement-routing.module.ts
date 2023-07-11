@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { EngagementComponent } from '@app/modules/dashboard/engagement/engagement.component';
+import { TodoComponent } from '@shared/modules/todo/todo.component';
 
 export const ROUTES: Routes = [
   {
@@ -22,6 +23,10 @@ export const ROUTES: Routes = [
             loadChildren: () => import('./organogram/organogram.module').then(m => m.OrganogramModule),
             data: {breadcrumb: 'ORGANOGRAM'},
           },
+          {
+            path: '**',
+            component: TodoComponent
+          }
         ]
       }
     ]

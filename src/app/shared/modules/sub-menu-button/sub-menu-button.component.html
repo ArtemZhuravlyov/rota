@@ -1,2 +1,6 @@
-<a class="sub-menu-button" [routerLink]="link" routerLinkActive="active-button"
-   [routerLinkActiveOptions]="{ exact: true }"><span class="title">{{title | translate}}</span></a>
+<a class="sub-menu-button"
+   [routerLink]="link"
+   routerLinkActive="active-button"
+   [routerLinkActiveOptions]="{ exact: true }"
+   [class.disabled]="isDisabled"
+><span class="title">{{title | translate}}</span></a>

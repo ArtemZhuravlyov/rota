@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 import { CompanyComponent } from "./company.component";
+import { TodoComponent } from '@shared/modules/todo/todo.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
             loadChildren: () => import('./pay-structure/pay-structure.module').then(m => m.PayStructureModule),
             data: {breadcrumb: 'PAY_STRUCTURE'}
           },
+          {
+            path: '**',
+            component: TodoComponent
+          }
         ]
       }
     ]
