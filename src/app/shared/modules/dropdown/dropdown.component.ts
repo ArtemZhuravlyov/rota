@@ -1,11 +1,9 @@
 import {
-  AfterContentInit, AfterViewChecked, AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   forwardRef,
-  Input, OnDestroy,
-  OnInit,
+  Input,
   Output
 } from '@angular/core';
 import { DropdownOptions } from "@core/types/form-builder.model";
@@ -35,7 +33,7 @@ interface PreSelectedValue {
     },
   ]
 })
-export class DropdownComponent implements ControlValueAccessor, OnDestroy {
+export class DropdownComponent implements ControlValueAccessor {
   @Input() formControl!: FormControl;
   @Input() title = ''
   @Input() additionalTitle = ''
@@ -61,7 +59,6 @@ export class DropdownComponent implements ControlValueAccessor, OnDestroy {
   notifier: Subject<void> = new Subject<void>();
 
   ngAfterViewChecked() {
-    console.log('AFTERVIEW');
     this.setPreselectedValue()
   }
 
@@ -92,30 +89,23 @@ export class DropdownComponent implements ControlValueAccessor, OnDestroy {
   writeValue(obj: any): void { }
 
   setPreselectedValue(){
-      if (this.data) {
-        if (Array.isArray(this.data)) {
-          this.data.find((data: any) => {
+    if (this.data) {
+      if (Array.isArray(this.data)) {
+        this.data.find((data: any) => {
+          if (data.preSelected) {
+            this.preselectedValue = data.value
+          }
+        })
+      } else {
+        (this.data as Observable<any>).subscribe(data => {
+          data.find((data: any) => {
             if (data.preSelected) {
               this.preselectedValue = data.value
-              console.log(this.preselectedValue)
             }
           })
-        } else {
-          (this.data as Observable<any>).subscribe(data => {
-            data.find((data: any) => {
-              if (data.preSelected) {
-                this.preselectedValue = data.value
-                console.log(this.preselectedValue)
-              }
-            })
-            takeUntil(this.notifier)
-          })
-        }
+          takeUntil(this.notifier)
+        })
       }
-  }
-
-  ngOnDestroy(): void {
-    this.notifier.next();
-    this.notifier.complete();
+    }
   }
 }

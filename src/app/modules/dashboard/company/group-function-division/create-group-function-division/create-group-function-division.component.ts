@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {
   groupFunctionDivisionFormConfig
 } from "@app/modules/dashboard/company/group-function-division/configs/group-function-division-form.config";
@@ -20,7 +20,7 @@ import {PositionService} from "@core/services/company/position/position.service"
 })
 export class CreateGroupFunctionDivisionComponent implements OnInit{
 
-  protected readonly groupFunctionDivisionFormConfig = groupFunctionDivisionFormConfig;
+  groupFunctionDivisionFormConfig = groupFunctionDivisionFormConfig;
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
 
@@ -40,7 +40,8 @@ export class CreateGroupFunctionDivisionComponent implements OnInit{
     private readonly divisionService: GroupFunctionDivisionService,
     private readonly positionService: PositionService,
     private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly cdr: ChangeDetectorRef
     ) {
   }
 
@@ -74,12 +75,16 @@ export class CreateGroupFunctionDivisionComponent implements OnInit{
   }
 
   addDataToForm(){
-    let positions = this.positions.map((position: any) =>({displayName: position.name, value: position.id}))
+    let positions = [] as any[];
+    if (this.positions?.length){
+      positions = this.positions.map((position: any) =>({displayName: position.name, value: position.id}))
+    }
     this.groupFunctionDivisionFormConfig.find(r => {
       if (r.key == 'managerId'){
         r.data  = positions
       }
     })
+
     if (Object.keys(this.divisionService.selectedDivision).length) {
         Object.keys(this.divisionService.selectedDivision).forEach((key:any) => {
             if (this.form.controls[key]){
@@ -97,5 +102,17 @@ export class CreateGroupFunctionDivisionComponent implements OnInit{
           }
         )
     }
+
+    this.groupFunctionDivisionFormConfig = this.groupFunctionDivisionFormConfig.map(select => {
+      if (select.data?.length < 1){
+        return {
+          ...select,
+          disabled: true
+        }
+      } else {
+        return select
+      }
+    });
+    this.cdr.detectChanges()
   }
 }
