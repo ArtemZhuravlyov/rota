@@ -8,6 +8,13 @@ const routes: Routes = [
     path: NavigationPaths.EMPTY_PATH,
     component: DepartmentComponent,
   },
+  {
+    path: NavigationPaths.CREATE_NEW_DEPARTMENT,
+    loadChildren: () =>
+      import('./create-department/create-department.module')
+        .then(m => m.CreateDepartmentModule),
+    data: { breadcrumb: 'CREATE_NEW' },
+  },
 ];
 
 @NgModule({

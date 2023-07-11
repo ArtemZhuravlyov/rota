@@ -1,4 +1,7 @@
-<app-page-header [title]="'GROUP_FUNCTION_DIVISION'">
+<app-page-header [title]="'GROUP_FUNCTION_DIVISION'"
+                 [isPrinting]="isPrinting$ | async"
+                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
+                 (onActionClicked)="onActionClicked({action: $event, payload: {}})">
   <div class="action-buttons">
     <app-button
       [routerLink]="NavigationPaths.CREATE_NEW_GROUP_FUNCTION_DIVISION"
@@ -7,15 +10,21 @@
       [styleConfig]="{ height: '50px', width: '150px' }"
       [title]="'CREATE_NEW' | translate"
       [icon]="'add'"
+      (click)="onActionClicked({action: 'add', payload: {}})"
     ></app-button>
   </div>
 </app-page-header>
 
 <app-data-table
-  [data]="groupFunctionDivisionList()"
-  [itemsKey]="'groupFunctionDivision'"
+  [data]="groupFunctionDivisionList$ | async"
+  [itemsKey]="'divisions'"
   [tableConfig]="groupFunctionDivisionTableConfig"
+  [actionConfig]="divisionActionConfig"
+  [tableStyle]="'twoButtons'"
+  [isPrinting]="isPrinting$ | async"
+  [exporting$]="exporting$"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
+  (selectedItemsIds)="onSelectedTableItems($event)"
   [hasCheckboxColumn]="true"
 ></app-data-table>

@@ -43,6 +43,7 @@ export class CreateCompanyComponent {
       key: 'phone',
       label: 'PHONE',
       componentType: 'phone',
+      placeholder: 'SELECT_FORMAT',
       validators: [Validators.required],
       data: this.companyService.getCountry().pipe(
         map((countries: Country[]) =>
@@ -65,6 +66,7 @@ export class CreateCompanyComponent {
       key: 'industryId',
       label: 'INDUSTRY',
       componentType: 'dropdown',
+      placeholder: 'SELECT',
       validators: [Validators.required],
       data: this.companyService.getIndustry().pipe(
         map((industries: Industry[]) =>
@@ -78,6 +80,7 @@ export class CreateCompanyComponent {
       key: 'countryId',
       label: 'COUNTRY',
       componentType: 'dropdown',
+      placeholder: 'SELECT',
       validators: [Validators.required],
       data: this.companyService.getCountry().pipe(
         map((countries: Country[]) =>

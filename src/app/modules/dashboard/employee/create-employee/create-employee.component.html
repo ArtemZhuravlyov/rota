@@ -1,1 +1,31 @@
-<p>create-employee works!</p>
+<app-page-header [title]="'EMPLOYEES'" [isSubHeaderShowed]="false" [isBackBtnShowed]="true"></app-page-header>
+
+<app-form-card>
+  <h1 class="heading">Add Employee</h1>
+
+  <app-form-builder
+    (createdForm)="form = $event"
+    [formFields]="createEmployeeFormConfig"
+  ></app-form-builder>
+</app-form-card>
+
+<div class="action-container" *ngIf="!onSave">
+  <app-button
+    [btnType]="ButtonTypeEnum.FLAT"
+    [isIconButton]="true"
+    [styleConfig]="{height: '50px', width: '150px'}"
+    [icon]="'success'"
+    [title]="'SAVE' | translate"
+    (btnClick)="toggleOnSave()"
+  ></app-button>
+
+  <app-button
+    [colorTheme]="'warn'"
+    [styleConfig]="{width: '150px', height: '50px'}"
+    [btnType]="ButtonTypeEnum.FLAT"
+    [isIconButton]="true"
+    [title]="'CANCEL' | translate"
+    [icon]="'cancel'"
+    [routerLink]="'/dashboard/employees'"
+  ></app-button>
+</div>

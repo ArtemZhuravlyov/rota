@@ -7,14 +7,17 @@
     <input
            class="phone-input"
            type="number"
-           [placeholder]="'SELECT' | translate"
+           [placeholder]="placeholder | translate"
            matInput
            [(ngModel)]="selectedValue"
            (ngModelChange)="setFormValue($event)"
            [matAutocomplete]="auto">
-    <div class="selected-phone d-flex align-items-center justify-content-center" matPrefix *ngIf="selectedPhone?.countryFlag">
-      <img  src="{{ $any(selectedPhone?.countryFlag) | country }}" alt="country flag">
-      <span class="phone-code">{{ selectedPhone?.dialingCode}}</span>
+    <div matPrefix class="d-flex">
+      <mat-icon *ngIf="icon" class="phone-icon">{{icon}}</mat-icon>
+      <div class="selected-phone d-flex align-items-center justify-content-center" *ngIf="selectedPhone?.countryFlag">
+        <img  src="{{ $any(selectedPhone?.countryFlag) | country }}" alt="country flag">
+        <span class="phone-code">{{ selectedPhone?.dialingCode}}</span>
+      </div>
     </div>
 
     <mat-icon matIconSuffix>{{autoComplete?._isOpen ? 'expand_less' : 'expand_more'}}</mat-icon>

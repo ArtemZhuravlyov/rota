@@ -5,6 +5,7 @@ import { DocumentsComponent } from "./documents.component";
 import { FolderManagementComponent } from "./folder-management/folder-management.component";
 import { DocumentManagementComponent } from "./document-management/document-management.component";
 import { EmployeeDocumentComponent } from "./employee-document/employee-document.component";
+import { TodoComponent } from '@shared/modules/todo/todo.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
             path: NavigationPaths.EMPLOYEE_DOCUMENT,
             component: EmployeeDocumentComponent,
           },
+          {
+            path: '**',
+            component: TodoComponent
+          }
         ]
       }
     ]

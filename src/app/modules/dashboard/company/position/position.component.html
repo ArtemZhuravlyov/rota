@@ -1,1 +1,37 @@
-<app-page-header [title]="'POSITION'"></app-page-header>
+<app-page-header [title]="'POSITION'"
+                 [isPrinting]="isPrinting$ | async"
+                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
+                 (onActionClicked)="onActionClicked({action: $event, payload: {}})">
+  <div class="action-buttons d-flex">
+    <app-button
+      [styleConfig]="{height: '50px', width: '150px', 'font-weight': '400'}"
+      title="{{'IMPORT' | translate}}"
+      [isIconButton]="true"
+      [icon]="'export'"
+      [iconStyleConfig]="{transform: 'rotate(180deg)'}"
+      [btnType]="ButtonTypeEnum.STROKED"
+    ></app-button>
+    <app-button
+      [routerLink]="NavigationPaths.CREATE_NEW_POSITION"
+      [btnType]="ButtonTypeEnum.FLAT"
+      [isIconButton]="true"
+      [styleConfig]="{ height: '50px', width: '150px' }"
+      [title]="'CREATE_NEW' | translate"
+      [icon]="'add'"
+    ></app-button>
+  </div>
+</app-page-header>
+
+<app-data-table
+  [data]="positionList$ | async"
+  [itemsKey]="'positions'"
+  [tableConfig]="positionsTableConfig"
+  [tableStyle]="'positionTableStyle'"
+  [actionConfig]="divisionActionConfig"
+  [isPrinting]="isPrinting$ | async"
+  [exporting$]="exporting$"
+  (actionClicked)="onActionClicked($event)"
+  (pageChange)="onPageChange($event)"
+  (selectedItemsIds)="onSelectedTableItems($event)"
+  [hasCheckboxColumn]="true"
+></app-data-table>

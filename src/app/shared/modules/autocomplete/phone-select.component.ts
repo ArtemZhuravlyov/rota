@@ -26,6 +26,8 @@ export class PhoneSelectComponent implements ControlValueAccessor{
   @Input() data!: DropdownOptions[] & Observable<DropdownOptions[]>;
   @Input() valueField = 'value';
   @Input() textField = 'displayName';
+  @Input() placeholder!: string;
+  @Input() icon!: string;
 
   @ViewChild('auto') autoComplete: any;
 

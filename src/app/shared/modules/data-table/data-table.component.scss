@@ -22,6 +22,16 @@ table {
   th:first-child {
     border-radius:10px 0 0 10px!important;
     text-align: center;
+    padding-right: 0;
+  }
+
+  th:nth-child(2) {
+    text-align: start;
+    padding-left: 0;
+
+    div{
+     justify-content: flex-start;
+    }
   }
 
   ::ng-deep thead {
@@ -42,6 +52,11 @@ table {
   ::ng-deep tbody tr td:first-child {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    padding-right: 0;
+  }
+
+  ::ng-deep tbody tr td:nth-child(2) {
+    text-align: start;
   }
 
   ::ng-deep tbody tr td:last-child {
@@ -51,6 +66,20 @@ table {
 
   .mat-mdc-row {
     background-color: $background-login-gray;
+  }
+
+  ::ng-deep tfoot tr {
+    background-color: $background-login-gray;
+  }
+
+  ::ng-deep tfoot tr  td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  ::ng-deep tfoot tr td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 }
 
@@ -106,8 +135,120 @@ table {
   }
 }
 
+//STYLES FOR THE DIFFERENT COMPONENTS. MAYBE REMOVE TO GLOBAL CSS?
 .bankAccount{
   th {
     font-size: 14px;
   }
+}
+
+.twoButtons{
+
+  .action-btns-container{
+    justify-content: center;
+  }
+
+}
+//--------------------------------------------//
+
+
+.add-button-green{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #1C9F56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  cursor: pointer;
+
+  mat-icon{
+    color: #FFFFFF;
+  }
+}
+.gradeCategoryTableStyle{
+  table{
+    padding-bottom: 20px;
+    ::ng-deep thead {
+      th {
+        div{
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+}
+
+.gradeCategoryTableLevels{
+
+  th{
+    div{
+      justify-content: flex-start;
+    }
+  }
+
+  td{
+    text-align: start;
+  }
+
+  .action-btns-container{
+   padding-left: 20px;
+  }
+}
+.descriptions{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 50px;
+
+
+  .description-table{
+    margin-right: 29px;
+    padding-left: 20px;
+    display: table;
+
+    div{
+      max-width: 197px;
+      display: table-cell;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+
+  }
+
+  .view-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 82px;
+    height: 30px;
+    border: 1px solid #3E77AA;
+    border-radius: 6px;
+    color: #3E77AA;
+    cursor: pointer;
+  }
+}
+.positionTableStyle{
+  th {
+    div{
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+    }
+  }
+}
+.link{
+  cursor: pointer;
+  text-decoration: underline;
+  color: #3E77AA;
+}
+.isPrinting{
+    th:nth-child(2) {
+      padding-left: 16px !important;
+    }
+
 }

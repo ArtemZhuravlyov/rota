@@ -15,6 +15,7 @@
 
 .phone-input[type=number] {
   -moz-appearance: textfield;
+  padding-left: 8px;
 
   &::placeholder {
     color: $text-gray;
@@ -39,4 +40,16 @@
 
 .country-flag {
   margin-right: 12px;
+}
+
+.phone-icon {
+  min-height: 36px;
+  min-width: 36px;
+  color: $text-gray;
+  background: $light-gray;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
 }

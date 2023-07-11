@@ -1,0 +1,26 @@
+::ng-deep .card {
+  min-width: 1120px !important;
+
+  ::ng-deep app-form-builder {
+
+    ::ng-deep .action-btn {
+      padding: 3px !important;
+    }
+  }
+
+  .heading {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+  hr {
+    opacity: 0.3;
+    width: 1074px;
+  }
+
+  .exclude-payroll {
+    margin-left: 20px;
+    font-size: 15px;
+  }
+}

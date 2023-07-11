@@ -1,0 +1,66 @@
+<app-form-card [customClass]="'card'">
+  <h3 class="heading">{{ 'WORK_INFORMATION' | translate }}</h3>
+
+  <div class="d-flex">
+    <app-form-builder
+      [formFields]="employeeInformationFormFields.slice(0, 3)"
+      (createdForm)="form = $event"
+    ></app-form-builder>
+    <app-form-builder
+      [formFields]="employeeInformationFormFields.slice(3, 6)"
+      (createdForm)="form = $event"
+    ></app-form-builder>
+  </div>
+
+  <hr>
+
+  <div class="d-flex">
+    <app-form-builder
+      [formFields]="employeeSalaryInfoFormFields.slice(0, 3)"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0'}"
+    ></app-form-builder>
+    <app-form-builder
+      [formFields]="employeeSalaryInfoFormFields.slice(3, 5)"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 108px 0'}"
+    ></app-form-builder>
+  </div>
+
+  <hr>
+
+  <div class="d-flex">
+    <app-form-builder
+      [formFields]="employmentDetailsFormFields.slice(0, 2)"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0'}"
+    ></app-form-builder>
+    <app-form-builder
+      [formFields]="employmentDetailsFormFields.slice(2, 4)"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0'}"
+    ></app-form-builder>
+  </div>
+
+  <hr>
+
+  <div class="d-flex justify-content-around">
+    <app-form-builder
+      [formFields]="[employmentPeriodFormFields[0]]"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0', width: '240px'}"
+    ></app-form-builder>
+    <app-form-builder
+      [formFields]="[employmentPeriodFormFields[1]]"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0', width: '240px'}"
+    ></app-form-builder>
+    <app-form-builder
+      [formFields]="[employmentPeriodFormFields[2]]"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0', width: '520px'}"
+    ></app-form-builder>
+  </div>
+
+</app-form-card>
+

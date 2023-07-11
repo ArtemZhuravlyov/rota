@@ -10,21 +10,25 @@ export const employeesSubMenuConfig: MenusConfig[] = [
   {
     title: 'DIRECTORY',
     routerLink: NavigationPaths.DIRECTORY,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.DIRECTORY}`
+    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.DIRECTORY}`,
+    isDisabled: true,
   },
   {
     title: 'ONBOARDING',
     routerLink: NavigationPaths.ONBOARDING,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.ONBOARDING}`
+    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.ONBOARDING}`,
+    isDisabled: true,
   },
   {
     title: 'OFFBOARDING',
     routerLink: NavigationPaths.OFFBOARDING,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.OFFBOARDING}`
+    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.OFFBOARDING}`,
+    isDisabled: true,
   },
   {
     title: 'LOAN_MANAGEMENT',
     routerLink: NavigationPaths.LOAN_MANAGEMENT,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.LOAN_MANAGEMENT}`
+    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.LOAN_MANAGEMENT}`,
+    isDisabled: true,
   }
 ];

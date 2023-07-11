@@ -26,7 +26,6 @@ export class StepFieldsMappingComponent implements OnInit, OnChanges {
     this.rotaSheetFields.forEach((field) => {
       this.form.addControl(field.fieldName, new FormControl('', Validators.required));
     })
-    this.form.valueChanges.subscribe((v) => console.log(v))
   }
 
   ngOnChanges(): void {

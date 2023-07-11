@@ -8,6 +8,13 @@ const routes: Routes = [
     path: NavigationPaths.EMPTY_PATH,
     component: PositionComponent,
   },
+  {
+    path: NavigationPaths.CREATE_NEW_POSITION,
+    loadChildren: () =>
+      import('./create-position/create-position.module')
+        .then(m => m.CreatePositionModule),
+    data: { breadcrumb: 'CREATE_NEW' },
+  },
 ];
 
 @NgModule({

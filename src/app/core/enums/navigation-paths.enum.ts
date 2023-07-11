@@ -27,6 +27,7 @@ export enum NavigationPaths {
   SCHEDULING = 'scheduling',
   ENGAGEMENT = 'engagement',
   REPORT_ANALYTICS = 'reports-analytics',
+  SETTINGS = 'settings',
 
 
   //Company sub-menu  paths
@@ -41,6 +42,9 @@ export enum NavigationPaths {
   CREATE_COMPANY = 'create-company',
   CREATE_NEW_GROUP_FUNCTION_DIVISION = 'create-group-function-division',
   CREATE_NEW_GRADE_CATEGORY = 'create-grade-category',
+  GRADE_CATEGORY_LEVELS = 'grade-category-levels',
+  CREATE_NEW_DEPARTMENT = 'create-new-department',
+  CREATE_NEW_POSITION = 'create-new-position',
 
   //Employees sub-menu  paths
   EMPLOYEES_LIST = 'employees-list',
@@ -50,6 +54,8 @@ export enum NavigationPaths {
   ONBOARDING = 'onboarding',
   OFFBOARDING = 'offboarding',
   CREATE_NEW_EMPLOYEE = 'create-new',
+  EDIT_EMPLOYEE = 'edit-employee',
+  INFO_EMPLOYEE = 'info-employee',
 
   //Documents sub-menu paths
   FOLDER_MANAGEMENT = 'folder-management',
@@ -61,6 +67,15 @@ export enum NavigationPaths {
   ROLE = 'role',
   IMPORT_USER = 'import-user',
 
+  //SETTINGS
+  WORKFLOW = 'workflow',
+  PAYROLL_ACCOUNTING = 'payroll-accounting',
+  LEAVE_MANAGEMENT = 'leave-management',
+  TRUSTED_DEVICES = 'trusted-devices',
+
   // Bank account sub-menu path
-  CREATE_BANK_ACCOUNT = 'create-bank-account'
+  CREATE_BANK_ACCOUNT = 'create-bank-account',
+
+  // Engagement path
+  ORGANOGRAM = 'organogram'
 }

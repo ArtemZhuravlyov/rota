@@ -1,0 +1,24 @@
+<app-page-header
+  [title]="'Grade Information'"
+  [isSubHeaderShowed]="false"
+  [isBackBtnShowed]="true"
+></app-page-header>
+
+<div class="table-container">
+  <ng-container *ngIf="gradeCategoryLevels$ | async as levels">
+    <app-data-table
+      [data]="gradeCategoryLevels$ | async"
+      [itemsKey]="'gradeCategoryLevels'"
+      [tableConfig]="gradeLevelsTableConfig"
+      [actionConfig]="actionConfig"
+      [hasCheckboxColumn]="true"
+      (actionClicked)="onActionClicked($event)"
+      [formConfig]="gradeLevelsFormConfig"
+      [isFormIncluded]="true"
+      [headerDropdownFilter]="false"
+      [tableStyle]="'gradeCategoryTableLevels'"
+    ></app-data-table>
+  </ng-container>
+
+</div>
+

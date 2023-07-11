@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 import { UserAccountComponent } from "./user-account.component";
 import { ImportEmployeesComponent } from "@shared/modules/import-employees/import-employees.component";
+import { TodoComponent } from '@shared/modules/todo/todo.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
             component: ImportEmployeesComponent,
             data: { breadcrumb: 'IMPORT_USER', title: 'IMPORT_USER' }
           },
+          {
+            path: '**',
+            component: TodoComponent
+          }
         ]
       }
     ]

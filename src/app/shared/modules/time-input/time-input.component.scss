@@ -1,0 +1,16 @@
+@import "src/app/core/styles/material-custom/constants";
+
+:host {
+  width: 100%;
+
+  .field-label {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+    padding-bottom: 10px;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}

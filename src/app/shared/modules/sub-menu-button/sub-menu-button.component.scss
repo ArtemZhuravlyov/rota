@@ -24,3 +24,8 @@
   border-right: solid;
   padding-left: 30px;
 }
+
+.disabled {
+  color: grey !important;
+  pointer-events: none;
+}

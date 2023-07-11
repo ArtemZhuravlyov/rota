@@ -10,6 +10,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; color: $text-gray}
+* { font-family: "Source Sans Pro", sans-serif }
 
 $my-primary: mat.define-palette($green-primary, 500);
 $my-accent: mat.define-palette($accent, 700);
@@ -28,3 +29,14 @@ $my-theme: mat.define-light-theme((
 
 @include mat.typography-hierarchy($my-typography);
 @include mat.all-component-themes($my-theme);
+
+
+.infoDialog{
+  .mat-mdc-dialog-container{
+    width: 44vw;
+  }
+}
+
+.infoDialogBack{
+  background-color: #221F1F;
+}

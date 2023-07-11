@@ -1,0 +1,51 @@
+<app-form-card [customClass]="'card'">
+  <h3 class="heading">{{ 'PAYMENT_INFORMATION' | translate }}</h3>
+
+<div class="d-flex">
+  <app-form-builder
+    [formFields]="bankCardInformationFormFields.slice(0, 3)"
+    (createdForm)="form = $event"
+  ></app-form-builder>
+  <app-form-builder
+    [formFields]="bankCardInformationFormFields.slice(3, 6)"
+    (createdForm)="form = $event"
+  ></app-form-builder>
+</div>
+
+  <hr>
+
+  <div class="d-flex">
+    <app-form-builder
+      [formFields]="[taxationSettingsFormFields[0]]"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0'}"
+    ></app-form-builder>
+
+    <app-form-builder
+      [formFields]="[taxationSettingsFormFields[1]]"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0'}"
+    ></app-form-builder>
+  </div>
+
+  <hr>
+
+  <div class="d-flex">
+    <app-form-builder
+      [formFields]="rsaFormFields.slice(0, 2)"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0'}"
+    ></app-form-builder>
+
+    <app-form-builder
+      [formFields]="rsaFormFields.slice(2, 4)"
+      (createdForm)="form = $event"
+      [styleConfig]="{margin: '20px 0 0 0'}"
+    ></app-form-builder>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <span class="exclude-payroll">Exclude from Payroll</span>
+    <mat-checkbox></mat-checkbox>
+  </div>
+</app-form-card>
