@@ -13,52 +13,6 @@
   </div>
 </app-page-header>
 
-<div class="profile-container">
-  <div class="profile-image-container">
-    <div class="background-image" [style.background-image]="imgUrl"></div>
-  </div>
-
-  <img class="author-image" src="/assets/images/specialist-face.jpg" alt="author">
-  <mat-icon class="edit-image" [svgIcon]="'edit'" [routerLink]="NavigationPaths.EDIT_EMPLOYEE"></mat-icon>
-
-  <div class="author-container">
-
-    <div class="test-style">
-      <div class="flex-column">
-        <p class="author-name">Steve Rogers</p>
-        <div class="info-speciality">
-          <p class="speciality">HR Analyst at</p>
-          <mat-icon [svgIcon]="'google'"></mat-icon>
-          <p class="google">Google</p>
-        </div>
-      </div>
-      <div class="profile-info">
-        <h3 class="title-profile-info">{{ 'CURRENT_SALARY' | translate}}</h3>
-        <div class="info-container">
-          <mat-icon class="salary" [svgIcon]="'salary'"></mat-icon>
-          <p>$7,600.00 / m <span class="rate">($54/h)</span></p>
-        </div>
-      </div>
-      <hr class="hr-block">
-      <div class="profile-info">
-        <h3 class="title-profile-info">{{ 'COUNTRY' | translate }}</h3>
-        <div class="info-container">
-          <mat-icon class="country-flag" [svgIcon]="'nigeria-flag'"></mat-icon>
-          <p class="country-name">Nigeria</p>
-        </div>
-      </div>
-      <hr class="hr-block">
-      <div class="profile-info">
-        <h3 class="title-profile-info">{{ 'MANAGER' | translate }}</h3>
-        <div class="info-container">
-          <mat-icon class="manager-image" [svgIcon]="'manager-face'"></mat-icon>
-          <p class="manager-name">Krista Campbell</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="table-container">
   <app-data-table
     [data]="employeesList$ | async"
