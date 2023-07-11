@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormField } from "@core/types/form-builder.model";
 import { FormGroup, Validators } from "@angular/forms";
 import { map, pluck, tap } from "rxjs";
@@ -96,6 +96,19 @@ export class CompanySettingsComponent {
       )
     },
     {
+      key: 'preferedTimezoneId',
+      label: 'PREFERRED_TIMEZONE',
+      componentType: 'dropdown',
+      validators: [Validators.required],
+      data: this.timezoneService.getUserTimezones(this.authService.getCurrentUserId(), this.authService.getCompanyId()).pipe(
+        map( (timezones) => {
+          return timezones.map( timezone =>
+            ({ displayName: timezone.displayName, value: timezone.id })
+          )
+        })
+      )
+    },
+    {
       key: 'defaultHourClockId',
       label: 'DEFAULT_HOUR_CLOCK',
       componentType: 'dropdown',
@@ -173,6 +186,19 @@ export class CompanySettingsComponent {
       maxLength: 500,
     },
     {
+      key: 'payDayOptionId',
+      label: 'PAY_DAY_OPTION',
+      componentType: 'dropdown',
+      validators: [Validators.required],
+      data: this.settingsService.getPayDayOptions(this.authService.getCurrentUserId()).pipe(
+        map( (res) => {
+          return res.map( (payDayOption: any) =>
+            ({ displayName: payDayOption.name, value: payDayOption.id })
+          )
+        })
+      )
+    },
+    {
       heading: 'CURRENCY',
       key: 'defaultCurrencyId',
       label: 'DEFAULT_CURRENCY',
@@ -222,6 +248,7 @@ export class CompanySettingsComponent {
     settingsService.getCompanyPreference(authService.getCurrentUserId(), authService.getCompanyId()).pipe(
       tap( res => {
         this.companyPreferences = res;
+        console.log(res, 'result ');
         this.form.patchValue(this.companyPreferences);
       })
     ).subscribe()
@@ -230,6 +257,7 @@ export class CompanySettingsComponent {
   updateCompany(): void {
     const updatedCompanyPreferences = this.companyPreferences ? {...this.form.getRawValue(), companyId: this.companyPreferences.companyId} : this.form.getRawValue();
 
+    console.log(updatedCompanyPreferences, 'body ');
     this.settingsService.createCompanyPreference(this.authService.getCurrentUserId(), this.authService.getCompanyId(), updatedCompanyPreferences).subscribe()
   }
 

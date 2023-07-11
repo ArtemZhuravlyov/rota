@@ -278,5 +278,33 @@ export class MaterialModule {
       'manager-face',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/manager-face.svg")
     );
+    matIconRegistry.addSvgIcon(
+      'google',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/google.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'safari',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/safari.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'opera',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/opera.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'firefox',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/firefox.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'apple',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/apple.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'windows',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/windows.svg")
+    );
+    matIconRegistry.addSvgIcon(
+      'linux',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/linux.svg")
+    );
   }
 }
