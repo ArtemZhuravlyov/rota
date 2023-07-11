@@ -32,7 +32,7 @@
     border: 1px solid $background-light-blue;
     border-radius: 50%;
     position: absolute;
-    margin: -65px 0 0 55px;
+    margin: -65px 0 0 85px;
   }
 
   .edit-image {
@@ -44,7 +44,7 @@
     color: #91acc2;
     cursor: pointer;
     margin-top: 76px;
-    margin-left: 201px;
+    margin-left: 225px;
     width: 18px;
     height: 18px;
   }
@@ -70,13 +70,13 @@
       .author-name {
         font-size: 32px;
         font-weight: 600;
-        margin: 50px 0 0 200px;
+        margin: 50px 0 0 220px;
       }
 
       .info-speciality {
         display: flex;
         padding: 0 -5px;
-        margin: 18px 0 0 200px;
+        margin: 18px 0 0 220px;
 
         p, img {
           margin: 0 2px;
