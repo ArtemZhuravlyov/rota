@@ -56,4 +56,12 @@ export class SettingsService {
     return this.http.get<any>(`${this.env.apiUrlCompany}/leave-management-preference/${userId}/${companyId}`)
   }
 
+  getPayDayOptions(userId: string) {
+    return this.http.get<any>(`${this.env.apiUrlCompany}/pay-day-option/${userId}`);
+  }
+
+  getTrustedDevices(userId: string, companyId: string) {
+    return this.http.get<any>(`${this.env.apiUrlCompany}/trusted-device-preference/${userId}/${companyId}`);
+  }
+
 }

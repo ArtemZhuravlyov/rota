@@ -13,6 +13,8 @@ import { TimesheetSettingsComponent } from './timesheet-settings/timesheet-setti
 import { PayrollAccountingSettingsComponent } from './payroll-accounting-settings/payroll-accounting-settings.component';
 import { LeaveManagementSettingsComponent } from './leave-management-settings/leave-management-settings.component';
 import { TrustedDevicesSettingsComponent } from './trusted-devices-settings/trusted-devices-settings.component';
+import { TrustedDeviceModule } from "@shared/modules/trusted-device/trusted-device.module";
+import { MaterialModule } from "@shared/modules/material.module";
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { TrustedDevicesSettingsComponent } from './trusted-devices-settings/trus
     FormBuilderModule,
     TranslateModule,
     ButtonModule,
+    TrustedDeviceModule,
+    MaterialModule,
   ]
 })
 export class SettingsSelectionModule { }

@@ -1,0 +1,21 @@
+<div class="trusted-devices-container d-flex align-items-center">
+  <div class="device-logo d-flex justify-content-center align-items-center">
+    <mat-icon [svgIcon]="browserIcon"></mat-icon>
+  </div>
+  <div class="device-info">
+    <p>{{title}}</p>
+    <span>{{creationDate}}</span>
+  </div>
+  <app-button
+    [btnType]="ButtonTypeEnum.LITTLE_ICON"
+    [styleConfig]="{
+      'width': '30px',
+      'height': '30px',
+      'background': '#FFFFFF',
+      'border': '1px solid #E4EDF4',
+      'color': '#FF0000'}"
+    [iconStyleConfig]="{'width': '20px', 'height': '20px', 'line-height': '20px', 'font-size': '16px', 'transform': 'scale(0.9)'}"
+    [isIconButton]="true"
+    [icon]="'delete'"
+  ></app-button>
+</div>
