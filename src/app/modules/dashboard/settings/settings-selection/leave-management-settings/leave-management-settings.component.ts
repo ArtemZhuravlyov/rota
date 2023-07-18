@@ -36,9 +36,8 @@ export class LeaveManagementSettingsComponent {
       heading: 'VISIBILITY_AND_LEAVE',
       key: 'balanceVisibilityId',
       label: 'BALANCE_VISIBILITY',
-      componentType: 'dropdown',
+      componentType: 'datepicker',
       validators: [Validators.required],
-      data: []
     },
     {
       key: 'leaveYearStartId',

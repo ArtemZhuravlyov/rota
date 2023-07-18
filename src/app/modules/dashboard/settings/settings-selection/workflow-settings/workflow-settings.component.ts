@@ -6,7 +6,7 @@ import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
 import { SettingsService } from "@core/services/settings/settings.service";
 import { AuthService } from "@core/services/account/auth.service";
-import { tap } from "rxjs";
+import { map, tap } from "rxjs";
 
 @Component({
   selector: 'app-workflow-settings',
@@ -33,6 +33,13 @@ export class WorkflowSettingsComponent {
       label: 'ALERT_WHEN',
       componentType: 'dropdown',
       validators: [Validators.required],
+      data: this.settingsService.getAlertDays().pipe(
+        map( (alertDays) => {
+          return alertDays.map( (day: any) =>
+            ({ displayName: day.name, value: day.id })
+          )
+        })
+      )
     },
     {
       heading: 'HOW_TO_NOTIFY',
@@ -46,6 +53,13 @@ export class WorkflowSettingsComponent {
       label: 'NOTIFICATION_FREQUENCY',
       componentType: 'dropdown',
       validators: [Validators.required],
+      data: this.settingsService.getNotificationFrequency().pipe(
+        map( (notificationFrequency) => {
+          return notificationFrequency.map( (notification: any) =>
+            ({ displayName: notification.name, value: notification.id })
+          )
+        })
+      )
     },
     {
       heading: 'PREFERENCES',
