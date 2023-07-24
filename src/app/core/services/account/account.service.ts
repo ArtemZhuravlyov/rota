@@ -16,4 +16,13 @@ export class AccountService {
   passwordRecovery(body: { email: string }) {
     return this.http.post(`${this.env.apiUrlAccount}/password-recovery`, body);
   }
+
+  updateUserSettings(userId: string, body: any) {
+    return this.http.post(`${this.env.apiUrlAccount}/user-setting/${userId}/update`, body);
+  }
+
+  getUserSettings(userId: string) {
+    return this.http.get(`${this.env.apiUrlAccount}/user-setting/${userId}`);
+  }
+
 }

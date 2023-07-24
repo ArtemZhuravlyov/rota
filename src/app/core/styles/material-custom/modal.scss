@@ -1,0 +1,16 @@
+
+.info-dialog{
+  .mat-mdc-dialog-container{
+    width: 44vw;
+  }
+}
+
+.modal-background {
+  background-color: #221F1F;
+  opacity: 0.95!important;
+  backdrop-filter: blur(13px);
+}
+
+.medium-modal {
+  width: 640px;
+}

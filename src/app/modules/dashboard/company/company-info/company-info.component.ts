@@ -1,13 +1,13 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {ButtonTypeEnum} from "@core/enums/button-type.enum";
-import {CompanyService} from "@core/services/company/company.service";
-import {AuthService} from "@core/services/account/auth.service";
-import {NavigationPaths} from "@core/enums/navigation-paths.enum";
-import {dashboardTabsConfig} from "@app/modules/dashboard/dashboard-layout/configs/dashboard-tabs-config";
-import { BehaviorSubject, map, Observable } from 'rxjs';
-import { Company, CompanyResponse } from '@core/types/company.interface';
-import {companyListConfig} from '@app/modules/dashboard/company/configs/company-list.config';
-import {TableAction} from '@core/types/data-table';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ButtonTypeEnum } from "@core/enums/button-type.enum";
+import { CompanyService } from "@core/services/company/company.service";
+import { AuthService } from "@core/services/account/auth.service";
+import { NavigationPaths } from "@core/enums/navigation-paths.enum";
+import { dashboardTabsConfig } from "@app/modules/dashboard/dashboard-layout/configs/dashboard-tabs-config";
+import { Observable } from 'rxjs';
+import { CompanyResponse } from '@core/types/company.interface';
+import { companyListConfig } from '@app/modules/dashboard/company/configs/company-list.config';
+import { TableAction } from '@core/types/data-table';
 import { PageEvent } from "@angular/material/paginator";
 
 @Component({
@@ -29,7 +29,7 @@ export class CompanyInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId())
+    this.companies$ = this.companyService.getCompanies(this.authService.getCurrentUserId())
     this.companies$.subscribe(r => console.log('companies', r))
   }
 
@@ -38,7 +38,7 @@ export class CompanyInfoComponent implements OnInit {
   }
 
   onPageChange({pageSize, pageIndex}: PageEvent): void {
-    this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId(), pageSize, pageIndex)
+    this.companies$ = this.companyService.getCompanies(this.authService.getCurrentUserId(), pageSize, pageIndex)
   }
 
 }

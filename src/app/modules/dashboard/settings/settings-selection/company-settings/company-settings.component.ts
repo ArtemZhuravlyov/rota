@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormField } from "@core/types/form-builder.model";
 import { FormGroup, Validators } from "@angular/forms";
-import { map, pluck, tap } from "rxjs";
+import { BehaviorSubject, map, Observable, of, pluck, tap } from "rxjs";
 import { LocaleService } from "@core/services/locale/locale.service";
 import { AuthService } from "@core/services/account/auth.service";
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
@@ -12,6 +12,7 @@ import { CurrencyService } from "@core/services/currency/currency.service";
 import { FiscalYearService } from "@core/services/fiscal-year/fiscal-year.service";
 import { LocaleResource } from "@core/types/locale-resource.interface";
 import { SettingsService } from "@core/services/settings/settings.service";
+import { B } from "@angular/cdk/keycodes";
 
 @Component({
   selector: 'app-company-settings',
@@ -23,6 +24,8 @@ export class CompanySettingsComponent {
 
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
   protected readonly NavigationPaths = NavigationPaths;
+
+  timezones$ = new BehaviorSubject<any>([]);
 
   formFields: FormField[] = [
     {
@@ -37,8 +40,7 @@ export class CompanySettingsComponent {
           return locales.map(locale =>
             ({ displayName: locale.resourceName, value: locale.languageId })
           )
-        })
-      )
+        })),
     },
     {
       key: 'preferedLocaleId',
@@ -87,26 +89,14 @@ export class CompanySettingsComponent {
       label: 'DEFAULT_TIMEZONE',
       componentType: 'dropdown',
       validators: [Validators.required],
-      data: this.timezoneService.getUserTimezones(this.authService.getCurrentUserId(), this.authService.getCompanyId()).pipe(
-        map( (timezones) => {
-          return timezones.map( timezone =>
-            ({ displayName: timezone.displayName, value: timezone.id })
-          )
-        })
-      )
+      data: this.timezones$,
     },
     {
       key: 'preferedTimezoneId',
       label: 'PREFERRED_TIMEZONE',
       componentType: 'dropdown',
       validators: [Validators.required],
-      data: this.timezoneService.getUserTimezones(this.authService.getCurrentUserId(), this.authService.getCompanyId()).pipe(
-        map( (timezones) => {
-          return timezones.map( timezone =>
-            ({ displayName: timezone.displayName, value: timezone.id })
-          )
-        })
-      )
+      data: this.timezones$,
     },
     {
       key: 'defaultHourClockId',
@@ -244,12 +234,26 @@ export class CompanySettingsComponent {
     private readonly currencyService: CurrencyService,
     private readonly fiscalYearService: FiscalYearService,
     private readonly settingsService: SettingsService,
+    private readonly cdr: ChangeDetectorRef,
   ) {
-    settingsService.getCompanyPreference(authService.getCurrentUserId(), authService.getCompanyId()).pipe(
+    this.updateDropdowns()
+    this.getCompanyPreferences();
+
+    authService.user$.pipe(
+      tap( res => {
+        if(res.companyId) {
+          this.getCompanyPreferences();
+        }
+      } )
+    ).subscribe()
+  }
+
+  getCompanyPreferences(): void {
+    this.settingsService.getCompanyPreference(this.authService.getCurrentUserId(), this.authService.getCompanyId()).pipe(
       tap( res => {
         this.companyPreferences = res;
-        console.log(res, 'result ');
-        this.form.patchValue(this.companyPreferences);
+        this.companyPreferences ? this.form.patchValue(this.companyPreferences) : this.form.reset();
+        this.cdr.detectChanges();
       })
     ).subscribe()
   }
@@ -259,6 +263,21 @@ export class CompanySettingsComponent {
 
     console.log(updatedCompanyPreferences, 'body ');
     this.settingsService.createCompanyPreference(this.authService.getCurrentUserId(), this.authService.getCompanyId(), updatedCompanyPreferences).subscribe()
+  }
+
+
+  updateDropdowns(): void {
+    this.timezoneService.getUserTimezones(this.authService.getCurrentUserId(), this.authService.getCompanyId()).pipe(
+      map( (timezones) => {
+        return timezones.map( timezone =>
+          ({ displayName: timezone.displayName, value: timezone.id })
+        )
+      }),
+      tap( timezones => {
+        this.timezones$.next(timezones);
+        this.cdr.detectChanges()
+      })
+    ).subscribe()
   }
 
 }

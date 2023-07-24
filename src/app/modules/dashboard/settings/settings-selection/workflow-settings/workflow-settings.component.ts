@@ -77,7 +77,7 @@ export class WorkflowSettingsComponent {
     settingsService.getWorkflowPreference(authService.getCurrentUserId(), authService.getCompanyId()).pipe(
         tap( res => {
           this.workflowPreferences = res;
-          console.log(res, 'prefernces')
+          this.workflowPreferences ? this.form.patchValue(this.workflowPreferences) : this.form.reset();
           this.form.patchValue(this.workflowPreferences);
         })
       ).subscribe()
