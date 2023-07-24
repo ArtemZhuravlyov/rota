@@ -94,7 +94,7 @@ export class PayrollSettingsComponent {
     settingsService.getPayrollPreference(authService.getCurrentUserId(), authService.getCompanyId()).pipe(
       tap( res => {
         this.payrollPreferences = res;
-        console.log(res, 'prefernces')
+        this.payrollPreferences ? this.form.patchValue(this.payrollPreferences) : this.form.reset();
         this.form.patchValue(this.payrollPreferences);
       })
     ).subscribe()

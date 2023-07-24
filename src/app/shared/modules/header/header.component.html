@@ -1,7 +1,7 @@
 <header class="header-container">
     <div class="logo">rota <span class="secondary-text">sheet</span></div>
 
-    <app-button class="company-setting-btn" [btnType]="buttonTypeEnum.STROKED" [isIconButton]="true" [title]="'Upwork USA Incorporation'" [icon]="'settings'"></app-button>
+    <app-button class="company-setting-btn" (btnClick)="openChangeCompanyModal()" [btnType]="buttonTypeEnum.STROKED" [isIconButton]="true" [title]="companyName" [icon]="'settings'"></app-button>
 
     <div class="profile-actions">
       <app-dropdown-menu [ngClass]="{'notification-icon': isNotificationsIconClicked}" [matBadge]="10" [matBadgeColor]="'warn'" [customClass]="'notifications-dropdown'" (click)="onIconClick('notifications')" [menuIcon]="'notifications'" xPosition="before">

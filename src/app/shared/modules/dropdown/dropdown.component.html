@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center flex-column">
   <div *ngIf="title.length" class="field-label d-flex justify-content-between align-items-center">
-    <span>{{ title | translate }}</span>
+    <span class="field-title">{{ title | translate }}</span>
     <ng-template [ngIf]="hintMenu">
       <app-dropdown-menu [customClass]="'hint-menu'" [buttonStyleConfig]="{width: '20px', height: '20px'}" [menuIcon]="'help'">
         <h1 class="hint-menu-heading">{{hintHeading | translate}}</h1>

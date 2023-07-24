@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable, signal } from "@angular/core";
 import { AuthRegistration, AuthSignIn, AuthUser } from "../../types/auth.interface";
-import { Observable, of, switchMap, tap } from "rxjs";
+import { BehaviorSubject, Observable, of, switchMap, tap } from "rxjs";
 import { TOKEN_NAME } from "@shared/utils/token-getter";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { ENVIRONMENT } from "@app/app.module";
@@ -15,6 +15,7 @@ const USER = 'USER';
 export class AuthService {
 
   private user = signal<AuthUser>({} as AuthUser);
+  user$ = new BehaviorSubject<AuthUser>({} as AuthUser);
 
   constructor(
     private http: HttpClient,
@@ -23,7 +24,6 @@ export class AuthService {
     private route: Router,
   ) {
   }
-
   getCurrentUser(): AuthUser {
     return this.user();
   }
@@ -56,6 +56,11 @@ export class AuthService {
         })
       )),
     );
+  }
+
+  updateCompanyId(companyId: string): void {
+    this.setOptions({...this.getUserFormStorage(), companyId: companyId})
+    this.user$.next(this.getCurrentUser());
   }
 
   checkUserAuth(): boolean {

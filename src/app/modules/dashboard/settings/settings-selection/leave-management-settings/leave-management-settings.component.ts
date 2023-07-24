@@ -100,7 +100,7 @@ export class LeaveManagementSettingsComponent {
     settingsService.getLeaveManagementPreference(authService.getCurrentUserId(), authService.getCompanyId()).pipe(
       tap( res => {
         this.leaveManagementPreferences = res;
-        console.log(res, 'prefernces')
+        this.leaveManagementPreferences ? this.form.patchValue(this.leaveManagementPreferences) : this.form.reset();
         this.form.patchValue(this.leaveManagementPreferences);
       })
     ).subscribe()

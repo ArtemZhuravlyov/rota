@@ -1,8 +1,13 @@
-import {ChangeDetectionStrategy, Component, ElementRef, HostListener} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
-import {SettingsMenuConfig} from "@shared/modules/header/configs/settings-menu-config";
-import {PersonMenuConfig} from "@shared/modules/header/configs/person-menu-config";
-import {NotificationMenuConfig} from "@shared/modules/header/configs/notification-menu-config";
+import { SettingsMenuConfig } from "@shared/modules/header/configs/settings-menu-config";
+import { PersonMenuConfig } from "@shared/modules/header/configs/person-menu-config";
+import { NotificationMenuConfig } from "@shared/modules/header/configs/notification-menu-config";
+import { MatDialog } from "@angular/material/dialog";
+import { ChangeCompanyModalComponent } from "@shared/modalWindows/change-company-modal/change-company-modal.component";
+import { CompanyService } from "@core/services/company/company.service";
+import { AuthService } from "@core/services/account/auth.service";
+import { tap } from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +15,7 @@ import {NotificationMenuConfig} from "@shared/modules/header/configs/notificatio
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
   buttonTypeEnum = ButtonTypeEnum;
   notificationMenuConfig = NotificationMenuConfig;
@@ -20,7 +25,14 @@ export class HeaderComponent {
   isNotificationsIconClicked = false;
   isSettingsIconClicked = false;
   isPersonIconClicked = false;
-  constructor(private readonly elementRef: ElementRef) {
+  companyName = '';
+  constructor(
+    private readonly elementRef: ElementRef,
+    private readonly dialog: MatDialog,
+    private readonly companyService: CompanyService,
+    private readonly authService: AuthService,
+    private readonly cdr: ChangeDetectorRef,
+    ) {
   }
 
   @HostListener('document:click', ['$event.target'])
@@ -30,6 +42,19 @@ export class HeaderComponent {
       this.isSettingsIconClicked = false;
       this.isPersonIconClicked = false;
     }
+  }
+
+  ngOnInit() {
+    this.setCurrentCompanyName();
+  }
+
+  setCurrentCompanyName(): void {
+    this.companyService.getCompany(this.authService.getCurrentUserId(), this.authService.getCompanyId()).pipe(
+      tap( res => {
+        this.companyName = res.name;
+        this.cdr.detectChanges();
+      })
+    ).subscribe()
   }
 
   toggleSettingsSelected(index: number): void {
@@ -49,4 +74,18 @@ export class HeaderComponent {
         break;
     }
   }
+
+  openChangeCompanyModal(): void {
+    this.dialog
+      .open(ChangeCompanyModalComponent, {
+        panelClass: 'medium-modal',
+        backdropClass: 'modal-background',
+        disableClose: true,
+      })
+      .afterClosed()
+      .pipe(
+        tap( () => this.setCurrentCompanyName())
+      ).subscribe();
+  }
+
 }

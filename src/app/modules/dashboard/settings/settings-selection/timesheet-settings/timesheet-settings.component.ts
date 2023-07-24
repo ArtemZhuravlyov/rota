@@ -64,7 +64,7 @@ export class TimesheetSettingsComponent {
     settingsService.getTimesheetPreference(authService.getCurrentUserId(), authService.getCompanyId()).pipe(
       tap( res => {
         this.timesheetPreferences = res;
-        console.log(res, 'prefernces')
+        this.timesheetPreferences ? this.form.patchValue(this.timesheetPreferences) : this.form.reset();
         this.form.patchValue(this.timesheetPreferences);
       })
     ).subscribe()

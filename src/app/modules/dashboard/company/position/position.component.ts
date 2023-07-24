@@ -1,18 +1,19 @@
-import {ChangeDetectionStrategy, Component, HostListener, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
 import { ButtonTypeEnum } from "@core/enums/button-type.enum";
-import {TableAction, TableActionTypes} from "@core/types/data-table";
-import {PageEvent} from "@angular/material/paginator";
-import {BehaviorSubject, map, Observable, of, switchMap, take} from "rxjs";
-import {PositionService} from "@core/services/company/position/position.service";
-import {positionsTableConfig} from "@app/modules/dashboard/company/position/configs/positionsTable.config";
-import {divisionActionConfig} from "@app/modules/dashboard/company/group-function-division/configs/division-action.config";
-import {ActivatedRoute, Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
-import {InfoModal, InfoModalComponent} from "@shared/modalWindows/info-modal/info-modal.component";
-import {PrintService} from "@core/services/print/print.service";
-import {debounceTime} from "rxjs/operators";
-import {BankAccount} from "@core/types/bankAccount.interface";
+import { TableAction, TableActionTypes } from "@core/types/data-table";
+import { PageEvent } from "@angular/material/paginator";
+import { BehaviorSubject, map, Observable, of, switchMap, take } from "rxjs";
+import { PositionService } from "@core/services/company/position/position.service";
+import { positionsTableConfig } from "@app/modules/dashboard/company/position/configs/positionsTable.config";
+import {
+  divisionActionConfig
+} from "@app/modules/dashboard/company/group-function-division/configs/division-action.config";
+import { ActivatedRoute, Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { InfoModal, InfoModalComponent } from "@shared/modalWindows/info-modal/info-modal.component";
+import { PrintService } from "@core/services/print/print.service";
+import { debounceTime } from "rxjs/operators";
 
 const INITIAL_PAGE = {
   pageSize: 2,
@@ -127,8 +128,8 @@ export class PositionComponent implements OnInit{
     }
     this.dialog
       .open(InfoModalComponent, {
-        panelClass: 'infoDialog',
-        backdropClass: 'infoDialogBack',
+        panelClass: 'info-dialog',
+        backdropClass: 'modal-background',
         disableClose: true,
         data: job
       })

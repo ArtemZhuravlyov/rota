@@ -18,7 +18,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatStepperModule } from "@angular/material/stepper";
-import {MatDialogModule} from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 

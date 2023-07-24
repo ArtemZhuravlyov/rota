@@ -1,0 +1,27 @@
+@import "src/app/core/styles/material-custom/constants";
+
+.modal-heading {
+  color: $text-dark-gray;
+  font: normal normal 600 24px/35px Source Sans Pro;
+  margin-top: 40px;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.modal-subheading {
+  color: $text-light-gray;
+  font: normal normal normal 14px/20px Source Sans Pro;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.modal-content {
+  max-width: 480px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.action-buttons {
+  margin-bottom: 60px;
+}
