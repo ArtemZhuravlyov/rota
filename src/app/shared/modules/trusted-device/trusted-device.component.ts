@@ -10,8 +10,12 @@ import { ButtonTypeEnum } from "@core/enums/button-type.enum";
 export class TrustedDeviceComponent {
 
   @Input() title: string = 'Windows, Chrome';
-  @Input() creationDate: string = '9/16/10, 3:33 PM';
+  @Input() creationDate: string | null = '9/16/10, 3:33 PM';
   @Input() browserIcon: string = 'google';
 
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
+
+  removeDevice(): void {
+    console.log('Removing...')
+  }
 }

@@ -7,7 +7,7 @@
       </div>
       <span class="platform-name">{{ 'MAC_OS' | translate}}</span>
     </div>
-    <app-trusted-device></app-trusted-device>
+  <app-trusted-device *ngFor="let device of macOsDevices" [title]="device?.operatingSystem + ' ' + device.browserName" [browserIcon]="device.browserName" [creationDate]="device.creationDateUtc | date : 'short'"></app-trusted-device>
 
     <div class="platform-info d-flex align-items-center">
       <div class="platform-icon d-flex justify-content-center align-items-center">
@@ -15,7 +15,7 @@
       </div>
       <span class="platform-name">{{ 'WINDOWS' | translate}}</span>
     </div>
-    <app-trusted-device></app-trusted-device>
+    <app-trusted-device *ngFor="let device of windowsDevices" [title]="device?.operatingSystem + ' ' + device.browserName" [browserIcon]="device.browserName" [creationDate]="device.creationDateUtc | date : 'short'"></app-trusted-device>
 
     <div class="platform-info d-flex align-items-center">
       <div class="platform-icon d-flex justify-content-center align-items-center">
@@ -23,8 +23,8 @@
       </div>
       <span class="platform-name">{{ 'LINUX' | translate}}</span>
     </div>
-    <app-trusted-device></app-trusted-device>
-    <app-trusted-device ></app-trusted-device>
+    <app-trusted-device *ngFor="let device of linuxDevices" [title]="device?.operatingSystem + ' ' + device.browserName" [browserIcon]="device.browserName" [creationDate]="device.creationDateUtc | date : 'short'"></app-trusted-device>
+
 
   <div class="action-buttons d-flex justify-content-center align-items-center">
     <app-button

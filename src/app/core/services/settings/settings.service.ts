@@ -61,7 +61,14 @@ export class SettingsService {
   }
 
   getTrustedDevices(userId: string, companyId: string) {
-    return this.http.get<any>(`${this.env.apiUrlCompany}/trusted-device-preference/${userId}/${companyId}`);
+    return this.http.get<any>(`${this.env.apiUrlCompany}/trusted-device-preference/${userId}/${companyId}/devices`);
   }
 
+  getNotificationFrequency() {
+    return this.http.get<any>(`${this.env.apiUrlCompany}/frequency-type`);
+  }
+
+  getAlertDays() {
+    return this.http.get<any>(`${this.env.apiUrlCompany}/alert-day`);
+  }
 }
