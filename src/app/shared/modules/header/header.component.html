@@ -60,7 +60,7 @@
               <mat-icon [ngStyle]="{'transform': isPersonIconClicked ? 'rotate(180deg)' : ''}" [matMenuTriggerFor]="menu" (click)="onIconClick('person')" [svgIcon]="'arrow'" class="selected-icon"></mat-icon>
               <mat-menu class="person-menu" #menu="matMenu">
                 <div class="person-container" (click)="$event.stopPropagation()">
-                  <div  class="person-content" *ngFor="let button of personMenuConfig">
+                  <div (click)="onMenuItemClick(button)" class="person-content" *ngFor="let button of personMenuConfig">
                     <mat-icon [svgIcon]="button.icon"></mat-icon>
                     <span>{{button.title | translate}}</span>
                   </div>

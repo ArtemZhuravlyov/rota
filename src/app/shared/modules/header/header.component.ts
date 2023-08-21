@@ -1,22 +1,29 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit } from '@angular/core';
-import { ButtonTypeEnum } from "@core/enums/button-type.enum";
-import { SettingsMenuConfig } from "@shared/modules/header/configs/settings-menu-config";
-import { PersonMenuConfig } from "@shared/modules/header/configs/person-menu-config";
-import { NotificationMenuConfig } from "@shared/modules/header/configs/notification-menu-config";
-import { MatDialog } from "@angular/material/dialog";
-import { ChangeCompanyModalComponent } from "@shared/modalWindows/change-company-modal/change-company-modal.component";
-import { CompanyService } from "@core/services/company/company.service";
-import { AuthService } from "@core/services/account/auth.service";
-import { tap } from "rxjs";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+} from '@angular/core';
+import { ButtonTypeEnum } from '@core/enums/button-type.enum';
+import { SettingsMenuConfig } from '@shared/modules/header/configs/settings-menu-config';
+import { PersonMenuConfig } from '@shared/modules/header/configs/person-menu-config';
+import { NotificationMenuConfig } from '@shared/modules/header/configs/notification-menu-config';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangeCompanyModalComponent } from '@shared/modalWindows/change-company-modal/change-company-modal.component';
+import { CompanyService } from '@core/services/company/company.service';
+import { AuthService } from '@core/services/account/auth.service';
+import { tap } from 'rxjs';
+import { NavigationMenusConfig } from '@core/types/navigation-menus-config';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit{
-
+export class HeaderComponent implements OnInit {
   buttonTypeEnum = ButtonTypeEnum;
   notificationMenuConfig = NotificationMenuConfig;
   settingsMenuConfig = SettingsMenuConfig;
@@ -31,9 +38,8 @@ export class HeaderComponent implements OnInit{
     private readonly dialog: MatDialog,
     private readonly companyService: CompanyService,
     private readonly authService: AuthService,
-    private readonly cdr: ChangeDetectorRef,
-    ) {
-  }
+    private readonly cdr: ChangeDetectorRef
+  ) {}
 
   @HostListener('document:click', ['$event.target'])
   onClick(targetElement: string) {
@@ -49,22 +55,38 @@ export class HeaderComponent implements OnInit{
   }
 
   setCurrentCompanyName(): void {
-    this.companyService.getCompany(this.authService.getCurrentUserId(), this.authService.getCompanyId()).pipe(
-      tap( res => {
-        this.companyName = res.name;
-        this.cdr.detectChanges();
-      })
-    ).subscribe()
+    this.companyService
+      .getCompany(
+        this.authService.getCurrentUserId(),
+        this.authService.getCompanyId()
+      )
+      .pipe(
+        tap((res) => {
+          this.companyName = res.name;
+          this.cdr.detectChanges();
+        })
+      )
+      .subscribe();
   }
 
   toggleSettingsSelected(index: number): void {
     this.selectedSettings = index;
   }
 
+  onMenuItemClick(menuItem: NavigationMenusConfig) {
+    switch (menuItem.title) {
+      case 'LOG_OUT':
+        this.authService.clearLocalStorage();
+        this.authService.checkUserAuth();
+        break;
+    }
+  }
+
   onIconClick(icon: string): void {
     switch (icon) {
       case 'notifications':
-        this.isNotificationsIconClicked = !this.isNotificationsIconClicked;
+        this.isNotificationsIconClicked =
+          !this.isNotificationsIconClicked;
         break;
       case 'settings':
         this.isSettingsIconClicked = !this.isSettingsIconClicked;
@@ -83,9 +105,7 @@ export class HeaderComponent implements OnInit{
         disableClose: true,
       })
       .afterClosed()
-      .pipe(
-        tap( () => this.setCurrentCompanyName())
-      ).subscribe();
+      .pipe(tap(() => this.setCurrentCompanyName()))
+      .subscribe();
   }
-
 }

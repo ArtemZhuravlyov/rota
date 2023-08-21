@@ -73,6 +73,10 @@ export class AuthService {
     }
   }
 
+  clearLocalStorage() {
+    localStorage.clear();
+  }
+
   private setToken(token: string): void {
     localStorage.setItem(TOKEN_NAME, token);
   }
