@@ -40,3 +40,14 @@ $my-theme: mat.define-light-theme((
 .infoDialogBack{
   background-color: #221F1F;
 }
+
+
+.infoDialog{
+  .mat-mdc-dialog-container{
+    width: 44vw;
+  }
+}
+
+.infoDialogBack{
+  background-color: #221F1F;
+}
