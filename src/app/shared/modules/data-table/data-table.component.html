@@ -62,7 +62,7 @@
                 <app-button
                   (btnClick)="toggleSearch()"
                   [btnType]="ButtonTypeEnum.ICON"
-                  [icon]="'search'"></app-button>
+                  [icon]="'search'" />
 
                 <app-dropdown-menu [xPosition]="'before'">
                   <div (click)="$event.stopPropagation()">
@@ -70,7 +70,7 @@
                       class="d-flex align-items-center hidden-cols-container"
                       *ngFor="let column of configForHiddenCols">
                       <mat-checkbox
-                        [checked]="!column?.hidden ?? false"
+                        [checked]="!column?.hidden"
                         (change)="handleColumnVisibility(column)" />
                       <p>{{ column.columnName | translate }}</p>
                     </div>

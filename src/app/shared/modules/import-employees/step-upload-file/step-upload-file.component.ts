@@ -1,24 +1,50 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import { MatStepper } from "@angular/material/stepper";
-import { FormGroup } from "@angular/forms";
-import { EmployeeService } from "@core/services/employee/employee.service";
-import { AuthService } from "@core/services/account/auth.service";
-import { CompanyService } from "@core/services/company/company.service";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
+import { FormGroup } from '@angular/forms';
+import { EmployeeService } from '@core/services/employee/employee.service';
+import { AuthService } from '@core/services/account/auth.service';
+import { CompanyService } from '@core/services/company/company.service';
 import * as XLSX from 'xlsx';
+import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 
 @Component({
   selector: 'app-step-upload-file',
   templateUrl: './step-upload-file.component.html',
   styleUrls: ['./step-upload-file.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepUploadFileComponent {
+  protected readonly TEMPLATE_EXCEL_FILE =
+    TranslateKey.TEMPLATE_EXCEL_FILE;
+  protected readonly SELECT_FILE = TranslateKey.SELECT_FILE;
+  protected readonly NOTE = TranslateKey.NOTE;
+  protected readonly SELECT_FILE_ERROR =
+    TranslateKey.SELECT_FILE_ERROR;
+  protected readonly MAX_SIZE = TranslateKey.MAX_SIZE;
+
   @Input() formGroup!: FormGroup;
   @Output() fileData = new EventEmitter();
 
-  items: { title: string, subTitle: string, isDownload?: boolean }[] = [
-    { title: 'DOWNLOAD_TEMPLATE', subTitle: 'TEMPLATE_SPREADSHEET', isDownload: true },
-    { title: 'UPLOAD_SPREADSHEET', subTitle: 'TEMPLATE_SPREADSHEET' },
+  items: {
+    title: TranslateKey;
+    subTitle: TranslateKey;
+    isDownload?: boolean;
+  }[] = [
+    {
+      title: TranslateKey.DOWNLOAD_TEMPLATE,
+      subTitle: TranslateKey.TEMPLATE_SPREADSHEET,
+      isDownload: true,
+    },
+    {
+      title: TranslateKey.UPLOAD_SPREADSHEET,
+      subTitle: TranslateKey.TEMPLATE_SPREADSHEET,
+    },
   ];
 
   selectedFileSize = '';
@@ -28,7 +54,7 @@ export class StepUploadFileComponent {
   inputIsError = false;
 
   allowedFileTypes = [
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   ];
 
   buttonStyleConfig = {
@@ -40,15 +66,14 @@ export class StepUploadFileComponent {
       height: '32px',
       width: '32px',
     },
-  }
+  };
 
   constructor(
     private matStepper: MatStepper,
     private employeeService: EmployeeService,
     private authService: AuthService,
-    private companyService: CompanyService,
-  ) {
-  }
+    private companyService: CompanyService
+  ) {}
 
   selectFile(inputFile: any) {
     this.selectedFile = inputFile.files[0];
@@ -73,10 +98,12 @@ export class StepUploadFileComponent {
   stepNext(): void {
     const { companyId, userId } = this.authService.getCurrentUser();
     const formData = new FormData();
-    formData.append('file', this.selectedFile)
-    this.employeeService.recordFile(userId, companyId, formData).subscribe(() => {
-      this.matStepper.next();
-    });
+    formData.append('file', this.selectedFile);
+    this.employeeService
+      .recordFile(userId, companyId, formData)
+      .subscribe(() => {
+        this.matStepper.next();
+      });
   }
 
   downloadTemplate(): void {
@@ -88,7 +115,9 @@ export class StepUploadFileComponent {
     reader.readAsBinaryString(file);
     reader.onload = (e: any) => {
       const binarystr: string = e.target.result;
-      const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary' });
+      const wb: XLSX.WorkBook = XLSX.read(binarystr, {
+        type: 'binary',
+      });
       const wsname: string = wb.SheetNames[0];
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
       const data = XLSX.utils.sheet_to_json(ws);

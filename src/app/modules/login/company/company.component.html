@@ -2,37 +2,36 @@
   [title]="title"
   [subtitle]="subtitle"
   [logoInformation]="logoInformation"
-  [imgUrl]="imgUrl"
->
+  [imgUrl]="imgUrl">
   <app-form-builder
     [styleConfig]="{ width: '100%', 'max-width': '480px' }"
     [formFields]="formFields"
-    (createdForm)="form = $event"
-  >
-    <div class="action-buttons d-flex flex-column align-items-center justify-content-between">
+    (createdForm)="form = $event">
+    <div
+      class="action-buttons d-flex flex-column align-items-center justify-content-between">
       <app-button
         (btnClick)="onSubmit()"
         [disabled]="!form.valid"
-        [title]="'CONTINUE'"
+        title="CONTINUE"
         [icon]="'long-arrow'"
         [iconPosition]="'afterText'"
-        [btnType]="'FLAT'"
+        btnType="FLAT"
         [isIconButton]="true"
         [styleConfig]="{ height: '52px' }"
-        [iconStyleConfig]="{ transform: 'rotate(-90deg)' }"
-      ></app-button>
+        [iconStyleConfig]="{ transform: 'rotate(-90deg)' }" />
       <app-button
         [routerLink]="routerLinkToRegistration"
         [queryParams]="{ edit: true }"
         (btnClick)="backToRegister()"
-        [title]="'BACK'"
-        [btnType]="'FLAT'"
+        title="BACK"
+        btnType="FLAT"
         [icon]="'long-arrow'"
         [iconPosition]="'beforeText'"
         [colorTheme]="'basic'"
         [styleConfig]="{ height: '52px' }"
-        [iconStyleConfig]="{ transform: 'rotate(90deg)' }"
-      ></app-button>
+        [iconStyleConfig]="{
+          transform: 'rotate(90deg)'
+        }" />
     </div>
   </app-form-builder>
 </app-login-page>

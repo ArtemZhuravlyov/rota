@@ -4,10 +4,9 @@
       [routerLink]="NavigationPaths.CREATE_COMPANY"
       [btnType]="ButtonTypeEnum.FLAT"
       [isIconButton]="true"
-      [styleConfig]="{height: '50px', width: '150px'}"
-      title="{{'CREATE_NEW' | translate}}"
-      [icon]="'add'"
-    ></app-button>
+      [styleConfig]="{ height: '50px', width: '150px' }"
+      title="CREATE_NEW"
+      [icon]="'add'"></app-button>
   </div>
 </app-page-header>
 
@@ -17,6 +16,4 @@
   [tableConfig]="companyListConfig"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
-  [hasCheckboxColumn]="true"
-></app-data-table>
-
+  [hasCheckboxColumn]="true"></app-data-table>

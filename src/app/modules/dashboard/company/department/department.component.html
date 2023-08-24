@@ -1,17 +1,23 @@
-<app-page-header [title]="'DEPARTMENT'"
-                 [isPrinting]="isPrinting$ | async"
-                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
-                 (onActionClicked)="onActionClicked({action: $event, payload: {}})">
+<app-page-header
+  [title]="'DEPARTMENT'"
+  [isPrinting]="isPrinting$ | async"
+  [additionalButtonsDisabled]="
+    (selectedTableAccs$ | async)?.length < 1
+  "
+  (onActionClicked)="
+    onActionClicked({ action: $event, payload: {} })
+  ">
   <div class="action-buttons">
     <app-button
       [routerLink]="NavigationPaths.CREATE_NEW_DEPARTMENT"
       [btnType]="ButtonTypeEnum.FLAT"
       [isIconButton]="true"
       [styleConfig]="{ height: '50px', width: '150px' }"
-      [title]="'CREATE_NEW' | translate"
+      title="CREATE_NEW"
       [icon]="'add'"
-      (click)="onActionClicked({action: 'add', payload: {}})"
-    ></app-button>
+      (click)="
+        onActionClicked({ action: 'add', payload: {} })
+      "></app-button>
   </div>
 </app-page-header>
 
@@ -25,6 +31,4 @@
   [actionConfig]="divisionActionConfig"
   [isPrinting]="isPrinting$ | async"
   [exporting$]="exporting$"
-  (selectedItemsIds)="onSelectedTableItems($event)"
-></app-data-table>
-
+  (selectedItemsIds)="onSelectedTableItems($event)"></app-data-table>

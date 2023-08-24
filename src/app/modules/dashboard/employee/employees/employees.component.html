@@ -1,15 +1,12 @@
-<app-page-header
-  [title]="'EMPLOYEES'"
->
+<app-page-header title="EMPLOYEES">
   <div class="action-buttons">
     <app-button
       [routerLink]="NavigationPaths.CREATE_NEW_EMPLOYEE"
       [btnType]="ButtonTypeEnum.FLAT"
       [isIconButton]="true"
-      [styleConfig]="{height: '50px', width: '150px'}"
-      [title]="'CREATE_NEW' | translate"
-      [icon]="'add'"
-    ></app-button>
+      [styleConfig]="{ height: '50px', width: '150px' }"
+      title="CREATE_NEW"
+      [icon]="'add'" />
   </div>
 </app-page-header>
 
@@ -21,6 +18,5 @@
     (actionClicked)="onActionClicked($event)"
     (pageChange)="onPageChange($event)"
     [hasCheckboxColumn]="true"
-    [tableStyle]="'employee'"
-  ></app-data-table>
+    [tableStyle]="'employee'" />
 </div>

@@ -1,24 +1,31 @@
-<app-page-header [title]="'POSITION'"
-                 [isPrinting]="isPrinting$ | async"
-                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
-                 (onActionClicked)="onActionClicked({action: $event, payload: {}})">
+<app-page-header
+  title="POSITION"
+  [isPrinting]="isPrinting$ | async"
+  [additionalButtonsDisabled]="
+    (selectedTableAccs$ | async)?.length < 1
+  "
+  (onActionClicked)="
+    onActionClicked({ action: $event, payload: {} })
+  ">
   <div class="action-buttons d-flex">
     <app-button
-      [styleConfig]="{height: '50px', width: '150px', 'font-weight': '400'}"
-      title="{{'IMPORT' | translate}}"
+      [styleConfig]="{
+        height: '50px',
+        width: '150px',
+        'font-weight': '400'
+      }"
+      title="IMPORT"
       [isIconButton]="true"
       [icon]="'export'"
-      [iconStyleConfig]="{transform: 'rotate(180deg)'}"
-      [btnType]="ButtonTypeEnum.STROKED"
-    ></app-button>
+      [iconStyleConfig]="{ transform: 'rotate(180deg)' }"
+      btnType="STROKED" />
     <app-button
       [routerLink]="NavigationPaths.CREATE_NEW_POSITION"
-      [btnType]="ButtonTypeEnum.FLAT"
+      btnType="FLAT"
       [isIconButton]="true"
       [styleConfig]="{ height: '50px', width: '150px' }"
-      [title]="'CREATE_NEW' | translate"
-      [icon]="'add'"
-    ></app-button>
+      title="CREATE_NEW"
+      [icon]="'add'" />
   </div>
 </app-page-header>
 
@@ -33,5 +40,4 @@
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
   (selectedItemsIds)="onSelectedTableItems($event)"
-  [hasCheckboxColumn]="true"
-></app-data-table>
+  [hasCheckboxColumn]="true" />

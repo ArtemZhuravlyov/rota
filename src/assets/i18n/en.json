@@ -305,5 +305,14 @@
   "DOUBLE_TAXATION_CODE": "Double Taxation Code",
   "DOUBLE_TAXATION_DESCRIPTION": "Double taxation refers to income taxes paid twice on the same income source. It occurs when income is taxed at both the corporate and personal level",
   "FEW_WORDS": "A few words here.",
-  "WORK_DATE_FORMAT": "Work Date Format"
+  "WORK_DATE_FORMAT": "Work Date Format",
+  "PRINT": "Print",
+  "GRADE_INFORMATION": "Grade Information",
+  "COMPANY_BANK_ACCOUNT": "Company Bank Account",
+  "COMPANY_ACCOUNT_DETAILS": "Company Bank Details",
+  "EXPORT": "Export",
+  "CLOSE": "Close",
+  "TEST": "Test",
+  "VIEW_ALL": "View All",
+  "EMPTY": ""
 }

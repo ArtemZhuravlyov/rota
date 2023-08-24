@@ -17,7 +17,6 @@ import {
   HttpClient,
   HttpClientModule,
 } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from '@core/interceptors/auth.interceptor';
@@ -30,6 +29,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { InfoModalComponent } from '@shared/modalWindows/info-modal/info-modal.component';
 import { ButtonModule } from '@shared/modules/button/button.module';
 import { AuthService } from '@core/services/account/auth.service';
+import { TranslateHttpLoader } from '../assets/i18n/utils/translate-http-loader.class';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

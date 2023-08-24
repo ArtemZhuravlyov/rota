@@ -1,6 +1,8 @@
+import { TranslateKey } from '../../../assets/i18n/enums/translate-key.enum';
+
 export interface NavigationMenusConfig {
-  title: string,
-  icon: string,
-  text?: string,
-  date?: string,
+  title: TranslateKey;
+  icon: string;
+  text?: string;
+  date?: string;
 }

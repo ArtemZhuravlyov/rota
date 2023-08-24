@@ -1,25 +1,32 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormField } from "@core/types/form-builder.model";
-import { FormGroup, Validators } from "@angular/forms";
-import { ImageUrl } from "@core/enums/image-url";
-import { AuthService } from "@core/services/account/auth.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
-import { matchFieldsValueValidator } from "@shared/utils/custom-validators/match-fields-value.validator";
-import { excludeSymbolsValidator } from "@shared/utils/custom-validators/exclude-symbols.validator";
-import { passwordValidator } from "@shared/utils/custom-validators/password.validator";
-import { emailValidator } from "@shared/utils/custom-validators/email.validator";
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+} from '@angular/core';
+import { FormField } from '@core/types/form-builder.model';
+import { FormGroup, Validators } from '@angular/forms';
+import { ImageUrl } from '@core/enums/image-url';
+import { AuthService } from '@core/services/account/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { matchFieldsValueValidator } from '@shared/utils/custom-validators/match-fields-value.validator';
+import { excludeSymbolsValidator } from '@shared/utils/custom-validators/exclude-symbols.validator';
+import { passwordValidator } from '@shared/utils/custom-validators/password.validator';
+import { emailValidator } from '@shared/utils/custom-validators/email.validator';
+import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegistrationComponent implements AfterViewInit, OnInit {
-  title = 'REGISTER';
-  subtitle = 'ALREADY_HAVE_AN_ACCOUNT';
-  logoInformation = 'Slogan of your company goes right underneath the logo, this is just a placeholder text.';
+  title = TranslateKey.REGISTER;
+  subtitle = TranslateKey.ALREADY_HAVE_AN_ACCOUNT;
+  logoInformation =
+    'Slogan of your company goes right underneath the logo, this is just a placeholder text.';
   redirectText = 'LOGIN';
   redirectRoute = [NavigationPaths.BACK, NavigationPaths.SIGN_IN];
   imgUrl = ImageUrl.REGISTRATION;
@@ -31,14 +38,17 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
       componentType: 'textbox',
       inputType: 'text',
       placeholder: 'ENTER_FIRST_NAME',
-      validators: [Validators.required, excludeSymbolsValidator(['`'])],
+      validators: [
+        Validators.required,
+        excludeSymbolsValidator(['`']),
+      ],
       icon: 'person_outline',
       extendedValidation: true,
     },
     {
       key: 'lastName',
       label: 'LAST_NAME',
-      componentType: "textbox",
+      componentType: 'textbox',
       inputType: 'text',
       placeholder: 'ENTER_LAST_NAME',
       validators: [Validators.required],
@@ -48,7 +58,7 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
     {
       key: 'email',
       label: 'EMAIL',
-      componentType: "textbox",
+      componentType: 'textbox',
       inputType: 'email',
       placeholder: 'ENTER_EMAIL',
       validators: [Validators.required, emailValidator()],
@@ -58,7 +68,7 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
     {
       key: 'password',
       label: 'PASSWORD',
-      componentType: "textbox",
+      componentType: 'textbox',
       inputType: 'password',
       placeholder: 'ENTER_PASSWORD',
       validators: [Validators.required, passwordValidator()],
@@ -69,14 +79,16 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
       key: 'verifyPassword',
       label: 'VERIFY_PASSWORD',
       placeholder: 'ENTER_VERIFY_PASSWORD',
-      componentType: "textbox",
+      componentType: 'textbox',
       inputType: 'password',
-      formValidators: [matchFieldsValueValidator('password', 'verifyPassword')],
+      formValidators: [
+        matchFieldsValueValidator('password', 'verifyPassword'),
+      ],
       validators: [Validators.required],
       icon: 'lock',
       extendedValidation: true,
     },
-  ]
+  ];
 
   form!: FormGroup;
   isEdit = false;
@@ -84,13 +96,13 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
   constructor(
     private authService: AuthService,
     private route: Router,
-    private activatedRoute: ActivatedRoute,
-  ) { }
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(({ edit }) => {
       if (edit) {
-        this.isEdit = edit
+        this.isEdit = edit;
         this.addDataForFormField();
       }
     });
@@ -106,21 +118,29 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
 
     if (this.isEdit) {
       this.authService.checkUserAuth();
-      body = { ...body, id: this.authService.getCurrentUser().userId };
+      body = {
+        ...body,
+        id: this.authService.getCurrentUser().userId,
+      };
     }
 
-    this.authService.registration(body)
-      .subscribe({
-          complete: () => this.route.navigate([NavigationPaths.LOGIN, NavigationPaths.REGISTRATION_COMPANY]),
-          error: () => this.form.enable(),
-        }
-      );
+    this.authService.registration(body).subscribe({
+      complete: () =>
+        this.route.navigate([
+          NavigationPaths.LOGIN,
+          NavigationPaths.REGISTRATION_COMPANY,
+        ]),
+      error: () => this.form.enable(),
+    });
   }
 
   private addDataForFormField(): void {
     const { displayName, email } = this.authService.getCurrentUser();
     const [firstName, lastName] = displayName.split(' ');
-    const data = { firstName, lastName, email } as Record<string, string>;
+    const data = { firstName, lastName, email } as Record<
+      string,
+      string
+    >;
     this.formFields = this.formFields.map(field => {
       field.data = data[field.key];
       return field;
@@ -133,6 +153,6 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
 
     controlPassword?.valueChanges.subscribe(() => {
       controlVerifyPassword?.updateValueAndValidity();
-    })
+    });
   }
 }

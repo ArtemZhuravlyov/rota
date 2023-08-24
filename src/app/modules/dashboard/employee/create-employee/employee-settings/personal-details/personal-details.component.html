@@ -1,89 +1,80 @@
 <app-form-card [customClass]="'card'">
-  <h3 class="heading">{{ 'PERSONAL_DETAILS' | translate }}</h3>
+  <h3 class="heading">{{ PERSONAL_DETAILS | translate }}</h3>
 
   <div class="d-flex">
     <app-form-builder
       [formFields]="personalInformationFormFields.slice(0, 2)"
-      (createdForm)="form.addControl('nameForm', $event)"
-    ></app-form-builder>
+      (createdForm)="form.addControl('nameForm', $event)" />
     <div>
       <app-form-builder
         [formFields]="[personalInformationFormFields[2]]"
         (createdForm)="form.addControl('lastNameForm', $event)"
-        [styleConfig]="{margin: '0 40px 0 0'}"
-      ></app-form-builder>
+        [styleConfig]="{ margin: '0 40px 0 0' }" />
       <div class="d-flex">
         <app-form-builder
           [formFields]="[personalInformationFormFields[3]]"
           (createdForm)="form.addControl('dobForm', $event)"
-          [styleConfig]="{width: '240px'}"
-        ></app-form-builder>
+          [styleConfig]="{ width: '240px' }" />
         <app-form-builder
           [formFields]="[personalInformationFormFields[4]]"
           (createdForm)="form.addControl('genderForm', $event)"
-          [styleConfig]="{width: '240px'}"
-        ></app-form-builder>
+          [styleConfig]="{ width: '240px' }" />
       </div>
     </div>
   </div>
 
-  <hr>
+  <hr />
 
   <div class="d-flex">
     <app-form-builder
       [formFields]="[familyInformationFormFields[0]]"
       (createdForm)="form.addControl('maritalStatusForm', $event)"
-      [styleConfig]="{margin: '20px 0 0 0'}"
-    ></app-form-builder>
+      [styleConfig]="{ margin: '20px 0 0 0' }" />
     <app-form-builder
       [formFields]="[familyInformationFormFields[1]]"
       (createdForm)="form.addControl('numberOfChildrenForm', $event)"
-      [styleConfig]="{margin: '20px 0 0 0'}"
-    ></app-form-builder>
+      [styleConfig]="{ margin: '20px 0 0 0' }" />
   </div>
 
-  <hr>
+  <hr />
 
   <div class="d-flex">
     <app-form-builder
       [formFields]="identityInformationFormFields.slice(0, 2)"
       (createdForm)="form.addControl('placeOfBirthForm', $event)"
-      [styleConfig]="{margin: '20px 0 0 0'}"
-    ></app-form-builder>
+      [styleConfig]="{ margin: '20px 0 0 0' }" />
     <div>
       <app-form-builder
         [formFields]="[identityInformationFormFields[2]]"
         (createdForm)="form.addControl('countryOfBirthForm', $event)"
-        [styleConfig]="{margin: '20px 40px 0 0'}"
-      ></app-form-builder>
+        [styleConfig]="{
+          margin: '20px 40px 0 0'
+        }" />
       <div class="d-flex">
         <app-form-builder
           [formFields]="[identityInformationFormFields[3]]"
           (createdForm)="form.addControl('nationalIdForm', $event)"
-          [styleConfig]="{width: '240px'}"
-        ></app-form-builder>
+          [styleConfig]="{ width: '240px' }" />
         <app-form-builder
           [formFields]="[identityInformationFormFields[4]]"
-          (createdForm)="form.addControl('passportNumberForm',$event)"
-          [styleConfig]="{width: '240px'}"
-        ></app-form-builder>
+          (createdForm)="
+            form.addControl('passportNumberForm', $event)
+          "
+          [styleConfig]="{ width: '240px' }" />
       </div>
     </div>
   </div>
 
-  <hr>
+  <hr />
 
   <div class="d-flex">
     <app-form-builder
       [formFields]="[contactInformationFormFields[0]]"
       (createdForm)="form.addControl('emailForm', $event)"
-      [styleConfig]="{margin: '20px 0 0 0'}"
-    ></app-form-builder>
+      [styleConfig]="{ margin: '20px 0 0 0' }" />
     <app-form-builder
       [formFields]="[contactInformationFormFields[1]]"
       (createdForm)="form.addControl('phoneNumberForm', $event)"
-      [styleConfig]="{margin: '20px 0 0 0'}"
-    ></app-form-builder>
+      [styleConfig]="{ margin: '20px 0 0 0' }" />
   </div>
-
 </app-form-card>

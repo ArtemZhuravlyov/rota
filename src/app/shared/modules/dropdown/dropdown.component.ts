@@ -4,12 +4,17 @@ import {
   EventEmitter,
   forwardRef,
   Input,
-  Output
+  Output,
 } from '@angular/core';
-import { DropdownOptions } from "@core/types/form-builder.model";
-import {Observable, Subject, takeUntil} from "rxjs";
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { Style } from "@core/types/style-model";
+import { DropdownOptions } from '@core/types/form-builder.model';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
+import { Style } from '@core/types/style-model';
+import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
 
 interface Dropdown {
   currencyCode: string;
@@ -17,7 +22,7 @@ interface Dropdown {
 }
 
 interface PreSelectedValue {
-  displayName: string,
+  displayName: string;
   value: string;
 }
 @Component({
@@ -31,12 +36,14 @@ interface PreSelectedValue {
       useExisting: forwardRef(() => DropdownComponent),
       multi: true,
     },
-  ]
+  ],
 })
 export class DropdownComponent implements ControlValueAccessor {
+  protected readonly NOT_FOUND = TranslateKey.NOT_FOUND;
+
   @Input() formControl!: FormControl;
-  @Input() title = ''
-  @Input() additionalTitle = ''
+  @Input() title = '';
+  @Input() additionalTitle = '';
   @Input() data!: DropdownOptions[] & Observable<DropdownOptions[]>;
   @Input() valueField = 'value';
   @Input() textField = 'displayName';
@@ -46,20 +53,20 @@ export class DropdownComponent implements ControlValueAccessor {
   @Output() selectChanged = new EventEmitter();
   @Input() placeholder!: string;
   @Input() checkbox!: boolean;
-  @Input() hintMenu: boolean = false;
+  @Input() hintMenu = false;
   @Input() hintHeading = '';
   @Input() hintDescription = '';
 
-  selectedValue: string = '';
+  selectedValue = '';
   currentIcon: string | null = null;
-  searchValue: string = '';
+  searchValue = '';
   isOpen = false;
   selectedDropdown: Dropdown | null = null;
-  preselectedValue: string = ''
+  preselectedValue = '';
   notifier: Subject<void> = new Subject<void>();
 
   ngAfterViewChecked() {
-    this.setPreselectedValue()
+    this.setPreselectedValue();
   }
 
   isObservable(data: any) {
@@ -70,8 +77,12 @@ export class DropdownComponent implements ControlValueAccessor {
     this.currentIcon = data[this.iconField] as string;
     this.selectedValue = data[this.valueField] as string;
     this.selectedDropdown = {
-      currencyCode: data['currencyCode'] ? data['currencyCode'].toString() : '',
-      countryFlag: data['countryFlag'] ? data['countryFlag'].toString() : '',
+      currencyCode: data['currencyCode']
+        ? data['currencyCode'].toString()
+        : '',
+      countryFlag: data['countryFlag']
+        ? data['countryFlag'].toString()
+        : '',
     };
     this.selectChanged.emit(this.selectedValue);
     this.onChange(data[this.valueField]);
@@ -86,25 +97,25 @@ export class DropdownComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
-  writeValue(obj: any): void { }
+  writeValue(obj: any): void {}
 
-  setPreselectedValue(){
+  setPreselectedValue() {
     if (this.data) {
       if (Array.isArray(this.data)) {
         this.data.find((data: any) => {
           if (data.preSelected) {
-            this.preselectedValue = data.value
+            this.preselectedValue = data.value;
           }
-        })
+        });
       } else {
         (this.data as Observable<any>).subscribe(data => {
           data.find((data: any) => {
             if (data.preSelected) {
-              this.preselectedValue = data.value
+              this.preselectedValue = data.value;
             }
-          })
-          takeUntil(this.notifier)
-        })
+          });
+          takeUntil(this.notifier);
+        });
       }
     }
   }
