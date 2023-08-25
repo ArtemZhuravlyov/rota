@@ -48,6 +48,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   @Output() actionClicked = new EventEmitter<TableAction>();
   @Output() pageChange = new EventEmitter<PageEvent>();
   @Output() selectedItemsIds = new EventEmitter();
+  @Output() searchChange = new EventEmitter<string>();
   readonly ColumnType = ColumnType;
   readonly ButtonTypeEnum = ButtonTypeEnum;
   filteredData: any = [];
@@ -137,14 +138,18 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     const dataToFilter = JSON.parse(
       JSON.stringify(this.tableData[this.itemsKey])
     );
-    this.filteredData = dataToFilter.filter((obj: any) =>
-      obj[filedToFilter]
+    this.filteredData = dataToFilter.filter((obj: any) => {
+      return obj[filedToFilter]
         .toLowerCase()
-        .includes(searchText.toLowerCase())
-    );
+        .includes(searchText.toLowerCase());
+    });
   }
   onAction(action: TableAction): void {
     this.actionClicked.emit(action);
+  }
+
+  onValueSearch(input: string) {
+    this.searchChange.emit(input);
   }
 
   public handleColumnVisibility(config: ColumnConfig): void {

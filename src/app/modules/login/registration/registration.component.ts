@@ -5,16 +5,13 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormField } from '@core/types/form-builder.model';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ImageUrl } from '@core/enums/image-url';
 import { AuthService } from '@core/services/account/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
-import { matchFieldsValueValidator } from '@shared/utils/custom-validators/match-fields-value.validator';
-import { excludeSymbolsValidator } from '@shared/utils/custom-validators/exclude-symbols.validator';
-import { passwordValidator } from '@shared/utils/custom-validators/password.validator';
-import { emailValidator } from '@shared/utils/custom-validators/email.validator';
 import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
+import { CustomValidators } from '@shared/utils/custom-validators/custom-validators';
 
 @Component({
   selector: 'app-registration',
@@ -39,8 +36,8 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
       inputType: 'text',
       placeholder: 'ENTER_FIRST_NAME',
       validators: [
-        Validators.required,
-        excludeSymbolsValidator(['`']),
+        CustomValidators.required,
+        CustomValidators.excludeSymbolsValidator({ symbols: ['`'] }),
       ],
       icon: 'person_outline',
       extendedValidation: true,
@@ -51,7 +48,7 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
       componentType: 'textbox',
       inputType: 'text',
       placeholder: 'ENTER_LAST_NAME',
-      validators: [Validators.required],
+      validators: [CustomValidators.required],
       icon: 'person_outline',
       extendedValidation: true,
     },
@@ -61,7 +58,10 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
       componentType: 'textbox',
       inputType: 'email',
       placeholder: 'ENTER_EMAIL',
-      validators: [Validators.required, emailValidator()],
+      validators: [
+        CustomValidators.required,
+        CustomValidators.emailValidator,
+      ],
       icon: 'mail',
       extendedValidation: true,
     },
@@ -71,7 +71,10 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
       componentType: 'textbox',
       inputType: 'password',
       placeholder: 'ENTER_PASSWORD',
-      validators: [Validators.required, passwordValidator()],
+      validators: [
+        CustomValidators.required,
+        CustomValidators.passwordValidator(),
+      ],
       icon: 'lock',
       extendedValidation: true,
     },
@@ -82,9 +85,12 @@ export class RegistrationComponent implements AfterViewInit, OnInit {
       componentType: 'textbox',
       inputType: 'password',
       formValidators: [
-        matchFieldsValueValidator('password', 'verifyPassword'),
+        CustomValidators.matchFieldsValueValidator(
+          'password',
+          'verifyPassword'
+        ),
       ],
-      validators: [Validators.required],
+      validators: [CustomValidators.required],
       icon: 'lock',
       extendedValidation: true,
     },

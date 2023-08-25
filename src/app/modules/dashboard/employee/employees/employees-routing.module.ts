@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from "@angular/router";
-import { EmployeesComponent } from "@app/modules/dashboard/employee/employees/employees.component";
+import { RouterModule, Routes } from '@angular/router';
+import { EmployeesComponent } from '@app/modules/dashboard/employee/employees/employees.component';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 
 export const ROUTES: Routes = [
   {
@@ -9,15 +9,20 @@ export const ROUTES: Routes = [
     pathMatch: 'full',
     component: EmployeesComponent,
   },
+  {
+    path: NavigationPaths.CREATE_NEW_EMPLOYEE,
+    loadChildren: () =>
+      import('../create-employee/create-employee.module').then(
+        (m) => m.CreateEmployeeModule
+      ),
+    data: {
+      breadcrumb: 'CREATE_NEW',
+    },
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(ROUTES),
-  ],
-  exports: [
-    RouterModule,
-  ],
+  imports: [RouterModule.forChild(ROUTES)],
+  exports: [RouterModule],
 })
-export class EmployeesRoutingModule { }
+export class EmployeesRoutingModule {}

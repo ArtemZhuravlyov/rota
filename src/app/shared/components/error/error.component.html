@@ -1,0 +1,27 @@
+<ng-container [ngSwitch]="true">
+  <ng-container
+    *ngSwitchCase="getError(Errors.REGISTER_PASSWORD_ERROR)">
+    <span class="mobile-error">{{
+      REGISTER_PASSWORD_ERROR_SHORT | translate
+    }}</span>
+    <span class="desktop-error">{{
+      REGISTER_PASSWORD_ERROR | translate
+    }}</span>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="getError(Errors.LOGIN_PASSWORD_ERROR)">
+    {{ LOGIN_PASSWORD_ERROR | translate }}
+  </ng-container>
+
+  <ng-container *ngSwitchCase="getError(Errors.EMAIL)">
+    {{ EMAIL_ERROR | translate }}
+  </ng-container>
+
+  <ng-container *ngSwitchCase="getError(Errors.MUST_MATCH)">
+    {{ REPEAT_PASSWORD_ERROR | translate }}
+  </ng-container>
+
+  <ng-container *ngSwitchCase="getError(Errors.EXCLUDE_SYMBOLS)">
+    <span>{{ SYMBOL_ERROR | translate }}</span>
+  </ng-container>
+</ng-container>

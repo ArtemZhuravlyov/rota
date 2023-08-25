@@ -58,7 +58,8 @@
               *ngIf="!isPrinting">
               {{ tableConfig[i].columnName | translate }}
 
-              <div class="actions-container d-flex align-items-end">
+              <div
+                class="actions-container d-flex justify-content-center align-items-end">
                 <app-button
                   (btnClick)="toggleSearch()"
                   [btnType]="ButtonTypeEnum.ICON"
@@ -211,21 +212,19 @@
     </app-custom-paginator>
   </ng-container>
 
-  <app-search-input
-    *ngIf="showSearch"
-    class="table-search"
-    [showClearButton]="false"
-    [styleConfig]="{
-      width: 'calc(100vw - 464px)',
-      'margin-left': '12px'
-    }">
-    <app-button
-      class="close-icon"
-      (btnClick)="toggleSearch()"
-      [isIconButton]="true"
-      [btnType]="'ICON'"
-      [icon]="'clear'"></app-button>
-  </app-search-input>
+  <div class="table-search" *ngIf="showSearch">
+    <app-search-input
+      [styleConfig]="{ width: '100%' }"
+      [showClearButton]="false"
+      (valueChanged)="onValueSearch($event)">
+      <app-button
+        class="close-icon"
+        (btnClick)="toggleSearch()"
+        [isIconButton]="true"
+        [btnType]="'ICON'"
+        [icon]="'clear'"></app-button>
+    </app-search-input>
+  </div>
 </div>
 
 <ng-template #defaultCellHeader let-i="i">
@@ -235,6 +234,7 @@
       <app-dropdown-menu
         [menuIcon]="'filter'"
         *ngIf="headerDropdownFilter">
+        <div class="triangle-border"></div>
         <div
           class="filter-container"
           (click)="$event.stopPropagation()">
@@ -275,6 +275,14 @@
     </ng-container>
 
     {{ tableConfig[i].columnName | translate }}
+
+    <ng-container *ngIf="!isPrinting">
+      <app-button
+        class="close-icon"
+        [isIconButton]="true"
+        [btnType]="'ICON'"
+        [icon]="'sort-by'"></app-button>
+    </ng-container>
   </div>
 </ng-template>
 

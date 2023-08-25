@@ -36,4 +36,5 @@ export const TableActionTypes = {
   PRINT: 'print',
   EXPORT: 'export',
   IMPORT: 'import',
+  CHECK: 'check',
 } as const;

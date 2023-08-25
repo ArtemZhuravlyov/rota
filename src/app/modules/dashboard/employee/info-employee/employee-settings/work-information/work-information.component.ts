@@ -182,19 +182,13 @@ export class WorkInformationComponent {
       )
       .subscribe();
 
-    this.employmentTypeService
-      .getEmploymentTypeList(PAGE_SIZE, PAGE_INDEX)
-      .pipe(
-        tap(
-          response =>
-            (this.employeeInformationFormFields[3].data =
-              response.employmentTypes.map(employmentType => ({
-                displayName: employmentType.name,
-                value: employmentType.id,
-              })))
-        )
-      )
-      .subscribe();
+    // this.employmentTypeService.getEmploymentTypeList(PAGE_SIZE, PAGE_INDEX).pipe(
+    //   tap(response =>
+    //     this.employeeInformationFormFields[3].data = response.employmentTypes.map(employmentType =>
+    //       ({ displayName: employmentType.name, value: employmentType.id })
+    //     )
+    //   )
+    // ).subscribe();
 
     this.gradeCategoryService
       .getGradeCategoriesList(PAGE_SIZE, PAGE_INDEX)

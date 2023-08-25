@@ -350,6 +350,9 @@ const en: LanguageObject = {
   TEST: 'Test',
   VIEW_ALL: 'View All',
   EMPTY: '',
+  ORGANISATION_CHART: 'Organisation Chart',
+  EMPLOYEES_TYPE: 'Employees Type',
+  DESCRIPTION: 'Description',
 };
 
 export const allLanguages: {

@@ -8,7 +8,7 @@
       (focusout)="isFocus = false"
       #input
       matInput
-      (input)="valueChanged.emit(input.value)"
+      (input)="bs$.next(input.value)"
       placeholder="{{ SEARCH | translate }}"
       class="search-input" />
     <div
@@ -24,7 +24,7 @@
           (click)="input.value = ''; valueChanged.emit('')" />
       </ng-container>
 
-      <ng-content></ng-content>
+      <ng-content />
     </div>
   </mat-form-field>
 </div>
