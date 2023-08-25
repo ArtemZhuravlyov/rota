@@ -8,9 +8,19 @@
 
 @include mat.core();
 
-html, body { height: 100%; }
-body { margin: 0; color: $text-gray}
-* { font-family: "Source Sans Pro", sans-serif }
+html, body {
+  height: 100%;
+}
+
+body {
+  color: $text-gray
+}
+
+* {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  box-sizing: border-box;
+}
 
 $my-primary: mat.define-palette($green-primary, 500);
 $my-accent: mat.define-palette($accent, 700);
@@ -27,16 +37,32 @@ $my-theme: mat.define-light-theme((
         density: 0,
 ));
 
+.container-wrapper {
+  padding: 35px 40px 0 30px;
+}
+
+
 @include mat.typography-hierarchy($my-typography);
 @include mat.all-component-themes($my-theme);
 
 
-.infoDialog{
-  .mat-mdc-dialog-container{
+.infoDialog {
+  .mat-mdc-dialog-container {
     width: 44vw;
   }
 }
 
-.infoDialogBack{
+.infoDialogBack {
+  background-color: #221F1F;
+}
+
+
+.infoDialog {
+  .mat-mdc-dialog-container {
+    width: 44vw;
+  }
+}
+
+.infoDialogBack {
   background-color: #221F1F;
 }

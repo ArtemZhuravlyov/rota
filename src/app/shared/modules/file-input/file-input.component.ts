@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
-import { FormControl, NG_VALUE_ACCESSOR } from "@angular/forms";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+} from '@angular/core';
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
 
 @Component({
   selector: 'app-file-input',
@@ -12,19 +18,24 @@ import { FormControl, NG_VALUE_ACCESSOR } from "@angular/forms";
       useExisting: forwardRef(() => FileInputComponent),
       multi: true,
     },
-  ]
+  ],
 })
 export class FileInputComponent {
   @Input() formControl!: FormControl;
   @Input() label = '';
   @Input() maxFile = '';
 
+  protected readonly SELECT_FILE = TranslateKey.SELECT_FILE;
+  protected readonly NOTE = TranslateKey.NOTE;
+  protected readonly SELECT_FILE_ERROR =
+    TranslateKey.SELECT_FILE_ERROR;
+
   selectedFileSize = '';
   selectedFiletype = '';
   selectedFileSrc = '';
   selectedFile!: any;
   inputIsError = false;
-  allowedFileTypes = ['image/png', '.svg', '.jpeg']
+  allowedFileTypes = ['image/png', '.svg', '.jpeg'];
 
   buttonStyleConfig = {
     mobileBtn: {
@@ -35,11 +46,10 @@ export class FileInputComponent {
       height: '32px',
       width: '32px',
     },
-  }
+  };
   selectFile(inputFile: any) {
     this.selectedFile = inputFile.files[0];
     const { name, size, type } = this.selectedFile;
-
 
     this.onChange(this.selectedFile);
     this.onTouch();
@@ -65,5 +75,5 @@ export class FileInputComponent {
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
-  writeValue(obj: any): void { }
+  writeValue(obj: any): void {}
 }

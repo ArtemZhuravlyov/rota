@@ -6,16 +6,25 @@
     <app-button
       [disabled]="additionalButtonsDisabled"
       [btnType]="ButtonTypeEnum.STROKED"
-      [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
-      [title]="'Export'"
+      [styleConfig]="{
+        width: '130px',
+        height: '42px',
+        'font-weight': '500'
+      }"
+      title="EXPORT"
       [isIconButton]="true"
       [icon]="'export'"
       (click)="buttonAction('export')"></app-button>
     <app-button
       [disabled]="additionalButtonsDisabled"
       [btnType]="ButtonTypeEnum.STROKED"
-      [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
-      [title]="'Print'" [isIconButton]="true"
+      [styleConfig]="{
+        width: '130px',
+        height: '42px',
+        'font-weight': '500'
+      }"
+      [title]="'PRINT'"
+      [isIconButton]="true"
       [icon]="'print'"
       (click)="buttonAction('print')"></app-button>
   </div>

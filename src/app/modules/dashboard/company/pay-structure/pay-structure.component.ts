@@ -4,8 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-pay-structure',
   templateUrl: './pay-structure.component.html',
   styleUrls: ['./pay-structure.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PayStructureComponent {
-
-}
+export class PayStructureComponent {}

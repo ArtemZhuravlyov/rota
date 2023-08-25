@@ -1,31 +1,31 @@
-<app-page-header [title]="'EMPLOYEES'" [isSubHeaderShowed]="false" [isBackBtnShowed]="true"></app-page-header>
+<app-page-header
+  title="EMPLOYEES"
+  [isSubHeaderShowed]="false"
+  [isBackBtnShowed]="true" />
 
 <app-form-card>
   <h1 class="heading">Add Employee</h1>
 
   <app-form-builder
     (createdForm)="form = $event"
-    [formFields]="createEmployeeFormConfig"
-  ></app-form-builder>
+    [formFields]="createEmployeeFormConfig" />
 </app-form-card>
 
 <div class="action-container" *ngIf="!onSave">
   <app-button
-    [btnType]="ButtonTypeEnum.FLAT"
+    btnType="FLAT"
     [isIconButton]="true"
-    [styleConfig]="{height: '50px', width: '150px'}"
+    [styleConfig]="{ height: '50px', width: '150px' }"
     [icon]="'success'"
-    [title]="'SAVE' | translate"
-    (btnClick)="toggleOnSave()"
-  ></app-button>
+    title="SAVE"
+    (btnClick)="toggleOnSave()" />
 
   <app-button
     [colorTheme]="'warn'"
-    [styleConfig]="{width: '150px', height: '50px'}"
-    [btnType]="ButtonTypeEnum.FLAT"
+    [styleConfig]="{ width: '150px', height: '50px' }"
+    btnType="FLAT"
     [isIconButton]="true"
-    [title]="'CANCEL' | translate"
+    title="CANCEL"
     [icon]="'cancel'"
-    [routerLink]="'/dashboard/employees'"
-  ></app-button>
+    [routerLink]="'/dashboard/employees-type'"></app-button>
 </div>

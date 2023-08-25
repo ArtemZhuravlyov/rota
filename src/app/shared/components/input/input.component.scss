@@ -1,0 +1,54 @@
+.input-control {
+  display: block;
+
+  &_label {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      font-style: normal;
+      font-size: 15px;
+      color: #221F1F;
+    }
+
+    span {
+      font-size: 15px;
+      font-style: normal;
+      color: #808080;
+    }
+
+    span:first-child {
+      font-size: 15px;
+      font-style: normal;
+      color: #221f1f;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #1C9F5680;
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: left;
+    font-style: normal;
+    font-size: 15px;
+    color: #221F1F;
+  }
+
+  .error {
+    background-color: #FFF2F2;
+    border: 1px solid #FF0000;
+  }
+
+  .success {
+    background-color: #E2FFF0;
+    border: 1px solid #1C9F56;
+  }
+
+  input:focus-visible {
+    outline: none;
+  }
+
+}
+

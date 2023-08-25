@@ -4,8 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-work-schedule',
   templateUrl: './work-schedule.component.html',
   styleUrls: ['./work-schedule.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WorkScheduleComponent {
-
-}
+export class WorkScheduleComponent {}

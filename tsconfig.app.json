@@ -9,6 +9,8 @@
     "src/main.ts"
   ],
   "include": [
+    "src/assets/i18n/**/*.ts",
     "src/**/*.d.ts"
-  ]
+  ],
+  "exclude": ["src/assets/i18n/utils/*.ts"]
 }

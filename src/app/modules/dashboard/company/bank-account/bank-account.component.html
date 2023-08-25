@@ -1,31 +1,41 @@
-<app-page-header [title]="'BANK_ACCOUNT'"
-                 [isPrinting]="isPrinting$ | async"
-                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
-                 (onActionClicked)="onActionClicked({action: $event, payload: {}})">
-    <ng-container *ngIf="!(isPrinting$ | async)">
+<app-page-header
+  [title]="'BANK_ACCOUNT'"
+  [isPrinting]="isPrinting$ | async"
+  [additionalButtonsDisabled]="
+    (selectedTableAccs$ | async)?.length < 1
+  "
+  (onActionClicked)="
+    onActionClicked({ action: $event, payload: {} })
+  ">
+  <ng-container *ngIf="!(isPrinting$ | async)">
     <div class="action-buttons">
       <app-button
-        [styleConfig]="{height: '50px', width: '150px', 'font-weight': '400'}"
-        title="{{'IMPORT' | translate}}"
+        [styleConfig]="{
+          height: '50px',
+          width: '150px',
+          'font-weight': '400'
+        }"
+        title="IMPORT"
         [isIconButton]="true"
         [icon]="'export'"
-        [iconStyleConfig]="{transform: 'rotate(180deg)'}"
+        [iconStyleConfig]="{ transform: 'rotate(180deg)' }"
         [btnType]="ButtonTypeEnum.STROKED">
       </app-button>
       <app-button
         [btnType]="ButtonTypeEnum.FLAT"
         [isIconButton]="true"
-        [styleConfig]="{height: '50px', width: '150px'}"
-        title="{{'CREATE_NEW' | translate}}"
+        [styleConfig]="{ height: '50px', width: '150px' }"
+        title="CREATE_NEW"
         [icon]="'add'"
         [routerLink]="NavigationPaths.CREATE_BANK_ACCOUNT"
-        (click)="onActionClicked({action: 'add', payload: {}})">
+        (click)="onActionClicked({ action: 'add', payload: {} })">
       </app-button>
     </div>
-    </ng-container>
-  </app-page-header>
+  </ng-container>
+</app-page-header>
 
-<app-data-table id="print-section"
+<app-data-table
+  id="print-section"
   [data]="bankAccounts$ | async"
   [itemsKey]="'bankAccounts'"
   [tableConfig]="bankAccountTableConfig"
@@ -36,5 +46,4 @@
   [exporting$]="exporting$"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
-  (selectedItemsIds)="onSelectedTableItems($event)"
-></app-data-table>
+  (selectedItemsIds)="onSelectedTableItems($event)"></app-data-table>

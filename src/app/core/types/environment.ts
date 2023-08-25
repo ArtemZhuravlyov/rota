@@ -3,4 +3,5 @@ export interface Environment {
   apiUrlAccount: string;
   apiUrlEmployee: string;
   apiUrlDocument: string;
+  isProductionBuild: boolean;
 }

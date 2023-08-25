@@ -1,35 +1,31 @@
 <app-page-header
-  [title]="'CREATE_NEW'"
+  title="CREATE_NEW"
   [isSubHeaderShowed]="false"
-  [isBackBtnShowed]="true"
-></app-page-header>
+  [isBackBtnShowed]="true" />
 
 <app-form-card>
+  <h1 class="heading">{{ ADD_POSITION | translate }}</h1>
 
-  <h1 class="heading">{{'ADD_POSITION' | translate}}</h1>
-
-  <app-form-builder [formFields]="positionFormConfig"
-                    (createdForm)="form = $event"
-                    (selectedFormValue)="formValueChanged($event)"
-  ></app-form-builder>
+  <app-form-builder
+    [formFields]="positionFormConfig"
+    (createdForm)="form = $event"
+    (selectedFormValue)="formValueChanged($event)" />
 
   <div class="d-flex justify-content-around align-items-center">
     <app-button
       (click)="addPosition(form)"
-      [btnType]="ButtonTypeEnum.FLAT"
-      [styleConfig]="{width: '150px', height: '50px'}"
+      btnType="FLAT"
+      [styleConfig]="{ width: '150px', height: '50px' }"
       [isIconButton]="true"
-      [title]="'SAVE' | translate"
-      [icon]="'success'"></app-button>
+      title="SAVE"
+      icon="success" />
     <app-button
       [routerLink]="NavigationPaths.BACK"
-      [colorTheme]="'warn'"
-      [styleConfig]="{width: '150px', height: '50px'}"
-      [btnType]="ButtonTypeEnum.FLAT"
+      colorTheme="warn"
+      [styleConfig]="{ width: '150px', height: '50px' }"
+      btnType="FLAT"
       [isIconButton]="true"
-      [title]="'CANCEL' | translate"
-      [icon]="'cancel'"
-    ></app-button>
+      title="CANCEL"
+      icon="cancel" />
   </div>
-
 </app-form-card>

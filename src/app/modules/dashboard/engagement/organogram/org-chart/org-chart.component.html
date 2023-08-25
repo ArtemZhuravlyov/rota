@@ -1,11 +1,14 @@
 <div class="org-container">
-  <app-button [btnType]="ButtonTypeEnum.STROKED"
-              [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
-              [title]="'Print'"
-              [isIconButton]="true"
-              [icon]="'print'"
-              (click)="exportToPng()"
-  ></app-button>
+  <app-button
+    [btnType]="ButtonTypeEnum.STROKED"
+    [styleConfig]="{
+      width: '130px',
+      height: '42px',
+      'font-weight': '500'
+    }"
+    title="PRINT"
+    [isIconButton]="true"
+    [icon]="'print'"
+    (click)="exportToPng()" />
   <div #chartContainer id="chartContainer"></div>
 </div>
-

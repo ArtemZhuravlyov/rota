@@ -45,7 +45,7 @@ export class CompanyService {
     return this.http.post<CompanyRegisterResult>(`${this.env.apiUrlCompany}/company/create/${userId}`, body);
   }
 
-  getCompany(userId: string, pageSize = PAGE_SIZE, pageIndex = PAGE_INDEX): Observable<CompanyResponse> {
+  getCompanies(userId: string, pageSize = PAGE_SIZE, pageIndex = PAGE_INDEX): Observable<CompanyResponse> {
     let params = new HttpParams();
 
     if (pageSize && pageIndex && pageIndex >= 0) {
@@ -58,6 +58,10 @@ export class CompanyService {
       {},
       { params: params }
     );
+  }
+
+  getCompany(userId: string, companyId: string) {
+    return this.http.get<any>(`${this.env.apiUrlCompany}/company/${userId}/${companyId}`);
   }
 
   exportTemplate(): Observable<any> {

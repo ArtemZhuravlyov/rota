@@ -1,8 +1,14 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl } from '@angular/forms';
+import {
+  CValidationErrors,
+  CValidatorFn,
+} from '@shared/utils/custom-validators/types/custom-validator.type';
 
-export const passwordValidator = (isLogin: boolean = false): ValidatorFn => {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const result = new RegExp(/^(?=.{6,})(?=.*[a-zA-Z])(?=.*[!#$%&?])/)?.test(control.value);
+export const passwordValidator = (isLogin = false): CValidatorFn => {
+  return (control: AbstractControl): CValidationErrors | null => {
+    const result = new RegExp(
+      /^(?=.{6,})(?=.*[a-zA-Z])(?=.*[!#$%&?])/
+    )?.test(control.value);
     if (result) {
       return null;
     } else if (isLogin) {
@@ -10,5 +16,5 @@ export const passwordValidator = (isLogin: boolean = false): ValidatorFn => {
     } else {
       return { registerPasswordError: true };
     }
-  }
-}
+  };
+};

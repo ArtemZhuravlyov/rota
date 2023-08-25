@@ -1,0 +1,36 @@
+<h1 class="modal-heading">{{ SETTINGS | translate }}</h1>
+<h2 class="modal-subheading">
+  {{ FEW_WORDS | translate }}
+</h2>
+
+<div class="modal-content">
+  <app-form-builder
+    [formFields]="formFields"
+    (createdForm)="form = $event">
+  </app-form-builder>
+</div>
+
+<div
+  class="action-buttons d-flex justify-content-center align-items-center">
+  <app-button
+    (btnClick)="updateUserSettings()"
+    [btnType]="ButtonTypeEnum.FLAT"
+    [styleConfig]="{
+      width: '150px',
+      height: '50px',
+      'margin-right': '30px'
+    }"
+    [isIconButton]="true"
+    title="SAVE"
+    [icon]="'success'"></app-button>
+
+  <app-button
+    mat-dialog-close
+    [routerLink]="NavigationPaths.BACK"
+    [colorTheme]="'warn'"
+    [styleConfig]="{ width: '150px', height: '50px' }"
+    [btnType]="ButtonTypeEnum.FLAT"
+    [isIconButton]="true"
+    title="CANCEL"
+    [icon]="'cancel'"></app-button>
+</div>

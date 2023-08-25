@@ -1,0 +1,40 @@
+<div class="dialog-wrapper">
+  <img
+    class="dialog-wrapper_img"
+    src="/assets/images/undraw_time_1.svg"
+    alt="timer" />
+  <p class="dialog-wrapper_header">Remaining Time</p>
+  <p class="dialog-wrapper_subheader">
+    After the time is up your screen will be locked.
+  </p>
+  <div class="dialog-wrapper_timer">
+    <div class="dialog-wrapper_timer_item">
+      <div class="dialog-wrapper_timer_item_num">
+        {{ timerValue | timerFormat: TimerFormatType.Minutes }}
+      </div>
+      <div class="dialog-wrapper_timer_item_text">mins</div>
+    </div>
+    <div class="dialog-wrapper_timer_dots">:</div>
+    <div class="dialog-wrapper_timer_item">
+      <div class="dialog-wrapper_timer_item_num">
+        {{ timerValue | timerFormat: TimerFormatType.Seconds }}
+      </div>
+      <div class="dialog-wrapper_timer_item_text">secs</div>
+    </div>
+  </div>
+  <app-button
+    title="CONTINUE"
+    (btnClick)="onClose()"
+    [btnType]="ButtonTypeEnum.FLAT"
+    [styleConfig]="{
+      'font-size': '15px',
+      'font-style': 'normal',
+      'font-weight': '600'
+    }" />
+  <app-button
+    class="dialog-wrapper_close"
+    (btnClick)="onClose()"
+    [icon]="'clear'"
+    [btnType]="ButtonTypeEnum.ICON"
+    [isIconButton]="true" />
+</div>
