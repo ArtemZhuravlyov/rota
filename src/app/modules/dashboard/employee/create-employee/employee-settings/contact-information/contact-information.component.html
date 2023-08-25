@@ -1,46 +1,36 @@
 <app-form-card [customClass]="'card'">
-  <h3 class="heading">{{ 'CONTACT_INFORMATION' | translate }}</h3>
+  <h3 class="heading">{{ CONTACT_INFORMATION | translate }}</h3>
 
-  <p class="title">{{ 'RESIDENTIAL_ADDRESS' | translate }}</p>
+  <p class="title">{{ RESIDENTIAL_ADDRESS | translate }}</p>
   <div class="d-flex">
-
     <app-form-builder
       [formFields]="residentialAddressFormFields.slice(0, 2)"
-      (createdForm)="form.addControl('Form1', $event)"
-    ></app-form-builder>
+      (createdForm)="form.addControl('Form1', $event)" />
     <app-form-builder
       [formFields]="residentialAddressFormFields.slice(2, 4)"
-      (createdForm)="form.addControl('Form2', $event)"
-    ></app-form-builder>
+      (createdForm)="form.addControl('Form2', $event)" />
   </div>
 
-  <hr>
+  <hr />
 
-  <p class="title">{{ 'EMERGENCY_CONTACT' | translate }}</p>
+  <p class="title">{{ EMERGENCY_CONTACT | translate }}</p>
   <div class="d-flex">
-
     <app-form-builder
       [formFields]="emergencyContactFormFields.slice(0, 2)"
-      (createdForm)="form = $event"
-    ></app-form-builder>
+      (createdForm)="form = $event" />
     <app-form-builder
       [formFields]="emergencyContactFormFields.slice(2, 4)"
-      (createdForm)="form = $event"
-    ></app-form-builder>
+      (createdForm)="form = $event" />
   </div>
 
-  <p class="title">{{ 'NEXT_OF_KIN' | translate }}</p>
+  <p class="title">{{ NEXT_OF_KIN | translate }}</p>
   <div class="d-flex">
     <app-form-builder
       [formFields]="nextOfKinFormFields.slice(0, 3)"
-      (createdForm)="form = $event"
-    ></app-form-builder>
+      (createdForm)="form = $event" />
     <app-form-builder
-      [styleConfig]="{margin: '0 0 108px 0'}"
+      [styleConfig]="{ margin: '0 0 108px 0' }"
       [formFields]="nextOfKinFormFields.slice(3, 5)"
-      (createdForm)="form = $event"
-    ></app-form-builder>
+      (createdForm)="form = $event" />
   </div>
-
 </app-form-card>
-

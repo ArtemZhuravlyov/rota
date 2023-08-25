@@ -1,15 +1,26 @@
-<app-page-header [title]="'EMPLOYEES'" [isSubHeaderShowed]="false" [isBackBtnShowed]="true"></app-page-header>
+<app-page-header
+  title="EMPLOYEES"
+  [isSubHeaderShowed]="false"
+  [isBackBtnShowed]="true" />
 
 <div class="profile-container">
   <div class="profile-image-container">
-    <div class="background-image" [style.background-image]="imgUrl"></div>
+    <div
+      class="background-image"
+      [style.background-image]="imgUrl"></div>
   </div>
 
-  <img class="author-image" src="/assets/images/specialist-face.jpg" alt="author">
-  <mat-icon class="edit-image" [svgIcon]="'edit'" *ngIf="!isShow" (click)="onToggleShow()"></mat-icon>
+  <img
+    class="author-image"
+    src="/assets/images/specialist-face.jpg"
+    alt="author" />
+  <mat-icon
+    class="edit-image"
+    [svgIcon]="'edit'"
+    *ngIf="!isShow"
+    (click)="onToggleShow()"></mat-icon>
 
   <div class="author-container">
-
     <div class="d-flex justify-content-around">
       <div class="flex-column">
         <p class="author-name">Steve Rogers</p>
@@ -20,25 +31,33 @@
         </div>
       </div>
       <div class="profile-info">
-        <h3 class="title-profile-info">{{ 'CURRENT_SALARY' | translate}}</h3>
+        <h3 class="title-profile-info">
+          {{ CURRENT_SALARY | translate }}
+        </h3>
         <div class="info-container">
           <mat-icon class="salary" [svgIcon]="'salary'"></mat-icon>
           <p>$7,600.00 / m <span class="rate">($54/h)</span></p>
         </div>
       </div>
-      <hr class="hr-block">
+      <hr class="hr-block" />
       <div class="profile-info">
-        <h3 class="title-profile-info">{{ 'COUNTRY' | translate }}</h3>
+        <h3 class="title-profile-info">
+          {{ COUNTRY | translate }}
+        </h3>
         <div class="info-container">
-          <mat-icon class="country-flag" [svgIcon]="'nigeria-flag'"></mat-icon>
+          <mat-icon class="country-flag" [svgIcon]="'nigeria-flag'" />
           <p class="country-name">Nigeria</p>
         </div>
       </div>
-      <hr class="hr-block">
+      <hr class="hr-block" />
       <div class="profile-info">
-        <h3 class="title-profile-info">{{ 'MANAGER' | translate }}</h3>
+        <h3 class="title-profile-info">
+          {{ MANAGER | translate }}
+        </h3>
         <div class="info-container">
-          <mat-icon class="manager-image" [svgIcon]="'manager-face'"></mat-icon>
+          <mat-icon
+            class="manager-image"
+            [svgIcon]="'manager-face'" />
           <p class="manager-name">Krista Campbell</p>
         </div>
       </div>
@@ -46,58 +65,64 @@
   </div>
 </div>
 
-<mat-tab-group animationDuration="0ms" class="settings-tab-group" *ngIf="!isShow">
+<mat-tab-group
+  animationDuration="0ms"
+  class="settings-tab-group"
+  *ngIf="!isShow">
   <mat-tab label="Contact Information">
     <ng-template matTabContent>
-      <app-contact-information></app-contact-information>
+      <app-contact-information />
     </ng-template>
   </mat-tab>
   <mat-tab label="Work Information">
     <ng-template matTabContent>
-      <app-work-information></app-work-information>
+      <app-work-information />
     </ng-template>
   </mat-tab>
   <mat-tab label="Payment Information">
     <ng-template matTabContent>
-      <app-payment-information></app-payment-information>
+      <app-payment-information />
     </ng-template>
   </mat-tab>
 </mat-tab-group>
 
-<mat-tab-group animationDuration="0ms" class="profile-tab-group" *ngIf="isShow">
+<mat-tab-group
+  animationDuration="0ms"
+  class="profile-tab-group"
+  *ngIf="isShow">
   <mat-tab label="Qualifications">
     <ng-template matTabContent>
-      <app-qualifications></app-qualifications>
+      <app-qualifications />
     </ng-template>
   </mat-tab>
   <mat-tab label="Documents">
     <ng-template matTabContent>
-      <app-documents></app-documents>
+      <app-documents />
     </ng-template>
   </mat-tab>
   <mat-tab label="Compensations">
     <ng-template matTabContent>
-      <app-compensations></app-compensations>
+      <app-compensations />
     </ng-template>
   </mat-tab>
   <mat-tab label="Statutory Contributions">
     <ng-template matTabContent>
-      <app-statutory-contributions></app-statutory-contributions>
+      <app-statutory-contributions />
     </ng-template>
   </mat-tab>
   <mat-tab label="Benefits">
     <ng-template matTabContent>
-      <app-benefits></app-benefits>
+      <app-benefits />
     </ng-template>
   </mat-tab>
   <mat-tab label="Salary Reviews">
     <ng-template matTabContent>
-      <app-salary-reviews></app-salary-reviews>
+      <app-salary-reviews />
     </ng-template>
   </mat-tab>
   <mat-tab label="Pay Slips">
     <ng-template matTabContent>
-      <app-pay-slips></app-pay-slips>
+      <app-pay-slips />
     </ng-template>
   </mat-tab>
 </mat-tab-group>
@@ -106,18 +131,16 @@
   <app-button
     [btnType]="buttonTypeEnum.FLAT"
     [isIconButton]="true"
-    [styleConfig]="{height: '50px', width: '150px'}"
+    [styleConfig]="{ height: '50px', width: '150px' }"
     [icon]="'success'"
-    [title]="'SAVE' | translate"
-  ></app-button>
+    title="SAVE" />
 
   <app-button
     [colorTheme]="'warn'"
-    [styleConfig]="{width: '150px', height: '50px'}"
+    [styleConfig]="{ width: '150px', height: '50px' }"
     [btnType]="buttonTypeEnum.FLAT"
     [isIconButton]="true"
-    [title]="'CANCEL' | translate"
+    title="CANCEL"
     [icon]="'cancel'"
-    [routerLink]="'/dashboard/employees'"
-  ></app-button>
+    [routerLink]="'/dashboard/employees'" />
 </div>

@@ -1,43 +1,67 @@
-<ng-container *ngIf="!(isPrinting$ | async)">
-  <app-header></app-header>
+<ng-container *ngIf="(isPrinting$ | async) === false">
+  <app-header />
 
-<app-menu-toggle [expandedState]="isExpanded" (onToggle)="toggleMenu($event)" [height]="'calc(100% - 60px)'"></app-menu-toggle>
-
+  <app-menu-toggle
+    [expandedState]="isExpanded"
+    (onToggle)="toggleMenu($event)"
+    [height]="'calc(100% - 60px)'" />
 </ng-container>
 
-
 <mat-drawer-container [class.isPrinting]="isPrinting$ | async">
+  <mat-drawer
+    class="side-menu"
+    mode="side"
+    [ngClass]="isExpanded ? 'full' : 'collapsed'"
+    opened
+    *ngIf="(isPrinting$ | async) === false">
+    <app-search-input
+      *ngIf="isExpanded; else searchCollapsed"
+      [styleConfig]="{
+        width: '200px',
+        height: '40px',
+        margin: '15px 8px 0'
+      }"
+      (valueChanged)="filterTabs($event)" />
 
-
-    <mat-drawer class="side-menu" mode="side" [ngClass]="isExpanded ? 'full' : 'collapsed'" opened *ngIf="!(isPrinting$ | async)" >
-
-      <app-search-input *ngIf="isExpanded; else searchCollapsed" [styleConfig]="{width: '200px', height: '40px', margin: '15px 8px 0'}" (valueChanged)="filterTabs($event)"></app-search-input>
-
-    <a class="navigation-link d-flex align-items-center"
-       *ngFor="let tab of dashboardTabsConfig"
-       [routerLink]="tab.fullRouterLink ?? tab.routerLink"
-       routerLinkActive="active-link"
-       [class.disabled]="tab.isDisabled"
-    >
-      <mat-icon class="tab-icon" [ngClass]="{'tab-icon': tab.routerLink, 'search': tab.fullRouterLink}" [svgIcon]="tab.icon!"></mat-icon>
-      <span *ngIf="isExpanded">{{tab.title | translate}}</span>
+    <a
+      class="navigation-link d-flex align-items-center"
+      *ngFor="let tab of dashboardTabsConfig"
+      [routerLink]="tab.fullRouterLink ?? tab.routerLink"
+      routerLinkActive="active-link"
+      [class.disabled]="tab.isDisabled">
+      <mat-icon
+        class="tab-icon"
+        [ngClass]="{
+          'tab-icon': tab.routerLink,
+          search: tab.fullRouterLink
+        }"
+        [svgIcon]="tab.icon!" />
+      <span *ngIf="isExpanded">{{ tab.title | translate }}</span>
     </a>
 
     <div class="bottom-actions d-flex flex-column">
-      <mat-slide-toggle><span *ngIf="isExpanded">Dark Mode</span></mat-slide-toggle>
+      <mat-slide-toggle
+        ><span *ngIf="isExpanded">Dark Mode</span>
+      </mat-slide-toggle>
 
-      <a class="navigation-link d-flex justify-content-start align-items-center" [routerLink]="NavigationPaths.SETTINGS" routerLinkActive="active-link">
+      <a
+        class="navigation-link d-flex justify-content-start align-items-center"
+        [routerLink]="NavigationPaths.SETTINGS"
+        routerLinkActive="active-link">
         <mat-icon class="material-icons-outlined">settings</mat-icon>
         <span *ngIf="isExpanded">Settings</span>
       </a>
     </div>
   </mat-drawer>
 
-  <mat-drawer-content [ngStyle]="{'margin-left': isExpanded ? '220px' : '80px'}">
-    <router-outlet></router-outlet>
+  <mat-drawer-content
+    [ngStyle]="{ 'margin-left': isExpanded ? '220px' : '80px' }">
+    <router-outlet />
   </mat-drawer-content>
 </mat-drawer-container>
 
 <ng-template #searchCollapsed>
-  <mat-icon class="search-icon" (click)="toggleMenu(true)">search</mat-icon>
+  <mat-icon class="search-icon" (click)="toggleMenu(true)"
+    >search</mat-icon
+  >
 </ng-template>

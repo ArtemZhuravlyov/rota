@@ -1,33 +1,34 @@
-import { MenusConfig } from "@core/types/menus-config";
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
+import { MenusConfig } from '@core/types/menus-config';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 
 export const settingsTabsConfig: MenusConfig[] = [
   {
-    title: 'COMPANY',
+    title: TranslateKey.COMPANY,
     routerLink: NavigationPaths.COMPANY,
   },
   {
-    title: 'WORKFLOW',
+    title: TranslateKey.WORKFLOW,
     routerLink: NavigationPaths.WORKFLOW,
   },
   {
-    title: 'PAYROLL',
+    title: TranslateKey.PAYROLL,
     routerLink: NavigationPaths.PAYROLL,
   },
   {
-    title: 'TIMESHEET',
+    title: TranslateKey.TIMESHEET,
     routerLink: NavigationPaths.TIMESHEET,
   },
   {
-    title: 'PAYROLL_ACCOUNTING',
+    title: TranslateKey.PAYROLL_ACCOUNTING,
     routerLink: NavigationPaths.PAYROLL_ACCOUNTING,
   },
   {
-    title: 'LEAVE_MANAGEMENT',
+    title: TranslateKey.LEAVE_MANAGEMENT,
     routerLink: NavigationPaths.LEAVE_MANAGEMENT,
   },
   {
-    title: 'TRUSTED_DEVICES',
+    title: TranslateKey.TRUSTED_DEVICES,
     routerLink: NavigationPaths.TRUSTED_DEVICES,
-  }
+  },
 ];

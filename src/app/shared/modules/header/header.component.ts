@@ -16,6 +16,7 @@ import { CompanyService } from '@core/services/company/company.service';
 import { AuthService } from '@core/services/account/auth.service';
 import { tap } from 'rxjs';
 import { NavigationMenusConfig } from '@core/types/navigation-menus-config';
+import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,9 @@ import { NavigationMenusConfig } from '@core/types/navigation-menus-config';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
+  protected readonly NOTIFICATIONS = TranslateKey.NOTIFICATIONS;
+  protected readonly READ_FULL = TranslateKey.READ_FULL;
+
   buttonTypeEnum = ButtonTypeEnum;
   notificationMenuConfig = NotificationMenuConfig;
   settingsMenuConfig = SettingsMenuConfig;
@@ -32,7 +36,7 @@ export class HeaderComponent implements OnInit {
   isNotificationsIconClicked = false;
   isSettingsIconClicked = false;
   isPersonIconClicked = false;
-  companyName = '';
+  companyName: TranslateKey = TranslateKey.COMPANY;
   constructor(
     private readonly elementRef: ElementRef,
     private readonly dialog: MatDialog,
@@ -61,7 +65,7 @@ export class HeaderComponent implements OnInit {
         this.authService.getCompanyId()
       )
       .pipe(
-        tap((res) => {
+        tap(res => {
           this.companyName = res.name;
           this.cdr.detectChanges();
         })

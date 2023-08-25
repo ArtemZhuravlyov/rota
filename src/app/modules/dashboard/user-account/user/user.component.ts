@@ -1,17 +1,22 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+} from '@angular/core';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserComponent implements OnInit {
-  title = 'USER';
+  title = TranslateKey.USER;
   routerLinkToImport = [
     NavigationPaths.BACK,
-    NavigationPaths.IMPORT_USER
+    NavigationPaths.IMPORT_USER,
   ];
 
   tableConfig = [
@@ -22,12 +27,10 @@ export class UserComponent implements OnInit {
     {
       fieldName: 'lastName',
       type: 'SINGLE_TEXT',
-    }
-  ]
+    },
+  ];
 
   constructor() {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }

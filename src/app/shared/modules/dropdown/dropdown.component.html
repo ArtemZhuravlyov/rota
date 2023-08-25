@@ -1,58 +1,77 @@
 <div class="d-flex justify-content-center flex-column">
-  <div *ngIf="title.length" class="field-label d-flex justify-content-between align-items-center">
+  <div
+    *ngIf="title.length"
+    class="field-label d-flex justify-content-between align-items-center">
     <span class="field-title">{{ title | translate }}</span>
     <ng-template [ngIf]="hintMenu">
-      <app-dropdown-menu [customClass]="'hint-menu'" [buttonStyleConfig]="{width: '20px', height: '20px'}" [menuIcon]="'help'">
-        <h1 class="hint-menu-heading">{{hintHeading | translate}}</h1>
-        <p class="hint-menu-description">{{hintDescription | translate}}</p>
+      <app-dropdown-menu
+        [customClass]="'hint-menu'"
+        [buttonStyleConfig]="{ width: '20px', height: '20px' }"
+        [menuIcon]="'help'">
+        <h1 class="hint-menu-heading">
+          {{ hintHeading | translate }}
+        </h1>
+        <p class="hint-menu-description">
+          {{ hintDescription | translate }}
+        </p>
       </app-dropdown-menu>
     </ng-template>
-    <span class="additional-label">{{ additionalTitle | translate }}</span>
+    <span class="additional-label">{{
+      additionalTitle | translate
+    }}</span>
     <mat-checkbox class="checkbox" *ngIf="checkbox"></mat-checkbox>
   </div>
 
-  <mat-form-field appearance="outline" [ngClass]="{
-      'dropdown-selected': !!selectedValue.length,
+  <mat-form-field
+    appearance="outline"
+    [ngClass]="{
+      'dropdown-selected': !!selectedValue.length
     }">
-    <img class="prefix-icon" *ngIf="currentIcon" matPrefix [src]="currentIcon | country" alt="prefix-icon">
-    <div class="d-flex align-items-center justify-content-center" *ngIf="selectedDropdown?.countryFlag">
-      <img src="{{ $any(selectedDropdown?.countryFlag) | country }}" alt="country flag">
+    <img
+      class="prefix-icon"
+      *ngIf="currentIcon"
+      matPrefix
+      [src]="currentIcon | country"
+      alt="prefix-icon" />
+    <div
+      class="d-flex align-items-center justify-content-center"
+      *ngIf="selectedDropdown?.countryFlag">
+      <img
+        src="{{ $any(selectedDropdown?.countryFlag) | country }}"
+        alt="country flag" />
     </div>
     <mat-select
       [formControl]="formControl"
       (opened)="isOpen = true"
       (closed)="isOpen = false"
       [placeholder]="placeholder | translate"
-      [(value)]=preselectedValue
-    >
+      [(value)]="preselectedValue">
       <ng-container *ngIf="isObservable(data); else defaultType">
-
         <app-search-input
           (keydown)="$event.stopPropagation()"
           *ngIf="filterable"
           [styleConfig]="{ width: '100%' }"
-          (valueChanged)="searchValue = $event"
-        ></app-search-input>
+          (valueChanged)="searchValue = $event" />
 
         <ng-container *ngIf="data | async as asyncData">
           <mat-option
             class="not-found-option"
             [disabled]="true"
-            *ngIf="!(asyncData | filter:searchValue).length"
-          >
-            <span>{{ 'NOT_FOUND' | translate }}</span>
+            *ngIf="!(asyncData | filter: searchValue).length">
+            <span>{{ NOT_FOUND | translate }}</span>
           </mat-option>
 
           <mat-option
             (click)="setFormValue(value)"
-            *ngFor="let value of asyncData | filter:searchValue"
-            [value]="value[valueField]"
-          >
-            <img *ngIf="value['icon']" [src]="value['icon'] | country" alt="icon">
+            *ngFor="let value of asyncData | filter: searchValue"
+            [value]="value[valueField]">
+            <img
+              *ngIf="value['icon']"
+              [src]="value['icon'] | country"
+              alt="icon" />
             <span>{{ value[textField] }}</span>
           </mat-option>
         </ng-container>
-
       </ng-container>
 
       <ng-template #defaultType>
@@ -60,16 +79,20 @@
           (keydown)="$event.stopPropagation()"
           *ngIf="filterable"
           [styleConfig]="{ width: '100%' }"
-          (valueChanged)="searchValue = $event"
-        ></app-search-input>
+          (valueChanged)="searchValue = $event" />
 
-        <mat-option *ngFor="let value of data" [value]="value[valueField]" (click)="setFormValue(value)">
+        <mat-option
+          *ngFor="let value of data"
+          [value]="value[valueField]"
+          (click)="setFormValue(value)">
           <span class="currency">{{ value['currencyCode'] }} </span>
-          <img *ngIf="value['icon']" [src]="value['icon'] | country" alt="icon">
+          <img
+            *ngIf="value['icon']"
+            [src]="value['icon'] | country"
+            alt="icon" />
           <span class="text-value">{{ value[textField] }}</span>
         </mat-option>
       </ng-template>
-
     </mat-select>
 
     <mat-icon
@@ -79,8 +102,7 @@
         'icon-arrow-open': isOpen,
         'icon-arrow-selected': !!selectedValue.length
       }"
-    >keyboard_arrow_down
+      >keyboard_arrow_down
     </mat-icon>
-
   </mat-form-field>
 </div>

@@ -4,11 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:dev": "ng build",
-    "build:prod": "ng build --configuration production",
+    "build:dev": "npm run lang:sync; ng build",
+    "build:prod": "npm run lang:sync; ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "lang:sync": "npx ts-node -O '{\"module\": \"commonjs\"}' ./src/assets/i18n/utils/prepare-translate-files.util.ts",
+    "prestart": "npm run lang:sync"
   },
   "private": true,
   "dependencies": {

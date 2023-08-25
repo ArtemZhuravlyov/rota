@@ -1,27 +1,38 @@
 <div [class.input-focus]="isFocus">
   <mat-form-field appearance="outline" [ngStyle]="styleConfig">
-    <mat-icon class="icon-prefix material-icons-outlined" matPrefix>search</mat-icon>
-    <input (focusin)="isFocus = true"
-           (focusout)="isFocus = false"
-           #input
-           matInput
-           (input)="valueChanged.emit(input.value)"
-           placeholder="{{'SEARCH' | translate}}"
-           class="search-input"
+    <mat-icon class="icon-prefix material-icons-outlined" matPrefix
+      >search</mat-icon
     >
-    <div matSuffix class="d-flex align-items-center justify-content-center">
-      <ng-container *ngIf="showClearButton else customClearButton">
-        <app-button class="close-icon" *ngIf="input.value.length" [isIconButton]="true" [btnType]="'ICON'"
-                    [icon]="'clear'"
-                    (click)="input.value = ''; valueChanged.emit('')">
-        </app-button>
+    <input
+      (focusin)="isFocus = true"
+      (focusout)="isFocus = false"
+      #input
+      matInput
+      (input)="bs$.next(input.value)"
+      placeholder="{{ SEARCH | translate }}"
+      class="search-input" />
+    <div
+      matSuffix
+      class="d-flex align-items-center justify-content-center">
+      <ng-container *ngIf="showClearButton; else customClearButton">
+        <app-button
+          class="close-icon"
+          *ngIf="input.value.length"
+          [isIconButton]="true"
+          btnType="ICON"
+          icon="clear"
+          (click)="input.value = ''; valueChanged.emit('')" />
       </ng-container>
 
-      <ng-content></ng-content>
+      <ng-content />
     </div>
   </mat-form-field>
 </div>
 
 <ng-template #customClearButton>
-  <span class="custom-clear" (click)="input.value = ''; valueChanged.emit('')">{{'CLEAR' | translate}}</span>
+  <span
+    class="custom-clear"
+    (click)="input.value = ''; valueChanged.emit('')"
+    >{{ CLEAR | translate }}</span
+  >
 </ng-template>
