@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
-import { UserAccountComponent } from "./user-account.component";
-import { ImportEmployeesComponent } from "@shared/modules/import-employees/import-employees.component";
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { UserAccountComponent } from './user-account.component';
+import { ImportEmployeesComponent } from '@shared/modules/import-employees/import-employees.component';
 import { TodoComponent } from '@shared/modules/todo/todo.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     children: [
@@ -16,35 +17,37 @@ const routes: Routes = [
           {
             path: NavigationPaths.EMPTY_PATH,
             redirectTo: NavigationPaths.USER,
-            pathMatch: 'full'
+            pathMatch: 'full',
           },
           {
             path: NavigationPaths.USER,
-            loadChildren: () => import('./user/user.module').then(m => m.UserModule),
-            data: {breadcrumb: 'USER'}
+            loadChildren: () =>
+              import('./user/user.module').then(m => m.UserModule),
+            data: { breadcrumb: 'USER' },
           },
           {
             path: NavigationPaths.ROLE,
-            loadChildren: () => import('./role/role.module').then(m => m.RoleModule),
-            data: {breadcrumb: 'ROLE'}
+            loadChildren: () =>
+              import('./role/role.module').then(m => m.RoleModule),
+            data: { breadcrumb: 'ROLE' },
           },
           {
             path: NavigationPaths.IMPORT_USER,
             component: ImportEmployeesComponent,
-            data: { breadcrumb: 'IMPORT_USER', title: 'IMPORT_USER' }
+            data: { breadcrumb: 'IMPORT_USER', title: 'IMPORT_USER' },
           },
           {
             path: '**',
-            component: TodoComponent
-          }
-        ]
-      }
-    ]
+            component: TodoComponent,
+          },
+        ],
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserAccountRoutingModule { }
+export class UserAccountRoutingModule {}
