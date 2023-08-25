@@ -168,6 +168,16 @@
     </ng-container>
 
     {{ tableConfig[i].columnName | translate }}
+
+    <ng-container *ngIf="!isSorting">
+      <app-dropdown-menu [menuIcon]="'sort-down'" *ngIf="headerDropdownFilter">
+        <div class="sort-container" (click)="$event.stopPropagation()">
+          <div class="d-flex justify-content-between">
+            <p>It's works</p>
+          </div>
+        </div>
+      </app-dropdown-menu>
+    </ng-container>
   </div>
 </ng-template>
 

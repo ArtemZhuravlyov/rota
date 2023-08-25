@@ -34,7 +34,7 @@ export const dashboardTabsConfig: MenusConfig[] = [
     title: 'DOCUMENTS',
     icon: 'documents',
     routerLink: NavigationPaths.DOCUMENTS,
-    isDisabled: true
+    isDisabled: false
   },
   {
     title: 'RECRUITMENTS',

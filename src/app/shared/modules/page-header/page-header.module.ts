@@ -6,13 +6,15 @@ import { RouterLink } from "@angular/router";
 import { MaterialModule } from "../material.module";
 import { PageSubHeaderComponent } from './page-sub-header/page-sub-header.component';
 import { ButtonModule } from "../button/button.module";
+import { DocumentSubHeaderComponent } from './document-sub-header/document-sub-header.component';
 
 
 
 @NgModule({
     declarations: [
         PageHeaderComponent,
-        PageSubHeaderComponent
+        PageSubHeaderComponent,
+        DocumentSubHeaderComponent
     ],
     exports: [
         PageHeaderComponent,

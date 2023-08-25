@@ -16,6 +16,7 @@ import { MatIconRegistry } from "@angular/material/icon";
 import { InfoModalComponent } from './shared/modalWindows/info-modal/info-modal.component';
 import { ButtonModule } from "@shared/modules/button/button.module";
 
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -29,7 +30,7 @@ export const ENVIRONMENT = new InjectionToken<Environment>('ENV');
 @NgModule({
     declarations: [
         AppComponent,
-        InfoModalComponent,
+        InfoModalComponent
     ],
   imports: [
     BrowserModule,

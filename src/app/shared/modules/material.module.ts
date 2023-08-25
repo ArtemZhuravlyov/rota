@@ -323,5 +323,9 @@ export class MaterialModule {
       'linux',
       domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/linux.svg")
     );
+    matIconRegistry.addSvgIcon(
+      'sort-down',
+      domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/sort-down.svg")
+    );
   }
 }

@@ -1,0 +1,20 @@
+<div class="sub-header flex">
+    <div class="action-buttons d-flex justify-content-end">
+        <app-button
+                [disabled]="additionalButtonsDisabled"
+                [btnType]="ButtonTypeEnum.STROKED"
+                [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
+                [title]="'Download'"
+                [isIconButton]="true"
+                [icon]="'download'"
+                (click)="buttonAction('download')"></app-button>
+        <app-button
+                [disabled]="additionalButtonsDisabled"
+                [btnType]="ButtonTypeEnum.STROKED"
+                [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
+                [title]="'Analysis'"
+                [isIconButton]="true"
+                [icon]="'reports-analytics'"
+                (click)="buttonAction('analysis')"></app-button>
+    </div>
+</div>

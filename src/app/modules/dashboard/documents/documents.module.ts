@@ -15,7 +15,7 @@ import { SubMenuButtonModule } from "@shared/modules/sub-menu-button/sub-menu-bu
     DocumentsRoutingModule,
     SubMenuModule,
     MaterialModule,
-    SubMenuButtonModule
+    SubMenuButtonModule,
   ]
 })
 export class DocumentsModule { }

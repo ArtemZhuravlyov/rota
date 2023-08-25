@@ -26,7 +26,8 @@ const routes: Routes = [
           },
           {
             path: NavigationPaths.DOCUMENT_MANAGEMENT,
-            component: DocumentManagementComponent,
+            loadChildren: () => import('./document-management/document-management.module').then(m => m.DocumentManagementModule),
+            data: {breadcrumb: 'DOCUMENT_MANAGEMENT'},
           },
           {
             path: NavigationPaths.EMPLOYEE_DOCUMENT,

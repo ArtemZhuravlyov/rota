@@ -15,6 +15,7 @@ export class PageHeaderComponent {
 
   @Input() title!: string;
   @Input() isSubHeaderShowed = true;
+  @Input() isDocumentSubHeaderShowed = false;
   @Input() isBackBtnShowed = false;
   @Input() isPrinting!: boolean | null;
   @Input() additionalButtonsDisabled: boolean = false

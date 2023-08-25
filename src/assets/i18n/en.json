@@ -303,5 +303,19 @@
   "IBAN_DESCRIPTION": "An International Bank Account Number – or IBAN – is used worldwide to identify individual accounts. IBANs make it easier to process international payments. You can find your IBAN in the Internet Bank and on your account statement.",
   "INFO_EMPLOYEE": "Info Employee",
   "DOUBLE_TAXATION_CODE": "Double Taxation Code",
-  "DOUBLE_TAXATION_DESCRIPTION": "Double taxation refers to income taxes paid twice on the same income source. It occurs when income is taxed at both the corporate and personal level"
+  "DOUBLE_TAXATION_DESCRIPTION": "Double taxation refers to income taxes paid twice on the same income source. It occurs when income is taxed at both the corporate and personal level",
+  "DOCUMENT_LIST": "Document list",
+  "FOLDER_LIST": "Folder list",
+  "FOLDER_DETAILS": "Folder Details",
+  "DESCRIPTION": "Description",
+  "NEW_DOCUMENT": "New Document",
+  "CREATE_NEW_FOLDER": "Create New Folder",
+  "CREATION_DATE": "Creation Date",
+  "UPLOAD_DOCUMENT": "Upload Document",
+  "SHARED": "Shared",
+  "SHARE": "Share",
+  "SHARE_WITH": "Share with",
+  "CHOOSE_FILES": "Choose files",
+  "DOCUMENTS_SUPPORTED_FILES": "Max file size: 25mb, supported file type (xls, doc, pdf)",
+  "SHARED_DESC": "Some short description"
 }

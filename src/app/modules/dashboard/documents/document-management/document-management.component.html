@@ -1,1 +1,34 @@
-<p>document-management works!</p>
+<app-page-header
+        [title]="'FOLDER_LIST'"
+        [isSubHeaderShowed]=false
+        [isDocumentSubHeaderShowed]=true
+>
+    <div class="action-buttons">
+        <app-button
+                [routerLink]="NavigationPaths.UPLOAD_DOCUMENT"
+                [btnType]="ButtonTypeEnum.STROKED"
+                [isIconButton]="true"
+                [styleConfig]="{height: '50px', width: '150px'}"
+                title="{{'UPLOAD' | translate}}"
+                [icon]="'export'"
+        ></app-button>
+        <app-button
+                [routerLink]="NavigationPaths.CREATE_FOLDER"
+                [btnType]="ButtonTypeEnum.FLAT"
+                [isIconButton]="true"
+                [styleConfig]="{height: '50px', width: '150px'}"
+                title="{{'CREATE_NEW' | translate}}"
+                [icon]="'add'"
+        ></app-button>
+    </div>
+</app-page-header>
+
+<app-data-table
+        [data]="folders$ | async"
+        [itemsKey]="'folders'"
+        [tableConfig]="foldersListConfig"
+        (actionClicked)="onActionClicked($event)"
+        (pageChange)="onPageChange($event)"
+        [hasCheckboxColumn]="true"
+        [isSorting]="false"
+></app-data-table>

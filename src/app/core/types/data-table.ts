@@ -35,6 +35,8 @@ export const TableActionTypes = {
   VIEWDESCRIPTION: 'viewDescription',
   PRINT: 'print',
   EXPORT: 'export',
-  IMPORT: 'import'
+  IMPORT: 'import',
+  ANALYSIS: 'analysis',
+  DOWNLOAD: 'download'
 } as const;
 

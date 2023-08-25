@@ -25,6 +25,11 @@
                          (onActionClicked)="actionClicked($event)">
 
     </app-page-sub-header>
+    <app-document-sub-header *ngIf="isDocumentSubHeaderShowed"
+                         [additionalButtonsDisabled]="additionalButtonsDisabled"
+                         (onActionClicked)="actionClicked($event)">
+
+    </app-document-sub-header>
   </ng-container>
 
 </ng-container>
