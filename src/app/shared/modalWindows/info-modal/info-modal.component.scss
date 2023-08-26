@@ -1,9 +1,12 @@
 .dialog-wrapper{
-  padding: 20px 20px 50px 40px;
+  padding: 30px 40px 50px 40px;
+  position: relative;
 
   .close-btn{
+    top: 13px;
+    right: 13px;
+    position: absolute;
     display: flex;
-    width: 100%;
     justify-content: flex-end;
 
     .cross-btn {
@@ -38,7 +41,12 @@
       color: #575757;
       background: #F5F6F8 0% 0% no-repeat padding-box;
       border-radius: 10px;
-      padding: 16px 20px 34px;
+      width: 100%;
+      p {
+        margin: 0;
+        padding: 16px 20px 34px;
+        word-break: break-word;
+      }
     }
     .footer-btn-container{
       width: 100%;

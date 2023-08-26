@@ -1,22 +1,22 @@
-<app-page-header title="EMPLOYEES">
-  <div class="action-buttons">
-    <app-button
-      [routerLink]="NavigationPaths.CREATE_NEW_EMPLOYEE"
-      [btnType]="ButtonTypeEnum.FLAT"
-      [isIconButton]="true"
-      [styleConfig]="{ height: '50px', width: '150px' }"
-      title="CREATE_NEW"
-      [icon]="'add'" />
-  </div>
-</app-page-header>
+<div class="container-wrapper">
+  <app-page-header title='EMPLOYEES'>
+    <div class="action-buttons">
+      <app-button
+        [routerLink]="NavigationPaths.CREATE_NEW_EMPLOYEE"
+        btnType="FLAT"
+        [isIconButton]="true"
+        [styleConfig]="{ height: '50px', width: '150px' }"
+        title="CREATE_NEW"
+        [icon]="'add'"/>
+    </div>
+  </app-page-header>
 
-<div class="table-container">
-  <app-data-table
-    [data]="employeesList$ | async"
-    [itemsKey]="'employees'"
-    [tableConfig]="employeesListConfig"
-    (actionClicked)="onActionClicked($event)"
-    (pageChange)="onPageChange($event)"
-    [hasCheckboxColumn]="true"
-    [tableStyle]="'employee'" />
+  <div class="table-container">
+    <app-data-table
+      [data]="employeesList$ | async"
+      [itemsKey]="'employees-type'"
+      [tableConfig]="employeesListConfig"
+      [hasCheckboxColumn]="true"
+      [tableStyle]="'employee'"></app-data-table>
+  </div>
 </div>

@@ -17,21 +17,21 @@ const routes: AppRoutes = [
           {
             path: NavigationPaths.EMPTY_PATH,
             loadChildren: () =>
-              import('./employees/employees.module').then(
-                m => m.EmployeesModule
+              import('./employees-type/employees-type.module').then(
+                (m) => m.EmployeesTypeModule
               ),
             data: {
-              breadcrumb: 'EMPLOYEES_LIST',
+              breadcrumb: 'EMPLOYEES_TYPE',
             },
           },
           {
-            path: NavigationPaths.CREATE_NEW_EMPLOYEE,
+            path: NavigationPaths.EMPLOYEES,
             loadChildren: () =>
-              import('./create-employee/create-employee.module').then(
-                m => m.CreateEmployeeModule
+              import('./employees/employees.module').then(
+                (m) => m.EmployeesModule
               ),
             data: {
-              breadcrumb: 'CREATE_NEW',
+              breadcrumb: 'EMPLOYEES_RECORD',
             },
           },
           {

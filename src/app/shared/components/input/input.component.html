@@ -1,0 +1,21 @@
+<app-label
+  [value]="value"
+  [isFocus]="isFocus"
+  [id]="id"
+  [maxLength]="maxLength"
+  [name]="label" />
+<div class="input-control" [ngStyle]="styleConfig">
+  <input
+    [id]="label"
+    #input
+    (focusin)="isFocus = true"
+    (focusout)="isFocus = false"
+    [ngClass]="{ success: isFocus }"
+    [readonly]="readonly"
+    [maxlength]="+maxLength!"
+    [formControl]="formControl"
+    (input)="setFormValue(input.value)"
+    [placeholder]="placeholder! | translate"
+    [type]="inputType"
+    matInput />
+</div>

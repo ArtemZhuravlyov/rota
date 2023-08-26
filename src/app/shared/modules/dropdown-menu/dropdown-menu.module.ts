@@ -5,16 +5,8 @@ import { DropdownMenuComponent } from './dropdown-menu.component';
 import { ButtonModule } from '@shared/modules/button/button.module';
 
 @NgModule({
-  declarations: [
-    DropdownMenuComponent
-  ],
-  exports: [
-    DropdownMenuComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ButtonModule
-  ]
+  declarations: [DropdownMenuComponent],
+  exports: [DropdownMenuComponent],
+  imports: [CommonModule, MaterialModule, ButtonModule],
 })
-export class DropdownMenuModule { }
+export class DropdownMenuModule {}

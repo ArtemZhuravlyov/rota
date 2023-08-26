@@ -1,11 +1,16 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   EventEmitter,
+  inject,
   Input,
   Output,
 } from '@angular/core';
 import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
+import { BehaviorSubject } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-input',
@@ -21,5 +26,17 @@ export class SearchInputComponent {
   protected readonly SEARCH = TranslateKey.SEARCH;
   protected readonly CLEAR = TranslateKey.CLEAR;
 
+  private destroyRef = inject(DestroyRef);
+
+  public bs$ = new BehaviorSubject('');
+
   isFocus = false;
+
+  ngOnInit() {
+    this.bs$
+      .pipe(takeUntilDestroyed(this.destroyRef), debounceTime(600))
+      .subscribe(value => {
+        this.valueChanged.emit(value);
+      });
+  }
 }

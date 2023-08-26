@@ -1,0 +1,26 @@
+<app-label
+  [value]="value"
+  [isFocus]="isFocus"
+  [id]="id"
+  [maxLength]="maxLength"
+  [name]="label" />
+<div class="textarea-control" [ngStyle]="styleConfig">
+  <textarea
+    [id]="id"
+    #textarea
+    (focusin)="isFocus = true"
+    (focusout)="isFocus = false"
+    [ngClass]="{
+      success: isFocus,
+      error: formControl.invalid && formControl.touched
+    }"
+    [value]="value"
+    [readonly]="readonly"
+    [maxlength]="+maxLength!"
+    [formControl]="formControl"
+    (input)="setFormValue(textarea.value)"
+    [placeholder]="placeholder! | translate"
+    matInput></textarea>
+</div>
+<app-error [errors]="formControl.errors" />
+{{ formControl.invalid }}

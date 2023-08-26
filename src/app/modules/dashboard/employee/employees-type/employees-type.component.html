@@ -1,0 +1,24 @@
+<div class="container-wrapper">
+  <app-page-header [title]="'EMPLOYEES'">
+    <div class="action-buttons">
+      <app-button
+        [routerLink]="NavigationPaths.CREATE_NEW_EMPLOYEE_TYPE"
+        [btnType]="ButtonTypeEnum.FLAT"
+        [isIconButton]="true"
+        [styleConfig]="{ height: '50px', width: '150px' }"
+        [title]="'CREATE_NEW' | translate"
+        [icon]="'add'"></app-button>
+    </div>
+  </app-page-header>
+
+  <app-data-table
+    [data]="employeesTypeList$ | async"
+    [itemsKey]="'employmentTypes'"
+    [tableConfig]="employeesTypeListConfig"
+    [hasCheckboxColumn]="true"
+    [actionConfig]="actionConfig"
+    [tableStyle]="'employee-type'"
+    (actionClicked)="onActionClick($event)"
+    (pageChange)="onPageChange($event)"
+    (searchChange)="onSearchChange($event)" />
+</div>
