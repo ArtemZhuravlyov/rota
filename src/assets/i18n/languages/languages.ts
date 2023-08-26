@@ -353,6 +353,7 @@ const en: LanguageObject = {
   ORGANISATION_CHART: 'Organisation Chart',
   EMPLOYEES_TYPE: 'Employees Type',
   DESCRIPTION: 'Description',
+  EMPLOYEES_RECORD: 'Employees Record',
 };
 
 export const allLanguages: {
