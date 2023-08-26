@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
-import { DepartmentComponent } from "./department.component";
+import { NavigationPaths } from '../../../../core/enums/navigation-paths.enum';
+import { DepartmentComponent } from './department.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     component: DepartmentComponent,
@@ -11,14 +12,15 @@ const routes: Routes = [
   {
     path: NavigationPaths.CREATE_NEW_DEPARTMENT,
     loadChildren: () =>
-      import('./create-department/create-department.module')
-        .then(m => m.CreateDepartmentModule),
+      import('./create-department/create-department.module').then(
+        m => m.CreateDepartmentModule
+      ),
     data: { breadcrumb: 'CREATE_NEW' },
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DepartmentRoutingModule { }
+export class DepartmentRoutingModule {}

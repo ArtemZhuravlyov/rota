@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
-import { FolderManagementComponent } from "./folder-management.component";
+import { NavigationPaths } from '../../../../core/enums/navigation-paths.enum';
+import { FolderManagementComponent } from './folder-management.component';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     component: FolderManagementComponent,
@@ -11,6 +11,6 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class FolderManagementRoutingModule { }
+export class FolderManagementRoutingModule {}
