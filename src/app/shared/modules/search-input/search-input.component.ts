@@ -11,6 +11,7 @@ import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
 import { BehaviorSubject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime } from 'rxjs/operators';
+import { isEmpty } from 'lodash';
 
 @Component({
   selector: 'app-search-input',
@@ -35,8 +36,10 @@ export class SearchInputComponent {
   ngOnInit() {
     this.bs$
       .pipe(takeUntilDestroyed(this.destroyRef), debounceTime(600))
-      .subscribe(value => {
-        this.valueChanged.emit(value);
+      .subscribe({
+        next: value => {
+          if (!isEmpty(value)) this.valueChanged.emit(value);
+        },
       });
   }
 }

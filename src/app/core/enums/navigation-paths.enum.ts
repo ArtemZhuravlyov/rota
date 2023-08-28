@@ -1,4 +1,5 @@
 export enum NavigationPaths {
+  ANY = '**',
   EMPTY_PATH = '',
   BACK = '..',
   HOME = 'home',
@@ -44,6 +45,7 @@ export enum NavigationPaths {
   GRADE_CATEGORY_LEVELS = 'grade-category-levels',
   CREATE_NEW_DEPARTMENT = 'create-new-department',
   CREATE_NEW_POSITION = 'create-new-position',
+  CREATE_NEW_BENEFIT = 'create-new-benefit',
 
   //Employees sub-menu  paths
   EMPLOYEES_LIST = 'employees-list',

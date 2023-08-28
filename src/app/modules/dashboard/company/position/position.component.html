@@ -1,6 +1,6 @@
 <app-page-header
   title="POSITION"
-  [isPrinting]="isPrinting$ | async"
+  [isPrinting]="isPrinting$.value"
   [additionalButtonsDisabled]="
     (selectedTableAccs$ | async)?.length < 1
   "
@@ -31,12 +31,13 @@
 
 <app-data-table
   [data]="positionList$ | async"
-  [itemsKey]="'positions'"
+  itemsKey="positions"
   [tableConfig]="positionsTableConfig"
   [tableStyle]="'positionTableStyle'"
   [actionConfig]="divisionActionConfig"
-  [isPrinting]="isPrinting$ | async"
+  [isPrinting]="isPrinting$.value"
   [exporting$]="exporting$"
+  [isLoading]="false"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
   (selectedItemsIds)="onSelectedTableItems($event)"

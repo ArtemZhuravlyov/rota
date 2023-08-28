@@ -87,7 +87,9 @@ export class AuthService {
       ]);
       return false;
     } else {
-      this.user.set(this.getUserFormStorage());
+      const authUser = this.getUserFormStorage();
+      this.user.set(authUser);
+      this.user$.next(authUser);
       return true;
     }
   }
@@ -117,6 +119,7 @@ export class AuthService {
   private setOptions(authUser: AuthUser): void {
     this.setToken(authUser.jwtToken);
     this.user.set(authUser);
+    this.user$.next(authUser);
     this.setUserLocalStorage(authUser);
   }
 }
