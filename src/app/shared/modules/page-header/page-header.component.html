@@ -27,11 +27,4 @@
       >
     </ng-container>
   </div>
-
-  <ng-container *ngIf="!isPrinting">
-    <app-page-sub-header
-      *ngIf="isSubHeaderShowed"
-      [additionalButtonsDisabled]="additionalButtonsDisabled"
-      (onActionClicked)="actionClicked($event)" />
-  </ng-container>
 </ng-container>

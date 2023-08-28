@@ -10,6 +10,12 @@ import {
   EmploymentTypes,
 } from '@core/types/employment-type.model';
 
+export type GetAllEmployeeTypesQuery = {
+  pageSize: number;
+  pageIndex: number;
+  isActive: boolean;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,10 +28,11 @@ export class EmploymentTypeService {
 
   user = this.authService.getCurrentUser();
 
-  getEmploymentTypeList(
-    pageSize: number,
-    pageIndex: number
-  ): Observable<EmploymentTypeResponse> {
+  getEmploymentTypeList({
+    isActive,
+    pageIndex,
+    pageSize,
+  }: GetAllEmployeeTypesQuery): Observable<EmploymentTypeResponse> {
     const params = createHttpParams({
       pageSize,
       pageIndex: pageIndex + 1,
@@ -33,7 +40,7 @@ export class EmploymentTypeService {
     return this.http
       .post<EmploymentTypeResponse>(
         `${this.env.apiUrlCompany}/employment-type/${this.user.userId}/${this.user.companyId}`,
-        {},
+        { isActive },
         { params }
       )
       .pipe(

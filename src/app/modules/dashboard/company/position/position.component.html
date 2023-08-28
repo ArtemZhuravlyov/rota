@@ -1,12 +1,11 @@
-<app-page-header
-  title="POSITION"
-  [isPrinting]="isPrinting$.value"
-  [additionalButtonsDisabled]="
-    (selectedTableAccs$ | async)?.length < 1
-  "
-  (onActionClicked)="
-    onActionClicked({ action: $event, payload: {} })
-  ">
+<app-page-header title="POSITION" [isPrinting]="isPrinting$.value">
+  <app-page-sub-header
+    [additionalButtonsDisabled]="
+      (selectedTableAccs$ | async)?.length < 1
+    "
+    (onActionClicked)="
+      onActionClicked({ action: $event, payload: {} })
+    " />
   <div class="action-buttons d-flex">
     <app-button
       [styleConfig]="{

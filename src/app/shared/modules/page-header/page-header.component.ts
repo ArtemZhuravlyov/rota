@@ -1,9 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
-  Output,
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Breadcrumb } from '@core/types/breadcrumb';
@@ -21,12 +19,9 @@ import { Router } from '@angular/router';
 })
 export class PageHeaderComponent {
   @Input({ required: true }) title!: keyof typeof TranslateKey;
-  @Input() isSubHeaderShowed = true;
   @Input() isBackBtnShowed = false;
   @Input() isPrinting!: boolean | null;
-  @Input() additionalButtonsDisabled = false;
   @Input() backPathRoute: NavigationPaths[] = [NavigationPaths.BACK];
-  @Output() onActionClicked = new EventEmitter();
 
   protected readonly BACK = TranslateKey.BACK;
 
@@ -40,12 +35,6 @@ export class PageHeaderComponent {
     private readonly router: Router
   ) {
     this.breadcrumbs$ = breadcrumbService.breadcrumbs;
-  }
-
-  actionClicked(
-    event: (typeof this.tableActionTypes)[keyof typeof this.tableActionTypes]
-  ) {
-    this.onActionClicked.emit(event);
   }
 
   onBackClick() {
