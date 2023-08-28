@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NavigationPaths } from '../../../../core/enums/navigation-paths.enum';
+import { DocumentManagementComponent } from './document-management.component';
 import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
 import { DocumentManagementComponent } from "./document-management.component";
 import {
@@ -9,7 +11,7 @@ import {
   UploadDocumentComponent
 } from "@app/modules/dashboard/documents/document-management/upload-document/upload-document.component";
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     component: DocumentManagementComponent,
@@ -27,6 +29,6 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DocumentManagementRoutingModule { }
+export class DocumentManagementRoutingModule {}

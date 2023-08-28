@@ -4,8 +4,9 @@ import { EmployeeComponent } from './employee.component';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { ImportEmployeesComponent } from '@shared/modules/import-employees/import-employees.component';
 import { TodoComponent } from '@shared/modules/todo/todo.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     children: [
@@ -45,7 +46,7 @@ const routes: Routes = [
             path: NavigationPaths.INFO_EMPLOYEE,
             loadChildren: () =>
               import('./info-employee/info-employee.module').then(
-                (m) => m.InfoEmployeeModule
+                m => m.InfoEmployeeModule
               ),
             data: {
               breadcrumb: 'INFO_EMPLOYEE',

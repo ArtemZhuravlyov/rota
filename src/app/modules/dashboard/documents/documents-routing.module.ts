@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationPaths } from "../../../core/enums/navigation-paths.enum";
-import { DocumentsComponent } from "./documents.component";
-import { FolderManagementComponent } from "./folder-management/folder-management.component";
-import { DocumentManagementComponent } from "./document-management/document-management.component";
-import { EmployeeDocumentComponent } from "./employee-document/employee-document.component";
+import { NavigationPaths } from '../../../core/enums/navigation-paths.enum';
+import { DocumentsComponent } from './documents.component';
+import { FolderManagementComponent } from './folder-management/folder-management.component';
+import { DocumentManagementComponent } from './document-management/document-management.component';
+import { EmployeeDocumentComponent } from './employee-document/employee-document.component';
 import { TodoComponent } from '@shared/modules/todo/todo.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     children: [
@@ -18,11 +19,11 @@ const routes: Routes = [
           {
             path: NavigationPaths.EMPTY_PATH,
             redirectTo: NavigationPaths.FOLDER_MANAGEMENT,
-            pathMatch: 'full'
+            pathMatch: 'full',
           },
           {
             path: NavigationPaths.FOLDER_MANAGEMENT,
-            component: FolderManagementComponent
+            component: FolderManagementComponent,
           },
           {
             path: NavigationPaths.DOCUMENT_MANAGEMENT,
@@ -35,16 +36,16 @@ const routes: Routes = [
           },
           {
             path: '**',
-            component: TodoComponent
-          }
-        ]
-      }
-    ]
+            component: TodoComponent,
+          },
+        ],
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DocumentsRoutingModule { }
+export class DocumentsRoutingModule {}

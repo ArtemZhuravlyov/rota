@@ -1,7 +1,9 @@
+import { TranslateKey } from '../../../assets/i18n/enums/translate-key.enum';
+
 export type TableConfig = ColumnConfig[];
 
 export interface ColumnConfig {
-  columnName: string;
+  columnName: keyof typeof TranslateKey;
   columnType: (typeof ColumnType)[keyof typeof ColumnType];
   hidden?: boolean;
   filedName?: string;

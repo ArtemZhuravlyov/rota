@@ -1,4 +1,5 @@
-<div class="sub-header d-flex justify-content-between">
+<div
+  class="container-wrapper sub-header d-flex justify-content-between">
   <div class="d-flex">
     <mat-slide-toggle>Show In-Active</mat-slide-toggle>
   </div>
@@ -14,7 +15,7 @@
       title="EXPORT"
       [isIconButton]="true"
       [icon]="'export'"
-      (click)="buttonAction('export')"></app-button>
+      (click)="buttonAction('export')" />
     <app-button
       [disabled]="additionalButtonsDisabled"
       btnType="STROKED"
@@ -27,6 +28,6 @@
       title="PRINT"
       [isIconButton]="true"
       [icon]="'print'"
-      (click)="buttonAction('print')"></app-button>
+      (click)="buttonAction('print')" />
   </div>
 </div>

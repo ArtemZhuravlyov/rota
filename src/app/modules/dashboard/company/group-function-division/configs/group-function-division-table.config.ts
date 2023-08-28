@@ -1,8 +1,8 @@
-import { TableConfig } from "@core/types/data-table";
+import { TableConfig } from '@core/types/data-table';
 
 export const groupFunctionDivisionTableConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
+    columnName: 'EMPTY',
     columnType: 'checkbox',
   },
   {
@@ -10,16 +10,16 @@ export const groupFunctionDivisionTableConfig: TableConfig = [
     columnType: 'link',
     action: 'view',
     hidden: false,
-    filedName: 'name'
+    filedName: 'name',
   },
   {
-    columnName: '# of Department',
+    columnName: 'NUMBER_OF_DEPARTMENT',
     columnType: 'text',
     hidden: false,
     filedName: 'numberOfDepartment',
   },
   {
-    columnName: 'Division Head',
+    columnName: 'DIVISION_HEAD',
     columnType: 'text',
     hidden: false,
     filedName: 'managerTitle',
@@ -27,5 +27,5 @@ export const groupFunctionDivisionTableConfig: TableConfig = [
   {
     columnName: 'ACTIONS',
     columnType: 'actions',
-  }
-]
+  },
+];

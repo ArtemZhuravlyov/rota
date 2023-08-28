@@ -1,8 +1,8 @@
-import { TableConfig } from "@core/types/data-table";
+import { TableConfig } from '@core/types/data-table';
 
 export const departmentTableConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
+    columnName: 'EMPTY',
     columnType: 'checkbox',
   },
   {
@@ -10,22 +10,22 @@ export const departmentTableConfig: TableConfig = [
     columnType: 'link',
     action: 'view',
     hidden: false,
-    filedName: 'name'
+    filedName: 'name',
   },
   {
-    columnName: 'Head of Department',
+    columnName: 'HEAD_OF_DEPARTMENT',
     columnType: 'text',
     hidden: false,
     filedName: 'managerTitle',
   },
   {
-    columnName: 'Division ',
+    columnName: 'DIVISION',
     columnType: 'text',
     hidden: false,
     filedName: 'divisionName',
   },
   {
-    columnName: '# of Job Role',
+    columnName: 'NUMBER_OF_JOB_ROLE',
     columnType: 'text',
     hidden: false,
     filedName: 'numberOfJobRole',
@@ -33,5 +33,5 @@ export const departmentTableConfig: TableConfig = [
   {
     columnName: 'ACTIONS',
     columnType: 'actions',
-  }
-]
+  },
+];

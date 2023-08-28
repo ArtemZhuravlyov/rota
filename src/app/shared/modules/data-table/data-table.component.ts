@@ -15,7 +15,6 @@ import {
   TableActionTypes,
   TableConfig,
 } from '@core/types/data-table';
-import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { PageEvent } from '@angular/material/paginator';
 import { FormField } from '@core/types/form-builder.model';
 import { FormGroup } from '@angular/forms';
@@ -51,7 +50,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   @Output() selectedItemsIds = new EventEmitter();
   @Output() searchChange = new EventEmitter<string>();
   readonly ColumnType = ColumnType;
-  readonly ButtonTypeEnum = ButtonTypeEnum;
   filteredData: any = [];
   tableData: any = [];
   actions: any;

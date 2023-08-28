@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
-import { CompanyInfoComponent } from "./company-info.component";
-import {
-  CreateCompanyComponent
-} from "@app/modules/dashboard/company/company-info/create-company/create-company.component";
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { CompanyInfoComponent } from './company-info.component';
+import { CreateCompanyComponent } from '@app/modules/dashboard/company/company-info/create-company/create-company.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     component: CompanyInfoComponent,
@@ -14,12 +13,12 @@ const routes: Routes = [
   {
     path: NavigationPaths.CREATE_COMPANY,
     component: CreateCompanyComponent,
-    data: {breadcrumb: 'CREATE_NEW'}
-  }
+    data: { breadcrumb: 'CREATE_NEW' },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CompanyInfoRoutingModule { }
+export class CompanyInfoRoutingModule {}
