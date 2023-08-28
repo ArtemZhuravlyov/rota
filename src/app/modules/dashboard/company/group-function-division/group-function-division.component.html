@@ -1,12 +1,13 @@
 <app-page-header
   title="GROUP_FUNCTION_DIVISION"
-  [isPrinting]="isPrinting$ | async"
-  [additionalButtonsDisabled]="
-    (selectedTableAccs$ | async)?.length < 1
-  "
-  (onActionClicked)="
-    onActionClicked({ action: $event, payload: {} })
-  ">
+  [isPrinting]="isPrinting$ | async">
+  <app-page-sub-header
+    [additionalButtonsDisabled]="
+      (selectedTableAccs$ | async)?.length < 1
+    "
+    (onActionClicked)="
+      onActionClicked({ action: $event, payload: {} })
+    " />
   <div class="action-buttons">
     <app-button
       [routerLink]="

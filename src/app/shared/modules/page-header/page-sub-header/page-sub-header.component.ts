@@ -15,7 +15,9 @@ import { TableActionTypes } from '@core/types/data-table';
 })
 export class PageSubHeaderComponent {
   @Input() additionalButtonsDisabled = false;
+  @Input() isChecked = false;
   @Output() onActionClicked = new EventEmitter();
+  @Output() onCheckedChange = new EventEmitter<boolean>();
 
   protected readonly tableActionTypes = TableActionTypes;
 
@@ -23,5 +25,9 @@ export class PageSubHeaderComponent {
     action: (typeof this.tableActionTypes)[keyof typeof this.tableActionTypes]
   ) {
     this.onActionClicked.emit(action);
+  }
+
+  checkedChange(checked: boolean) {
+    this.onCheckedChange.emit(checked);
   }
 }

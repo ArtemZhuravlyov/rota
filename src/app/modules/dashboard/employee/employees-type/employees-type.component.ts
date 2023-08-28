@@ -7,7 +7,10 @@ import {
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { employeesTypeListConfig } from '@app/modules/dashboard/employee/configs/employees-type-list.config';
-import { EmploymentTypeService } from '@core/services/company/employment-type/employment-type.service';
+import {
+  EmploymentTypeService,
+  GetAllEmployeeTypesQuery,
+} from '@core/services/company/employment-type/employment-type.service';
 import { TableActionTypes } from '@core/types/data-table';
 import {
   EmploymentTypeResponse,
@@ -25,6 +28,10 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppActivatedRoute } from '@core/types/app-route.type';
 import { EmployeeTypeRouteData } from '@modules/dashboard/employee/employees-type/employees-type-routing.module';
+
+type RequestParamsType = GetAllEmployeeTypesQuery & {
+  isItemChanged: boolean;
+};
 
 @Component({
   selector: 'app-employees-type',
@@ -46,11 +53,12 @@ export class EmployeesTypeComponent implements OnInit {
   protected readonly employeesTypeListConfig =
     employeesTypeListConfig;
 
-  requestParams$ = new BehaviorSubject<{
-    pageSize: number;
-    pageIndex: number;
-    isItemChanged: boolean;
-  }>({ isItemChanged: false, pageSize: 10, pageIndex: 0 });
+  requestParams$ = new BehaviorSubject<RequestParamsType>({
+    isActive: false,
+    isItemChanged: false,
+    pageSize: 10,
+    pageIndex: 0,
+  });
 
   employeesTypeList$ = new BehaviorSubject<EmploymentTypeResponse>({
     employmentTypes: [],
@@ -110,8 +118,8 @@ export class EmployeesTypeComponent implements OnInit {
     this.updateRequestParams({ pageIndex });
   }
 
-  onSearchChange(input: string) {
-    console.log(input);
+  onActiveChange(active: boolean) {
+    this.updateRequestParams({ isActive: active });
   }
 
   private openDescriptionDialog(type: EmploymentTypes) {
@@ -152,12 +160,17 @@ export class EmployeesTypeComponent implements OnInit {
   private initEmploymentTypes() {
     this.requestParams$
       .pipe(
-        distinctUntilParamsChanged(['pageIndex', 'isItemChanged']),
-        switchMap(({ pageSize, pageIndex }) =>
-          this.employmentTypeService.getEmploymentTypeList(
+        distinctUntilParamsChanged([
+          'pageIndex',
+          'isItemChanged',
+          'isActive',
+        ]),
+        switchMap(({ pageSize, pageIndex, isActive }) =>
+          this.employmentTypeService.getEmploymentTypeList({
             pageSize,
-            pageIndex
-          )
+            pageIndex,
+            isActive,
+          })
         )
       )
       .subscribe(employmentTypes => {
@@ -165,13 +178,7 @@ export class EmployeesTypeComponent implements OnInit {
       });
   }
 
-  private updateRequestParams(
-    params: Partial<{
-      pageSize: number;
-      pageIndex: number;
-      isItemChanged: boolean;
-    }>
-  ) {
+  private updateRequestParams(params: Partial<RequestParamsType>) {
     const value = this.requestParams$.value;
     this.requestParams$.next({ ...value, ...params });
   }

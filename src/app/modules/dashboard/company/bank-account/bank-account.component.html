@@ -1,12 +1,13 @@
 <app-page-header
   [title]="'BANK_ACCOUNT'"
-  [isPrinting]="isPrinting$.value"
-  [additionalButtonsDisabled]="
-    (selectedTableAccs$ | async)?.length < 1
-  "
-  (onActionClicked)="
-    onActionClicked({ action: $event, payload: {} })
-  ">
+  [isPrinting]="isPrinting$.value">
+  <app-page-sub-header
+    [additionalButtonsDisabled]="
+      (selectedTableAccs$ | async)?.length < 1
+    "
+    (onActionClicked)="
+      onActionClicked({ action: $event, payload: {} })
+    " />
   <ng-container *ngIf="!isPrinting$.value">
     <div class="action-buttons">
       <app-button
