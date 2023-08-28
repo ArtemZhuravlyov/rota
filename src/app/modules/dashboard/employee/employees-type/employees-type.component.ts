@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
   OnInit,
 } from '@angular/core';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
@@ -20,11 +21,10 @@ import {
   InfoModal,
   InfoModalComponent,
 } from '@shared/modalWindows/info-modal/info-modal.component';
-import {
-  HttpEvent,
-  HttpEventType,
-  HttpProgressEvent,
-} from '@angular/common/http';
+
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppActivatedRoute } from '@core/types/app-route.type';
+import { EmployeeTypeRouteData } from '@modules/dashboard/employee/employees-type/employees-type-routing.module';
 
 @Component({
   selector: 'app-employees-type',
@@ -33,6 +33,14 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeesTypeComponent implements OnInit {
+  private readonly employmentTypeService = inject(
+    EmploymentTypeService
+  );
+  private readonly route = inject(Router);
+  private readonly activatedRoute =
+    inject<AppActivatedRoute<EmployeeTypeRouteData>>(ActivatedRoute);
+  private readonly dialog = inject(MatDialog);
+
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
   protected readonly employeesTypeListConfig =
@@ -74,11 +82,6 @@ export class EmployeesTypeComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private readonly employmentTypeService: EmploymentTypeService,
-    private readonly dialog: MatDialog
-  ) {}
-
   ngOnInit() {
     this.initEmploymentTypes();
   }
@@ -96,6 +99,9 @@ export class EmployeesTypeComponent implements OnInit {
         break;
       case TableActionTypes.VIEWDESCRIPTION:
         this.openDescriptionDialog(payload);
+        break;
+      case TableActionTypes.CHECK:
+        this.redirectToEditEmployeeType(payload.id);
         break;
     }
   }
@@ -122,6 +128,15 @@ export class EmployeesTypeComponent implements OnInit {
       })
       .afterClosed()
       .subscribe();
+  }
+
+  private redirectToEditEmployeeType(id: string) {
+    return this.route.navigate(
+      [NavigationPaths.EDIT_EMPLOYEE_TYPE, id],
+      {
+        relativeTo: this.activatedRoute,
+      }
+    );
   }
 
   private deleteEmploymentType(id: string) {

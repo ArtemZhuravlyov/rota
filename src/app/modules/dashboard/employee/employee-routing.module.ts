@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { EmployeeComponent } from './employee.component';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { ImportEmployeesComponent } from '@shared/modules/import-employees/import-employees.component';
@@ -18,7 +18,7 @@ const routes: AppRoutes = [
             path: NavigationPaths.EMPTY_PATH,
             loadChildren: () =>
               import('./employees-type/employees-type.module').then(
-                (m) => m.EmployeesTypeModule
+                m => m.EmployeesTypeModule
               ),
             data: {
               breadcrumb: 'EMPLOYEES_TYPE',
@@ -28,7 +28,7 @@ const routes: AppRoutes = [
             path: NavigationPaths.EMPLOYEES,
             loadChildren: () =>
               import('./employees/employees.module').then(
-                (m) => m.EmployeesModule
+                m => m.EmployeesModule
               ),
             data: {
               breadcrumb: 'EMPLOYEES_RECORD',
