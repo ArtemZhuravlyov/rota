@@ -6,6 +6,7 @@ export interface ColumnConfig {
   columnName: keyof typeof TranslateKey;
   columnType: (typeof ColumnType)[keyof typeof ColumnType];
   hidden?: boolean;
+  hiddable?: boolean;
   filedName?: string;
   action?: (typeof TableActionTypes)[keyof typeof TableActionTypes];
 }
