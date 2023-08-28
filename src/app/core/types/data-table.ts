@@ -20,6 +20,7 @@ export const ColumnType = {
   DATE: 'date',
   CUSTOM: 'custom',
   DESCRIPTIONS: 'descriptions',
+  TOGGLE: 'toggle',
 } as const;
 
 export interface TableAction {
@@ -38,5 +39,5 @@ export const TableActionTypes = {
   IMPORT: 'import',
   CHECK: 'check',
   ANALYSIS: 'analysis',
-  DOWNLOAD: 'download'
+  DOWNLOAD: 'download',
 } as const;

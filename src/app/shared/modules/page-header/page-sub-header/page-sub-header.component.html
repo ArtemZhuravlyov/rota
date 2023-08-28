@@ -5,7 +5,7 @@
   <div class="action-buttons d-flex">
     <app-button
       [disabled]="additionalButtonsDisabled"
-      [btnType]="ButtonTypeEnum.STROKED"
+      btnType="STROKED"
       [styleConfig]="{
         width: '130px',
         height: '42px',
@@ -17,13 +17,14 @@
       (click)="buttonAction('export')"></app-button>
     <app-button
       [disabled]="additionalButtonsDisabled"
-      [btnType]="ButtonTypeEnum.STROKED"
+      btnType="STROKED"
       [styleConfig]="{
         width: '130px',
         height: '42px',
         'font-weight': '500'
       }"
-      [title]="'PRINT'"
+
+      title="PRINT"
       [isIconButton]="true"
       [icon]="'print'"
       (click)="buttonAction('print')"></app-button>

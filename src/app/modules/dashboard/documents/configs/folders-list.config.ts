@@ -14,19 +14,19 @@ export const foldersListConfig: TableConfig = [
   {
     columnName: 'DESCRIPTION',
     columnType: 'text',
-    filedName: 'document',
+    filedName: 'description',
     hidden: false,
   },
   {
     columnName: 'SHARE',
-    columnType: 'text',
-    filedName: 'size',
+    columnType: 'toggle',
+    filedName: 'share',
     hidden: false,
   },
   {
     columnName: 'SHARE_WITH',
     columnType: 'text',
-    filedName: 'size',
+    filedName: 'share_with',
     hidden: false,
   },
   {
@@ -38,5 +38,5 @@ export const foldersListConfig: TableConfig = [
   {
     columnName: 'ACTIONS',
     columnType: 'actions',
-  }
+  },
 ];

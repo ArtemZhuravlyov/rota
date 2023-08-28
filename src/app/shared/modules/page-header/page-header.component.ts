@@ -24,6 +24,7 @@ export class PageHeaderComponent {
   @Input() isBackBtnShowed = false;
   @Input() isPrinting!: boolean | null;
   @Input() additionalButtonsDisabled = false;
+  @Input() isDocumentSubHeaderShowed = true;
   @Output() onActionClicked = new EventEmitter();
 
   protected readonly BACK = TranslateKey.BACK;

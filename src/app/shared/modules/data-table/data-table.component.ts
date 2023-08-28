@@ -44,6 +44,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   @Input() isFormIncluded?: boolean;
   @Input() headerDropdownFilter = true;
   @Input() isPrinting: boolean | null = false;
+  @Input() isSorting: boolean | null = false;
   @Input() exporting$ = new BehaviorSubject([]);
   @Output() actionClicked = new EventEmitter<TableAction>();
   @Output() pageChange = new EventEmitter<PageEvent>();
@@ -125,14 +126,14 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
   constructor(private readonly cdr: ChangeDetectorRef) {}
 
-    ngOnInit(): void {
-        this.columns = this.tableConfig.map(col => col.columnName);
-        this.setActions();
-    }
+  ngOnInit(): void {
+    this.columns = this.tableConfig.map(col => col.columnName);
+    this.setActions();
+  }
 
-    toggleSearch(): void {
-        this.showSearch = !this.showSearch;
-    }
+  toggleSearch(): void {
+    this.showSearch = !this.showSearch;
+  }
 
   filterTable(searchText: string, filedToFilter: string): void {
     const dataToFilter = JSON.parse(

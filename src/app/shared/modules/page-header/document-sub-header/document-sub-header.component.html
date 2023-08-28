@@ -2,19 +2,19 @@
     <div class="action-buttons d-flex justify-content-end">
         <app-button
                 [disabled]="additionalButtonsDisabled"
-                [btnType]="ButtonTypeEnum.STROKED"
+                btnType="STROKED"
                 [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
-                [title]="'Download'"
+                title="DOWNLOAD"
                 [isIconButton]="true"
-                [icon]="'download'"
-                (click)="buttonAction('download')"></app-button>
+                icon="download"
+                (click)="buttonAction('download')"/>
         <app-button
                 [disabled]="additionalButtonsDisabled"
-                [btnType]="ButtonTypeEnum.STROKED"
+                btnType="STROKED"
                 [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
-                [title]="'Analysis'"
+                title="ANALYSIS"
                 [isIconButton]="true"
-                [icon]="'reports-analytics'"
-                (click)="buttonAction('analysis')"></app-button>
+                icon="reports-analytics"
+                (click)="buttonAction('analysis')"/>
     </div>
 </div>
