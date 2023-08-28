@@ -1,13 +1,13 @@
 <app-page-header
   [title]="'BANK_ACCOUNT'"
-  [isPrinting]="isPrinting$ | async"
+  [isPrinting]="isPrinting$.value"
   [additionalButtonsDisabled]="
     (selectedTableAccs$ | async)?.length < 1
   "
   (onActionClicked)="
     onActionClicked({ action: $event, payload: {} })
   ">
-  <ng-container *ngIf="!(isPrinting$ | async)">
+  <ng-container *ngIf="!isPrinting$.value">
     <div class="action-buttons">
       <app-button
         [styleConfig]="{
@@ -42,8 +42,8 @@
   [tableStyle]="tableStyle"
   [hasCheckboxColumn]="true"
   [actionConfig]="actionConfig"
-  [isPrinting]="isPrinting$ | async"
+  [isPrinting]="isPrinting$.value"
   [exporting$]="exporting$"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
-  (selectedItemsIds)="onSelectedTableItems($event)"></app-data-table>
+  (selectedItemsIds)="onSelectedTableItems($event)" />

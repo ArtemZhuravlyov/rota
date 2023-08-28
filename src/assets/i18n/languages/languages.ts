@@ -266,6 +266,7 @@ const en: LanguageObject = {
   PAYMENT_INFORMATION: 'Payment Information',
   BANK: 'Bank',
   ACCOUNT_NAME: 'Account Name',
+  CODE: 'Code',
   SWIFT_CODE: 'Swift Code',
   ACCOUNT_NUMBER: 'Account Number',
   SORT_CODE: 'Sort Code',
@@ -333,6 +334,8 @@ const en: LanguageObject = {
   SORT_CODE_DESCRIPTION:
     'A sort code is a 6 digit number that identifies your bank.',
   WHAT_IS_IBAN: 'What is IBAN?',
+  IBAN: 'IBAN',
+  SWIFT: 'SWIFT',
   IBAN_DESCRIPTION:
     'An International Bank Account Number – or IBAN – is used worldwide to identify individual accounts. IBANs make it easier to process international payments. You can find your IBAN in the Internet Bank and on your account statement.',
   INFO_EMPLOYEE: 'Info Employee',
@@ -354,6 +357,14 @@ const en: LanguageObject = {
   EMPLOYEES_TYPE: 'Employees Type',
   DESCRIPTION: 'Description',
   EMPLOYEES_RECORD: 'Employees Record',
+  ROW_ID: 'Row ID',
+  NUMBER_OF_EMPLOYEE: '# of Employee',
+  NUMBER_OF_DEPARTMENT: '# of Department',
+  HIRE_DATE: 'Hire Date',
+  JOB_DESCRIPTION: 'Job Description',
+  DIVISION_HEAD: 'Division Head',
+  HEAD_OF_DEPARTMENT: 'Head of Department',
+  DISPLAY_ORDER: 'Display Order',
 };
 
 export const allLanguages: {

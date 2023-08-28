@@ -1,4 +1,4 @@
-<div class="table-container" [class]="tableStyle">
+<div class="container-wrapper table-container" [class]="tableStyle">
   <table
     mat-table
     [dataSource]="filteredData"
@@ -16,7 +16,7 @@
             [ngStyle]="!isPrinting ? null : { display: 'none' }">
             <mat-checkbox
               [checked]="filteredData?.length === selectedItems.size"
-              (click)="selectAll()"></mat-checkbox>
+              (click)="selectAll()" />
           </th>
 
           <td
@@ -25,7 +25,7 @@
             [ngStyle]="!isPrinting ? null : { display: 'none' }">
             <mat-checkbox
               [checked]="selectedItems.has(element.id)"
-              (click)="addToSelected(element)"></mat-checkbox>
+              (click)="addToSelected(element)" />
           </td>
         </ng-container>
 
@@ -38,7 +38,7 @@
             *matHeaderCellDef>
             <ng-container
               [ngTemplateOutlet]="defaultCellHeader"
-              [ngTemplateOutletContext]="{ i }"></ng-container>
+              [ngTemplateOutletContext]="{ i }" />
           </th>
 
           <td
@@ -62,7 +62,7 @@
                 class="actions-container d-flex justify-content-center align-items-end">
                 <app-button
                   (btnClick)="toggleSearch()"
-                  [btnType]="ButtonTypeEnum.ICON"
+                  btnType="ICON"
                   [icon]="'search'" />
 
                 <app-dropdown-menu [xPosition]="'before'">
@@ -108,7 +108,7 @@
             *matHeaderCellDef>
             <ng-container
               [ngTemplateOutlet]="defaultCellHeader"
-              [ngTemplateOutletContext]="{ i }"></ng-container>
+              [ngTemplateOutletContext]="{ i }" />
           </th>
 
           <td
@@ -133,7 +133,7 @@
                 })
               "
               *ngIf="!isPrinting">
-              <mat-icon [svgIcon]="'eye'"></mat-icon>
+              <mat-icon [svgIcon]="'eye'" />
               <span> View </span>
             </div>
           </td>
@@ -148,7 +148,7 @@
             *matHeaderCellDef>
             <ng-container
               [ngTemplateOutlet]="defaultCellHeader"
-              [ngTemplateOutletContext]="{ i }"></ng-container>
+              [ngTemplateOutletContext]="{ i }" />
           </th>
 
           <!--why tableConfig[i].action is undefined in onAction?-->
@@ -169,7 +169,7 @@
             *matHeaderCellDef>
             <ng-container
               [ngTemplateOutlet]="defaultCellHeader"
-              [ngTemplateOutletContext]="{ i }"></ng-container>
+              [ngTemplateOutletContext]="{ i }" />
           </th>
 
           <td
@@ -188,7 +188,7 @@
               [styleConfig]="gradeLevelsStyleConfig"
               [formFields]="[formConfig[i]]"
               (createdForm)="createForm((form = $event))"
-              [actionButtonIncluded]="false"></app-form-builder>
+              [actionButtonIncluded]="false" />
           </td>
         </ng-container>
       </ng-container>
@@ -221,8 +221,8 @@
         class="close-icon"
         (btnClick)="toggleSearch()"
         [isIconButton]="true"
-        [btnType]="'ICON'"
-        [icon]="'clear'"></app-button>
+        btnType="ICON"
+        icon="clear" />
     </app-search-input>
   </div>
 </div>
@@ -246,20 +246,20 @@
             [styleConfig]="{
               width: '200px',
               height: '40px'
-            }"></app-search-input>
+            }" />
           <div class="d-flex justify-content-between">
             <app-button
-              [title]="'APPLY'"
-              [btnType]="ButtonTypeEnum.FLAT"
+              title="APPLY"
+              btnType="FLAT"
               [styleConfig]="{
                 height: '40px',
                 width: '80px',
                 'margin-top': '10px'
               }"
-              [isIconButton]="false"></app-button>
+              [isIconButton]="false" />
             <app-button
-              [title]="'CLEAR'"
-              [btnType]="ButtonTypeEnum.FLAT"
+              title="CLEAR"
+              btnType="FLAT"
               [styleConfig]="{
                 height: '40px',
                 width: '80px',
@@ -268,7 +268,7 @@
                 'margin-top': '10px',
                 border: '#3E77AA solid 1px'
               }"
-              [isIconButton]="false"></app-button>
+              [isIconButton]="false" />
           </div>
         </div>
       </app-dropdown-menu>
@@ -280,8 +280,8 @@
       <app-button
         class="close-icon"
         [isIconButton]="true"
-        [btnType]="'ICON'"
-        [icon]="'sort-by'"></app-button>
+        btnType="ICON"
+        icon="sort-by" />
     </ng-container>
   </div>
 </ng-template>
@@ -292,7 +292,7 @@
     *ngIf="!isPrinting">
     <ng-container *ngFor="let action of actions">
       <app-button
-        [btnType]="ButtonTypeEnum.LITTLE_ICON"
+        btnType="LITTLE_ICON"
         [styleConfig]="action.styleConfig"
         [iconStyleConfig]="{
           width: '20px',
@@ -305,7 +305,7 @@
         [icon]="action.icon"
         (click)="
           onAction({ action: action.type, payload: element })
-        "></app-button>
+        " />
     </ng-container>
   </div>
 </ng-template>

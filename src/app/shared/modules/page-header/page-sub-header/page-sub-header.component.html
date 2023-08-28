@@ -1,11 +1,12 @@
-<div class="sub-header d-flex justify-content-between">
+<div
+  class="container-wrapper sub-header d-flex justify-content-between">
   <div class="d-flex">
     <mat-slide-toggle>Show In-Active</mat-slide-toggle>
   </div>
   <div class="action-buttons d-flex">
     <app-button
       [disabled]="additionalButtonsDisabled"
-      [btnType]="ButtonTypeEnum.STROKED"
+      btnType="STROKED"
       [styleConfig]="{
         width: '130px',
         height: '42px',
@@ -14,10 +15,10 @@
       title="EXPORT"
       [isIconButton]="true"
       [icon]="'export'"
-      (click)="buttonAction('export')"></app-button>
+      (click)="buttonAction('export')" />
     <app-button
       [disabled]="additionalButtonsDisabled"
-      [btnType]="ButtonTypeEnum.STROKED"
+      btnType="STROKED"
       [styleConfig]="{
         width: '130px',
         height: '42px',
@@ -26,6 +27,6 @@
       [title]="'PRINT'"
       [isIconButton]="true"
       [icon]="'print'"
-      (click)="buttonAction('print')"></app-button>
+      (click)="buttonAction('print')" />
   </div>
 </div>
