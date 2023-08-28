@@ -2,7 +2,7 @@ import { TableConfig } from '@core/types/data-table';
 
 export const employeesTypeListConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
+    columnName: 'EMPTY',
     columnType: 'checkbox',
   },
   {
@@ -18,7 +18,7 @@ export const employeesTypeListConfig: TableConfig = [
     filedName: 'description',
   },
   {
-    columnName: '# of Employee',
+    columnName: 'NUMBER_OF_EMPLOYEE',
     columnType: 'text',
     hidden: false,
     filedName: 'totalEmployeeNumber',

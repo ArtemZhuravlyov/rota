@@ -6,14 +6,7 @@ import {
 } from '@angular/core';
 import { bankAccountTableConfig } from '@app/modules/dashboard/company/configs/bank-account-table-config';
 import { PageEvent } from '@angular/material/paginator';
-import {
-  BehaviorSubject,
-  map,
-  Observable,
-  of,
-  ReplaySubject,
-  take,
-} from 'rxjs';
+import { BehaviorSubject, map, Observable, of, take } from 'rxjs';
 import { AuthService } from '@core/services/account/auth.service';
 import { BankAccountService } from '@core/services/bank-account/bank-account.service';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
