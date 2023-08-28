@@ -70,7 +70,7 @@ const en: LanguageObject = {
   ROLE: 'Role',
   FIELD_REQUIRED: 'Field is required',
   SYMBOL_ERROR:
-    'Can’t use the “`” symbol in this field. Please, fix this error.',
+    'Can’t use the “{{symbol}}” symbol in this field. Please, fix this error.',
   REGISTER_PASSWORD_ERROR:
     'This password is too weak. Please, add such symbols like #,$,& or other.',
   REPEAT_PASSWORD_ERROR: 'Passwords are not matching',

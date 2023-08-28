@@ -11,6 +11,7 @@ import { BreadcrumbService } from '@core/services/breadcrumb/breadcrumb.service'
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { TableActionTypes } from '@core/types/data-table';
 import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-header',
@@ -24,6 +25,7 @@ export class PageHeaderComponent {
   @Input() isBackBtnShowed = false;
   @Input() isPrinting!: boolean | null;
   @Input() additionalButtonsDisabled = false;
+  @Input() backPathRoute: NavigationPaths[] = [NavigationPaths.BACK];
   @Output() onActionClicked = new EventEmitter();
 
   protected readonly BACK = TranslateKey.BACK;
@@ -33,7 +35,10 @@ export class PageHeaderComponent {
 
   breadcrumbs$: Observable<Breadcrumb[]>;
 
-  constructor(private readonly breadcrumbService: BreadcrumbService) {
+  constructor(
+    private readonly breadcrumbService: BreadcrumbService,
+    private readonly router: Router
+  ) {
     this.breadcrumbs$ = breadcrumbService.breadcrumbs;
   }
 
@@ -41,5 +46,9 @@ export class PageHeaderComponent {
     event: (typeof this.tableActionTypes)[keyof typeof this.tableActionTypes]
   ) {
     this.onActionClicked.emit(event);
+  }
+
+  onBackClick() {
+    this.router.navigate(this.backPathRoute);
   }
 }

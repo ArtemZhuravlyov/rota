@@ -21,7 +21,7 @@
       <a
         *ngIf="isBackBtnShowed"
         class="back-btn d-flex align-items-center"
-        [routerLink]="NavigationPaths.BACK"
+        (click)="onBackClick()"
         ><mat-icon>keyboard_backspace</mat-icon
         >{{ BACK | translate }}</a
       >

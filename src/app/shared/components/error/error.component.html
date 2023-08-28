@@ -22,6 +22,12 @@
   </ng-container>
 
   <ng-container *ngSwitchCase="getError(Errors.EXCLUDE_SYMBOLS)">
-    <span>{{ SYMBOL_ERROR | translate }}</span>
+    <span>{{
+      SYMBOL_ERROR | translate: { symbol: excludeSymbols }
+    }}</span>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="getError(Errors.REQUIRED)">
+    <span>{{ REQUIRED | translate }}</span>
   </ng-container>
 </ng-container>

@@ -1,29 +1,6 @@
 .input-control {
   display: block;
 
-  &_label {
-    display: flex;
-    justify-content: space-between;
-
-    label {
-      font-style: normal;
-      font-size: 15px;
-      color: #221F1F;
-    }
-
-    span {
-      font-size: 15px;
-      font-style: normal;
-      color: #808080;
-    }
-
-    span:first-child {
-      font-size: 15px;
-      font-style: normal;
-      color: #221f1f;
-    }
-  }
-
   input {
     width: 100%;
     height: 100%;

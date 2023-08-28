@@ -27,6 +27,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormFiledTypeName } from '@shared/components/form/types/form-filed-type-name';
 import { InputComponent } from '@shared/components/input/input.component';
 import { TextareaComponent } from '@shared/components/textarea/textarea.component';
+import { InputPasswordComponent } from '@shared/components/input-password/input-password.component';
+import { InputDropdownComponent } from '@shared/components/input-dropdown/input-dropdown.component';
 
 @Component({
   selector: 'app-form',
@@ -44,6 +46,8 @@ import { TextareaComponent } from '@shared/components/textarea/textarea.componen
     TranslateModule,
     InputComponent,
     TextareaComponent,
+    InputPasswordComponent,
+    InputDropdownComponent,
   ],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],

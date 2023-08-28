@@ -57,6 +57,7 @@ export enum NavigationPaths {
   OFFBOARDING = 'offboarding',
   CREATE_NEW_EMPLOYEE = 'create-new',
   CREATE_NEW_EMPLOYEE_TYPE = 'create-new-type',
+  EDIT_EMPLOYEE_TYPE = 'edit-type',
   EDIT_EMPLOYEE = 'edit-employee',
   INFO_EMPLOYEE = 'info-employee',
 
