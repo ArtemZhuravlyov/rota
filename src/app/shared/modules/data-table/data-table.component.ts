@@ -76,6 +76,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     {
       icon: 'eye',
       type: TableActionTypes.VIEW,
+      disabled: false,
       styleConfig: {
         width: '30px',
         height: '30px',
@@ -87,6 +88,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     {
       icon: 'edit',
       type: TableActionTypes.EDIT,
+      disabled: false,
       styleConfig: {
         width: '30px',
         height: '30px',
@@ -98,6 +100,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     {
       icon: 'delete',
       type: TableActionTypes.DELETE,
+      disabled: false,
       styleConfig: {
         width: '30px',
         height: '30px',
