@@ -69,6 +69,7 @@ export class EmployeesTypeComponent implements OnInit {
     {
       icon: 'check',
       type: TableActionTypes.CHECK,
+      disabled: false,
       styleConfig: {
         width: '30px',
         height: '30px',
@@ -80,6 +81,7 @@ export class EmployeesTypeComponent implements OnInit {
     {
       icon: 'delete',
       type: TableActionTypes.DELETE,
+      disabled: false,
       styleConfig: {
         width: '30px',
         height: '30px',

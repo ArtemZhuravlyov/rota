@@ -71,12 +71,13 @@
 
                 <div
                   class="actions-container d-flex justify-content-center align-items-end">
-                  <app-button
+                  <app-table-button
+                    [showBtn]="true"
                     (btnClick)="toggleSearch()"
-                    btnType="ICON"
-                    icon="search" />
+                    class="table-buttons-wrapper table-padding"
+                    [icon]="'search'" />
 
-                  <app-dropdown-menu xPosition="before">
+                  <app-move-vert-dropdown xPosition="before">
                     <div (click)="$event.stopPropagation()">
                       <div
                         class="d-flex align-items-center hidden-cols-container"
@@ -87,7 +88,7 @@
                         <p>{{ column.columnName | translate }}</p>
                       </div>
                     </div>
-                  </app-dropdown-menu>
+                  </app-move-vert-dropdown>
                 </div>
               </div>
             </th>
@@ -244,10 +245,10 @@
   <div
     class="d-flex align-items-center justify-content-center defaultHeader">
     <ng-container *ngIf="!isPrinting">
-      <app-dropdown-menu
-        [menuIcon]="'filter'"
+      <app-filter-dropdown
+        class="table-buttons-wrapper filter-padding"
+        [icon]="'filter'"
         *ngIf="headerDropdownFilter">
-        <div class="triangle-border"></div>
         <div
           class="filter-container"
           (click)="$event.stopPropagation()">
@@ -284,17 +285,15 @@
               [isIconButton]="false" />
           </div>
         </div>
-      </app-dropdown-menu>
+      </app-filter-dropdown>
     </ng-container>
 
     {{ tableConfig[i].columnName | translate }}
 
     <ng-container *ngIf="!isPrinting">
-      <app-button
-        class="close-icon"
-        [isIconButton]="true"
-        btnType="ICON"
-        icon="sort-by" />
+      <app-table-button
+        class="table-buttons-wrapper table-padding"
+        [icon]="'sort-by'" />
     </ng-container>
   </div>
 </ng-template>
@@ -314,6 +313,7 @@
           'font-size': '16px',
           transform: 'scale(0.9)'
         }"
+        [disabled]="action.disabled"
         [isIconButton]="true"
         [icon]="action.icon"
         (click)="
