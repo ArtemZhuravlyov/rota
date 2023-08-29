@@ -1,12 +1,11 @@
-<app-page-header
-  title="POSITION"
-  [isPrinting]="isPrinting$ | async"
-  [additionalButtonsDisabled]="
-    (selectedTableAccs$ | async)?.length < 1
-  "
-  (onActionClicked)="
-    onActionClicked({ action: $event, payload: {} })
-  ">
+<app-page-header title="POSITION" [isPrinting]="isPrinting$.value">
+  <app-page-sub-header
+    [additionalButtonsDisabled]="
+      (selectedTableAccs$ | async)?.length < 1
+    "
+    (onActionClicked)="
+      onActionClicked({ action: $event, payload: {} })
+    " />
   <div class="action-buttons d-flex">
     <app-button
       [styleConfig]="{
@@ -31,12 +30,13 @@
 
 <app-data-table
   [data]="positionList$ | async"
-  [itemsKey]="'positions'"
+  itemsKey="positions"
   [tableConfig]="positionsTableConfig"
   [tableStyle]="'positionTableStyle'"
   [actionConfig]="divisionActionConfig"
-  [isPrinting]="isPrinting$ | async"
+  [isPrinting]="isPrinting$.value"
   [exporting$]="exporting$"
+  [isLoading]="false"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
   (selectedItemsIds)="onSelectedTableItems($event)"

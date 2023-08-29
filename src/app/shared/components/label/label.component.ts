@@ -18,7 +18,6 @@ export class LabelComponent {
   private _value = '';
   private _isFocus = false;
   @Input() name = '';
-  @Input() id = 'id';
   @Input() maxLength = 500;
   @Input() set isFocus(isFocus: boolean) {
     this._isFocus = isFocus;
@@ -31,5 +30,9 @@ export class LabelComponent {
   }
   get value() {
     return this._value;
+  }
+
+  get valueLength() {
+    return this.value.length;
   }
 }

@@ -1,0 +1,34 @@
+<div class="input-dropdown-control" [ngStyle]="styleConfig">
+  <mat-select
+    [formControl]="formControl"
+    (opened)="showDropdown = true"
+    (closed)="showDropdown = false"
+    [placeholder]="placeholder | translate"
+    [(value)]="preselectedValue">
+    <app-search-input
+      (keydown)="$event.stopPropagation()"
+      [styleConfig]="{ width: '100%' }" />
+
+    <mat-option
+      *ngFor="let value of data"
+      [value]="value"
+      (click)="onSelectItem(value)">
+      <!--      <span class="currency">{{ value['currencyCode'] }} </span>-->
+      <!--      <img-->
+      <!--        *ngIf="value['icon']"-->
+      <!--        [src]="value['icon'] | country"-->
+      <!--        alt="icon" />-->
+      <span class="text-value">{{ value[nameField] }}</span>
+    </mat-option>
+  </mat-select>
+
+  <mat-icon
+    matSuffix
+    class="icon-arrow"
+    [ngClass]="{
+      'icon-arrow-open': showDropdown,
+      'icon-arrow-selected': !showDropdown
+    }"
+    >keyboard_arrow_down
+  </mat-icon>
+</div>

@@ -1,12 +1,22 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { EmploymentTypeService } from '@core/services/company/employment-type/employment-type.service';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
-import { FormFieldEntry } from '@shared/components/form/types/form-field-entryl.type';
-import { FormFiledTypeName } from '@shared/components/form/types/form-filed-type-name';
-import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 import { CustomValidators } from '@shared/utils/custom-validators/custom-validators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppActivatedRoute } from '@core/types/app-route.type';
+import { BehaviorSubject, filter, map } from 'rxjs';
+import { isNil } from 'lodash';
+import { EmployeeTypeRouteData } from '@modules/dashboard/employee/employees-type/employees-type-routing.module';
+import { EmploymentTypes } from '@core/types/employment-type.model';
+import { createEmployeeTypeFormConfig } from '@modules/dashboard/employee/create-employee-type/configs/create-employee-type-form.config';
 
 @Component({
   selector: 'app-create-employee-type',
@@ -14,61 +24,52 @@ import { CustomValidators } from '@shared/utils/custom-validators/custom-validat
   styleUrls: ['./create-employee-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CreateEmployeeTypeComponent {
+export class CreateEmployeeTypeComponent implements AfterViewInit {
+  private readonly activatedRoute: AppActivatedRoute<EmployeeTypeRouteData> =
+    inject(ActivatedRoute);
+  private readonly employmentTypeService = inject(
+    EmploymentTypeService
+  );
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly router = inject(Router);
+  employmentType = new BehaviorSubject<EmploymentTypes | null>(null);
+  backPathRoute = [
+    NavigationPaths.DASHBOARD,
+    NavigationPaths.EMPLOYEES,
+  ];
+
   form!: FormGroup<{
     name: FormControl<string>;
     description: FormControl<string>;
   }>;
 
-  data: FormFieldEntry[] = [
-    {
-      type: FormFiledTypeName.INPUT,
-      key: 'name',
-      validators: [CustomValidators.required],
-      config: {
-        inputType: 'text',
-        styleConfig: {
-          width: '480px',
-          height: '52px',
-        },
-        label: TranslateKey.NAME,
-        maxLength: 100,
-        placeholder: 'ENTER',
-        value: '',
-        readonly: false,
-      },
-    },
-    {
-      type: FormFiledTypeName.TEXTAREA,
-      key: 'description',
-      validators: [
-        CustomValidators.required,
-        CustomValidators.excludeSymbolsValidator({
-          symbols: ['`'],
-        }),
-      ],
-      config: {
-        styleConfig: { width: '480px', height: '100px' },
-        label: TranslateKey.DESCRIPTION,
-        maxLength: 500,
-        placeholder: 'ENTER',
-        value: '',
-        readonly: false,
-      },
-    },
-  ];
+  protected readonly NavigationPaths = NavigationPaths;
+  protected readonly createEmployeeTypeFormConfig =
+    createEmployeeTypeFormConfig;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
 
-  constructor(
-    private readonly employmentTypeService: EmploymentTypeService
-  ) {}
+  ngAfterViewInit(): void {
+    this.initFormFields();
+  }
 
   onSaveClick() {
     const values = this.form.getRawValue();
-    console.log(values);
     this.form.disable();
+    if (!isNil(this.employmentType.value)) {
+      const { id } = this.employmentType.value;
+      this.onEdit({ id, ...values });
+    } else {
+      this.onCreate(values);
+    }
+  }
+
+  onCancelClick() {
+    this.router.navigate(this.backPathRoute);
+  }
+
+  private onCreate(body: { name: string; description: string }) {
     this.employmentTypeService
-      .creteNewEmploymentType(values)
+      .creteNewEmploymentType(body)
       .subscribe({
         next: () => {
           this.form.enable();
@@ -80,5 +81,59 @@ export class CreateEmployeeTypeComponent {
       });
   }
 
-  protected readonly NavigationPaths = NavigationPaths;
+  private onEdit(body: {
+    id: string;
+    name: string;
+    description: string;
+  }) {
+    this.employmentTypeService.editEmploymentType(body).subscribe({
+      next: () => {
+        const oldEmploymentType = this.employmentType.value!;
+        this.form.enable();
+        this.updateForm({
+          ...oldEmploymentType,
+          name: body.name,
+          description: body.description,
+        });
+      },
+      error: () => {
+        this.form.enable();
+      },
+    });
+  }
+
+  private initFormFields() {
+    this.activatedRoute.data
+      .pipe(
+        map(data => data.employeeTypeData),
+        filter(
+          (employeeTypeData): employeeTypeData is EmploymentTypes =>
+            !isNil(employeeTypeData)
+        )
+      )
+      .subscribe(employeeTypeData => {
+        this.updateForm(employeeTypeData);
+      });
+  }
+
+  private updateForm(employeeType: EmploymentTypes) {
+    this.employmentType.next(employeeType);
+    const { name, description } = employeeType;
+
+    this.form.patchValue({
+      name,
+      description,
+    });
+
+    this.form.setValidators([
+      CustomValidators.compareFieldsValidator({
+        name,
+        description,
+      }),
+    ]);
+
+    this.form.updateValueAndValidity();
+
+    this.cdr.detectChanges();
+  }
 }

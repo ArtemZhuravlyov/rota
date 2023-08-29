@@ -6,6 +6,8 @@ export enum Errors {
   MUST_MATCH = 'mustMatch',
   LOGIN_PASSWORD_ERROR = 'loginPasswordError',
   REGISTER_PASSWORD_ERROR = 'registerPasswordError',
+  REQUIRED = 'required',
+  COMPARE_FIELDS = 'compareFields',
 }
 
 export type CValidationErrors = {

@@ -1,5 +1,5 @@
 <div class="container-wrapper">
-  <app-page-header title='EMPLOYEES'>
+  <app-page-header title="EMPLOYEES">
     <div class="action-buttons">
       <app-button
         [routerLink]="NavigationPaths.CREATE_NEW_EMPLOYEE"
@@ -7,7 +7,7 @@
         [isIconButton]="true"
         [styleConfig]="{ height: '50px', width: '150px' }"
         title="CREATE_NEW"
-        [icon]="'add'"/>
+        [icon]="'add'" />
     </div>
   </app-page-header>
 
@@ -17,6 +17,7 @@
       [itemsKey]="'employees-type'"
       [tableConfig]="employeesListConfig"
       [hasCheckboxColumn]="true"
-      [tableStyle]="'employee'"></app-data-table>
+      [isLoading]="false"
+      [tableStyle]="'employee'" />
   </div>
 </div>

@@ -18,6 +18,7 @@ body {
 
 * {
   margin: 0;
+  padding: 0;
   font-family: "Source Sans Pro", sans-serif;
   box-sizing: border-box;
 }
@@ -38,7 +39,8 @@ $my-theme: mat.define-light-theme((
 ));
 
 .container-wrapper {
-  padding: 35px 40px 0 30px;
+  position: relative;
+  margin: 25px 30px 0 30px;
 }
 
 

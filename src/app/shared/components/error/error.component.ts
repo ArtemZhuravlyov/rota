@@ -22,6 +22,7 @@ import { ValidationErrors } from '@angular/forms';
 })
 export class ErrorComponent {
   @Input() errors: CValidationErrors | ValidationErrors | null = null;
+  @Input() excludeSymbols: string[] = [];
 
   protected readonly REGISTER_PASSWORD_ERROR_SHORT =
     TranslateKey.REGISTER_PASSWORD_ERROR_SHORT;
@@ -33,6 +34,7 @@ export class ErrorComponent {
   protected readonly REPEAT_PASSWORD_ERROR =
     TranslateKey.REPEAT_PASSWORD_ERROR;
   protected readonly SYMBOL_ERROR = TranslateKey.SYMBOL_ERROR;
+  protected readonly REQUIRED = TranslateKey.FIELD_REQUIRED;
 
   getError(errorName: Errors) {
     if (!this.errors) return;

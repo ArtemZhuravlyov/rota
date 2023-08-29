@@ -1,12 +1,13 @@
 <app-page-header
   [title]="'GRADE_CATEGORY'"
-  [isPrinting]="isPrinting$ | async"
-  [additionalButtonsDisabled]="
-    (selectedTableAccs$ | async)?.length < 1
-  "
-  (onActionClicked)="
-    onActionClicked({ action: $event, payload: {} })
-  ">
+  [isPrinting]="isPrinting$ | async">
+  <app-page-sub-header
+    [additionalButtonsDisabled]="
+      (selectedTableAccs$ | async)?.length < 1
+    "
+    (onActionClicked)="
+      onActionClicked({ action: $event, payload: {} })
+    " />
   <div class="action-buttons">
     <app-button
       [routerLink]="NavigationPaths.CREATE_NEW_GRADE_CATEGORY"
@@ -29,4 +30,5 @@
   [exporting$]="exporting$"
   (actionClicked)="onActionClicked($event)"
   (pageChange)="onPageChange($event)"
-  (selectedItemsIds)="onSelectedTableItems($event)"></app-data-table>
+  (selectedItemsIds)="onSelectedTableItems($event)"
+  [isLoading]="false" />

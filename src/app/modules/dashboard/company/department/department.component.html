@@ -1,12 +1,13 @@
 <app-page-header
   [title]="'DEPARTMENT'"
-  [isPrinting]="isPrinting$ | async"
-  [additionalButtonsDisabled]="
-    (selectedTableAccs$ | async)?.length < 1
-  "
-  (onActionClicked)="
-    onActionClicked({ action: $event, payload: {} })
-  ">
+  [isPrinting]="isPrinting$ | async">
+  <app-page-sub-header
+    [additionalButtonsDisabled]="
+      (selectedTableAccs$ | async)?.length < 1
+    "
+    (onActionClicked)="
+      onActionClicked({ action: $event, payload: {} })
+    " />
   <div class="action-buttons">
     <app-button
       [routerLink]="NavigationPaths.CREATE_NEW_DEPARTMENT"
@@ -31,4 +32,5 @@
   [actionConfig]="divisionActionConfig"
   [isPrinting]="isPrinting$ | async"
   [exporting$]="exporting$"
-  (selectedItemsIds)="onSelectedTableItems($event)"></app-data-table>
+  (selectedItemsIds)="onSelectedTableItems($event)"
+  [isLoading]="false" />

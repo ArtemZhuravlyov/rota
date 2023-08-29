@@ -6,22 +6,18 @@ import { RouterLink } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { PageSubHeaderComponent } from './page-sub-header/page-sub-header.component';
 import { ButtonModule } from '../button/button.module';
-import { DocumentSubHeaderComponent } from './document-sub-header/document-sub-header.component';
+import { SwitchBarComponent } from '@shared/components/switch-bar/switch-bar.component';
 
 @NgModule({
-  declarations: [
-    PageHeaderComponent,
-
-    PageSubHeaderComponent,
-    DocumentSubHeaderComponent,
-  ],
-  exports: [PageHeaderComponent],
+  declarations: [PageHeaderComponent, PageSubHeaderComponent],
+  exports: [PageHeaderComponent, PageSubHeaderComponent],
   imports: [
     CommonModule,
     TranslateModule,
     RouterLink,
     MaterialModule,
     ButtonModule,
+    SwitchBarComponent,
   ],
 })
 export class PageHeaderModule {}
