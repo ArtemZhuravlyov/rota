@@ -8,27 +8,21 @@ export const documentsListConfig: TableConfig = [
     hidden: false,
   },
   {
-    columnName: 'DESCRIPTION',
+    columnName: 'DOCUMENT',
     columnType: 'descriptions',
-    filedName: 'description',
-    hidden: false,
-  },
-  {
-    columnName: 'SHARE',
-    columnType: 'toggle',
-    filedName: 'share',
-    hidden: false,
-  },
-  {
-    columnName: 'SHARE_WITH',
-    columnType: 'text',
-    filedName: 'users',
+    filedName: 'document',
     hidden: false,
   },
   {
     columnName: 'SIZE',
     columnType: 'text',
     filedName: 'size',
+    hidden: false,
+  },
+  {
+    columnName: 'CREATION_DATE',
+    columnType: 'text',
+    filedName: 'creation_date',
     hidden: false,
   },
   {

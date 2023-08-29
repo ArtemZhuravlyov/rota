@@ -66,4 +66,20 @@ export class DocumentsService {
       `${this.env.apiUrlDocument}/document-category/${userId}/${companyId}/${id}`
     );
   }
+
+  //todo url???
+  getDocsList(
+    folderId: string | null | undefined,
+    userId: string,
+    companyId: string
+  ) {
+    return this.http.post<any>(
+      `${this.env.apiUrlDocument}/document/${userId}/${companyId}`,
+      {
+        documentName: '',
+        documentCategory: folderId,
+        isActive: true,
+      }
+    );
+  }
 }

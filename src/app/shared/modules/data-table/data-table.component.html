@@ -69,6 +69,27 @@
           </ng-container>
 
           <ng-container
+            *ngSwitchCase="ColumnType.TOGGLE"
+            [matColumnDef]="col">
+            <th
+              mat-header-cell
+              [hidden]="tableConfig[i].hidden"
+              *matHeaderCellDef>
+              <ng-container
+                [ngTemplateOutlet]="defaultCellHeader"
+                [ngTemplateOutletContext]="{ i }" />
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [ngStyle]="!isPrinting ? null : { display: 'none' }">
+              <mat-slide-toggle
+                [checked]="selectedItems.has(element.id)" />
+            </td>
+          </ng-container>
+
+          <ng-container
             *ngSwitchCase="ColumnType.COUNTRY"
             [matColumnDef]="col">
             <th
