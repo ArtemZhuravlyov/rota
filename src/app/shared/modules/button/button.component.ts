@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  HostListener,
   Input,
   Output,
 } from '@angular/core';
@@ -34,11 +33,8 @@ export class ButtonComponent {
   @Input() disabled = false;
   @Output() btnClick = new EventEmitter<void>();
 
-  @HostListener('click')
   onClick(): void {
-    if (!this.disabled) {
-      this.btnClick.emit();
-    }
+    this.btnClick.emit();
   }
 
   buttonTypeEnum = ButtonTypeEnum;

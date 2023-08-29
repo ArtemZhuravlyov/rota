@@ -126,27 +126,28 @@
             <td
               mat-cell
               [hidden]="tableConfig[i].hidden"
-              *matCellDef="let element"
-              class="descriptions">
-              <div
-                class="description-table"
-                [ngStyle]="
-                  !isPrinting ? null : { 'padding-left': '0' }
-                ">
-                <div>{{ element[tableConfig[i].filedName!] }}</div>
-              </div>
+              *matCellDef="let element">
+              <div class="descriptions">
+                <div
+                  class="description-table"
+                  [ngStyle]="
+                    !isPrinting ? null : { 'padding-left': '0' }
+                  ">
+                  <div>{{ element[tableConfig[i].filedName!] }}</div>
+                </div>
 
-              <div
-                class="view-btn"
-                (click)="
-                  onAction({
-                    action: 'viewDescription',
-                    payload: element
-                  })
-                "
-                *ngIf="!isPrinting">
-                <mat-icon svgIcon="eye" />
-                <span> View </span>
+                <div
+                  class="view-btn"
+                  (click)="
+                    onAction({
+                      action: 'viewDescription',
+                      payload: element
+                    })
+                  "
+                  *ngIf="!isPrinting">
+                  <mat-icon svgIcon="eye" />
+                  <span> View </span>
+                </div>
               </div>
             </td>
           </ng-container>
@@ -227,16 +228,10 @@
 
     <div class="table-search" *ngIf="showSearch">
       <app-search-input
+        (closeClick)="showSearch = false"
+        [onlyClose]="false"
         [styleConfig]="{ width: '100%' }"
-        [showClearButton]="false"
-        (valueChanged)="onValueSearch($event)">
-        <app-button
-          class="close-icon"
-          (btnClick)="toggleSearch()"
-          [isIconButton]="true"
-          btnType="ICON"
-          icon="clear" />
-      </app-search-input>
+        (valueChanged)="onValueSearch($event)" />
     </div>
   </div>
 </div>
@@ -247,45 +242,11 @@
     <ng-container *ngIf="!isPrinting">
       <app-filter-dropdown
         class="table-buttons-wrapper filter-padding"
+        (applyClick)="filterTable($event, tableConfig[i].filedName!)"
+        (clearClick)="resetFilterTable()"
         [icon]="'filter'"
-        *ngIf="headerDropdownFilter">
-        <div
-          class="filter-container"
-          (click)="$event.stopPropagation()">
-          <h1>{{ tableConfig[i].columnName | translate }}</h1>
-          <app-search-input
-            (valueChanged)="
-              filterTable($event, tableConfig[i].filedName!)
-            "
-            [styleConfig]="{
-              width: '200px',
-              height: '40px'
-            }" />
-          <div class="d-flex justify-content-between">
-            <app-button
-              title="APPLY"
-              btnType="FLAT"
-              [styleConfig]="{
-                height: '40px',
-                width: '80px',
-                'margin-top': '10px'
-              }"
-              [isIconButton]="false" />
-            <app-button
-              title="CLEAR"
-              btnType="FLAT"
-              [styleConfig]="{
-                height: '40px',
-                width: '80px',
-                background: '#f5f6f8',
-                color: '#3E77AA',
-                'margin-top': '10px',
-                border: '#3E77AA solid 1px'
-              }"
-              [isIconButton]="false" />
-          </div>
-        </div>
-      </app-filter-dropdown>
+        [columnName]="tableConfig[i].columnName"
+        *ngIf="headerDropdownFilter" />
     </ng-container>
 
     {{ tableConfig[i].columnName | translate }}
@@ -316,7 +277,7 @@
         [disabled]="action.disabled"
         [isIconButton]="true"
         [icon]="action.icon"
-        (click)="
+        (btnClick)="
           onAction({ action: action.type, payload: element })
         " />
     </ng-container>
