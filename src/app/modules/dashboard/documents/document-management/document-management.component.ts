@@ -18,6 +18,7 @@ import {
 } from '@shared/modalWindows/info-modal/info-modal.component';
 import { distinctUntilParamsChanged } from '@shared/utils/distinct-until-params-changed';
 import { foldersActionsListConfig } from '@modules/dashboard/documents/configs/folders-actions-list.config';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-document-management',
@@ -41,7 +42,9 @@ export class DocumentManagementComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private documentService: DocumentsService,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
+    private router: Router,
+    private readonly route: ActivatedRoute
   ) {}
 
   //todo type
@@ -68,6 +71,15 @@ export class DocumentManagementComponent implements OnInit {
         break;
       case TableActionTypes.VIEWDESCRIPTION:
         this.openDescriptionDialog(payload);
+        break;
+      case TableActionTypes.FOLDER_VIEW:
+        console.log(payload);
+        this.router.navigate(
+          [NavigationPaths.FOLDER_DETAILS, payload.id],
+          {
+            relativeTo: this.route,
+          }
+        );
         break;
     }
   }

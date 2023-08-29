@@ -380,6 +380,7 @@ const en: LanguageObject = {
   DIVISION_HEAD: 'Division Head',
   HEAD_OF_DEPARTMENT: 'Head of Department',
   DISPLAY_ORDER: 'Display Order',
+  BULK_LOAD: 'Bulk Load',
 };
 
 export const allLanguages: {

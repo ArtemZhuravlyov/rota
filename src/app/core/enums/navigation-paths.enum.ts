@@ -76,6 +76,7 @@ export enum NavigationPaths {
   EMPLOYEE_DOCUMENT = 'employee-document',
   CREATE_FOLDER = 'create-folder',
   UPLOAD_DOCUMENT = 'upload-document',
+  FOLDER_DETAILS = 'folder',
 
   // User Account sub-menu paths
   USER = 'user',

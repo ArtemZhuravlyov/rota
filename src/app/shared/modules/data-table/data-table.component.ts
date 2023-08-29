@@ -32,6 +32,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   @Input({ required: true }) itemsKey!: string;
   @Input({ required: true }) set data(tableData: any) {
     if (tableData) {
+      console.log(tableData);
       this.tableData = tableData;
       this.filteredData = tableData[this.itemsKey];
     }
@@ -45,7 +46,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   @Input() headerDropdownFilter = true;
   @Input() isPrinting: boolean | null = false;
   @Input() isLoading: boolean | null = false;
-  @Input() isSorting: boolean | null = false;
   @Input() exporting$ = new BehaviorSubject([]);
   @Output() actionClicked = new EventEmitter<TableAction>();
   @Output() pageChange = new EventEmitter<PageEvent>();

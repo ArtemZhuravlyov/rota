@@ -206,7 +206,13 @@ table {
 }
 
 //--------------------------------------------//
-
+#folder-link {
+  color: #3E77AA;
+  text-decoration: underline;
+  display: flex;
+  gap: .5rem;
+  cursor: pointer;
+}
 
 .add-button-green {
   width: 30px;

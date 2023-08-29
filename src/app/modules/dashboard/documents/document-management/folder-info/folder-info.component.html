@@ -1,25 +1,24 @@
-<app-page-header title="FOLDER_LIST">
+<app-page-header title="FOLDER_DETAILS">
   <div class="action-buttons">
     <app-button
-      [routerLink]="NavigationPaths.CREATE_FOLDER"
+      [routerLink]="NavigationPaths.UPLOAD_DOCUMENT"
       btnType="FLAT"
       [isIconButton]="true"
       [styleConfig]="{
         height: '50px',
         width: '230px'
       }"
-      title="CREATE_NEW_FOLDER"
+      title="UPLOAD_DOCUMENT"
       icon="add"></app-button>
   </div>
 </app-page-header>
-<app-document-sub-header></app-document-sub-header>
 
 <app-data-table
-  [data]="foldersList$ | async"
+  [data]=""
   [itemsKey]="'documentCategories'"
-  [tableConfig]="foldersListConfig"
+  [tableConfig]="documentsListConfig"
   (actionClicked)="onActionClick($event)"
-  [actionConfig]="actionConfig"
+  [actionConfig]=""
   (pageChange)="onPageChange($event)"
   [hasCheckboxColumn]="true">
 </app-data-table>

@@ -344,4 +344,5 @@ export const enum TranslateKey {
   CODE = 'CODE',
   IBAN = 'IBAN',
   SWIFT = 'SWIFT',
+  BULK_LOAD = 'BULK_LOAD',
 }

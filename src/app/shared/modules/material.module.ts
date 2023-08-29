@@ -262,6 +262,18 @@ export class MaterialModule {
       )
     );
     matIconRegistry.addSvgIcon(
+      'folder',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/folder.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
+      'bulk_load',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/bulk-load.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
       'engagement',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/engagement.svg'

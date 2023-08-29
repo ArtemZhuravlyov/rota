@@ -44,4 +44,6 @@ export const TableActionTypes = {
   CHECK: 'check',
   ANALYSIS: 'analysis',
   DOWNLOAD: 'download',
+  BULK_LOAD: 'bulk_load',
+  FOLDER_VIEW: 'folder_view',
 } as const;
