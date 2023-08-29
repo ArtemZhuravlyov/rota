@@ -1,0 +1,72 @@
+.move-vert-button {
+  height: 35px;
+  width: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border-radius: 100px;
+  border-color: transparent;
+  background-color: transparent;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #F3F4F6;
+
+    span {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    span {
+      opacity: 1;
+      color: #1C9F56;
+    }
+  }
+
+  span {
+    display: block;
+    font-size: 30px;
+    color: #221F1F;
+    width: 6px;
+    opacity: 0.5;
+    line-height: 0;
+    height: 4px;
+  }
+
+}
+
+.focus {
+  background-color: #F3F4F6;
+  span {
+    opacity: 1;
+    color: #1C9F56;
+  }
+}
+
+.triangle-border {
+  position: relative;
+  width: 0;
+  height: 0;
+  top: -19px;
+  left: 246px;
+  border-style: solid;
+  border-width: 0 6px 11px 6px;
+  border-color: transparent transparent #FFFF transparent;
+}
+
+.triangle-border::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: -1px;
+  width: 0;
+  z-index: -1;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7px 12px 7px;
+  border-color: transparent transparent rgba(0, 136, 60, 0.3019607843) transparent;
+}

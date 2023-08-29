@@ -10,6 +10,9 @@ import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchInputModule } from '@shared/modules/search-input/search-input.module';
 import { FormBuilderModule } from '@shared/modules/form-builder/form-builder.module';
+import { FilterDropdownComponent } from '@shared/components/filter-dropdown/filter-dropdown.component';
+import { MoveVertDropdownComponent } from '@shared/components/move-vert-dropdown/move-vert-dropdown.component';
+import { TableButtonComponent } from '@shared/components/table-button/table-button.component';
 
 @NgModule({
   declarations: [DataTableComponent, CustomPaginatorComponent],
@@ -25,6 +28,9 @@ import { FormBuilderModule } from '@shared/modules/form-builder/form-builder.mod
     ReactiveFormsModule,
     SearchInputModule,
     FormBuilderModule,
+    FilterDropdownComponent,
+    MoveVertDropdownComponent,
+    TableButtonComponent,
   ],
 })
 export class DataTableModule {}

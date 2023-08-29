@@ -1,0 +1,18 @@
+<button
+  class="filter-button"
+  (menuOpened)="toggleFocus()"
+  (menuClosed)="toggleFocus()"
+  [matMenuTriggerFor]="menu">
+  <mat-icon
+    [ngClass]="{ focus: isFocus }"
+    [svgIcon]="icon"
+    class="filter-button_icon" />
+</button>
+<mat-menu
+  #menu="matMenu"
+  [class]="'filter-menu'"
+  [xPosition]="xPosition"
+  [yPosition]="yPosition">
+  <div class="triangle-border"></div>
+  <ng-content></ng-content>
+</mat-menu>
