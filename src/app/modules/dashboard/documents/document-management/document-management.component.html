@@ -4,13 +4,6 @@
   [isDocumentSubHeaderShowed]="true">
   <div class="action-buttons">
     <app-button
-      [routerLink]="NavigationPaths.UPLOAD_DOCUMENT"
-      btnType="STROKED"
-      [isIconButton]="true"
-      [styleConfig]="{ height: '50px', width: '150px' }"
-      title="UPLOAD"
-      icon="export"></app-button>
-    <app-button
       [routerLink]="NavigationPaths.CREATE_FOLDER"
       btnType="FLAT"
       [isIconButton]="true"
@@ -21,10 +14,11 @@
 </app-page-header>
 
 <app-data-table
-  [data]="folders$ | async"
+  [data]="foldersList$ | async"
   [itemsKey]="'documentCategories'"
   [tableConfig]="foldersListConfig"
-  (actionClicked)="onActionClicked($event)"
+  (actionClicked)="onActionClick($event)"
+  [actionConfig]="actionConfig"
   (pageChange)="onPageChange($event)"
   [hasCheckboxColumn]="true"
   [isSorting]="false">

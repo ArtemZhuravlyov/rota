@@ -1,45 +1,140 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {ButtonTypeEnum} from "@core/enums/button-type.enum";
-import {TableAction} from "@core/types/data-table";
-import {PageEvent} from "@angular/material/paginator";
-import {NavigationPaths} from "@core/enums/navigation-paths.enum";
-import {Observable} from "rxjs";
-import {CompanyResponse} from "@core/types/company.interface";
-import {AuthService} from "@core/services/account/auth.service";
-import {CompanyService} from "@core/services/company/company.service";
-import {dashboardTabsConfig} from "@app/modules/dashboard/dashboard-layout/configs/dashboard-tabs-config"
-import {foldersListConfig} from "@app/modules/dashboard/documents/configs/folders-list.config";
-import {DocumentsService} from "@core/services/documents/documents.service";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+} from '@angular/core';
+import { ButtonTypeEnum } from '@core/enums/button-type.enum';
+import { TableActionTypes } from '@core/types/data-table';
+import { PageEvent } from '@angular/material/paginator';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { BehaviorSubject, switchMap } from 'rxjs';
+import { AuthService } from '@core/services/account/auth.service';
+import { foldersListConfig } from '@app/modules/dashboard/documents/configs/folders-list.config';
+import { DocumentsService } from '@core/services/documents/documents.service';
+import { MatDialog } from '@angular/material/dialog';
+import {
+  InfoModal,
+  InfoModalComponent,
+} from '@shared/modalWindows/info-modal/info-modal.component';
+import { distinctUntilParamsChanged } from '@shared/utils/distinct-until-params-changed';
+import { foldersActionsListConfig } from '@modules/dashboard/documents/configs/folders-actions-list.config';
 
 @Component({
   selector: 'app-document-management',
   templateUrl: './document-management.component.html',
   styleUrls: ['./document-management.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocumentManagementComponent implements OnInit {
   protected readonly NavigationPaths = NavigationPaths;
-  protected readonly dashboardTabsConfig = dashboardTabsConfig;
   readonly foldersListConfig = foldersListConfig;
+  readonly actionConfig = foldersActionsListConfig;
   readonly ButtonTypeEnum = ButtonTypeEnum;
-  folders$!: Observable<any>;
+
+  //todo types
+  requestParams$ = new BehaviorSubject<{
+    pageSize: number;
+    pageIndex: number;
+    isItemChanged: boolean;
+  }>({ isItemChanged: false, pageSize: 10, pageIndex: 0 });
 
   constructor(
     private authService: AuthService,
-    private documentService: DocumentsService
-  ) { }
+    private documentService: DocumentsService,
+    private readonly dialog: MatDialog
+  ) {}
+
+  //todo type
+  foldersList$ = new BehaviorSubject<any>({
+    documentCategories: [],
+    totalCount: 0,
+  });
 
   ngOnInit(): void {
-    this.folders$ = this.documentService.getFolders(this.authService.getCurrentUserId(), this.authService.getCompanyId());
-    this.folders$.subscribe(r => console.log('folders', r))
+    this.initFolderList();
   }
 
-  onActionClicked(action: TableAction): void {
-
+  //todo types
+  onActionClick({
+    action,
+    payload,
+  }: {
+    action: string;
+    payload: any;
+  }) {
+    switch (action) {
+      case TableActionTypes.DELETE:
+        this.deleteFolder(payload.id);
+        break;
+      case TableActionTypes.VIEWDESCRIPTION:
+        this.openDescriptionDialog(payload);
+        break;
+    }
   }
 
-  onPageChange({pageSize, pageIndex}: PageEvent): void {
-    //this.companies$ = this.companyService.getCompany(this.authService.getCurrentUserId(), pageSize, pageIndex)
+  private deleteFolder(id: string) {
+    this.documentService
+      .deleteFolder(
+        id,
+        this.authService.getCurrentUserId(),
+        this.authService.getCompanyId()
+      )
+      .subscribe({
+        next: () => {
+          const { isItemChanged } = this.requestParams$.value;
+          this.updateRequestParams({ isItemChanged: !isItemChanged });
+        },
+        error: () => {},
+      });
   }
 
+  //todo types
+  private openDescriptionDialog(type: any) {
+    const data = <InfoModal>{
+      title: type.name,
+      description: type.description,
+    };
+    this.dialog
+      .open(InfoModalComponent, {
+        panelClass: 'info-dialog',
+        backdropClass: 'modal-background',
+        disableClose: true,
+        data,
+      })
+      .afterClosed()
+      .subscribe();
+  }
+
+  onPageChange({ pageIndex }: PageEvent): void {
+    this.updateRequestParams({ pageIndex });
+  }
+
+  private updateRequestParams(
+    params: Partial<{
+      pageSize: number;
+      pageIndex: number;
+      isItemChanged: boolean;
+    }>
+  ) {
+    const value = this.requestParams$.value;
+    this.requestParams$.next({ ...value, ...params });
+  }
+
+  private initFolderList() {
+    this.requestParams$
+      .pipe(
+        distinctUntilParamsChanged(['pageIndex', 'isItemChanged']),
+        switchMap(({ pageSize, pageIndex }) =>
+          this.documentService.getFolders(
+            this.authService.getCurrentUserId(),
+            this.authService.getCompanyId(),
+            pageSize,
+            pageIndex
+          )
+        )
+      )
+      .subscribe(documentCategories => {
+        this.foldersList$.next(documentCategories);
+      });
+  }
 }

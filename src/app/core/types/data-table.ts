@@ -23,6 +23,7 @@ export const ColumnType = {
   CUSTOM: 'custom',
   DESCRIPTIONS: 'descriptions',
   TOGGLE: 'toggle',
+  FOLDER: 'folder',
 } as const;
 
 export interface TableAction {

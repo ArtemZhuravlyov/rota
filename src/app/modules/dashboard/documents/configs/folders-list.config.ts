@@ -2,18 +2,14 @@ import { TableConfig } from '@core/types/data-table';
 
 export const foldersListConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
-    columnType: 'checkbox',
-  },
-  {
     columnName: 'NAME',
-    columnType: 'text',
+    columnType: 'folder',
     filedName: 'name',
     hidden: false,
   },
   {
     columnName: 'DESCRIPTION',
-    columnType: 'text',
+    columnType: 'descriptions',
     filedName: 'description',
     hidden: false,
   },
@@ -26,7 +22,7 @@ export const foldersListConfig: TableConfig = [
   {
     columnName: 'SHARE_WITH',
     columnType: 'text',
-    filedName: 'share_with',
+    filedName: 'users',
     hidden: false,
   },
   {

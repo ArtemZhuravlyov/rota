@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NavigationPaths } from '../../../../core/enums/navigation-paths.enum';
 import { DocumentManagementComponent } from './document-management.component';
-import { NavigationPaths } from "../../../../core/enums/navigation-paths.enum";
-import { DocumentManagementComponent } from "./document-management.component";
-import {
-  CreateDocumentComponent
-} from "@app/modules/dashboard/documents/document-management/create-folder/create-document.component";
-import {
-  UploadDocumentComponent
-} from "@app/modules/dashboard/documents/document-management/upload-document/upload-document.component";
+import { CreateDocumentComponent } from '@app/modules/dashboard/documents/document-management/create-folder/create-document.component';
+import { UploadDocumentComponent } from '@app/modules/dashboard/documents/document-management/upload-document/upload-document.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
 const routes: AppRoutes = [
   {
@@ -19,13 +14,13 @@ const routes: AppRoutes = [
   {
     path: NavigationPaths.CREATE_FOLDER,
     component: CreateDocumentComponent,
-    data: {breadcrumb: 'CREATE_NEW_FOLDER'}
+    data: { breadcrumb: 'CREATE_NEW_FOLDER' },
   },
   {
     path: NavigationPaths.UPLOAD_DOCUMENT,
     component: UploadDocumentComponent,
-    data: {breadcrumb: 'UPLOAD_DOCUMENT'}
-  }
+    data: { breadcrumb: 'UPLOAD_DOCUMENT' },
+  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
