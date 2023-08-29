@@ -14,5 +14,38 @@
   [xPosition]="xPosition"
   [yPosition]="yPosition">
   <div class="triangle-border"></div>
-  <ng-content></ng-content>
+  <div class="filter-container" (click)="$event.stopPropagation()">
+    <h1>{{ columnName | translate }}</h1>
+    <app-search-input
+      #searchInput
+      [styleConfig]="{
+        width: '200px',
+        height: '40px'
+      }" />
+    <div class="d-flex justify-content-between">
+      <app-button
+        title="APPLY"
+        btnType="FLAT"
+        (btnClick)="applyClick.emit(searchInput.value)"
+        [styleConfig]="{
+          height: '40px',
+          width: '80px',
+          'margin-top': '10px'
+        }"
+        [isIconButton]="false" />
+      <app-button
+        title="CLEAR"
+        btnType="FLAT"
+        (btnClick)="clearClick.emit()"
+        [styleConfig]="{
+          height: '40px',
+          width: '80px',
+          background: '#f5f6f8',
+          color: '#3E77AA',
+          'margin-top': '10px',
+          border: '#3E77AA solid 1px'
+        }"
+        [isIconButton]="false" />
+    </div>
+  </div>
 </mat-menu>

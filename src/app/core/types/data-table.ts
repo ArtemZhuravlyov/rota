@@ -1,4 +1,5 @@
 import { TranslateKey } from '../../../assets/i18n/enums/translate-key.enum';
+import { Style } from '@core/types/style-model';
 
 export type TableConfig = ColumnConfig[];
 
@@ -9,6 +10,13 @@ export interface ColumnConfig {
   hiddable?: boolean;
   filedName?: string;
   action?: (typeof TableActionTypes)[keyof typeof TableActionTypes];
+}
+
+export interface TableActionConfig {
+  icon: string;
+  type: (typeof TableActionTypes)[keyof typeof TableActionTypes];
+  disabled: boolean;
+  styleConfig: Style;
 }
 
 export const ColumnType = {

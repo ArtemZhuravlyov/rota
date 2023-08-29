@@ -1,17 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   EventEmitter,
-  inject,
   Input,
   Output,
 } from '@angular/core';
 import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
-import { BehaviorSubject } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { debounceTime } from 'rxjs/operators';
-import { isEmpty } from 'lodash';
+import { Style } from '@core/types/style-model';
 
 @Component({
   selector: 'app-search-input',
@@ -20,26 +15,27 @@ import { isEmpty } from 'lodash';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchInputComponent {
-  @Input() styleConfig: { [key: string]: string } | undefined;
-  @Input() showClearButton = true;
-  @Output() valueChanged = new EventEmitter();
+  @Input() styleConfig: Style = {};
+  @Input() onlyClose = true;
+
+  @Output() valueChanged = new EventEmitter<string>();
+  @Output() clearClick = new EventEmitter<void>();
+  @Output() closeClick = new EventEmitter<void>();
+
+  value = '';
 
   protected readonly SEARCH = TranslateKey.SEARCH;
   protected readonly CLEAR = TranslateKey.CLEAR;
 
-  private destroyRef = inject(DestroyRef);
+  protected isFocus = false;
 
-  public bs$ = new BehaviorSubject('');
+  protected onClearInput() {
+    this.value = '';
+    this.clearClick.emit();
+  }
 
-  isFocus = false;
-
-  ngOnInit() {
-    this.bs$
-      .pipe(takeUntilDestroyed(this.destroyRef), debounceTime(600))
-      .subscribe({
-        next: value => {
-          if (!isEmpty(value)) this.valueChanged.emit(value);
-        },
-      });
+  protected onValueChanged(value: string) {
+    this.value = value;
+    this.valueChanged.emit(this.value);
   }
 }

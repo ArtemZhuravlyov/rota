@@ -11,7 +11,10 @@ import {
   EmploymentTypeService,
   GetAllEmployeeTypesQuery,
 } from '@core/services/company/employment-type/employment-type.service';
-import { TableActionTypes } from '@core/types/data-table';
+import {
+  TableActionConfig,
+  TableActionTypes,
+} from '@core/types/data-table';
 import {
   EmploymentTypeResponse,
   EmploymentTypes,
@@ -65,11 +68,11 @@ export class EmployeesTypeComponent implements OnInit {
     totalCount: 0,
   });
 
-  actionConfig = [
+  actionConfig: TableActionConfig[] = [
     {
       icon: 'check',
       type: TableActionTypes.CHECK,
-      disabled: false,
+      disabled: true,
       styleConfig: {
         width: '30px',
         height: '30px',
@@ -81,7 +84,7 @@ export class EmployeesTypeComponent implements OnInit {
     {
       icon: 'delete',
       type: TableActionTypes.DELETE,
-      disabled: false,
+      disabled: true,
       styleConfig: {
         width: '30px',
         height: '30px',
@@ -121,6 +124,10 @@ export class EmployeesTypeComponent implements OnInit {
   }
 
   onActiveChange(active: boolean) {
+    this.actionConfig = this.actionConfig.map(action => ({
+      ...action,
+      disabled: !active,
+    }));
     this.updateRequestParams({ isActive: active });
   }
 
