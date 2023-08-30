@@ -1,16 +1,17 @@
 <app-label
   [value]="value"
   [isFocus]="isFocus"
-  [id]="id"
   [maxLength]="maxLength"
   [name]="label" />
 <div class="input-control" [ngStyle]="styleConfig">
   <input
-    [id]="label"
     #input
     (focusin)="isFocus = true"
     (focusout)="isFocus = false"
-    [ngClass]="{ success: isFocus }"
+    [ngClass]="{
+      success: isFormControlValid(),
+      error: isFormControlInvalid()
+    }"
     [readonly]="readonly"
     [maxlength]="+maxLength!"
     [formControl]="formControl"
@@ -19,3 +20,7 @@
     [type]="inputType"
     matInput />
 </div>
+<app-error
+  *ngIf="isFormControlInvalid()"
+  [errors]="formControl.errors"
+  [excludeSymbols]="excludeSymbols" />

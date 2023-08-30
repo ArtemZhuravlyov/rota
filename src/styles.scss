@@ -18,6 +18,7 @@ body {
 
 * {
   margin: 0;
+  padding: 0;
   font-family: "Source Sans Pro", sans-serif;
   box-sizing: border-box;
 }
@@ -40,6 +41,19 @@ $my-theme: mat.define-light-theme((
 .container-wrapper {
   position: relative;
   margin: 25px 30px 0 30px;
+}
+
+.move-vert-menu {
+  top: 10px;
+  right: -20px;
+}
+
+.filter-menu {
+  top: 3px;
+}
+
+.load > * {
+  opacity: 20%;
 }
 
 

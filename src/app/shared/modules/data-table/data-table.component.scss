@@ -93,14 +93,7 @@ table {
   }
 }
 
-.filter-container {
-  padding: 12px;
 
-  h1 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-}
 
 .hidden-cols-container {
   width: 280px;
@@ -157,6 +150,7 @@ table {
 
 .action-btns-container {
   justify-content: center;
+
   app-button {
     margin-right: 20px;
   }
@@ -183,8 +177,10 @@ table {
   }
 
   tr th:nth-child(3) {
-    display: flex;
-    justify-content: normal;
+    .defaultHeader {
+      justify-content: flex-start;
+
+    }
   }
 
   tr th:nth-child(5) {
@@ -304,26 +300,15 @@ table {
 
 }
 
-.triangle-border {
-  position: relative;
-  width: 0;
-  height: 0;
-  top: -21px;
-  left: 17px;
-  border-style: solid;
-  border-width: 0 6px 13px 6px;
-  border-color: transparent transparent #FFFF transparent;
+.table-buttons-wrapper {
+  height: 50px;
 }
 
-.triangle-border::before {
-  content: '';
-  position: absolute;
-  left: -7px;
-  top: -1px;
-  width: 0;
-  z-index: -1;
-  height: 0;
-  border-style: solid;
-  border-width: 0 7px 14px 7px;
-  border-color: transparent transparent rgba(0, 136, 60, 0.3019607843) transparent;
+.table-padding {
+  padding: 6px 3px;
 }
+
+.filter-padding {
+  padding: 12px 0;
+}
+

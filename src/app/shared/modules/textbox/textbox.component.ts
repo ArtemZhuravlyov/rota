@@ -1,8 +1,18 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, } from '@angular/core';
-import { InputType } from "@core/types/form-builder.model";
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, } from "@angular/forms";
-import { Style } from "@core/types/style-model";
-import {ButtonTypeEnum} from "@core/enums/button-type.enum";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { InputType } from '@core/types/form-builder.model';
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
+import { Style } from '@core/types/style-model';
+import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 
 @Component({
   selector: 'app-textbox',
@@ -15,19 +25,21 @@ import {ButtonTypeEnum} from "@core/enums/button-type.enum";
       useExisting: forwardRef(() => TextboxComponent),
       multi: true,
     },
-  ]
+  ],
 })
-export class TextboxComponent implements ControlValueAccessor, OnInit {
+export class TextboxComponent
+  implements ControlValueAccessor, OnInit
+{
   @Input() formControl!: FormControl;
-  @Input() defaultValue: string = '';
+  @Input() defaultValue = '';
   @Input() label = '';
   @Input() inputType: InputType = 'text';
-  @Input() placeholder: string = '';
+  @Input() placeholder = '';
   @Input() icon!: string;
   @Input() maxLength!: number;
   @Input() hintText: string | undefined;
   @Input() hintLink: string | string[] | undefined;
-  @Input() hintMenu: boolean = false;
+  @Input() hintMenu = false;
   @Input() hintHeading = '';
   @Input() hintDescription = '';
   @Input() styleConfig: Style = {};
@@ -63,5 +75,5 @@ export class TextboxComponent implements ControlValueAccessor, OnInit {
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
-  writeValue(obj: any): void { }
+  writeValue(obj: any): void {}
 }

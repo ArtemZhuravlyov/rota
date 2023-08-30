@@ -21,17 +21,10 @@
       <a
         *ngIf="isBackBtnShowed"
         class="back-btn d-flex align-items-center"
-        [routerLink]="NavigationPaths.BACK"
+        (click)="onBackClick()"
         ><mat-icon>keyboard_backspace</mat-icon
         >{{ BACK | translate }}</a
       >
     </ng-container>
   </div>
-
-  <ng-container *ngIf="!isPrinting">
-    <app-page-sub-header
-      *ngIf="isSubHeaderShowed"
-      [additionalButtonsDisabled]="additionalButtonsDisabled"
-      (onActionClicked)="actionClicked($event)" />
-  </ng-container>
 </ng-container>

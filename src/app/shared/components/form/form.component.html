@@ -9,7 +9,8 @@
         [formControl]="$any(form.controls[formField.key])"
         [styleConfig]="formField.config.styleConfig"
         [maxLength]="formField.config.maxLength"
-        [readonly]="formField.config.readonly" />
+        [readonly]="formField.config.readonly"
+        [excludeSymbols]="formField.config.excludeSymbols" />
     </ng-container>
 
     <ng-container
@@ -19,7 +20,33 @@
         [label]="formField.config.label"
         [styleConfig]="formField.config.styleConfig"
         [placeholder]="formField.config.placeholder"
-        [readonly]="formField.config.readonly" />
+        [maxLength]="formField.config.maxLength"
+        [readonly]="formField.config.readonly"
+        [excludeSymbols]="formField.config.excludeSymbols" />
+    </ng-container>
+
+    <ng-container
+      *ngIf="formField.type === FormControlNameEnum.PASSWORD">
+      <app-input-password
+        [maxLength]="formField.config.maxLength"
+        [formControl]="$any(form.controls[formField.key])"
+        [label]="formField.config.label"
+        [styleConfig]="formField.config.styleConfig"
+        [placeholder]="formField.config.placeholder"
+        [readonly]="formField.config.readonly"
+        [excludeSymbols]="formField.config.excludeSymbols" />
+    </ng-container>
+
+    <ng-container
+      *ngIf="formField.type === FormControlNameEnum.DROPDOWN">
+      <app-input-dropdown
+        [formControl]="$any(form.controls[formField.key])"
+        [styleConfig]="formField.config.styleConfig"
+        [placeholder]="formField.config.placeholder"
+        [value]="formField.config.value"
+        [data]="formField.config.data"
+        [idField]="formField.config.idField"
+        [nameField]="formField.config.nameField" />
     </ng-container>
   </ng-container>
 

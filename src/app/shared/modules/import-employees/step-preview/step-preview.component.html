@@ -43,7 +43,6 @@
       class="d-flex justify-content-center align-items-center flex-column">
       <ng-container
         *ngIf="importRecords$ | async as records; else notImport">
-        <app-progress-spinner [value]="importProgress" />
         <span class="records-text-processing"
           >{{ PROCESSING | translate }}...</span
         >

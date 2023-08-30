@@ -1,12 +1,6 @@
 <app-page-header
   [title]="'BANK_ACCOUNT'"
-  [isPrinting]="isPrinting$.value"
-  [additionalButtonsDisabled]="
-    (selectedTableAccs$ | async)?.length < 1
-  "
-  (onActionClicked)="
-    onActionClicked({ action: $event, payload: {} })
-  ">
+  [isPrinting]="isPrinting$.value">
   <ng-container *ngIf="!isPrinting$.value">
     <div class="action-buttons">
       <app-button
@@ -33,7 +27,13 @@
     </div>
   </ng-container>
 </app-page-header>
-
+<app-page-sub-header
+  [additionalButtonsDisabled]="
+    (selectedTableAccs$ | async)?.length < 1
+  "
+  (onActionClicked)="
+    onActionClicked({ action: $event, payload: {} })
+  " />
 <app-data-table
   id="print-section"
   [data]="bankAccounts$ | async"

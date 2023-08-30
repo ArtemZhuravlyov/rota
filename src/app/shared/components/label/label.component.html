@@ -1,5 +1,5 @@
 <div class="label">
-  <label [for]="id">{{ name | translate }}</label>
+  <span class="label_span">{{ name | translate }}</span>
   <ng-template [ngIf]="maxLength && isFocus">
     <div class="textarea-control_label_counter">
       <span>{{ value.length }}</span>

@@ -1,13 +1,15 @@
 <div class="container-wrapper">
   <app-page-header
     title="EMPLOYEES_TYPE"
-    [isSubHeaderShowed]="false"
-    [isBackBtnShowed]="true" />
+    [isBackBtnShowed]="true"
+    [backPathRoute]="backPathRoute" />
 
   <app-form-card>
     <h1 class="heading">Employees Type</h1>
 
-    <app-form [formFields]="data" (createdForm)="form = $event" />
+    <app-form
+      [formFields]="createEmployeeTypeFormConfig"
+      (createdForm)="form = $event" />
 
     <div class="action-container">
       <app-button
@@ -26,7 +28,7 @@
         [isIconButton]="true"
         title="CANCEL"
         [icon]="'cancel'"
-        [routerLink]="'/dashboard/employees-type'" />
+        (btnClick)="onCancelClick()" />
     </div>
   </app-form-card>
 </div>

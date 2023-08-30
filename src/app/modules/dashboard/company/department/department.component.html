@@ -1,12 +1,6 @@
 <app-page-header
   [title]="'DEPARTMENT'"
-  [isPrinting]="isPrinting$ | async"
-  [additionalButtonsDisabled]="
-    (selectedTableAccs$ | async)?.length < 1
-  "
-  (onActionClicked)="
-    onActionClicked({ action: $event, payload: {} })
-  ">
+  [isPrinting]="isPrinting$ | async">
   <div class="action-buttons">
     <app-button
       [routerLink]="NavigationPaths.CREATE_NEW_DEPARTMENT"
@@ -20,7 +14,13 @@
       "></app-button>
   </div>
 </app-page-header>
-
+<app-page-sub-header
+  [additionalButtonsDisabled]="
+    (selectedTableAccs$ | async)?.length < 1
+  "
+  (onActionClicked)="
+    onActionClicked({ action: $event, payload: {} })
+  " />
 <app-data-table
   [data]="departmentList$ | async"
   [itemsKey]="'departments'"

@@ -9,6 +9,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { EmployeesTypeRoutingModule } from '@app/modules/dashboard/employee/employees-type/employees-type-routing.module';
 import { MaterialModule } from '@shared/modules/material.module';
+import { RsSpinnerModule } from '@shared/components/rs-spinner/rs-spinner.module';
 
 @NgModule({
   declarations: [EmployeesTypeComponent],
@@ -22,6 +23,8 @@ import { MaterialModule } from '@shared/modules/material.module';
     MatTabsModule,
     MatIconModule,
     MaterialModule,
+    RsSpinnerModule,
+    RsSpinnerModule,
   ],
 })
 export class EmployeesTypeModule {}
