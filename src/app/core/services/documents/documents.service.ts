@@ -1,13 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { DocumentCreate } from '../../types/document.interface';
 import { ENVIRONMENT } from '@app/app.module';
 import { Environment } from '@core/types/environment';
 import { AuthService } from '@core/services/account/auth.service';
-
-const PAGE_SIZE = 10;
-const PAGE_INDEX = 0;
 
 @Injectable({ providedIn: 'root' })
 export class DocumentsService {
@@ -21,17 +18,14 @@ export class DocumentsService {
   getFolders(
     userId: string,
     companyId: string,
-    pageSize = PAGE_SIZE,
-    pageIndex = PAGE_INDEX
+    body: any
   ): Observable<any> {
-    console.log({ userId, companyId });
     let params = new HttpParams();
 
-    if (pageSize && pageIndex && pageIndex >= 0) {
-      params = params
-        .append('pageSize', pageSize)
-        .append('pageIndex', pageIndex + 1);
-    }
+    params = params
+      .append('pageSize', body.pageSize)
+      .append('pageIndex', body.pageIndex + 1);
+
     return this.http.post<any>(
       `${this.env.apiUrlDocument}/document-category/${userId}/${companyId}`,
       {
@@ -69,19 +63,35 @@ export class DocumentsService {
 
   //todo url???
   getDocsList(userId: string, companyId: string, body: any) {
-    return this.http.post<any>(
-      `${this.env.apiUrlDocument}/document/${userId}/${companyId}`,
-      {
-        documentName: '',
-        documentCategory: body.folderId,
-        isActive: true,
-      },
-      {
-        params: {
-          pageSize: body.pageSize,
-          pageIndex: body.pageIndex,
+    return this.http
+      .post<any>(
+        `${this.env.apiUrlDocument}/document/${userId}/${companyId}`,
+        {
+          documentName: '',
+          documentCategory: body.folderId,
+          isActive: true,
         },
-      }
-    );
+        {
+          params: {
+            pageSize: body.pageSize,
+            pageIndex: body.pageIndex,
+          },
+        }
+      )
+      .pipe(
+        map(response => {
+          return {
+            documents: response.documents.map(
+              (item: { name: string; extension: string }) => {
+                return {
+                  ...item,
+                  nameExt: `${item.name}.${item.extension}`,
+                };
+              }
+            ),
+            totalCount: response.totalCount,
+          };
+        })
+      );
   }
 }

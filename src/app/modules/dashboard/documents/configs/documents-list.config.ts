@@ -14,7 +14,7 @@ export const documentsListConfig: TableConfig = [
   {
     columnName: 'DOCUMENT',
     columnType: 'text',
-    filedName: 'name',
+    filedName: 'nameExt',
     hidden: false,
   },
   {

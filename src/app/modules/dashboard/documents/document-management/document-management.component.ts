@@ -140,8 +140,10 @@ export class DocumentManagementComponent implements OnInit {
           this.documentService.getFolders(
             this.authService.getCurrentUserId(),
             this.authService.getCompanyId(),
-            pageSize,
-            pageIndex
+            {
+              pageSize,
+              pageIndex,
+            }
           )
         )
       )
