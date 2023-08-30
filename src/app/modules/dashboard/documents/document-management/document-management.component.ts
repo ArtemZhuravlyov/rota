@@ -4,7 +4,10 @@ import {
   OnInit,
 } from '@angular/core';
 import { ButtonTypeEnum } from '@core/enums/button-type.enum';
-import { TableActionTypes } from '@core/types/data-table';
+import {
+  TableActionConfig,
+  TableActionTypes,
+} from '@core/types/data-table';
 import { PageEvent } from '@angular/material/paginator';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { BehaviorSubject, switchMap } from 'rxjs';
@@ -29,7 +32,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DocumentManagementComponent implements OnInit {
   protected readonly NavigationPaths = NavigationPaths;
   readonly foldersListConfig = foldersListConfig;
-  readonly actionConfig = foldersActionsListConfig;
+  readonly actionConfig: TableActionConfig[] =
+    foldersActionsListConfig;
   readonly ButtonTypeEnum = ButtonTypeEnum;
 
   //todo types

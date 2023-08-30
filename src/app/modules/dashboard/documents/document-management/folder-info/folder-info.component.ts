@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
-import { TableAction } from '@core/types/data-table';
+import {
+  TableAction,
+  TableActionConfig,
+} from '@core/types/data-table';
 import { PageEvent } from '@angular/material/paginator';
 import { documentsListConfig } from '@modules/dashboard/documents/configs/documents-list.config';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +23,7 @@ import { isNil } from 'lodash';
 export class FolderInfoComponent {
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly documentsListConfig = documentsListConfig;
-  protected readonly documentsActionConfig =
+  protected readonly documentsActionConfig: TableActionConfig[] =
     documentsActionsListConfig;
 
   //todo types

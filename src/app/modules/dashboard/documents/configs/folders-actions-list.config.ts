@@ -1,9 +1,13 @@
-import { TableActionTypes } from '@core/types/data-table';
+import {
+  TableActionConfig,
+  TableActionTypes,
+} from '@core/types/data-table';
 
-export const foldersActionsListConfig = [
+export const foldersActionsListConfig: TableActionConfig[] = [
   {
     icon: 'download',
     type: TableActionTypes.DOWNLOAD,
+    disabled: false,
     styleConfig: {
       width: '30px',
       height: '30px',
@@ -15,6 +19,7 @@ export const foldersActionsListConfig = [
   {
     icon: 'edit',
     type: TableActionTypes.EDIT,
+    disabled: false,
     styleConfig: {
       width: '30px',
       height: '30px',
@@ -26,6 +31,7 @@ export const foldersActionsListConfig = [
   {
     icon: 'delete',
     type: TableActionTypes.DELETE,
+    disabled: false,
     styleConfig: {
       width: '30px',
       height: '30px',

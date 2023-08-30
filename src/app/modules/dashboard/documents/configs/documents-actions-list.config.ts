@@ -1,9 +1,13 @@
-import { TableActionTypes } from '@core/types/data-table';
+import {
+  TableActionConfig,
+  TableActionTypes,
+} from '@core/types/data-table';
 
-export const documentsActionsListConfig = [
+export const documentsActionsListConfig: TableActionConfig[] = [
   {
     icon: 'eye',
     type: TableActionTypes.VIEW,
+    disabled: false,
     styleConfig: {
       width: '30px',
       height: '30px',
@@ -15,6 +19,7 @@ export const documentsActionsListConfig = [
   {
     icon: 'delete',
     type: TableActionTypes.DELETE,
+    disabled: false,
     styleConfig: {
       width: '30px',
       height: '30px',
