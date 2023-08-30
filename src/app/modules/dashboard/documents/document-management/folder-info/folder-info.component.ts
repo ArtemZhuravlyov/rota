@@ -9,6 +9,7 @@ import { AuthService } from '@core/services/account/auth.service';
 import { documentsActionsListConfig } from '@modules/dashboard/documents/configs/documents-actions-list.config';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { distinctUntilParamsChanged } from '@shared/utils/distinct-until-params-changed';
+import { isNil } from 'lodash';
 
 @Component({
   selector: 'app-folder-info',
@@ -44,27 +45,16 @@ export class FolderInfoComponent {
     this.route.paramMap.subscribe(params => {
       // this.folderId = params.get('id');
       // console.log(params.get('id'));
-      this.initDocumentsList(params.get('id'));
+      const id = params.get('id');
+      if (!isNil(id)) {
+        this.initDocumentsList(id);
+      }
     });
   }
   onActionClick($event: TableAction) {}
 
-  onPageChange($event: PageEvent) {}
-
-  documentsList() {
-    this.documentService
-      .getDocsList(
-        this.authService.getCurrentUserId(),
-        this.authService.getCompanyId(),
-        {}
-      )
-      .subscribe({
-        next: () => {
-          const { isItemChanged } = this.requestParams$.value;
-          this.updateRequestParams({ isItemChanged: !isItemChanged });
-        },
-        error: () => {},
-      });
+  onPageChange({ pageIndex }: PageEvent) {
+    this.updateRequestParams({ pageIndex });
   }
 
   private updateRequestParams(
@@ -78,7 +68,7 @@ export class FolderInfoComponent {
     this.requestParams$.next({ ...value, ...params });
   }
 
-  private initDocumentsList(id: string | null) {
+  private initDocumentsList(id: string) {
     const doc = this.requestParams$
       .pipe(
         distinctUntilParamsChanged(['pageIndex', 'isItemChanged']),

@@ -1,7 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { DocumentCreate } from '../../types/document.interface';
+import {
+  Document,
+  DocumentCreate,
+  DocumentsList,
+  FoldersList,
+  Pagination,
+} from '../../types/document.interface';
 import { ENVIRONMENT } from '@app/app.module';
 import { Environment } from '@core/types/environment';
 import { AuthService } from '@core/services/account/auth.service';
@@ -18,7 +24,7 @@ export class DocumentsService {
   getFolders(
     userId: string,
     companyId: string,
-    body: any
+    body: FoldersList & Pagination
   ): Observable<any> {
     let params = new HttpParams();
 
@@ -62,7 +68,17 @@ export class DocumentsService {
   }
 
   //todo url???
-  getDocsList(userId: string, companyId: string, body: any) {
+  getDocsList(
+    userId: string,
+    companyId: string,
+    body: DocumentsList & Pagination
+  ) {
+    let params = new HttpParams();
+
+    params = params
+      .append('pageSize', body.pageSize)
+      .append('pageIndex', body.pageIndex + 1);
+
     return this.http
       .post<any>(
         `${this.env.apiUrlDocument}/document/${userId}/${companyId}`,
@@ -72,23 +88,18 @@ export class DocumentsService {
           isActive: true,
         },
         {
-          params: {
-            pageSize: body.pageSize,
-            pageIndex: body.pageIndex,
-          },
+          params: params,
         }
       )
       .pipe(
         map(response => {
           return {
-            documents: response.documents.map(
-              (item: { name: string; extension: string }) => {
-                return {
-                  ...item,
-                  nameExt: `${item.name}.${item.extension}`,
-                };
-              }
-            ),
+            documents: response.documents.map((item: Document) => {
+              return {
+                ...item,
+                nameExt: `${item.name}.${item.extension}`,
+              };
+            }),
             totalCount: response.totalCount,
           };
         })
