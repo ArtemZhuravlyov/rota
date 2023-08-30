@@ -14,8 +14,8 @@
 </app-page-header>
 
 <app-data-table
-  [data]=""
-  [itemsKey]="'documentCategories'"
+  [data]="documentsList$ | async"
+  [itemsKey]="'documents'"
   [tableConfig]="documentsListConfig"
   (actionClicked)="onActionClick($event)"
   [actionConfig]="documentsActionConfig"

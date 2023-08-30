@@ -2,21 +2,25 @@ import { TableConfig } from '@core/types/data-table';
 
 export const documentsListConfig: TableConfig = [
   {
+    columnName: 'EMPTY',
+    columnType: 'checkbox',
+  },
+  {
     columnName: 'NAME',
-    columnType: 'folder',
+    columnType: 'text',
     filedName: 'name',
     hidden: false,
   },
   {
     columnName: 'DOCUMENT',
-    columnType: 'descriptions',
-    filedName: 'document',
+    columnType: 'text',
+    filedName: 'name',
     hidden: false,
   },
   {
     columnName: 'SIZE',
     columnType: 'text',
-    filedName: 'size',
+    filedName: 'sizeInUnit',
     hidden: false,
   },
   {

@@ -68,17 +68,19 @@ export class DocumentsService {
   }
 
   //todo url???
-  getDocsList(
-    folderId: string | null | undefined,
-    userId: string,
-    companyId: string
-  ) {
+  getDocsList(userId: string, companyId: string, body: any) {
     return this.http.post<any>(
       `${this.env.apiUrlDocument}/document/${userId}/${companyId}`,
       {
         documentName: '',
-        documentCategory: folderId,
+        documentCategory: body.folderId,
         isActive: true,
+      },
+      {
+        params: {
+          pageSize: body.pageSize,
+          pageIndex: body.pageIndex,
+        },
       }
     );
   }
