@@ -11,14 +11,16 @@ import { CreateDocumentComponent } from '@app/modules/dashboard/documents/docume
 import { FormBuilderModule } from '@shared/modules/form-builder/form-builder.module';
 import { FormCardModule } from '@shared/modules/form-card/form-card.module';
 import { UploadDocumentComponent } from './upload-document/upload-document.component';
-import { DocumentSubHeaderComponent } from '@shared/modules/page-header/document-sub-header/document-sub-header.component';
+import { FolderSubHeaderComponent } from '@shared/modules/page-header/folder-sub-header/folder-sub-header.component';
 import { FolderInfoComponent } from './folder-info/folder-info.component';
+import { DocumentSubHeaderComponent } from '@shared/modules/page-header/document-sub-header/document-sub-header.component';
 
 @NgModule({
   declarations: [
     DocumentManagementComponent,
     CreateDocumentComponent,
     UploadDocumentComponent,
+    FolderSubHeaderComponent,
     DocumentSubHeaderComponent,
     FolderInfoComponent,
   ],

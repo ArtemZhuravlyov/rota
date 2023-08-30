@@ -3,6 +3,7 @@ import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import {
   TableAction,
   TableActionConfig,
+  TableActionTypes,
 } from '@core/types/data-table';
 import { PageEvent } from '@angular/material/paginator';
 import { documentsListConfig } from '@modules/dashboard/documents/configs/documents-list.config';
@@ -54,7 +55,31 @@ export class FolderInfoComponent {
       }
     });
   }
-  onActionClick($event: TableAction) {}
+  onActionClick({
+    action,
+    payload,
+  }: {
+    action: string;
+    payload: any;
+  }) {
+    switch (action) {
+      case TableActionTypes.DELETE:
+        console.log('delete document');
+        break;
+      case TableActionTypes.DOWNLOAD:
+        console.log('download document');
+        break;
+      case TableActionTypes.FOLDER_VIEW:
+        // console.log(payload);
+        // this.router.navigate(
+        //   [NavigationPaths.FOLDER_DETAILS, payload.id],
+        //   {
+        //     relativeTo: this.route,
+        //   }
+        // );
+        break;
+    }
+  }
 
   onPageChange({ pageIndex }: PageEvent) {
     this.updateRequestParams({ pageIndex });

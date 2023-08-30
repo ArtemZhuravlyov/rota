@@ -22,6 +22,7 @@ import {
 import { distinctUntilParamsChanged } from '@shared/utils/distinct-until-params-changed';
 import { foldersActionsListConfig } from '@modules/dashboard/documents/configs/folders-actions-list.config';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ShareWithModalComponent } from '@shared/modalWindows/share-with-modal/share-with-modal.component';
 
 @Component({
   selector: 'app-document-management',
@@ -77,13 +78,16 @@ export class DocumentManagementComponent implements OnInit {
         this.openDescriptionDialog(payload);
         break;
       case TableActionTypes.FOLDER_VIEW:
-        console.log(payload);
         this.router.navigate(
           [NavigationPaths.FOLDER_DETAILS, payload.id],
           {
             relativeTo: this.route,
           }
         );
+        break;
+      case TableActionTypes.SHARE_WITH:
+        //todo open share modal
+        this.openShareModal(payload);
         break;
     }
   }
@@ -112,6 +116,23 @@ export class DocumentManagementComponent implements OnInit {
     };
     this.dialog
       .open(InfoModalComponent, {
+        panelClass: 'info-dialog',
+        backdropClass: 'modal-background',
+        disableClose: true,
+        data,
+      })
+      .afterClosed()
+      .subscribe();
+  }
+
+  private openShareModal(type: any) {
+    console.log(type);
+    const data = <InfoModal>{
+      title: `This folder ${type.name} shared with`,
+      description: 'This people cac access this folder',
+    };
+    this.dialog
+      .open(ShareWithModalComponent, {
         panelClass: 'info-dialog',
         backdropClass: 'modal-background',
         disableClose: true,

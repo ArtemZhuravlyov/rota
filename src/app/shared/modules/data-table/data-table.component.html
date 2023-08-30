@@ -116,7 +116,10 @@
                 title="SHARE"
                 iconPosition="beforeText"
                 [iconStyleConfig]="{ width: '23%', height: '21%' }"
-                icon="share"></app-button>
+                icon="share"
+                (click)="
+                  onAction({ action: 'share_with', payload: element })
+                "></app-button>
             </td>
           </ng-container>
 

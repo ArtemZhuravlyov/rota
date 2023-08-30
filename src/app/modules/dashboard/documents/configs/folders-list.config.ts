@@ -24,6 +24,7 @@ export const foldersListConfig: TableConfig = [
     columnType: 'share_with',
     filedName: 'users',
     hidden: false,
+    action: 'share_with',
   },
   {
     columnName: 'SIZE',

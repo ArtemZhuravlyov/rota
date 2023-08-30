@@ -8,12 +8,12 @@ import {
 import { TableActionTypes } from '@core/types/data-table';
 
 @Component({
-  selector: 'app-document-sub-header',
-  templateUrl: './document-sub-header.component.html',
-  styleUrls: ['./document-sub-header.component.scss'],
+  selector: 'app-folder-sub-header',
+  templateUrl: './folder-sub-header.component.html',
+  styleUrls: ['./folder-sub-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DocumentSubHeaderComponent {
+export class FolderSubHeaderComponent {
   @Input() additionalButtonsDisabled = false;
   @Output() onActionClicked = new EventEmitter();
 

@@ -6,10 +6,11 @@ import { MaterialModule } from "@shared/modules/material.module";
 import { FormBuilderModule } from "@shared/modules/form-builder/form-builder.module";
 import { ButtonModule } from "@shared/modules/button/button.module";
 import { RouterLink } from "@angular/router";
+import { ShareWithModalComponent } from './share-with-modal/share-with-modal.component';
 
 
 @NgModule({
-  declarations: [ChangeCompanyModalComponent],
+  declarations: [ChangeCompanyModalComponent, ShareWithModalComponent],
   imports: [
     CommonModule,
     TranslateModule,

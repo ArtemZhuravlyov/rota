@@ -1,17 +1,28 @@
 <app-page-header title="FOLDER_DETAILS">
   <div class="action-buttons">
     <app-button
-      [routerLink]="NavigationPaths.UPLOAD_DOCUMENT"
+      [routerLink]="NavigationPaths.DOWNLOAD_DOCUMENT"
+      btnType="STROKED"
+      [isIconButton]="true"
+      [styleConfig]="{
+        height: '50px',
+        width: '150px'
+      }"
+      title="UPLOAD"
+      icon="export"></app-button>
+    <app-button
+      [routerLink]="NavigationPaths.CREATE_NEW_DOCUMENT"
       btnType="FLAT"
       [isIconButton]="true"
       [styleConfig]="{
         height: '50px',
-        width: '230px'
+        width: '150px'
       }"
-      title="UPLOAD_DOCUMENT"
+      title="CREATE_NEW"
       icon="add"></app-button>
   </div>
 </app-page-header>
+<app-document-sub-header></app-document-sub-header>
 
 <app-data-table
   [data]="documentsList$ | async"

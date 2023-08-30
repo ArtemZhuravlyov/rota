@@ -56,4 +56,5 @@ export const TableActionTypes = {
   DOWNLOAD: 'download',
   BULK_LOAD: 'bulk_load',
   FOLDER_VIEW: 'folder_view',
+  SHARE_WITH: 'share_with',
 } as const;
