@@ -21,6 +21,7 @@ import { FormGroup } from '@angular/forms';
 import { TableUtil } from '@shared/utils/tableUtil';
 import { BehaviorSubject } from 'rxjs';
 import { get } from 'lodash';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 
 @Component({
   selector: 'app-data-table',
@@ -57,6 +58,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   actions: any;
   forms: any = [];
   form!: FormGroup;
+  protected readonly NavigationPaths = NavigationPaths;
 
   ngAfterViewInit() {
     this.exporting$.subscribe((table: any) => {

@@ -25,6 +25,7 @@ export const ColumnType = {
   DESCRIPTIONS: 'descriptions',
   TOGGLE: 'toggle',
   FOLDER: 'folder',
+  SHARE_WITH: 'share_with',
 } as const;
 
 export interface TableAction {

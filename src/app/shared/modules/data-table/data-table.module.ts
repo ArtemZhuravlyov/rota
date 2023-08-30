@@ -13,6 +13,7 @@ import { FormBuilderModule } from '@shared/modules/form-builder/form-builder.mod
 import { FilterDropdownComponent } from '@shared/components/filter-dropdown/filter-dropdown.component';
 import { MoveVertDropdownComponent } from '@shared/components/move-vert-dropdown/move-vert-dropdown.component';
 import { TableButtonComponent } from '@shared/components/table-button/table-button.component';
+import { ButtonComponent } from '@shared/modules/button/button.component';
 
 @NgModule({
   declarations: [DataTableComponent, CustomPaginatorComponent],
@@ -31,6 +32,7 @@ import { TableButtonComponent } from '@shared/components/table-button/table-butt
     FilterDropdownComponent,
     MoveVertDropdownComponent,
     TableButtonComponent,
+    ButtonModule,
   ],
 })
 export class DataTableModule {}

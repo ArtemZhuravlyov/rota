@@ -90,6 +90,37 @@
           </ng-container>
 
           <ng-container
+            *ngSwitchCase="ColumnType.SHARE_WITH"
+            [matColumnDef]="col">
+            <th
+              mat-header-cell
+              [hidden]="tableConfig[i].hidden"
+              *matHeaderCellDef>
+              <ng-container
+                [ngTemplateOutlet]="defaultCellHeader"
+                [ngTemplateOutletContext]="{ i }" />
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [ngStyle]="!isPrinting ? null : { display: 'none' }">
+              <app-button
+                btnType="STROKED"
+                colorTheme="link"
+                [isIconButton]="true"
+                [styleConfig]="{
+                  height: '30px',
+                  width: '83px'
+                }"
+                title="SHARE"
+                iconPosition="beforeText"
+                [iconStyleConfig]="{ width: '23%', height: '21%' }"
+                icon="share"></app-button>
+            </td>
+          </ng-container>
+
+          <ng-container
             *ngSwitchCase="ColumnType.COUNTRY"
             [matColumnDef]="col">
             <th

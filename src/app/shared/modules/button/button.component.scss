@@ -82,6 +82,20 @@ button {
   }
 }
 
+.link {
+  button {
+    color: #3E77AA;
+  }
+
+  .mat-mdc-outlined-button {
+    border: 1px solid #3E77AA80;
+    &:hover {
+      background: #F0F8FF;
+      border-color: #3E77AA;
+    }
+  }
+}
+
 .warn {
   .mdc-icon-button {
     border-radius: 99px;
@@ -128,5 +142,12 @@ button {
   .mat-icon {
     margin-left: 5px;
   }
+}
+
+.beforeText {
+  .mat-icon {
+    margin-right: 5px;
+  }
+  flex-direction: row-reverse;
 }
 

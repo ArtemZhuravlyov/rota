@@ -262,6 +262,12 @@ export class MaterialModule {
       )
     );
     matIconRegistry.addSvgIcon(
+      'share',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/share.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
       'folder',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/folder.svg'
