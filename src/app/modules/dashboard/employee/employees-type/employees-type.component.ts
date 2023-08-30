@@ -12,10 +12,7 @@ import {
   EmploymentTypeService,
   GetAllEmployeeTypesQuery,
 } from '@core/services/company/employment-type/employment-type.service';
-import {
-  TableActionConfig,
-  TableActionTypes,
-} from '@core/types/data-table';
+import { TableActionTypes } from '@core/types/data-table';
 import {
   EmploymentTypeResponse,
   EmploymentTypes,
@@ -33,13 +30,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppActivatedRoute } from '@core/types/app-route.type';
 import { EmployeeTypeRouteData } from '@modules/dashboard/employee/employees-type/employees-type-routing.module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 
 type RequestParamsType = GetAllEmployeeTypesQuery & {
   isItemChanged: boolean;
 };
 
 @Component({
-  selector: 'app-employees-type',
+  selector: 'app-employees-enums',
   templateUrl: './employees-type.component.html',
   styleUrls: ['./employees-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -72,31 +71,9 @@ export class EmployeesTypeComponent implements OnInit {
     totalCount: 0,
   });
 
-  actionConfig: TableActionConfig[] = [
-    {
-      icon: 'check',
-      type: TableActionTypes.CHECK,
-      disabled: true,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#91ACC2',
-      },
-    },
-    {
-      icon: 'delete',
-      type: TableActionTypes.DELETE,
-      disabled: true,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#FF0000',
-      },
-    },
+  actionConfig: ActionButton[] = [
+    { type: ActionButtonName.APPLY, disabled: true },
+    { type: ActionButtonName.DELETE, disabled: true },
   ];
 
   ngOnInit() {
@@ -111,13 +88,13 @@ export class EmployeesTypeComponent implements OnInit {
     payload: EmploymentTypes;
   }) {
     switch (action) {
-      case TableActionTypes.DELETE:
+      case ActionButtonName.DELETE:
         this.deleteEmploymentType(payload.id);
         break;
       case TableActionTypes.VIEWDESCRIPTION:
         this.openDescriptionDialog(payload);
         break;
-      case TableActionTypes.CHECK:
+      case ActionButtonName.APPLY:
         this.redirectToEditEmployeeType(payload.id);
         break;
     }

@@ -19,7 +19,7 @@ import { EmploymentTypes } from '@core/types/employment-type.model';
 import { createEmployeeTypeFormConfig } from '@modules/dashboard/employee/create-employee-type/configs/create-employee-type-form.config';
 
 @Component({
-  selector: 'app-create-employee-type',
+  selector: 'app-create-employee-enums',
   templateUrl: './create-employee-type.component.html',
   styleUrls: ['./create-employee-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,6 +42,8 @@ export class CreateEmployeeTypeComponent implements AfterViewInit {
     name: FormControl<string>;
     description: FormControl<string>;
   }>;
+
+  isBusy = false;
 
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly createEmployeeTypeFormConfig =
@@ -68,15 +70,20 @@ export class CreateEmployeeTypeComponent implements AfterViewInit {
   }
 
   private onCreate(body: { name: string; description: string }) {
+    this.isBusy = true;
     this.employmentTypeService
       .creteNewEmploymentType(body)
       .subscribe({
         next: () => {
+          this.isBusy = false;
           this.form.enable();
           this.form.reset();
+          this.cdr.detectChanges();
         },
         error: () => {
+          this.isBusy = false;
           this.form.enable();
+          this.cdr.detectChanges();
         },
       });
   }
@@ -86,8 +93,10 @@ export class CreateEmployeeTypeComponent implements AfterViewInit {
     name: string;
     description: string;
   }) {
+    this.isBusy = true;
     this.employmentTypeService.editEmploymentType(body).subscribe({
       next: () => {
+        this.isBusy = false;
         const oldEmploymentType = this.employmentType.value!;
         this.form.enable();
         this.updateForm({
@@ -97,9 +106,11 @@ export class CreateEmployeeTypeComponent implements AfterViewInit {
         });
       },
       error: () => {
+        this.isBusy = false;
         this.form.enable();
       },
     });
+    this.cdr.detectChanges();
   }
 
   private initFormFields() {
@@ -112,6 +123,7 @@ export class CreateEmployeeTypeComponent implements AfterViewInit {
         )
       )
       .subscribe(employeeTypeData => {
+        this.isBusy = false;
         this.updateForm(employeeTypeData);
       });
   }

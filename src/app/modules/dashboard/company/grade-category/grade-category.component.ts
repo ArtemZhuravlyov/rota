@@ -9,20 +9,15 @@ import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { gradeCategoryTableConfig } from '@app/modules/dashboard/company/grade-category/configs/grade-category-table.config';
 import {
   TableAction,
-  TableActionConfig,
   TableActionTypes,
 } from '@core/types/data-table';
 import { PageEvent } from '@angular/material/paginator';
-import {
-  BehaviorSubject,
-  map,
-  Observable,
-  of,
-  switchMap,
-} from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { GradeCategoryService } from '@core/services/company/grade-category/grade-category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrintService } from '@core/services/print/print.service';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 
 const INITIAL_PAGE = {
   pageSize: 2,
@@ -48,31 +43,9 @@ export class GradeCategoryComponent implements OnInit {
   selectedTableAccs$ =
     this.gradeCategoryService.selectedTableAccounts$;
 
-  actionConfig: TableActionConfig[] = [
-    {
-      icon: 'eye',
-      disabled: false,
-      type: TableActionTypes.VIEW,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#91ACC2',
-      },
-    },
-    {
-      icon: 'delete',
-      disabled: false,
-      type: TableActionTypes.DELETE,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#FF0000',
-      },
-    },
+  actionConfig: ActionButton[] = [
+    { type: ActionButtonName.VIEW_DETAILS, disabled: false },
+    { type: ActionButtonName.DELETE, disabled: false },
   ];
 
   constructor(
@@ -100,22 +73,6 @@ export class GradeCategoryComponent implements OnInit {
           .deleteGradeCategory(event.payload.id)
           .subscribe();
         break;
-      case TableActionTypes.ADD:
-        console.log('add');
-        break;
-      case TableActionTypes.PRINT:
-        const selectedAccounts$ = of(
-          this.gradeCategoryService.selectedTableAccounts
-        ).pipe(
-          map((accounts: any) => ({
-            gradeCategories: accounts,
-            totalCount: accounts.length,
-          }))
-        );
-        this.gradeCategoriesList$ = selectedAccounts$;
-        this.printService.isPrinting$.next(true);
-        setTimeout(() => window.print(), 100);
-        break;
       case TableActionTypes.EXPORT:
         const exportTable =
           this.gradeCategoryService.selectedTableAccounts.map(
@@ -125,17 +82,6 @@ export class GradeCategoryComponent implements OnInit {
             })
           );
         this.exporting$.next(exportTable);
-        break;
-      case TableActionTypes.IMPORT:
-        console.log('import', event.action);
-        break;
-
-      case TableActionTypes.VIEW:
-        this.gradeCategoryService.selectedGrade$.next(event.payload);
-        this.router.navigate(
-          [NavigationPaths.GRADE_CATEGORY_LEVELS],
-          { relativeTo: this.activatedRoute }
-        );
         break;
     }
   }

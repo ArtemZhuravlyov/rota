@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RsSpinnerComponent } from '@shared/components/rs-spinner/rs-spinner.component';
-import { RsSpinnerDirective } from '@shared/components/rs-spinner/rs-spinner.directive';
+import { RsSpinnerComponent } from '@shared/directives/rs-spinner/rs-spinner.component';
+import { RsSpinnerDirective } from '@shared/directives/rs-spinner/rs-spinner.directive';
 import { MaterialModule } from '@shared/modules/material.module';
 
 @NgModule({

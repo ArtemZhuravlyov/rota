@@ -1,7 +1,4 @@
-<div
-  class="container-wrapper"
-  [ngClass]="{ load: isBusy }"
-  [rsSpinner]="isBusy">
+<div class="container-wrapper">
   <app-page-header [title]="'EMPLOYEES'">
     <div class="action-buttons">
       <app-button
@@ -18,12 +15,15 @@
     (onCheckedChange)="onActiveChange($event)" />
 
   <app-data-table
+    [ngClass]="{ load: isBusy }"
+    [rsSpinner]="isBusy"
+    [keysForSearchFilter]="['name', 'description']"
     [data]="employeesTypeList$ | async"
     [itemsKey]="'employmentTypes'"
     [tableConfig]="employeesTypeListConfig"
     [hasCheckboxColumn]="true"
     [actionConfig]="actionConfig"
-    [tableStyle]="'employee-type'"
+    [tableStyle]="'employee-enums'"
     [isLoading]="false"
     (actionClicked)="onActionClick($event)"
     (pageChange)="onPageChange($event)" />
