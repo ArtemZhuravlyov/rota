@@ -52,6 +52,10 @@ $my-theme: mat.define-light-theme((
   top: 3px;
 }
 
+.load > * {
+  opacity: 20%;
+}
+
 
 @include mat.typography-hierarchy($my-typography);
 @include mat.all-component-themes($my-theme);

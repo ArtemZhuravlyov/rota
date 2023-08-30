@@ -58,6 +58,16 @@ input:checked + .slider:before {
   border-radius: 34px;
 }
 
+.slider.round:hover {
+  background-color: #F0FFF7;
+  border: 1px solid #1C9F5680;
+  &:before {
+    bottom: 1px;
+    background-color: #85CFA6;
+  }
+}
+
 .slider.round:before {
   border-radius: 50%;
 }
+

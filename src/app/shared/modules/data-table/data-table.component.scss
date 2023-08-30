@@ -93,14 +93,7 @@ table {
   }
 }
 
-.filter-container {
-  padding: 0 12px 12px 12px;
 
-  h1 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-}
 
 //remove maybe
 .sort-container {
@@ -195,8 +188,10 @@ table {
   }
 
   tr th:nth-child(3) {
-    display: flex;
-    justify-content: normal;
+    .defaultHeader {
+      justify-content: flex-start;
+
+    }
   }
 
   tr th:nth-child(5) {
@@ -328,7 +323,7 @@ table {
 }
 
 .table-padding {
-  padding: 7px 3px;
+  padding: 6px 3px;
 }
 
 .filter-padding {

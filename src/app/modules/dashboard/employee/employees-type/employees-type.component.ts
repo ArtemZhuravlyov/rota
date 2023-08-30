@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   inject,
   OnInit,
 } from '@angular/core';
@@ -11,12 +12,15 @@ import {
   EmploymentTypeService,
   GetAllEmployeeTypesQuery,
 } from '@core/services/company/employment-type/employment-type.service';
-import { TableActionTypes } from '@core/types/data-table';
+import {
+  TableActionConfig,
+  TableActionTypes,
+} from '@core/types/data-table';
 import {
   EmploymentTypeResponse,
   EmploymentTypes,
 } from '@core/types/employment-type.model';
-import { BehaviorSubject, switchMap } from 'rxjs';
+import { BehaviorSubject, switchMap, tap } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { distinctUntilParamsChanged } from '@shared/utils/distinct-until-params-changed';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,6 +32,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppActivatedRoute } from '@core/types/app-route.type';
 import { EmployeeTypeRouteData } from '@modules/dashboard/employee/employees-type/employees-type-routing.module';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 type RequestParamsType = GetAllEmployeeTypesQuery & {
   isItemChanged: boolean;
@@ -47,11 +52,13 @@ export class EmployeesTypeComponent implements OnInit {
   private readonly activatedRoute =
     inject<AppActivatedRoute<EmployeeTypeRouteData>>(ActivatedRoute);
   private readonly dialog = inject(MatDialog);
+  private readonly destroyRef = inject(DestroyRef);
 
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
   protected readonly employeesTypeListConfig =
     employeesTypeListConfig;
+  isBusy = false;
 
   requestParams$ = new BehaviorSubject<RequestParamsType>({
     isActive: false,
@@ -65,11 +72,11 @@ export class EmployeesTypeComponent implements OnInit {
     totalCount: 0,
   });
 
-  actionConfig = [
+  actionConfig: TableActionConfig[] = [
     {
       icon: 'check',
       type: TableActionTypes.CHECK,
-      disabled: false,
+      disabled: true,
       styleConfig: {
         width: '30px',
         height: '30px',
@@ -81,7 +88,7 @@ export class EmployeesTypeComponent implements OnInit {
     {
       icon: 'delete',
       type: TableActionTypes.DELETE,
-      disabled: false,
+      disabled: true,
       styleConfig: {
         width: '30px',
         height: '30px',
@@ -121,6 +128,10 @@ export class EmployeesTypeComponent implements OnInit {
   }
 
   onActiveChange(active: boolean) {
+    this.actionConfig = this.actionConfig.map(action => ({
+      ...action,
+      disabled: !active,
+    }));
     this.updateRequestParams({ isActive: active });
   }
 
@@ -162,6 +173,8 @@ export class EmployeesTypeComponent implements OnInit {
   private initEmploymentTypes() {
     this.requestParams$
       .pipe(
+        tap(() => (this.isBusy = true)),
+        takeUntilDestroyed(this.destroyRef),
         distinctUntilParamsChanged([
           'pageIndex',
           'isItemChanged',
@@ -176,6 +189,7 @@ export class EmployeesTypeComponent implements OnInit {
         )
       )
       .subscribe(employmentTypes => {
+        this.isBusy = false;
         this.employeesTypeList$.next(employmentTypes);
       });
   }

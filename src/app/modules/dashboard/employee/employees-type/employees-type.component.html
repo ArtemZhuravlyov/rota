@@ -1,4 +1,7 @@
-<div class="container-wrapper">
+<div
+  class="container-wrapper"
+  [ngClass]="{ load: isBusy }"
+  [rsSpinner]="isBusy">
   <app-page-header [title]="'EMPLOYEES'">
     <div class="action-buttons">
       <app-button

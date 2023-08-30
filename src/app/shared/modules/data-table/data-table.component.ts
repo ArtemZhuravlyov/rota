@@ -12,6 +12,7 @@ import {
   ColumnConfig,
   ColumnType,
   TableAction,
+  TableActionConfig,
   TableActionTypes,
   TableConfig,
 } from '@core/types/data-table';
@@ -20,8 +21,8 @@ import { FormField } from '@core/types/form-builder.model';
 import { FormGroup } from '@angular/forms';
 import { TableUtil } from '@shared/utils/tableUtil';
 import { BehaviorSubject } from 'rxjs';
-import { get } from 'lodash';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { get, isNumber, toNumber } from 'lodash';
 
 @Component({
   selector: 'app-data-table',
@@ -33,15 +34,16 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   @Input({ required: true }) itemsKey!: string;
   @Input({ required: true }) set data(tableData: any) {
     if (tableData) {
-      console.log(tableData);
       this.tableData = tableData;
       this.filteredData = tableData[this.itemsKey];
     }
   }
+  @Input() set actionConfig(actions: TableActionConfig[]) {
+    this.actions = actions ?? this.defaultActionConfig;
+  }
   @Input({ required: true }) tableConfig!: TableConfig;
   @Input() hasCheckboxColumn = false;
   @Input() tableStyle!: string;
-  @Input() actionConfig?: any;
   @Input() formConfig!: FormField[];
   @Input() isFormIncluded?: boolean;
   @Input() headerDropdownFilter = true;
@@ -55,7 +57,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   readonly ColumnType = ColumnType;
   filteredData: any = [];
   tableData: any = [];
-  actions: any;
+  actions: TableActionConfig[] = [];
   forms: any = [];
   form!: FormGroup;
   protected readonly NavigationPaths = NavigationPaths;
@@ -74,7 +76,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     TableUtil.exportArrayToExcel(table, 'Table');
   }
 
-  defaultActionConfig = [
+  defaultActionConfig: TableActionConfig[] = [
     {
       icon: 'eye',
       type: TableActionTypes.VIEW,
@@ -136,7 +138,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.columns = this.tableConfig.map(col => col.columnName);
-    this.setActions();
   }
 
   toggleSearch(): void {
@@ -144,14 +145,21 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   filterTable(searchText: string, filedToFilter: string): void {
-    const dataToFilter = JSON.parse(
-      JSON.stringify(this.tableData[this.itemsKey])
-    );
+    const dataToFilter = this.tableData[this.itemsKey];
+
     this.filteredData = dataToFilter.filter((obj: any) => {
-      return obj[filedToFilter]
-        .toLowerCase()
-        .includes(searchText.toLowerCase());
+      if (isNumber(obj[filedToFilter])) {
+        return obj[filedToFilter] === toNumber(searchText);
+      } else {
+        return obj[filedToFilter]
+          .toLowerCase()
+          .includes(searchText.toLowerCase());
+      }
     });
+  }
+
+  resetFilterTable(): void {
+    this.filteredData = this.tableData[this.itemsKey];
   }
   onAction(action: TableAction): void {
     this.actionClicked.emit(action);
@@ -186,10 +194,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
       this.selectedItems.set(element.id, element);
       this.selectedItemsIds.emit(this.selectedItems);
     }
-  }
-
-  setActions(): void {
-    this.actions = this.actionConfig ?? this.defaultActionConfig;
   }
 
   createForm(form: FormGroup) {

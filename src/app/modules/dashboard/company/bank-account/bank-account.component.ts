@@ -12,6 +12,7 @@ import { BankAccountService } from '@core/services/bank-account/bank-account.ser
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import {
   TableAction,
+  TableActionConfig,
   TableActionTypes,
 } from '@core/types/data-table';
 import { ButtonTypeEnum } from '@core/enums/button-type.enum';
@@ -136,9 +137,10 @@ export class BankAccountComponent implements OnInit {
     );
   }
 
-  actionConfig = [
+  actionConfig: TableActionConfig[] = [
     {
       icon: 'eye',
+      disabled: false,
       type: TableActionTypes.VIEW,
       styleConfig: {
         width: '30px',
@@ -150,6 +152,7 @@ export class BankAccountComponent implements OnInit {
     },
     {
       icon: 'delete',
+      disabled: false,
       type: TableActionTypes.DELETE,
       styleConfig: {
         width: '30px',
