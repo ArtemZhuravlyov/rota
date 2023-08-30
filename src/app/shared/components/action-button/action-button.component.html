@@ -1,0 +1,75 @@
+<ng-container [ngSwitch]="type">
+  <ng-container *ngSwitchCase="ActionButtonName.APPLY">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{ disabled: disabled }"
+      (click)="btnClick.emit()"
+      class="icon-btn apply"
+      rsTooltip="Apply"
+      [rsTooltipPosition]="RsTooltipPosition.BELOW"
+      [rsTooltipTheme]="RsTooltipTheme.LIGHT">
+      <mat-icon class="icon" svgIcon="check" />
+    </button>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ActionButtonName.DELETE">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{ disabled: disabled }"
+      (click)="btnClick.emit()"
+      class="icon-btn delete"
+      rsTooltip="Delete"
+      [rsTooltipPosition]="RsTooltipPosition.BELOW"
+      [rsTooltipTheme]="RsTooltipTheme.LIGHT"
+      [rsTooltipTextColor]="'#FF0000'">
+      <mat-icon class="icon" svgIcon="delete" />
+    </button>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ActionButtonName.VIEW_DETAILS">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{ disabled: disabled }"
+      (click)="btnClick.emit()"
+      class="icon-btn view_details"
+      rsTooltip="View Details"
+      [rsTooltipPosition]="RsTooltipPosition.BELOW"
+      [rsTooltipTheme]="RsTooltipTheme.LIGHT">
+      <mat-icon class="icon" svgIcon="eye" />
+    </button>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ActionButtonName.EXPORT">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{ disabled: disabled }"
+      (click)="btnClick.emit()"
+      class="icon-btn export"
+      rsTooltip="Export"
+      [rsTooltipPosition]="RsTooltipPosition.BELOW"
+      [rsTooltipTheme]="RsTooltipTheme.LIGHT">
+      <mat-icon class="icon" svgIcon="export" />
+    </button>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ActionButtonName.VIEW_DETAILS_TEXT">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{ disabled: disabled }"
+      (click)="btnClick.emit()"
+      class="btn view_details_text">
+      <mat-icon class="icon" svgIcon="eye" />
+      <p>View</p>
+    </button>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ActionButtonName.PAY">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{ disabled: disabled }"
+      (click)="btnClick.emit()"
+      class="pay">
+      Pay
+    </button>
+  </ng-container>
+</ng-container>

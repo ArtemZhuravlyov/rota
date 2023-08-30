@@ -6,20 +6,19 @@ import {
 } from '@angular/core';
 import { bankAccountTableConfig } from '@app/modules/dashboard/company/configs/bank-account-table-config';
 import { PageEvent } from '@angular/material/paginator';
-import { BehaviorSubject, map, Observable, of, take } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { AuthService } from '@core/services/account/auth.service';
 import { BankAccountService } from '@core/services/bank-account/bank-account.service';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import {
   TableAction,
-  TableActionConfig,
   TableActionTypes,
 } from '@core/types/data-table';
 import { ButtonTypeEnum } from '@core/enums/button-type.enum';
-import { ActivatedRoute, Router } from '@angular/router';
 import { PrintService } from '@core/services/print/print.service';
-import { debounceTime } from 'rxjs/operators';
 import { BankAccount } from '@core/types/bankAccount.interface';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 
 @Component({
   selector: 'app-bank-account',
@@ -40,9 +39,7 @@ export class BankAccountComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private bankAccountService: BankAccountService,
-    private printService: PrintService,
-    private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private printService: PrintService
   ) {}
 
   ngOnInit() {
@@ -64,20 +61,6 @@ export class BankAccountComponent implements OnInit {
           .deleteBankAccount(event.payload.id, event.payload)
           .subscribe();
         break;
-      case TableActionTypes.ADD:
-        this.bankAccountService.selectedBankAccount = event.payload;
-        break;
-      case TableActionTypes.PRINT:
-        this.isPrinting$
-          .pipe(debounceTime(1), take(1))
-          .subscribe(r => {
-            if (r) {
-              window.print();
-            }
-          });
-        this.bankAccounts$ = selectedAccounts$;
-        this.printService.isPrinting$.next(true);
-        break;
       case TableActionTypes.EXPORT:
         const exportTable =
           this.bankAccountService.selectedTableAccounts.map(
@@ -90,16 +73,6 @@ export class BankAccountComponent implements OnInit {
             })
           );
         this.exporting$.next(exportTable);
-        break;
-      case TableActionTypes.IMPORT:
-        console.log('import', event.action);
-        break;
-      case TableActionTypes.VIEW:
-        this.bankAccountService.action = event.action;
-        this.bankAccountService.selectedBankAccount = event.payload;
-        this.router.navigate([NavigationPaths.CREATE_BANK_ACCOUNT], {
-          relativeTo: this.route,
-        });
         break;
     }
   }
@@ -137,30 +110,8 @@ export class BankAccountComponent implements OnInit {
     );
   }
 
-  actionConfig: TableActionConfig[] = [
-    {
-      icon: 'eye',
-      disabled: false,
-      type: TableActionTypes.VIEW,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#91ACC2',
-      },
-    },
-    {
-      icon: 'delete',
-      disabled: false,
-      type: TableActionTypes.DELETE,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#FF0000',
-      },
-    },
+  actionConfig: ActionButton[] = [
+    { type: ActionButtonName.VIEW_DETAILS, disabled: false },
+    { type: ActionButtonName.DELETE, disabled: false },
   ];
 }

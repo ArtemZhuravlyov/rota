@@ -10,14 +10,7 @@ import {
   TableActionTypes,
 } from '@core/types/data-table';
 import { PageEvent } from '@angular/material/paginator';
-import {
-  BehaviorSubject,
-  map,
-  Observable,
-  of,
-  switchMap,
-  take,
-} from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { PositionService } from '@core/services/company/position/position.service';
 import { positionsTableConfig } from '@app/modules/dashboard/company/position/configs/positionsTable.config';
 import { divisionActionConfig } from '@app/modules/dashboard/company/group-function-division/configs/division-action.config';
@@ -28,7 +21,6 @@ import {
   InfoModalComponent,
 } from '@shared/modalWindows/info-modal/info-modal.component';
 import { PrintService } from '@core/services/print/print.service';
-import { debounceTime } from 'rxjs/operators';
 
 const INITIAL_PAGE = {
   pageSize: 2,
@@ -76,31 +68,6 @@ export class PositionComponent implements OnInit {
           .deletePosition(event.payload.id)
           .subscribe();
         break;
-
-      case TableActionTypes.ADD:
-        console.log('add');
-        break;
-
-      case TableActionTypes.PRINT:
-        this.isPrinting$
-          .pipe(debounceTime(1), take(1))
-          .subscribe(r => {
-            if (r) {
-              window.print();
-            }
-          });
-        const selectedPositions$ = of(
-          this.positionService.selectedTableAccounts
-        ).pipe(
-          map((accounts: any) => ({
-            positions: accounts,
-            totalCount: accounts.length,
-          }))
-        );
-        this.positionList$ = selectedPositions$;
-        this.printService.isPrinting$.next(true);
-        break;
-
       case TableActionTypes.EXPORT:
         const exportTable =
           this.positionService.selectedTableAccounts.map(
@@ -112,23 +79,6 @@ export class PositionComponent implements OnInit {
             })
           );
         this.exporting$.next(exportTable);
-
-        break;
-
-      case TableActionTypes.IMPORT:
-        console.log('import', event.action);
-        break;
-
-      case TableActionTypes.VIEWDESCRIPTION:
-        this.openJobDescDialog(event.payload);
-        break;
-
-      case TableActionTypes.VIEW:
-        this.positionService.action = event.action;
-        this.positionService.selectedPosition = event.payload;
-        this.router.navigate([NavigationPaths.CREATE_NEW_POSITION], {
-          relativeTo: this.route,
-        });
         break;
     }
   }

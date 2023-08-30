@@ -13,19 +13,10 @@ import {
 } from '@core/types/data-table';
 import { PageEvent } from '@angular/material/paginator';
 import { groupFunctionDivisionTableConfig } from '@app/modules/dashboard/company/group-function-division/configs/group-function-division-table.config';
-import {
-  BehaviorSubject,
-  map,
-  Observable,
-  of,
-  ReplaySubject,
-  switchMap,
-  take,
-} from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { divisionActionConfig } from '@app/modules/dashboard/company/group-function-division/configs/division-action.config';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrintService } from '@core/services/print/print.service';
-import { debounceTime } from 'rxjs/operators';
 
 const INITIAL_PAGE = {
   pageSize: 2,
@@ -78,28 +69,6 @@ export class GroupFunctionDivisionComponent implements OnInit {
           .deleteDivision(event.payload.id)
           .subscribe();
         break;
-      case TableActionTypes.ADD:
-        this.groupFunctionDivisionService.selectedDivision = {};
-        break;
-      case TableActionTypes.PRINT:
-        this.isPrinting$
-          .pipe(debounceTime(1), take(1))
-          .subscribe(r => {
-            if (r) {
-              window.print();
-            }
-          });
-        const selectedDivisions$ = of(
-          this.groupFunctionDivisionService.selectedTableAccounts
-        ).pipe(
-          map((accounts: any) => ({
-            divisions: accounts,
-            totalCount: accounts.length,
-          }))
-        );
-        this.groupFunctionDivisionList$ = selectedDivisions$;
-        this.printService.isPrinting$.next(true);
-        break;
       case TableActionTypes.EXPORT:
         const exportTable =
           this.groupFunctionDivisionService.selectedTableAccounts.map(
@@ -110,19 +79,6 @@ export class GroupFunctionDivisionComponent implements OnInit {
             })
           );
         this.exporting$.next(exportTable);
-        break;
-
-      case TableActionTypes.IMPORT:
-        console.log('import', event.action);
-        break;
-      case TableActionTypes.VIEW:
-        this.groupFunctionDivisionService.action = event.action;
-        this.groupFunctionDivisionService.selectedDivision =
-          event.payload;
-        this.router.navigate(
-          [NavigationPaths.CREATE_NEW_GROUP_FUNCTION_DIVISION],
-          { relativeTo: this.route }
-        );
         break;
     }
   }

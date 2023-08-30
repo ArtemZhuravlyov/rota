@@ -9,7 +9,7 @@ import {
   Renderer2,
   ViewContainerRef,
 } from '@angular/core';
-import { RsSpinnerComponent } from '@shared/components/rs-spinner/rs-spinner.component';
+import { RsSpinnerComponent } from '@shared/directives/rs-spinner/rs-spinner.component';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { isNil } from 'lodash';
 

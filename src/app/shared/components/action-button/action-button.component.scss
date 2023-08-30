@@ -1,0 +1,135 @@
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #E4EDF4;
+}
+
+.apply {
+  .icon {
+    width: 12px;
+    ::ng-deep path {
+      fill: #91ACC2;
+    }
+  }
+
+  &:hover {
+    background-color: #3E77AA;
+    .icon {
+      ::ng-deep path {
+        fill: #FFFFFF;
+      }
+    }
+  }
+}
+
+.delete {
+  .icon {
+    width: 12px;
+    ::ng-deep path {
+      fill: #FF0000;
+    }
+  }
+
+  &:hover {
+    background-color: #FF0000;
+    .icon {
+      ::ng-deep path {
+        fill: #FFFFFF;
+      }
+    }
+  }
+}
+
+.view_details, .exports {
+
+  .icon {
+    width: 18px;
+    ::ng-deep path {
+      fill: #91ACC2;
+    }
+  }
+
+  &:hover {
+    border: 1px solid #3E77AA;
+
+    .icon {
+      ::ng-deep path {
+        fill: #3E77AA;
+      }
+    }
+  }
+}
+
+.export {
+  .icon {
+    width: 16px;
+  }
+}
+
+.view_details_text {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid #3E77AA80;
+  background-color: transparent;
+  p {
+    margin: 0;
+    font-size: 15px;
+    font-style: normal;
+    color: #91ACC2;
+  }
+  .icon {
+    width: 24px;
+    ::ng-deep path {
+      fill: #91ACC2;
+    }
+  }
+
+  &:hover {
+    border: 1px solid #3E77AA;
+
+    p {
+      color: #3E77AA;
+    }
+
+    .icon {
+      ::ng-deep path {
+        fill: #3E77AA;
+      }
+    }
+  }
+}
+
+.pay {
+  width: 44px;
+  height: 30px;
+  background-color: #00A046;
+  border-radius: 6px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  color: #FFFFFF;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: #EEF0F3;
+  color: #CACED6;
+  p {
+    color: #CACED6;
+  }
+  .icon {
+    ::ng-deep path {
+      fill: #CACED6;
+    }
+  }
+}

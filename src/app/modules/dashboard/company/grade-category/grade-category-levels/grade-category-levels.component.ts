@@ -4,18 +4,14 @@ import {
   OnInit,
 } from '@angular/core';
 import { GradeCategoryService } from '@core/services/company/grade-category/grade-category.service';
-import { map, switchMap, tap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 import { GradeCategory } from '@core/types/grade-category.model';
 import { gradeLevelsTableConfig } from '@app/modules/dashboard/company/grade-category/configs/grade-levels-table.config';
-import {
-  TableAction,
-  TableActionConfig,
-  TableActionTypes,
-} from '@core/types/data-table';
+import { TableAction } from '@core/types/data-table';
 import { gradeLevelsFormConfig } from '@app/modules/dashboard/company/grade-category/configs/grade-levels-form.config';
-import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 
 @Component({
   selector: 'app-grade-category-levels',
@@ -47,25 +43,12 @@ export class GradeCategoryLevelsComponent implements OnInit {
 
   gradeCategoryId = '';
 
-  actionConfig: TableActionConfig[] = [
-    {
-      icon: 'delete',
-      disabled: false,
-      type: TableActionTypes.DELETE,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#FF0000',
-      },
-    },
+  actionConfig: ActionButton[] = [
+    { type: ActionButtonName.DELETE, disabled: false },
   ];
 
   constructor(
-    private readonly gradeCategoryService: GradeCategoryService,
-    private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private readonly gradeCategoryService: GradeCategoryService
   ) {}
 
   ngOnInit() {
@@ -79,25 +62,6 @@ export class GradeCategoryLevelsComponent implements OnInit {
     if (event.action === 'delete') {
       this.gradeCategoryService
         .deleteGradeLevel(event.payload.id)
-        .subscribe();
-    }
-    if (event.action === 'add') {
-      let newGradeLevel = {};
-      event.payload
-        .map((form: FormGroup) => form.getRawValue())
-        .forEach(
-          (object: any) =>
-            (newGradeLevel = { ...newGradeLevel, ...object })
-        );
-      this.gradeCategoryService
-        .createGradeLevel(this.gradeCategoryId, newGradeLevel)
-        .pipe(
-          tap(() =>
-            this.router.navigate([NavigationPaths.BACK], {
-              relativeTo: this.route,
-            })
-          )
-        )
         .subscribe();
     }
   }
