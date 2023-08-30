@@ -27,7 +27,7 @@ export const foldersListConfig: TableConfig = [
   },
   {
     columnName: 'SIZE',
-    columnType: 'text',
+    columnType: 'size',
     filedName: 'size',
     hidden: false,
   },

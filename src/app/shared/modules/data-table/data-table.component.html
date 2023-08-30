@@ -143,6 +143,28 @@
           </ng-container>
 
           <ng-container
+            *ngSwitchCase="ColumnType.SIZE"
+            [matColumnDef]="col">
+            <th
+              mat-header-cell
+              [hidden]="tableConfig[i].hidden"
+              *matHeaderCellDef>
+              <ng-container
+                [ngTemplateOutlet]="defaultCellHeader"
+                [ngTemplateOutletContext]="{ i }" />
+            </th>
+
+            <td
+              mat-cell
+              [hidden]="tableConfig[i].hidden"
+              *matCellDef="let element">
+              <div class="size">
+                {{ element[tableConfig[i].filedName!] }}
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container
             *ngSwitchCase="ColumnType.ACTIONS"
             [matColumnDef]="col">
             <th mat-header-cell *matHeaderCellDef>

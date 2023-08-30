@@ -19,7 +19,7 @@ export const documentsListConfig: TableConfig = [
   },
   {
     columnName: 'SIZE',
-    columnType: 'text',
+    columnType: 'size',
     filedName: 'sizeInUnit',
     hidden: false,
   },
