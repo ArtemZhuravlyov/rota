@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from '@shared/modules/button/button.module';
@@ -29,7 +30,7 @@ import { Router } from '@angular/router';
   styleUrls: ['../timer-idle-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginModalComponent {
+export class LoginModalComponent implements OnInit {
   private dialogRef = inject(MatDialogRef);
   private authService = inject(AuthService);
   private route = inject(Router);
@@ -52,6 +53,9 @@ export class LoginModalComponent {
       extendedValidation: true,
     },
   ];
+  ngOnInit() {
+    this.clearStorage();
+  }
 
   onSubmit(): void {
     this.form.disable();
@@ -72,8 +76,12 @@ export class LoginModalComponent {
   }
 
   onClose(): void {
-    this.authService.clearLocalStorage();
+    this.clearStorage();
     this.authService.checkUserAuth();
+  }
+
+  private clearStorage() {
+    this.authService.clearLocalStorage();
   }
 
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
