@@ -13,6 +13,8 @@ import { FormBuilderModule } from '@shared/modules/form-builder/form-builder.mod
 import { FilterDropdownComponent } from '@shared/components/filter-dropdown/filter-dropdown.component';
 import { MoveVertDropdownComponent } from '@shared/components/move-vert-dropdown/move-vert-dropdown.component';
 import { TableButtonComponent } from '@shared/components/table-button/table-button.component';
+import { SimplebarAngularModule } from 'simplebar-angular';
+import { ActionButtonComponent } from '@shared/components/action-button/action-button.component';
 import { ButtonComponent } from '@shared/modules/button/button.component';
 
 @NgModule({
@@ -32,6 +34,8 @@ import { ButtonComponent } from '@shared/modules/button/button.component';
     FilterDropdownComponent,
     MoveVertDropdownComponent,
     TableButtonComponent,
+    SimplebarAngularModule,
+    ActionButtonComponent,
     ButtonModule,
   ],
 })

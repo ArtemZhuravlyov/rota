@@ -5,8 +5,11 @@
     <mat-spinner diameter="50" />
   </div>
 
-  <div class="table-container">
+  <ngx-simplebar
+    [options]="{ autoHide: false }"
+    class="table-container">
     <table
+      #table
       mat-table
       [dataSource]="filteredData"
       *ngIf="tableData"
@@ -243,18 +246,15 @@
                   <div>{{ element[tableConfig[i].filedName!] }}</div>
                 </div>
 
-                <div
-                  class="view-btn"
+                <app-action-button
+                  *ngIf="!isPrinting"
+                  [type]="ActionButtonName.VIEW_DETAILS_TEXT"
                   (click)="
                     onAction({
                       action: 'viewDescription',
                       payload: element
                     })
-                  "
-                  *ngIf="!isPrinting">
-                  <mat-icon svgIcon="eye" />
-                  <span> View </span>
-                </div>
+                  " />
               </div>
             </td>
           </ng-container>
@@ -321,28 +321,29 @@
         <tr mat-footer-row *matFooterRowDef="columns"></tr>
       </ng-container>
     </table>
-
-    <ng-container *ngIf="!isPrinting">
-      <div class="paginator">
-        <app-custom-paginator
-          *ngIf="tableData.totalCount"
-          [length]="tableData.totalCount"
-          (page)="pageChange.emit($event)"
-          [pageSize]="10">
-        </app-custom-paginator>
-      </div>
-    </ng-container>
-
     <div class="table-search" *ngIf="showSearch">
       <app-search-input
+        [value]="searchInput"
         (closeClick)="showSearch = false"
         [onlyClose]="false"
         [styleConfig]="{ width: '100%' }"
+        (clearClick)="resetFilterTable()"
         (valueChanged)="onValueSearch($event)" />
     </div>
-  </div>
+  </ngx-simplebar>
 </div>
-
+<ng-container *ngIf="!isPrinting">
+  <div class="container-wrapper paginator_wrapper">
+    <div class="paginator">
+      <app-custom-paginator
+        *ngIf="tableData.totalCount"
+        [length]="tableData.totalCount"
+        (page)="pageChange.emit($event)"
+        [pageSize]="10">
+      </app-custom-paginator>
+    </div>
+  </div>
+</ng-container>
 <ng-template #defaultCellHeader let-i="i">
   <div
     class="d-flex align-items-center justify-content-center defaultHeader">
@@ -371,19 +372,9 @@
     class="d-flex justify-content-end action-btns-container"
     *ngIf="!isPrinting">
     <ng-container *ngFor="let action of actions">
-      <app-button
-        btnType="LITTLE_ICON"
-        [styleConfig]="action.styleConfig"
-        [iconStyleConfig]="{
-          width: '20px',
-          height: '20px',
-          'line-height': '20px',
-          'font-size': '16px',
-          transform: 'scale(0.9)'
-        }"
+      <app-action-button
+        [type]="action.type"
         [disabled]="action.disabled"
-        [isIconButton]="true"
-        [icon]="action.icon"
         (btnClick)="
           onAction({ action: action.type, payload: element })
         " />

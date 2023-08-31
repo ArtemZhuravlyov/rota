@@ -17,12 +17,19 @@ import { Style } from '@core/types/style-model';
 export class SearchInputComponent {
   @Input() styleConfig: Style = {};
   @Input() onlyClose = true;
+  @Input() set value(value: string) {
+    this._value = value;
+  }
+
+  get value() {
+    return this._value;
+  }
 
   @Output() valueChanged = new EventEmitter<string>();
   @Output() clearClick = new EventEmitter<void>();
   @Output() closeClick = new EventEmitter<void>();
 
-  value = '';
+  _value = '';
 
   protected readonly SEARCH = TranslateKey.SEARCH;
   protected readonly CLEAR = TranslateKey.CLEAR;

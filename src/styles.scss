@@ -13,7 +13,17 @@ html, body {
 }
 
 body {
-  color: $text-gray
+  color: $text-gray;
+
+  .simplebar-track.simplebar-horizontal {
+    pointer-events: auto;
+    left: 11px;
+    right: 11px;
+    .simplebar-scrollbar::before {
+      background-color: #808080;
+      opacity: .3;
+    }
+  }
 }
 
 * {

@@ -1,31 +1,7 @@
-import {
-  TableActionConfig,
-  TableActionTypes,
-} from '@core/types/data-table';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 
-export const divisionActionConfig: TableActionConfig[] = [
-  {
-    icon: 'eye',
-    disabled: false,
-    type: TableActionTypes.VIEW,
-    styleConfig: {
-      width: '30px',
-      height: '30px',
-      background: '#FFFFFF',
-      border: '1px solid #E4EDF4',
-      color: '#91ACC2',
-    },
-  },
-  {
-    icon: 'delete',
-    disabled: false,
-    type: TableActionTypes.DELETE,
-    styleConfig: {
-      width: '30px',
-      height: '30px',
-      background: '#FFFFFF',
-      border: '1px solid #E4EDF4',
-      color: '#FF0000',
-    },
-  },
+export const divisionActionConfig: ActionButton[] = [
+  { type: ActionButtonName.VIEW_DETAILS, disabled: false },
+  { type: ActionButtonName.DELETE, disabled: false },
 ];
