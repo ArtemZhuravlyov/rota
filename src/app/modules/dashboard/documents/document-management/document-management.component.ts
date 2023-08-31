@@ -4,10 +4,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ButtonTypeEnum } from '@core/enums/button-type.enum';
-import {
-  TableActionConfig,
-  TableActionTypes,
-} from '@core/types/data-table';
+import { TableActionTypes } from '@core/types/data-table';
 import { PageEvent } from '@angular/material/paginator';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { BehaviorSubject, switchMap } from 'rxjs';
@@ -20,9 +17,10 @@ import {
   InfoModalComponent,
 } from '@shared/modalWindows/info-modal/info-modal.component';
 import { distinctUntilParamsChanged } from '@shared/utils/distinct-until-params-changed';
-import { foldersActionsListConfig } from '@modules/dashboard/documents/configs/folders-actions-list.config';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShareWithModalComponent } from '@shared/modalWindows/share-with-modal/share-with-modal.component';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
 
 @Component({
   selector: 'app-document-management',
@@ -33,8 +31,6 @@ import { ShareWithModalComponent } from '@shared/modalWindows/share-with-modal/s
 export class DocumentManagementComponent implements OnInit {
   protected readonly NavigationPaths = NavigationPaths;
   readonly foldersListConfig = foldersListConfig;
-  readonly actionConfig: TableActionConfig[] =
-    foldersActionsListConfig;
   readonly ButtonTypeEnum = ButtonTypeEnum;
 
   //todo types
@@ -57,6 +53,12 @@ export class DocumentManagementComponent implements OnInit {
     documentCategories: [],
     totalCount: 0,
   });
+
+  actionConfig: ActionButton[] = [
+    { type: ActionButtonName.DOWNLOAD, disabled: false },
+    { type: ActionButtonName.EDIT, disabled: false },
+    { type: ActionButtonName.DELETE, disabled: false },
+  ];
 
   ngOnInit(): void {
     this.initFolderList();
@@ -104,7 +106,6 @@ export class DocumentManagementComponent implements OnInit {
           const { isItemChanged } = this.requestParams$.value;
           this.updateRequestParams({ isItemChanged: !isItemChanged });
         },
-        error: () => {},
       });
   }
 

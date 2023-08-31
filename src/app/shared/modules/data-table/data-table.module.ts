@@ -15,7 +15,6 @@ import { MoveVertDropdownComponent } from '@shared/components/move-vert-dropdown
 import { TableButtonComponent } from '@shared/components/table-button/table-button.component';
 import { SimplebarAngularModule } from 'simplebar-angular';
 import { ActionButtonComponent } from '@shared/components/action-button/action-button.component';
-import { ButtonComponent } from '@shared/modules/button/button.component';
 
 @NgModule({
   declarations: [DataTableComponent, CustomPaginatorComponent],

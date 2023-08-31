@@ -10,10 +10,11 @@ import { documentsListConfig } from '@modules/dashboard/documents/configs/docume
 import { ActivatedRoute } from '@angular/router';
 import { DocumentsService } from '@core/services/documents/documents.service';
 import { AuthService } from '@core/services/account/auth.service';
-import { documentsActionsListConfig } from '@modules/dashboard/documents/configs/documents-actions-list.config';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { distinctUntilParamsChanged } from '@shared/utils/distinct-until-params-changed';
 import { isNil } from 'lodash';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
 
 @Component({
   selector: 'app-folder-info',
@@ -24,8 +25,6 @@ import { isNil } from 'lodash';
 export class FolderInfoComponent {
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly documentsListConfig = documentsListConfig;
-  protected readonly documentsActionConfig: TableActionConfig[] =
-    documentsActionsListConfig;
 
   //todo types
   requestParams$ = new BehaviorSubject<{
@@ -44,6 +43,11 @@ export class FolderInfoComponent {
     private documentService: DocumentsService,
     private authService: AuthService
   ) {}
+
+  actionConfig: ActionButton[] = [
+    { type: ActionButtonName.VIEW_DETAILS, disabled: false },
+    { type: ActionButtonName.DELETE, disabled: false },
+  ];
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
