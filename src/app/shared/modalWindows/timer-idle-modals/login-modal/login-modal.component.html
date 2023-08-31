@@ -1,0 +1,23 @@
+<div class="dialog-wrapper">
+    <img class="dialog-wrapper_img" src="/assets/images/undraw_time_2.svg" alt="timer">
+    <p class="dialog-wrapper_header">Please, enter your password</p>
+    <p class="dialog-wrapper_subheader">You haven’t been active for more than 5 mins, please, re-enter your password</p>
+    <app-form-builder
+            [styleConfig]="{ width: '100%', 'max-width': '520px' }"
+            [formFields]="formFields"
+            (createdForm)="form = $event"
+    >
+        <app-button
+                [disabled]="!form.valid"
+                [title]="'LOGIN'"
+                (btnClick)="onSubmit()"
+                [styleConfig]="{ height: '52px'}"
+        ></app-button>
+    </app-form-builder>
+    <app-button
+            class="dialog-wrapper_close"
+            [icon]="'clear'"
+            (btnClick)="onClose()"
+            [btnType]="ButtonTypeEnum.ICON" [isIconButton]="true"
+    />
+</div>

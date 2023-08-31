@@ -1,0 +1,22 @@
+.label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  &_span {
+    font-style: normal;
+    font-size: 15px;
+    color: #221F1F;
+  }
+
+  span {
+    font-size: 15px;
+    font-style: normal;
+    color: #808080;
+  }
+
+  span:first-child {
+    font-size: 15px;
+    font-style: normal;
+    color: #221f1f;
+  }
+}

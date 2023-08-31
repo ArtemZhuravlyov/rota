@@ -1,68 +1,69 @@
-import {NavigationMenusConfig} from "@core/types/navigation-menus-config";
+import { NavigationMenusConfig } from '@core/types/navigation-menus-config';
+import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 
 export const SettingsMenuConfig: NavigationMenusConfig[] = [
   {
-    title: 'MY_SETTINGS',
+    title: TranslateKey.MY_SETTINGS,
     icon: 'settings',
   },
   {
-    title: 'COMPANY',
+    title: TranslateKey.COMPANY,
     icon: 'company-menu-logo',
   },
   {
-    title: 'BENEFITS',
+    title: TranslateKey.BENEFITS,
     icon: 'benefits',
   },
   {
-    title: 'EMAIL_ALERTS',
+    title: TranslateKey.EMAIL_ALERTS,
     icon: 'email-alerts',
   },
   {
-    title: 'WORKFLOW',
+    title: TranslateKey.WORKFLOW,
     icon: 'workflow',
   },
   {
-    title: 'ACCESS_LEVELS',
+    title: TranslateKey.ACCESS_LEVELS,
     icon: 'access-levels',
   },
   {
-    title: 'HOLIDAYS',
+    title: TranslateKey.HOLIDAYS,
     icon: 'holidays',
   },
   {
-    title: 'ONBOARDING',
+    title: TranslateKey.ONBOARDING,
     icon: 'onboarding',
   },
   {
-    title: 'OFFBOARDING',
+    title: TranslateKey.OFFBOARDING,
     icon: 'general',
   },
   {
-    title: 'PAYROLL',
+    title: TranslateKey.PAYROLL,
     icon: 'payroll',
   },
   {
-    title: 'PENSION',
+    title: TranslateKey.PENSION,
     icon: 'pension',
   },
   {
-    title: 'TAX',
+    title: TranslateKey.TAX,
     icon: 'payment',
   },
   {
-    title: 'HIRING',
+    title: TranslateKey.HIRING,
     icon: 'employee',
   },
   {
-    title: 'PERFORMANCE',
+    title: TranslateKey.PERFORMANCE,
     icon: 'performance',
   },
   {
-    title: 'LEAVE',
+    title: TranslateKey.LEAVE,
     icon: 'leave',
   },
   {
-    title: 'TIME_TRACKING',
+    title: TranslateKey.TIME_TRACKING,
     icon: 'time-tracking',
-  }
-]
+  },
+];

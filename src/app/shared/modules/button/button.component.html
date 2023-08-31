@@ -1,100 +1,108 @@
 <div [class]="colorTheme" [ngClass]="{ disabled: disabled }">
   <ng-container [ngSwitch]="btnType">
     <button
+      (click)="onClick()"
       [style]="styleConfig"
       mat-stroked-button
       *ngSwitchCase="buttonTypeEnum.STROKED"
-      [disabled]="disabled"
-    >
+      [disabled]="disabled">
       <div [class]="'flex-container ' + iconPosition">
         {{ title | translate }}
-        <mat-icon [style]="iconStyleConfig" *ngIf="isIconButton" [svgIcon]="icon"></mat-icon>
+        <mat-icon
+          [style]="iconStyleConfig"
+          *ngIf="isIconButton"
+          [svgIcon]="icon"></mat-icon>
       </div>
     </button>
 
     <button
+      (click)="onClick()"
       [style]="styleConfig"
       mat-icon-button
       *ngSwitchCase="buttonTypeEnum.LITTLE_ICON"
       [disabled]="disabled"
-      class="little-icon-btn"
-    >
+      class="little-icon-btn">
       <mat-icon
         *ngIf="isBadgeShowed"
         [matBadge]="badgeInfo"
         [style]="iconStyleConfig"
         matBadgeColor="warn"
-        [svgIcon]="icon"
-      ></mat-icon>
-      <mat-icon [style]="iconStyleConfig" *ngIf="!isBadgeShowed" [svgIcon]="icon"></mat-icon>
+        [svgIcon]="icon"></mat-icon>
+      <mat-icon
+        [style]="iconStyleConfig"
+        *ngIf="!isBadgeShowed"
+        [svgIcon]="icon"></mat-icon>
     </button>
 
     <button
+      (click)="onClick()"
       mat-icon-button
       [style]="styleConfig"
       *ngSwitchCase="buttonTypeEnum.ICON"
       [disabled]="disabled"
-      class="icon-btn"
-    >
+      class="icon-btn">
       <mat-icon
         *ngIf="isBadgeShowed"
         [matBadge]="badgeInfo"
         [style]="iconStyleConfig"
         matBadgeColor="warn"
-        [svgIcon]="icon"
-      ></mat-icon>
-      <mat-icon [style]="iconStyleConfig" *ngIf="!isBadgeShowed" [svgIcon]="icon"></mat-icon>
+        [svgIcon]="icon"></mat-icon>
+      <mat-icon
+        [style]="iconStyleConfig"
+        *ngIf="!isBadgeShowed"
+        [svgIcon]="icon"></mat-icon>
     </button>
 
     <button
+      (click)="onClick()"
       [style]="styleConfig"
       mat-fab
       *ngSwitchCase="buttonTypeEnum.FAB"
-      [disabled]="disabled"
-    >
-      <mat-icon  *ngIf="isIconButton"[svgIcon]="icon"></mat-icon>
+      [disabled]="disabled">
+      <mat-icon *ngIf="isIconButton" [svgIcon]="icon"></mat-icon>
     </button>
 
-    <ng-container
-      *ngSwitchCase="buttonTypeEnum.FLAT"
-    >
+    <ng-container *ngSwitchCase="buttonTypeEnum.FLAT">
       <button
+        (click)="onClick()"
         *ngIf="iconPosition === 'beforeText'"
         [style]="styleConfig"
         [disabled]="disabled"
-        mat-fab extended>
-        <mat-icon  [style]="iconStyleConfig" [svgIcon]="icon"></mat-icon>
+        mat-fab
+        extended>
+        <mat-icon
+          [style]="iconStyleConfig"
+          [svgIcon]="icon"></mat-icon>
         {{ title | translate }}
       </button>
 
       <button
+        (click)="onClick()"
         *ngIf="iconPosition === 'afterText'"
         [style]="styleConfig"
         mat-flat-button
         class="flat-button"
-        [disabled]="disabled"
-      >
+        [disabled]="disabled">
         <div [class]="'flex-container ' + iconPosition">
           {{ title | translate }}
-          <mat-icon *ngIf="isIconButton"  [style]="iconStyleConfig" [svgIcon]="icon"></mat-icon>
+          <mat-icon
+            *ngIf="isIconButton"
+            [style]="iconStyleConfig"
+            [svgIcon]="icon"></mat-icon>
         </div>
       </button>
-
     </ng-container>
 
     <button
+      (click)="onClick()"
       [style]="styleConfig"
-      mat-flat-button *ngSwitchDefault
+      mat-flat-button
+      *ngSwitchDefault
       class="flat-button"
-      [disabled]="disabled"
-    >
+      [disabled]="disabled">
       <div [class]="'flex-container ' + iconPosition">
         {{ title | translate }}
       </div>
     </button>
-
   </ng-container>
 </div>
-
-
-

@@ -1,0 +1,19 @@
+<button
+  class="move-vert-button"
+  (menuOpened)="toggleFocus()"
+  (menuClosed)="toggleFocus()"
+  [ngClass]="{ focus: isFocus }"
+  [matMenuTriggerFor]="menu">
+  <span>.</span>
+  <span>.</span>
+  <span>.</span>
+</button>
+
+<mat-menu
+  [class]="'move-vert-menu'"
+  #menu="matMenu"
+  [xPosition]="xPosition"
+  [yPosition]="yPosition">
+  <div class="triangle-border"></div>
+  <ng-content></ng-content>
+</mat-menu>

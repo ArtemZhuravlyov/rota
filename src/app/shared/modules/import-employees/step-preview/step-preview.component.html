@@ -1,88 +1,102 @@
 <div>
-  <app-header-content [styleConfig]="{ 'max-width': '900px', height: '280px' }">
-
+  <app-header-content
+    [styleConfig]="{ 'max-width': '900px', height: '280px' }">
     <div class="header" header>
       <div class="title">
         <span class="error-count">{{ errorsCount }}</span>
-        <span>{{ 'Errors' | translate }}</span>
+        <span>{{ ERRORS | translate }}</span>
       </div>
-      <div class="subtitle">{{ 'MAPPING_ERROR' | translate }}</div>
+      <div class="subtitle">{{ MAPPING_ERROR | translate }}</div>
     </div>
 
     <div class="content">
-      <div class="field-error d-flex justify-content-between"
-           *ngFor="let field of errors; index as i">
+      <div
+        class="field-error d-flex justify-content-between"
+        *ngFor="let field of errors; index as i">
         <div class="d-flex align-items-center">
-          <mat-icon [svgIcon]="'warning'"></mat-icon>
+          <mat-icon svgIcon="warning" />
           <span>{{ i + 1 + '. ' + field }}</span>
         </div>
         <app-button
           [styleConfig]="{ height: '44px', width: '110px' }"
-          [btnType]="'STROKED'"
-          [title]="'FIX_NOW'"
-          (btnClick)="openDialog()"
-        ></app-button>
+          btnType="STROKED"
+          title="FIX_NOW"
+          (btnClick)="openDialog()" />
       </div>
     </div>
-
   </app-header-content>
 
-  <app-header-content [styleConfig]="{ 'max-width': '900px' }" *ngIf="importProgress < 100; else completed">
-
+  <app-header-content
+    [styleConfig]="{ 'max-width': '900px' }"
+    *ngIf="importProgress < 100; else completed">
     <div class="header" header>
       <div class="title">
         <span class="import-count">{{ recordsCount }}</span>
-        <span>{{ 'RECORDS_NEED_TO_CREATED' | translate }}</span>
+        <span>{{ RECORDS_NEED_TO_CREATED | translate }}</span>
       </div>
-      <div class="subtitle">{{ 'RECORDS_ALL_IMPORTED' | translate }}</div>
+      <div class="subtitle">
+        {{ RECORDS_ALL_IMPORTED | translate }}
+      </div>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center flex-column">
-      <ng-container *ngIf="importRecords$ | async as records; else notImport">
-        <app-progress-spinner [value]="importProgress"></app-progress-spinner>
-        <span class="records-text-processing">{{ 'PROCESSING' | translate }}...</span>
+    <div
+      class="d-flex justify-content-center align-items-center flex-column">
+      <ng-container
+        *ngIf="importRecords$ | async as records; else notImport">
+        <span class="records-text-processing"
+          >{{ PROCESSING | translate }}...</span
+        >
       </ng-container>
 
       <ng-template #notImport>
         <div class="d-flex justify-content-center align-items-center">
           <app-button
-            [title]="'IMPORT_RECORDS'"
+            title="IMPORT_RECORDS"
             [styleConfig]="{ height: '52px' }"
-            (btnClick)="onImportRecords()"
-          ></app-button>
+            (btnClick)="onImportRecords()" />
         </div>
       </ng-template>
     </div>
-
   </app-header-content>
 
   <ng-template #completed>
-    <app-header-content >
-      <div class="success-container d-flex justify-content-center align-items-center flex-column">
-        <div class="d-flex justify-content-center align-items-center success-import">
-          <mat-icon [svgIcon]="'check'"></mat-icon>
+    <app-header-content>
+      <div
+        class="success-container d-flex justify-content-center align-items-center flex-column">
+        <div
+          class="d-flex justify-content-center align-items-center success-import">
+          <mat-icon svgIcon="check" />
         </div>
         <div class="header">
           <div class="title success-title">
             <span class="import-count">{{ recordsCount }}</span>
-            <span>{{ 'RECORDS_HAS_BEEN_SUCCESSFULLY_IMPORTED' | translate }}</span>
+            <span>{{
+              RECORDS_HAS_BEEN_SUCCESSFULLY_IMPORTED | translate
+            }}</span>
           </div>
         </div>
         <app-button
-          [title]="'VIEW_EMPLOYEE_RECORDS'"
-          [btnType]="'STROKED'"
-          [styleConfig]="{ 'border-radius': '6px', 'border-color': '#3E77AA80', background: 'transparent', color: '#3E77AA' }"
-        ></app-button>
+          title="VIEW_EMPLOYEE_RECORDS"
+          btnType="STROKED"
+          [styleConfig]="{
+            'border-radius': '6px',
+            'border-color': '#3E77AA80',
+            background: 'transparent',
+            color: '#3E77AA'
+          }" />
       </div>
     </app-header-content>
   </ng-template>
 
   <div class="d-flex justify-content-center align-items-center">
     <app-button
-      [title]="'BACK'"
+      title="BACK"
       (btnClick)="back()"
-      [styleConfig]="{ height: '50px', width: '112px', background: '#E4EDF4', color: '#464646' }"
-    ></app-button>
+      [styleConfig]="{
+        height: '50px',
+        width: '112px',
+        background: '#E4EDF4',
+        color: '#464646'
+      }" />
   </div>
-
 </div>

@@ -1,8 +1,6 @@
 <app-page-header
-  [title]="'Grade Information'"
-  [isSubHeaderShowed]="false"
-  [isBackBtnShowed]="true"
-></app-page-header>
+  title="GRADE_INFORMATION"
+  [isBackBtnShowed]="true"></app-page-header>
 
 <div class="table-container">
   <ng-container *ngIf="gradeCategoryLevels$ | async as levels">
@@ -17,8 +15,6 @@
       [isFormIncluded]="true"
       [headerDropdownFilter]="false"
       [tableStyle]="'gradeCategoryTableLevels'"
-    ></app-data-table>
+      [isLoading]="false" />
   </ng-container>
-
 </div>
-

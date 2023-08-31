@@ -1,27 +1,41 @@
 <div [class.input-focus]="isFocus">
   <mat-form-field appearance="outline" [ngStyle]="styleConfig">
-    <mat-icon class="icon-prefix material-icons-outlined" matPrefix>search</mat-icon>
-    <input (focusin)="isFocus = true"
-           (focusout)="isFocus = false"
-           #input
-           matInput
-           (input)="valueChanged.emit(input.value)"
-           placeholder="{{'SEARCH' | translate}}"
-           class="search-input"
+    <mat-icon class="icon-prefix material-icons-outlined" matPrefix
+      >search</mat-icon
     >
-    <div matSuffix class="d-flex align-items-center justify-content-center">
-      <ng-container *ngIf="showClearButton else customClearButton">
-        <app-button class="close-icon" *ngIf="input.value.length" [isIconButton]="true" [btnType]="'ICON'"
-                    [icon]="'clear'"
-                    (click)="input.value = ''; valueChanged.emit('')">
-        </app-button>
-      </ng-container>
-
-      <ng-content></ng-content>
-    </div>
+    <input
+      (focusin)="isFocus = true"
+      (focusout)="isFocus = false"
+      #input
+      matInput
+      [ngModel]="value"
+      (ngModelChange)="onValueChanged(input.value)"
+      placeholder="{{ SEARCH | translate }}"
+      class="search-input" />
+    <ng-container *ngIf="onlyClose" [ngTemplateOutlet]="close" />
+    <ng-container
+      *ngIf="!onlyClose"
+      [ngTemplateOutlet]="closeWithEmpty" />
   </mat-form-field>
 </div>
 
-<ng-template #customClearButton>
-  <span class="custom-clear" (click)="input.value = ''; valueChanged.emit('')">{{'CLEAR' | translate}}</span>
+<ng-template #close>
+  <button
+    matSuffix
+    class="close-button"
+    *ngIf="value.length"
+    (click)="onClearInput()">
+    <mat-icon [svgIcon]="'clear'" />
+  </button>
+</ng-template>
+
+<ng-template #closeWithEmpty>
+  <div class="search_buttons" matSuffix>
+    <span class="custom-clear" (click)="onClearInput()">{{
+      CLEAR | translate
+    }}</span>
+    <button class="close-button" (click)="closeClick.emit()">
+      <mat-icon [svgIcon]="'clear'" />
+    </button>
+  </div>
 </ng-template>

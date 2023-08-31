@@ -1,9 +1,9 @@
-import { ComponentTypeEnum } from "../enums/component-type.enum";
-import { ValidatorFn } from "@angular/forms";
+import { ComponentTypeEnum } from '../enums/component-type.enum';
+import { ValidatorFn } from '@angular/forms';
 
 export interface FormField {
   key: string;
-  additionalTitle?: string,
+  additionalTitle?: string;
   label?: string;
   componentType: ComponentType;
   data?: any;
@@ -15,7 +15,7 @@ export interface FormField {
   hint?: string;
   hintLink?: string | string[];
   maxLength?: number;
-  styleConfig?:  { [key: string]: string };
+  styleConfig?: { [key: string]: string };
   extendedValidation?: boolean;
   checkbox?: boolean;
   heading?: string;
@@ -30,11 +30,11 @@ export interface FormField {
   dataType?: DataType;
 }
 
-export type ComponentType = typeof ComponentTypeEnum[keyof typeof ComponentTypeEnum];
+export type ComponentType =
+  (typeof ComponentTypeEnum)[keyof typeof ComponentTypeEnum];
 
 export type InputType = 'email' | 'text' | 'password' | 'textarea';
 
 export type DropdownOptions = Record<string, string | number>;
 
 export type DataType = 'number';
-

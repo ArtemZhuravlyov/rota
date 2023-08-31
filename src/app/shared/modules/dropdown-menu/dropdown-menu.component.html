@@ -2,15 +2,13 @@
   [btnType]="ButtonTypeEnum.ICON"
   [icon]="menuIcon"
   [matMenuTriggerFor]="menu"
-  [iconStyleConfig]="{background: 'transparent'}"
-  [styleConfig]="buttonStyleConfig"
-></app-button>
+  [iconStyleConfig]="{ background: 'transparent' }"
+  [styleConfig]="buttonStyleConfig"></app-button>
 
 <mat-menu
   #menu="matMenu"
   [xPosition]="xPosition"
   [yPosition]="yPosition"
-  [class]="customClass ?? ''"
->
+  [class]="customClass ?? ''">
   <ng-content></ng-content>
 </mat-menu>

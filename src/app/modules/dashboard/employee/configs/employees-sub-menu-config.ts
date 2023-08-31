@@ -1,34 +1,28 @@
 import { MenusConfig } from "@core/types/menus-config";
 import { NavigationPaths } from "@core/enums/navigation-paths.enum";
+import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 
 export const employeesSubMenuConfig: MenusConfig[] = [
   {
-    title: 'EMPLOYEES',
+    title: TranslateKey.EMPLOYEES_TYPE,
     routerLink: `./${NavigationPaths.EMPTY_PATH}`,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.EMPTY_PATH}`
+    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.EMPLOYEES_TYPE}`,
   },
   {
-    title: 'DIRECTORY',
-    routerLink: NavigationPaths.DIRECTORY,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.DIRECTORY}`,
-    isDisabled: true,
+    title: TranslateKey.EMPLOYEE_RECORD,
+    routerLink: NavigationPaths.EMPLOYEES,
+    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.EMPLOYEES}`,
   },
   {
-    title: 'ONBOARDING',
+    title: TranslateKey.ORGANISATION_CHART,
     routerLink: NavigationPaths.ONBOARDING,
     fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.ONBOARDING}`,
     isDisabled: true,
   },
   {
-    title: 'OFFBOARDING',
+    title: TranslateKey.IMPORT_VERIFICATION,
     routerLink: NavigationPaths.OFFBOARDING,
     fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.OFFBOARDING}`,
     isDisabled: true,
   },
-  {
-    title: 'LOAN_MANAGEMENT',
-    routerLink: NavigationPaths.LOAN_MANAGEMENT,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.EMPLOYEES}/${NavigationPaths.LOAN_MANAGEMENT}`,
-    isDisabled: true,
-  }
 ];

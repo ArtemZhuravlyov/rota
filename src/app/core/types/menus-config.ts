@@ -1,7 +1,9 @@
+import { TranslateKey } from '../../../assets/i18n/enums/translate-key.enum';
+
 export interface MenusConfig {
-  title: string,
-  routerLink: string,
-  fullRouterLink?: string,
-  icon?: string,
+  title: TranslateKey;
+  routerLink: string;
+  fullRouterLink?: string;
+  icon?: string;
   isDisabled?: boolean;
 }

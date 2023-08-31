@@ -1,6 +1,9 @@
 <app-sub-menu>
   <ng-container nav-buttons>
-    <app-sub-menu-button *ngFor="let button of settingsSubMenuConfig" [title]="button.title" [link]="button.routerLink"></app-sub-menu-button>
+    <app-sub-menu-button
+      *ngFor="let button of settingsSubMenuConfig"
+      [title]="button.title"
+      [link]="button.routerLink"></app-sub-menu-button>
   </ng-container>
 
   <router-outlet></router-outlet>

@@ -1,8 +1,8 @@
-import { TableConfig } from "@core/types/data-table";
+import { TableConfig } from '@core/types/data-table';
 
 export const gradeCategoryTableConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
+    columnName: 'EMPTY',
     columnType: 'checkbox',
   },
   {
@@ -10,7 +10,7 @@ export const gradeCategoryTableConfig: TableConfig = [
     columnType: 'link',
     action: 'view',
     hidden: false,
-    filedName: 'name'
+    filedName: 'name',
   },
   {
     columnName: 'NUMBER_OF_JOB_ROLE',

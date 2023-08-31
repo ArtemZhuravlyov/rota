@@ -1,86 +1,87 @@
-import { MenusConfig } from "@core/types/menus-config";
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
+import { MenusConfig } from '@core/types/menus-config';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 
 export const dashboardTabsConfig: MenusConfig[] = [
   {
-    title: 'Company',
+    title: TranslateKey.COMPANY,
     icon: 'company-menu-logo',
     routerLink: NavigationPaths.COMPANY,
   },
   {
-    title: 'EMPLOYEES',
+    title: TranslateKey.EMPLOYEES,
     icon: 'employee',
     routerLink: NavigationPaths.EMPLOYEES,
   },
   {
-    title: 'PAYROLL',
+    title: TranslateKey.PAYROLL,
     icon: 'payroll',
     routerLink: NavigationPaths.PAYROLL,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'LEAVE',
+    title: TranslateKey.LEAVE,
     icon: 'leave',
     routerLink: NavigationPaths.LEAVE,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'PAYMENT',
+    title: TranslateKey.PAYMENT,
     icon: 'payment',
     routerLink: NavigationPaths.PAYMENT,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'DOCUMENTS',
+    title: TranslateKey.DOCUMENTS,
     icon: 'documents',
     routerLink: NavigationPaths.DOCUMENTS,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'RECRUITMENTS',
+    title: TranslateKey.RECRUITMENTS,
     icon: 'recruitment',
     routerLink: NavigationPaths.RECRUITMENTS,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'Performance',
+    title: TranslateKey.PERFORMANCE,
     icon: 'performance',
     routerLink: NavigationPaths.PERFORMANCE,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'LEARNINGS',
+    title: TranslateKey.LEARNINGS,
     icon: 'learning',
     routerLink: NavigationPaths.LEARNINGS,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'TIMESHEET',
+    title: TranslateKey.TIMESHEET,
     icon: 'timesheet',
     routerLink: NavigationPaths.TIMESHEET,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'SCHEDULING',
+    title: TranslateKey.SCHEDULING,
     icon: 'scheduling',
     routerLink: NavigationPaths.SCHEDULING,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'ENGAGEMENT',
+    title: TranslateKey.ENGAGEMENT,
     icon: 'engagement',
     routerLink: NavigationPaths.ENGAGEMENT,
   },
   {
-    title: 'REPORTS_ANALYTICS',
+    title: TranslateKey.REPORTS_ANALYTICS,
     icon: 'reports-analytics',
     routerLink: NavigationPaths.REPORT_ANALYTICS,
-    isDisabled: true
+    isDisabled: true,
   },
   {
-    title: 'USER_ACCOUNT',
+    title: TranslateKey.USER_ACCOUNT,
     icon: 'learning',
     routerLink: NavigationPaths.USER_ACCOUNT,
-    isDisabled: true
+    isDisabled: true,
   },
-]
+];

@@ -1,9 +1,10 @@
-import { RouterModule, Routes } from "@angular/router";
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
-import { NgModule } from "@angular/core";
-import { SettingsComponent } from "@app/modules/dashboard/settings/settings.component";
+import { RouterModule, Routes } from '@angular/router';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { NgModule } from '@angular/core';
+import { SettingsComponent } from '@app/modules/dashboard/settings/settings.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     children: [
@@ -13,17 +14,19 @@ const routes: Routes = [
         children: [
           {
             path: NavigationPaths.EMPTY_PATH,
-            loadChildren: () => import('./settings-selection/settings-selection.module').then( m => m.SettingsSelectionModule),
-          }
-        ]
-      }
-    ]
+            loadChildren: () =>
+              import(
+                './settings-selection/settings-selection.module'
+              ).then(m => m.SettingsSelectionModule),
+          },
+        ],
+      },
+    ],
   },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
 export class SettingsRoutingModule {}

@@ -1,73 +1,120 @@
 <header class="header-container">
-    <div class="logo">rota <span class="secondary-text">sheet</span></div>
+  <div class="logo">
+    rota <span class="secondary-text">sheet</span>
+  </div>
 
-    <app-button class="company-setting-btn" [btnType]="buttonTypeEnum.STROKED" [isIconButton]="true" [title]="'Upwork USA Incorporation'" [icon]="'settings'"></app-button>
+  <app-button
+    class="company-setting-btn"
+    (btnClick)="openChangeCompanyModal()"
+    btnType="STROKED"
+    [isIconButton]="true"
+    [title]="companyName"
+    icon="settings" />
 
-    <div class="profile-actions">
-      <app-dropdown-menu [ngClass]="{'notification-icon': isNotificationsIconClicked}" [matBadge]="10" [matBadgeColor]="'warn'" [customClass]="'notifications-dropdown'" (click)="onIconClick('notifications')" [menuIcon]="'notifications'" xPosition="before">
-        <div (click)="$event.stopPropagation()">
-          <div class="notification-container">
-            <div class="title-container">
-              <h3 class="title">{{ 'NOTIFICATIONS' | translate }}</h3>
-            </div>
-            <div class="scroll-container">
-              <div class="notification-content" *ngFor="let info of notificationMenuConfig">
-                <div class="d-flex align-items-center justify-content-around">
-                  <mat-icon [svgIcon]="info.icon"></mat-icon>
-                  <p class="content-title">{{info.title}}</p>
-                  <p class="date">{{info.date}}</p>
-                </div>
-                <p class="text">{{info.text}} <a class="read-full-action">{{ 'READ_FULL' | translate }}</a></p>
-              <hr>
+  <div class="profile-actions">
+    <app-dropdown-menu
+      [ngClass]="{ 'notification-icon': isNotificationsIconClicked }"
+      [matBadge]="10"
+      [matBadgeColor]="'warn'"
+      [customClass]="'notifications-dropdown'"
+      (click)="onIconClick('notifications')"
+      [menuIcon]="'notifications'"
+      xPosition="before">
+      <div (click)="$event.stopPropagation()">
+        <div class="notification-container">
+          <div class="title-container">
+            <h3 class="title">{{ NOTIFICATIONS | translate }}</h3>
+          </div>
+          <div class="scroll-container">
+            <div
+              class="notification-content"
+              *ngFor="let info of notificationMenuConfig">
+              <div
+                class="d-flex align-items-center justify-content-around">
+                <mat-icon [svgIcon]="info.icon" />
+                <p class="content-title">{{ info.title }}</p>
+                <p class="date">{{ info.date }}</p>
               </div>
-            </div>
-            <div class="actions-button">
-              <app-button
-                [btnType]="buttonTypeEnum.FLAT"
-                [title]="'View All' | translate"
-                [styleConfig]="{height: '36px', width: '86px', background: '#F5F6F8', color: '#3E77AA'}"
-              ></app-button>
+              <p class="text">
+                {{ info.text }}
+                <a class="read-full-action">{{
+                  READ_FULL | translate
+                }}</a>
+              </p>
+              <hr />
             </div>
           </div>
+          <div class="actions-button">
+            <app-button
+              btnType="FLAT"
+              title="VIEW_ALL"
+              [styleConfig]="{
+                height: '36px',
+                width: '86px',
+                background: '#F5F6F8',
+                color: '#3E77AA'
+              }" />
+          </div>
         </div>
-      </app-dropdown-menu>
+      </div>
+    </app-dropdown-menu>
 
-        <app-dropdown-menu [ngClass]="{'settings-icon': isSettingsIconClicked}" [customClass]="'settings-dropdown'" (click)="onIconClick('settings')" [menuIcon]="'settings'" xPosition="before">
-          <div (click)="$event.stopPropagation()">
-            <div class="settings-container">
-              <div (click)="toggleSettingsSelected(i)"
-                class="settings-content"
-                *ngFor="let button of settingsMenuConfig; let i = index"
-                [ngStyle]="{
-                  'color': selectedSettings === i ? '#00883C' : '',
-                  'backgroundColor': selectedSettings === i ? '#F2F9F5' : ''
-                }"
-              >
-                <mat-icon [svgIcon]="button.icon"></mat-icon>
-                <span>{{button.title | translate}}</span>
-                <mat-icon *ngIf="selectedSettings === i">check</mat-icon>
-              </div>
+    <app-dropdown-menu
+      [ngClass]="{ 'settings-icon': isSettingsIconClicked }"
+      [customClass]="'settings-dropdown'"
+      (click)="onIconClick('settings')"
+      [menuIcon]="'settings'"
+      xPosition="before">
+      <div (click)="$event.stopPropagation()">
+        <div class="settings-container">
+          <div
+            (click)="toggleSettingsSelected(i)"
+            class="settings-content"
+            *ngFor="let button of settingsMenuConfig; let i = index"
+            [ngStyle]="{
+              color: selectedSettings === i ? '#00883C' : '',
+              backgroundColor: selectedSettings === i ? '#F2F9F5' : ''
+            }">
+            <mat-icon [svgIcon]="button.icon" />
+            <span>{{ button.title | translate }}</span>
+            <mat-icon *ngIf="selectedSettings === i">check</mat-icon>
+          </div>
+        </div>
+      </div>
+    </app-dropdown-menu>
+
+    <app-button btnType="ICON" icon="help" />
+
+    <div class="profile-info">
+      <p class="profile-name">Mocked. Name.</p>
+      <div
+        class="profile-img"
+        [ngStyle]="{
+          backgroundColor: isPersonIconClicked ? '#E4EDF4' : '#F3F4F6'
+        }">
+        <mat-icon class="person" svgIcon="person" />
+        <mat-icon
+          [ngStyle]="{
+            transform: isPersonIconClicked ? 'rotate(180deg)' : ''
+          }"
+          [matMenuTriggerFor]="menu"
+          (click)="onIconClick('person')"
+          svgIcon="arrow"
+          class="selected-icon" />
+        <mat-menu class="person-menu" #menu="matMenu">
+          <div
+            class="person-container"
+            (click)="$event.stopPropagation()">
+            <div
+              (click)="onMenuItemClick(button)"
+              class="person-content"
+              *ngFor="let button of personMenuConfig">
+              <mat-icon [svgIcon]="button.icon" />
+              <span>{{ button.title | translate }}</span>
             </div>
           </div>
-        </app-dropdown-menu>
-
-        <app-button [btnType]="buttonTypeEnum.ICON" [icon]="'help'"></app-button>
-
-        <div class="profile-info">
-            <p class="profile-name">Mocked. Name.</p>
-            <div class="profile-img" [ngStyle]="{'backgroundColor': isPersonIconClicked ? '#E4EDF4' : '#F3F4F6'}">
-              <mat-icon class="person" [svgIcon]="'person'"></mat-icon>
-              <mat-icon [ngStyle]="{'transform': isPersonIconClicked ? 'rotate(180deg)' : ''}" [matMenuTriggerFor]="menu" (click)="onIconClick('person')" [svgIcon]="'arrow'" class="selected-icon"></mat-icon>
-              <mat-menu class="person-menu" #menu="matMenu">
-                <div class="person-container" (click)="$event.stopPropagation()">
-                  <div  class="person-content" *ngFor="let button of personMenuConfig">
-                    <mat-icon [svgIcon]="button.icon"></mat-icon>
-                    <span>{{button.title | translate}}</span>
-                  </div>
-                </div>
-              </mat-menu>
-            </div>
-        </div>
+        </mat-menu>
+      </div>
     </div>
-
+  </div>
 </header>

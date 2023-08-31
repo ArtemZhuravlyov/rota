@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { NavigationPaths } from '../../core/enums/navigation-paths.enum';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     component: HomeComponent,
@@ -12,6 +13,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}
