@@ -12,8 +12,6 @@ import {
   ColumnConfig,
   ColumnType,
   TableAction,
-  TableActionConfig,
-  TableActionTypes,
   TableConfig,
 } from '@core/types/data-table';
 import { PageEvent } from '@angular/material/paginator';
@@ -22,6 +20,8 @@ import { FormGroup } from '@angular/forms';
 import { TableUtil } from '@shared/utils/tableUtil';
 import { BehaviorSubject } from 'rxjs';
 import { get, isNumber, toNumber } from 'lodash';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 
 @Component({
   selector: 'app-data-table',
@@ -37,7 +37,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
       this.filteredData = tableData[this.itemsKey];
     }
   }
-  @Input() set actionConfig(actions: TableActionConfig[]) {
+  @Input() set actionConfig(actions: ActionButton[]) {
     this.actions = actions ?? this.defaultActionConfig;
   }
   @Input({ required: true }) tableConfig!: TableConfig;
@@ -48,6 +48,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   @Input() headerDropdownFilter = true;
   @Input() isPrinting: boolean | null = false;
   @Input() isLoading: boolean | null = false;
+  @Input() keysForSearchFilter: string[] = [];
   @Input() exporting$ = new BehaviorSubject([]);
   @Output() actionClicked = new EventEmitter<TableAction>();
   @Output() pageChange = new EventEmitter<PageEvent>();
@@ -56,9 +57,10 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   readonly ColumnType = ColumnType;
   filteredData: any = [];
   tableData: any = [];
-  actions: TableActionConfig[] = [];
+  actions: ActionButton[] = [];
   forms: any = [];
   form!: FormGroup;
+  searchInput = '';
 
   ngAfterViewInit() {
     this.exporting$.subscribe((table: any) => {
@@ -74,43 +76,10 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     TableUtil.exportArrayToExcel(table, 'Table');
   }
 
-  defaultActionConfig: TableActionConfig[] = [
-    {
-      icon: 'eye',
-      type: TableActionTypes.VIEW,
-      disabled: false,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#91ACC2',
-      },
-    },
-    {
-      icon: 'edit',
-      type: TableActionTypes.EDIT,
-      disabled: false,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#91ACC2',
-      },
-    },
-    {
-      icon: 'delete',
-      type: TableActionTypes.DELETE,
-      disabled: false,
-      styleConfig: {
-        width: '30px',
-        height: '30px',
-        background: '#FFFFFF',
-        border: '1px solid #E4EDF4',
-        color: '#FF0000',
-      },
-    },
+  defaultActionConfig: ActionButtonName[] = [
+    ActionButtonName.VIEW_DETAILS,
+    ActionButtonName.DELETE,
+    ActionButtonName.APPLY,
   ];
 
   formsStyleConfig = {
@@ -143,6 +112,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   filterTable(searchText: string, filedToFilter: string): void {
+    this.searchInput = searchText;
     const dataToFilter = this.tableData[this.itemsKey];
 
     this.filteredData = dataToFilter.filter((obj: any) => {
@@ -157,14 +127,21 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   resetFilterTable(): void {
+    this.searchInput = '';
     this.filteredData = this.tableData[this.itemsKey];
   }
   onAction(action: TableAction): void {
     this.actionClicked.emit(action);
   }
 
-  onValueSearch(input: string) {
-    this.searchChange.emit(input);
+  onValueSearch(searchText: string) {
+    this.searchInput = searchText;
+    const dataToFilter = this.tableData[this.itemsKey];
+    this.filteredData = dataToFilter.filter((obj: any) =>
+      this.keysForSearchFilter.some(param =>
+        obj[param].toLowerCase().includes(searchText.toLowerCase())
+      )
+    );
   }
 
   public handleColumnVisibility(config: ColumnConfig): void {
@@ -197,4 +174,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   createForm(form: FormGroup) {
     this.forms.push(form);
   }
+
+  protected readonly ActionButtonName = ActionButtonName;
 }

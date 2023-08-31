@@ -75,7 +75,7 @@ const en: LanguageObject = {
     'This password is too weak. Please, add such symbols like #,$,& or other.',
   REPEAT_PASSWORD_ERROR: 'Passwords are not matching',
   EMAIL_ERROR:
-    'It seems you forgot to type the “@” symbol. Please, fix this error.',
+    'It seems you forgot to enums the “@” symbol. Please, fix this error.',
   NEW_COMPANY: 'New Company',
   CREATE_NEW: 'Create New',
   NAME: 'Name',
@@ -107,8 +107,8 @@ const en: LanguageObject = {
   SELECT_FILE: 'Select File',
   UPLOAD: 'Upload',
   SELECT_FILE_ERROR:
-    "Can't upload such file type. Please, upload pdf, doc, txt, etc.",
-  MAX_SIZE: 'Max file size: 2mb, supported file type (xlsx)',
+    "Can't upload such file enums. Please, upload pdf, doc, txt, etc.",
+  MAX_SIZE: 'Max file size: 2mb, supported file enums (xlsx)',
   NOTE: 'NOTE!',
   NEXT: 'Next',
   IMPORT_USER: 'Import User',
@@ -187,7 +187,7 @@ const en: LanguageObject = {
   PREFERRED_CURRENCY: 'Preferred Currency',
   COMPANY_LOGO: 'Company Logo',
   COMPANY_LOGO_SUPPORTED_FILES:
-    'Max file size: 25mb, supported file type (SVG, PNG, JPEG)',
+    'Max file size: 25mb, supported file enums (SVG, PNG, JPEG)',
   TAX_PAYER_IDENTIFICATION: 'Tax Payer Identification Number',
   TAX_PAYER_IDENTIFICATION_DESCRIPTION:
     'A Taxpayer Identification Number (TIN) is an identification number used by the Internal Revenue Service (IRS) in the administration of tax laws. It is issued either by the Social Security Administration (SSA) or by the IRS. A Social Security number (SSN) is issued by the SSA whereas all other TINs are issued by the IRS.',

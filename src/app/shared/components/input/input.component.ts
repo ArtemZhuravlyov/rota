@@ -23,6 +23,7 @@ import {
 import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
 import { LabelComponent } from '@shared/components/label/label.component';
 import { ErrorComponent } from '@shared/components/error/error.component';
+import { isNil } from 'lodash';
 
 @Component({
   selector: 'app-input',
@@ -65,7 +66,7 @@ export class InputComponent
   @Input() excludeSymbols: string[] = [];
 
   @Input() set value(value: string) {
-    this._value = value;
+    this._value = !isNil(value) ? value : '';
   }
   get value() {
     return this._value;

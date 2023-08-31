@@ -1,5 +1,6 @@
 import { TranslateKey } from '../../../assets/i18n/enums/translate-key.enum';
 import { Style } from '@core/types/style-model';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
 
 export type TableConfig = ColumnConfig[];
 
@@ -34,7 +35,9 @@ export const ColumnType = {
 } as const;
 
 export interface TableAction {
-  action: (typeof TableActionTypes)[keyof typeof TableActionTypes];
+  action:
+    | ActionButtonName
+    | (typeof TableActionTypes)[keyof typeof TableActionTypes];
   payload: any;
 }
 

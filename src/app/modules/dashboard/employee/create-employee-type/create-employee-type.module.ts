@@ -9,6 +9,8 @@ import { FormBuilderModule } from '@shared/modules/form-builder/form-builder.mod
 import { ButtonModule } from '@shared/modules/button/button.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormComponent } from '@shared/components/form/form.component';
+import { DataTableModule } from '@shared/modules/data-table/data-table.module';
+import { RsSpinnerModule } from '@shared/directives/rs-spinner/rs-spinner.module';
 
 @NgModule({
   declarations: [CreateEmployeeTypeComponent],
@@ -21,6 +23,8 @@ import { FormComponent } from '@shared/components/form/form.component';
     ButtonModule,
     TranslateModule,
     FormComponent,
+    DataTableModule,
+    RsSpinnerModule,
   ],
 })
 export class CreateEmployeeTypeModule {}

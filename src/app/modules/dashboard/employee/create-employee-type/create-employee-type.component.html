@@ -4,7 +4,7 @@
     [isBackBtnShowed]="true"
     [backPathRoute]="backPathRoute" />
 
-  <app-form-card>
+  <app-form-card [ngClass]="{ load: isBusy }" [rsSpinner]="isBusy">
     <h1 class="heading">Employees Type</h1>
 
     <app-form
