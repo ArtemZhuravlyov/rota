@@ -380,6 +380,9 @@ const en: LanguageObject = {
   DIVISION_HEAD: 'Division Head',
   HEAD_OF_DEPARTMENT: 'Head of Department',
   DISPLAY_ORDER: 'Display Order',
+  REMAINING_TIME_HEADER: 'Remaining Time',
+  REMAINING_TIME_DESCRIPTION:
+    'After the time is up your screen will be locked.',
   BULK_LOAD: 'Bulk Load',
 };
 

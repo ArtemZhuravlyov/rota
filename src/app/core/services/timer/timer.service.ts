@@ -5,7 +5,7 @@ import {
 } from '@angular/material/dialog';
 import { Injectable } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
-import { filter, fromEvent, race } from 'rxjs';
+import { filter, fromEvent, merge } from 'rxjs';
 import { TimerModalComponent } from '@shared/modalWindows/timer-idle-modals/timer-modal/timer-modal.component';
 import { LoginModalComponent } from '@shared/modalWindows/timer-idle-modals/login-modal/login-modal.component';
 import { NavigationEnd, Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 })
 export class TimerService {
   private dialogOpen = false;
-  private delay = 60 * 1000;
+  private delay = 60 * 1000 * 10; //todo remove after done 10 minutes
   private defaultDialogConfig: MatDialogConfig = {
     width: '640px',
     disableClose: true,
@@ -33,10 +33,12 @@ export class TimerService {
   }
 
   init() {
-    race([
+    merge(
       fromEvent(window, 'load'),
       fromEvent(document, 'mousemove'),
-    ])
+      fromEvent(document, 'keypress'),
+      fromEvent(document, 'click')
+    )
       .pipe(
         debounceTime(this.delay),
         filter(() => !this.dialogOpen && this.shouldOpenTimerDialog())
