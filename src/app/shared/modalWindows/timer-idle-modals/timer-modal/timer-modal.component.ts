@@ -4,22 +4,28 @@ import { TimerFormatModule } from '@shared/pipes/timer-format/timer-format.modul
 import { interval, Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ButtonModule } from '@shared/modules/button/button.module';
-import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-timer-modal',
   templateUrl: './timer-modal.component.html',
   styleUrls: ['../timer-idle-modal.component.scss'],
   standalone: true,
-  imports: [TimerFormatModule, ButtonModule],
+  imports: [TimerFormatModule, ButtonModule, TranslateModule],
 })
 export class TimerModalComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   private dialogRef = inject(MatDialogRef);
   private timer!: Subscription;
 
-  timerValue: number = 300;
+  public readonly REMAINING_TIME_HEADER =
+    TranslateKey.REMAINING_TIME_HEADER;
+  public readonly REMAINING_TIME_DESCRIPTION =
+    TranslateKey.REMAINING_TIME_DESCRIPTION;
+
+  timerValue = 300;
 
   ngOnInit() {
     this.timer = interval(1000)
@@ -40,5 +46,4 @@ export class TimerModalComponent implements OnInit {
   }
 
   protected readonly TimerFormatType = TimerFormatType;
-  protected readonly ButtonTypeEnum = ButtonTypeEnum;
 }
