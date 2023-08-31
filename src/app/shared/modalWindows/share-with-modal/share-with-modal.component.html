@@ -16,7 +16,7 @@
   </div>
   <div class="text-container">
     <span class="title">{{ data.title }}</span>
-    <span class="title-description">{{ data.description }}</span>
+    <span class="sub-title">{{ data.description }}</span>
     <div>
       <input class="share-search" placeholder="Search users" />
     </div>
@@ -24,7 +24,10 @@
       <app-button
         (click)="closeModal()"
         [isIconButton]="true"
-        [styleConfig]="{ height: '5vh', width: '8vw' }"
+        [styleConfig]="{
+          height: '5vh',
+          width: '8vw'
+        }"
         title="SAVE" />
     </div>
   </div>
