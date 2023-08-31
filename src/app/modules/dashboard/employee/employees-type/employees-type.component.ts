@@ -60,7 +60,7 @@ export class EmployeesTypeComponent implements OnInit {
   isBusy = false;
 
   requestParams$ = new BehaviorSubject<RequestParamsType>({
-    isActive: false,
+    isActive: true,
     isItemChanged: false,
     pageSize: 10,
     pageIndex: 0,
@@ -72,8 +72,8 @@ export class EmployeesTypeComponent implements OnInit {
   });
 
   actionConfig: ActionButton[] = [
-    { type: ActionButtonName.APPLY, disabled: true },
-    { type: ActionButtonName.DELETE, disabled: true },
+    { type: ActionButtonName.APPLY, disabled: false },
+    { type: ActionButtonName.DELETE, disabled: false },
   ];
 
   ngOnInit() {
@@ -107,9 +107,9 @@ export class EmployeesTypeComponent implements OnInit {
   onActiveChange(active: boolean) {
     this.actionConfig = this.actionConfig.map(action => ({
       ...action,
-      disabled: !active,
+      disabled: active,
     }));
-    this.updateRequestParams({ isActive: active });
+    this.updateRequestParams({ isActive: !active });
   }
 
   private openDescriptionDialog(type: EmploymentTypes) {
