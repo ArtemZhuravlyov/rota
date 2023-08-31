@@ -1,24 +1,24 @@
-import {TableConfig} from "@core/types/data-table";
+import { TableConfig } from '@core/types/data-table';
 
 export const errorTableConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
+    columnName: 'EMPTY',
     columnType: 'checkbox',
   },
   {
-    columnName: 'Row ID',
+    columnName: 'ROW_ID',
     columnType: 'numeric',
     filedName: 'rowId',
     hidden: false,
   },
   {
-    columnName: 'Employee Number',
+    columnName: 'EMPLOYEE_NUMBER',
     columnType: 'text',
     filedName: 'employeeNumber',
     hidden: false,
   },
   {
-    columnName: 'Date of Birth',
+    columnName: 'DATE_OF_BIRTH',
     columnType: 'text',
     filedName: 'dateOfBirth',
     hidden: false,
@@ -26,5 +26,5 @@ export const errorTableConfig: TableConfig = [
   {
     columnName: 'ACTIONS',
     columnType: 'actions',
-  }
+  },
 ];

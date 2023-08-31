@@ -1,20 +1,25 @@
-<app-page-header [title]="'GROUP_FUNCTION_DIVISION'"
-                 [isPrinting]="isPrinting$ | async"
-                 [additionalButtonsDisabled]="(selectedTableAccs$ | async)?.length < 1"
-                 (onActionClicked)="onActionClicked({action: $event, payload: {}})">
+<app-page-header
+  title="GROUP_FUNCTION_DIVISION"
+  [isPrinting]="isPrinting$ | async">
   <div class="action-buttons">
     <app-button
-      [routerLink]="NavigationPaths.CREATE_NEW_GROUP_FUNCTION_DIVISION"
+      [routerLink]="
+        NavigationPaths.CREATE_NEW_GROUP_FUNCTION_DIVISION
+      "
       [btnType]="ButtonTypeEnum.FLAT"
       [isIconButton]="true"
       [styleConfig]="{ height: '50px', width: '150px' }"
-      [title]="'CREATE_NEW' | translate"
-      [icon]="'add'"
-      (click)="onActionClicked({action: 'add', payload: {}})"
-    ></app-button>
+      title="CREATE_NEW"
+      [icon]="'add'"></app-button>
   </div>
 </app-page-header>
-
+<app-page-sub-header
+  [additionalButtonsDisabled]="
+    (selectedTableAccs$ | async)?.length < 1
+  "
+  (onActionClicked)="
+    onActionClicked({ action: $event, payload: {} })
+  " />
 <app-data-table
   [data]="groupFunctionDivisionList$ | async"
   [itemsKey]="'divisions'"
@@ -27,4 +32,4 @@
   (pageChange)="onPageChange($event)"
   (selectedItemsIds)="onSelectedTableItems($event)"
   [hasCheckboxColumn]="true"
-></app-data-table>
+  [isLoading]="false" />

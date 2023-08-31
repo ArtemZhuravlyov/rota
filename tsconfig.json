@@ -7,7 +7,8 @@
     "paths": {
       "@core/*": ["src/app/core/*"],
       "@shared/*":  ["src/app/shared/*"],
-      "@app/*": ["src/app/*"]
+      "@app/*": ["src/app/*"],
+      "@modules/*": ["src/app/modules/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

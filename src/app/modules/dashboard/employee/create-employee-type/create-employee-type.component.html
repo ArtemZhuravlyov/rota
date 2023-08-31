@@ -1,0 +1,34 @@
+<div class="container-wrapper">
+  <app-page-header
+    title="EMPLOYEES_TYPE"
+    [isBackBtnShowed]="true"
+    [backPathRoute]="backPathRoute" />
+
+  <app-form-card [ngClass]="{ load: isBusy }" [rsSpinner]="isBusy">
+    <h1 class="heading">Employees Type</h1>
+
+    <app-form
+      [formFields]="createEmployeeTypeFormConfig"
+      (createdForm)="form = $event" />
+
+    <div class="action-container">
+      <app-button
+        btnType="FLAT"
+        [isIconButton]="true"
+        [styleConfig]="{ height: '50px', width: '150px' }"
+        [icon]="'success'"
+        title="SAVE"
+        [disabled]="form.invalid"
+        (btnClick)="onSaveClick()" />
+
+      <app-button
+        [colorTheme]="'warn'"
+        [styleConfig]="{ width: '150px', height: '50px' }"
+        btnType="FLAT"
+        [isIconButton]="true"
+        title="CANCEL"
+        [icon]="'cancel'"
+        (btnClick)="onCancelClick()" />
+    </div>
+  </app-form-card>
+</div>

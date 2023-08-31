@@ -8,6 +8,7 @@
   </div>
   <app-button
     [btnType]="ButtonTypeEnum.LITTLE_ICON"
+    (btnClick)="removeDevice()"
     [styleConfig]="{
       'width': '30px',
       'height': '30px',

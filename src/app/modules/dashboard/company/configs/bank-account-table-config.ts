@@ -2,24 +2,24 @@ import { TableConfig } from '@core/types/data-table';
 
 export const bankAccountTableConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
+    columnName: 'EMPTY',
     columnType: 'checkbox',
   },
   {
-    columnName: 'Bank',
+    columnName: 'BANK',
     filedName: 'bankName',
     columnType: 'link',
     action: 'view',
     hidden: false,
   },
   {
-    columnName: 'Sort Code',
+    columnName: 'SORT_CODE',
     columnType: 'text',
     filedName: 'sortCode',
     hidden: false,
   },
   {
-    columnName: 'Account Number',
+    columnName: 'ACCOUNT_NUMBER',
     columnType: 'text',
     filedName: 'accountNumber',
     hidden: false,
@@ -38,6 +38,6 @@ export const bankAccountTableConfig: TableConfig = [
   },
   {
     columnName: 'ACTIONS',
-    columnType: 'actions'
-  }
+    columnType: 'actions',
+  },
 ];

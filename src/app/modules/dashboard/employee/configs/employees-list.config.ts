@@ -1,42 +1,42 @@
-import { TableConfig } from "@core/types/data-table";
+import { TableConfig } from '@core/types/data-table';
 
 export const employeesListConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
+    columnName: 'EMPTY',
     columnType: 'checkbox',
   },
   {
-    columnName: 'FIRST_NAME',
+    columnName: 'NAME',
     columnType: 'link',
     hidden: false,
-    filedName: 'firstName'
+    filedName: 'name',
   },
   {
-    columnName: 'LAST_NAME',
+    columnName: 'HIRE_DATE',
     columnType: 'text',
     hidden: false,
-    filedName: 'lastName',
+    filedName: 'hireDate',
   },
   {
-    columnName: 'MIDDLE_NAME',
+    columnName: 'DEPARTMENT',
     columnType: 'text',
     hidden: false,
-    filedName: 'middleName',
+    filedName: 'department',
   },
   {
-    columnName: 'EMAIL',
+    columnName: 'POSITION',
     columnType: 'text',
     hidden: false,
-    filedName: 'email',
+    filedName: 'position',
   },
   {
-    columnName: 'DATE_OF_BIRTH',
+    columnName: 'MANAGER',
     columnType: 'text',
     hidden: false,
-    filedName: 'dob',
+    filedName: 'manager',
   },
   {
     columnName: 'ACTIONS',
     columnType: 'actions',
-  }
+  },
 ];

@@ -1,1 +1,31 @@
-<app-page-header [title]="'BENEFIT'"></app-page-header>
+<app-page-header title="BENEFIT" [isPrinting]="isPrinting$.value">
+  <div class="action-buttons d-flex">
+    <app-button
+      [styleConfig]="{
+        height: '50px',
+        width: '150px',
+        'font-weight': '400'
+      }"
+      title="IMPORT"
+      [isIconButton]="true"
+      icon="export"
+      [iconStyleConfig]="{ transform: 'rotate(180deg)' }"
+      btnType="STROKED" />
+    <app-button
+      [routerLink]="CREATE_NEW_BENEFIT"
+      btnType="FLAT"
+      [isIconButton]="true"
+      [styleConfig]="{ height: '50px', width: '150px' }"
+      title="CREATE_NEW"
+      icon="add" />
+  </div>
+</app-page-header>
+
+<app-data-table
+  [data]="benefits$ | async"
+  itemsKey="benefits"
+  [tableConfig]="benefitListConfig"
+  tableStyle="benefitListConfig"
+  [isPrinting]="isPrinting$.value"
+  [hasCheckboxColumn]="true"
+  [isLoading]="isLoading" />

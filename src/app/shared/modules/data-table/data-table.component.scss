@@ -2,10 +2,10 @@
 
 table {
   width: auto;
-  padding: 12px 12px 80px;
-  border-radius: 10px;
-  border-collapse:separate;
-  border-spacing:0 5px;
+  padding: 12px 12px;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+  position: relative;
 
   th {
     font-size: 17px;
@@ -16,11 +16,11 @@ table {
   }
 
   th:last-child {
-    border-radius:0 10px 10px 0!important;
+    border-radius: 0 10px 10px 0 !important;
   }
 
   th:first-child {
-    border-radius:10px 0 0 10px!important;
+    border-radius: 10px 0 0 10px !important;
     text-align: center;
     padding-right: 0;
   }
@@ -29,8 +29,8 @@ table {
     text-align: start;
     padding-left: 0;
 
-    div{
-     justify-content: flex-start;
+    div {
+      justify-content: flex-start;
     }
   }
 
@@ -72,7 +72,7 @@ table {
     background-color: $background-login-gray;
   }
 
-  ::ng-deep tfoot tr  td:first-child {
+  ::ng-deep tfoot tr td:first-child {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
   }
@@ -93,14 +93,6 @@ table {
   }
 }
 
-.filter-container {
-  padding: 12px;
-
-  h1 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-}
 
 .hidden-cols-container {
   width: 280px;
@@ -112,47 +104,106 @@ table {
   }
 }
 
-.table-container {
-  position: absolute;
+.container-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.loading-shape {
   width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
 
+.paginator_wrapper {
+  margin-top: 0;
   .paginator {
-    position: relative;
-    bottom: 60px;
-
-  }
-
-  .table-search {
-    position: relative;
-    bottom: 295px;
-    z-index: 9999;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 }
 
-.action-btns-container{
-  app-button{
+
+.hidden-scrollbar {
+  overflow-x: hidden;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  .table-search {
+    position: absolute;
+    top: 16px;
+    z-index: 9999;
+    padding: 0 12px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+.action-btns-container {
+  gap: 20px;
+  justify-content: center;
+
+  app-button {
     margin-right: 20px;
   }
 }
 
 //STYLES FOR THE DIFFERENT COMPONENTS. MAYBE REMOVE TO GLOBAL CSS?
-.bankAccount{
+.bankAccount {
   th {
     font-size: 14px;
   }
 }
 
-.twoButtons{
+.twoButtons {
 
-  .action-btns-container{
+  .action-btns-container {
     justify-content: center;
   }
 
 }
+
+.employee-type {
+  .search {
+    padding: 0;
+  }
+
+  tr th:nth-child(3) {
+    .defaultHeader {
+      justify-content: flex-start;
+
+    }
+  }
+
+  tr th:nth-child(5) {
+    padding: 0;
+  }
+
+
+}
+
 //--------------------------------------------//
 
 
-.add-button-green{
+.add-button-green {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -163,16 +214,18 @@ table {
   margin-left: 20px;
   cursor: pointer;
 
-  mat-icon{
+  mat-icon {
     color: #FFFFFF;
   }
 }
-.gradeCategoryTableStyle{
-  table{
+
+.gradeCategoryTableStyle {
+  table {
     padding-bottom: 20px;
+
     ::ng-deep thead {
       th {
-        div{
+        div {
           justify-content: flex-start;
         }
       }
@@ -180,40 +233,41 @@ table {
   }
 }
 
-.gradeCategoryTableLevels{
+.gradeCategoryTableLevels {
 
-  th{
-    div{
+  th {
+    div {
       justify-content: flex-start;
     }
   }
 
-  td{
+  td {
     text-align: start;
   }
 
-  .action-btns-container{
-   padding-left: 20px;
+  .action-btns-container {
+    padding-left: 20px;
   }
 }
-.descriptions{
+
+.descriptions {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   height: 50px;
 
 
-  .description-table{
+  .description-table {
     margin-right: 29px;
     padding-left: 20px;
     display: table;
 
-    div{
+    div {
       max-width: 197px;
       display: table-cell;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow:ellipsis;
+      text-overflow: ellipsis;
       text-align: center;
       vertical-align: middle;
     }
@@ -221,7 +275,7 @@ table {
 
   }
 
-  .view-btn{
+  .view-btn {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -233,22 +287,38 @@ table {
     cursor: pointer;
   }
 }
-.positionTableStyle{
+
+.positionTableStyle {
   th {
-    div{
+    div {
       justify-content: flex-start;
       flex-wrap: nowrap;
     }
   }
 }
-.link{
+
+.link {
   cursor: pointer;
   text-decoration: underline;
   color: #3E77AA;
 }
-.isPrinting{
-    th:nth-child(2) {
-      padding-left: 16px !important;
-    }
+
+.isPrinting {
+  th:nth-child(2) {
+    padding-left: 16px !important;
+  }
 
 }
+
+.table-buttons-wrapper {
+  height: 50px;
+}
+
+.table-padding {
+  padding: 6px 3px;
+}
+
+.filter-padding {
+  padding: 12px 0;
+}
+

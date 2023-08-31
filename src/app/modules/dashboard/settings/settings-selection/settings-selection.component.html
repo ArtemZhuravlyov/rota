@@ -1,11 +1,15 @@
-<app-page-header [title]="'SETTINGS'" [isSubHeaderShowed]="false" [isBackBtnShowed]="true"></app-page-header>
+<app-page-header
+  [title]="SETTINGS"
+  [isBackBtnShowed]="true"></app-page-header>
 
-<div class="settings-nav d-flex justify-content-center align-items-center">
-  <app-button *ngFor="let tab of settingsTabsConfig; let index = index"
-                     [routerLink]="tab.routerLink"
-                     [routerLinkActive]="'active-setting'"
-                     [title]="tab.title | translate"
-                     [styleConfig]="navButtonStyleConfig">
+<div
+  class="settings-nav d-flex justify-content-center align-items-center">
+  <app-button
+    *ngFor="let tab of settingsTabsConfig; let index = index"
+    [routerLink]="tab.routerLink"
+    [routerLinkActive]="'active-setting'"
+    [title]="tab.title"
+    [styleConfig]="navButtonStyleConfig">
   </app-button>
 </div>
 

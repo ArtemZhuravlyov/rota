@@ -4,13 +4,12 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
-import { CompanyComponent } from "./company/company.component";
-import { PasswordRecoveryComponent } from "@app/modules/login/password-recovery/password-recovery.component";
-import {
-  PasswordRecoverySuccessComponent
-} from "@app/modules/login/password-recovery-success/password-recovery-success.component";
+import { CompanyComponent } from './company/company.component';
+import { PasswordRecoveryComponent } from '@app/modules/login/password-recovery/password-recovery.component';
+import { PasswordRecoverySuccessComponent } from '@app/modules/login/password-recovery-success/password-recovery-success.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const routes: Routes = [
+const routes: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     component: LoginLayoutComponent,
@@ -34,18 +33,18 @@ const routes: Routes = [
       },
       {
         path: NavigationPaths.PASSWORD_RECOVERY,
-        component: PasswordRecoveryComponent
+        component: PasswordRecoveryComponent,
       },
       {
         path: NavigationPaths.PASSWORD_RECOVERY_SUCCESS,
-        component: PasswordRecoverySuccessComponent
-      }
-    ]
+        component: PasswordRecoverySuccessComponent,
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class LoginRoutingModule { }
+export class LoginRoutingModule {}

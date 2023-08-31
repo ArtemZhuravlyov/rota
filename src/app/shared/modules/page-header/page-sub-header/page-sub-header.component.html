@@ -1,22 +1,35 @@
-<div class="sub-header d-flex justify-content-between">
-  <div class="d-flex">
-    <mat-slide-toggle>Show In-Active</mat-slide-toggle>
+<div class="container-wrapper d-flex justify-content-between">
+  <div class="switch_wrapper">
+    <app-switch-bar
+      [checked]="isChecked"
+      (checkedChange)="checkedChange($event)" />
+    <p>Show In-Active</p>
   </div>
-  <div class="action-buttons d-flex">
+
+  <div class="action-buttons">
     <app-button
       [disabled]="additionalButtonsDisabled"
-      [btnType]="ButtonTypeEnum.STROKED"
-      [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
-      [title]="'Export'"
+      btnType="STROKED"
+      [styleConfig]="{
+        width: '130px',
+        height: '42px',
+        'font-weight': '500'
+      }"
+      title="EXPORT"
       [isIconButton]="true"
       [icon]="'export'"
-      (click)="buttonAction('export')"></app-button>
+      (click)="buttonAction('export')" />
     <app-button
       [disabled]="additionalButtonsDisabled"
-      [btnType]="ButtonTypeEnum.STROKED"
-      [styleConfig]="{width: '130px', height: '42px', 'font-weight': '500'}"
-      [title]="'Print'" [isIconButton]="true"
+      btnType="STROKED"
+      [styleConfig]="{
+        width: '130px',
+        height: '42px',
+        'font-weight': '500'
+      }"
+      [title]="'PRINT'"
+      [isIconButton]="true"
       [icon]="'print'"
-      (click)="buttonAction('print')"></app-button>
+      (click)="buttonAction('print')" />
   </div>
 </div>

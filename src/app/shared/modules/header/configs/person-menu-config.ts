@@ -1,16 +1,17 @@
-import {NavigationMenusConfig} from "@core/types/navigation-menus-config";
+import { NavigationMenusConfig } from '@core/types/navigation-menus-config';
+import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 
 export const PersonMenuConfig: NavigationMenusConfig[] = [
   {
     icon: 'information',
-    title: 'MY_INFORMATION'
+    title: TranslateKey.MY_INFORMATION,
   },
   {
     icon: 'settings',
-    title: 'ACCOUNT_SETTINGS',
+    title: TranslateKey.ACCOUNT_SETTINGS,
   },
   {
     icon: 'leave',
-    title: 'LOG_OUT'
-  }
-]
+    title: TranslateKey.LOG_OUT,
+  },
+];

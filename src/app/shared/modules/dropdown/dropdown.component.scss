@@ -5,6 +5,10 @@
     width: 100%;
   }
 
+  .field-title {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
   ::ng-deep {
     .mdc-notched-outline__leading, .mdc-notched-outline__trailing, .mdc-notched-outline__notch, {
       border: none !important;

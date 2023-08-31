@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from "@angular/router";
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
-import {
-  CreateGroupFunctionDivisionComponent
-} from "@app/modules/dashboard/company/group-function-division/create-group-function-division/create-group-function-division.component";
+import { RouterModule, Routes } from '@angular/router';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { CreateGroupFunctionDivisionComponent } from '@app/modules/dashboard/company/group-function-division/create-group-function-division/create-group-function-division.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const ROUTES: Routes = [
+const ROUTES: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     pathMatch: 'full',
@@ -15,12 +14,7 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(ROUTES),
-  ],
-  exports: [
-    RouterModule,
-  ]
+  imports: [CommonModule, RouterModule.forChild(ROUTES)],
+  exports: [RouterModule],
 })
-export class CreateGroupFunctionDivisionRoutingModule { }
+export class CreateGroupFunctionDivisionRoutingModule {}

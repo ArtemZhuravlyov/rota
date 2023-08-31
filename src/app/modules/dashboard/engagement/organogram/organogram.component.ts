@@ -7,7 +7,7 @@ import { OrganogramService } from '@core/services/organogram/organogram.service'
   selector: 'app-organogram',
   templateUrl: './organogram.component.html',
   styleUrls: ['./organogram.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrganogramComponent {
   orgData$!: Observable<OrganogramChartItem[]>;
@@ -15,5 +15,4 @@ export class OrganogramComponent {
   constructor(private organogramService: OrganogramService) {
     this.orgData$ = organogramService.getOrganogram();
   }
-
 }

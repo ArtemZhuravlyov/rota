@@ -2,7 +2,7 @@ import { TableConfig } from '@core/types/data-table';
 
 export const companyListConfig: TableConfig = [
   {
-    columnName: 'SELECT_ALL',
+    columnName: 'EMPTY',
     columnType: 'checkbox',
   },
   {
@@ -38,5 +38,5 @@ export const companyListConfig: TableConfig = [
   {
     columnName: 'ACTIONS',
     columnType: 'actions',
-  }
+  },
 ];

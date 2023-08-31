@@ -1,20 +1,20 @@
-import { TableConfig } from "@core/types/data-table";
+import { TableConfig } from '@core/types/data-table';
 
 export const gradeLevelsTableConfig: TableConfig = [
   {
-    columnName: 'Grade Level',
+    columnName: 'GRADE_LEVEL',
     columnType: 'text',
     hidden: false,
-    filedName: 'name'
+    filedName: 'name',
   },
   {
-    columnName: 'Code',
+    columnName: 'CODE',
     columnType: 'text',
     hidden: false,
     filedName: 'code',
   },
   {
-    columnName: 'Display Order',
+    columnName: 'DISPLAY_ORDER',
     columnType: 'text',
     hidden: false,
     filedName: 'displayOrder',

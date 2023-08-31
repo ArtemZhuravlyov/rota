@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from "@angular/router";
-import { NavigationPaths } from "@core/enums/navigation-paths.enum";
-import {
-  CreateGradeCategoryComponent
-} from "@app/modules/dashboard/company/grade-category/create-grade-category/create-grade-category.component";
+import { RouterModule, Routes } from '@angular/router';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
+import { CreateGradeCategoryComponent } from '@app/modules/dashboard/company/grade-category/create-grade-category/create-grade-category.component';
+import { AppRoutes } from '@core/types/app-route.type';
 
-const ROUTES: Routes = [
+const ROUTES: AppRoutes = [
   {
     path: NavigationPaths.EMPTY_PATH,
     pathMatch: 'full',
@@ -15,12 +14,7 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(ROUTES),
-  ],
-  exports: [
-    RouterModule,
-  ]
+  imports: [CommonModule, RouterModule.forChild(ROUTES)],
+  exports: [RouterModule],
 })
-export class CreateGradeCategoryRoutingModule { }
+export class CreateGradeCategoryRoutingModule {}

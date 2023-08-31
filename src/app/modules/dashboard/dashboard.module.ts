@@ -7,6 +7,7 @@ import { HeaderModule } from "@shared/modules/header/header.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { SearchInputModule } from "@shared/modules/search-input/search-input.module";
 import { MenuTogglerModule } from "@shared/modules/menu-toggler/menu-toggler.module";
+import { ModalsModule } from "@shared/modalWindows/modals.module";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MenuTogglerModule } from "@shared/modules/menu-toggler/menu-toggler.mod
     TranslateModule,
     SearchInputModule,
     MenuTogglerModule,
+    ModalsModule,
   ]
 })
 export class DashboardModule { }

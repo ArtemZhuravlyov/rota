@@ -1,0 +1,42 @@
+<div class="dialog-wrapper">
+  <img
+    class="dialog-wrapper_img"
+    src="/assets/images/undraw_time_1.svg"
+    alt="timer" />
+  <p class="dialog-wrapper_header">
+    {{ REMAINING_TIME_HEADER | translate }}
+  </p>
+  <p class="dialog-wrapper_subheader">
+    {{ REMAINING_TIME_DESCRIPTION | translate }}
+  </p>
+  <div class="dialog-wrapper_timer">
+    <div class="dialog-wrapper_timer_item">
+      <div class="dialog-wrapper_timer_item_num">
+        {{ timerValue | timerFormat: TimerFormatType.Minutes }}
+      </div>
+      <div class="dialog-wrapper_timer_item_text">mins</div>
+    </div>
+    <div class="dialog-wrapper_timer_dots">:</div>
+    <div class="dialog-wrapper_timer_item">
+      <div class="dialog-wrapper_timer_item_num">
+        {{ timerValue | timerFormat: TimerFormatType.Seconds }}
+      </div>
+      <div class="dialog-wrapper_timer_item_text">secs</div>
+    </div>
+  </div>
+  <app-button
+    title="CONTINUE"
+    (btnClick)="onClose()"
+    btnType="FLAT"
+    [styleConfig]="{
+      'font-size': '15px',
+      'font-style': 'normal',
+      'font-weight': '600'
+    }" />
+  <app-button
+    class="dialog-wrapper_close"
+    (btnClick)="onClose()"
+    icon="clear"
+    btnType="ICON"
+    [isIconButton]="true" />
+</div>
