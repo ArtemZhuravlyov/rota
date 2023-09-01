@@ -58,6 +58,12 @@ export class MaterialModule {
     domSanitizer: DomSanitizer
   ): void {
     matIconRegistry.addSvgIcon(
+      'up-arrow',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/up-arrow.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
       'excel',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/excel.svg'

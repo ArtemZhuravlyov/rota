@@ -3,4 +3,5 @@ export enum FormFiledTypeName {
   INPUT = 'input',
   PASSWORD = 'password',
   DROPDOWN = 'dropdown',
+  DATEPICKER = 'datepicker',
 }
