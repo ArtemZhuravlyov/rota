@@ -9,6 +9,9 @@ import { DataTableModule } from '@shared/modules/data-table/data-table.module';
 import { BenefitService } from '@modules/dashboard/company/benefit/benefit.service';
 import { NewBenefitComponent } from './new-benefit/new-benefit.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormBuilderModule } from '@shared/modules/form-builder/form-builder.module';
+import { FormCardModule } from '@shared/modules/form-card/form-card.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [BenefitComponent, NewBenefitComponent],
@@ -20,6 +23,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ButtonModule,
     DataTableModule,
     MatProgressSpinnerModule,
+    FormBuilderModule,
+    FormCardModule,
+    TranslateModule,
   ],
 })
 export class BenefitModule {}

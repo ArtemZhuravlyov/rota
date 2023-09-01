@@ -1,1 +1,27 @@
-<p>new-benefit works!</p>
+<app-page-header title="EMPTY"> </app-page-header>
+<app-form-card>
+  <h1 class="heading">{{ 'BENEFIT_SETUP' | translate }}</h1>
+
+  <app-form-builder
+    [formFields]="formFields"
+    (createdForm)="form = $event"></app-form-builder>
+
+  <div class="d-flex justify-content-around align-items-center">
+    <app-button
+      (click)="createbenefit()"
+      [btnType]="ButtonTypeEnum.FLAT"
+      [styleConfig]="{ width: '150px', height: '50px' }"
+      [isIconButton]="true"
+      [title]="'SAVE' | translate"
+      [icon]="'success'"></app-button>
+
+    <app-button
+      [routerLink]="NavigationPaths.BACK"
+      [colorTheme]="'warn'"
+      [styleConfig]="{ width: '150px', height: '50px' }"
+      [btnType]="ButtonTypeEnum.FLAT"
+      [isIconButton]="true"
+      [title]="'CANCEL' | translate"
+      [icon]="'cancel'"></app-button>
+  </div>
+</app-form-card>
