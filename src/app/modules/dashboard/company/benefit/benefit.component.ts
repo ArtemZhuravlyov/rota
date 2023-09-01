@@ -14,6 +14,8 @@ import { AuthService } from '@core/services/account/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonPaginationParams } from '@core/types/pagination.type';
 import { Benefits } from '@core/types/benefit.model';
+import { ActionButton } from '@shared/components/action-button/types/action-button.type';
+import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
 
 @Component({
   selector: 'app-benefit',
@@ -30,6 +32,12 @@ export class BenefitComponent implements OnInit {
   public readonly CREATE_NEW_BENEFIT =
     NavigationPaths.CREATE_NEW_BENEFIT;
   public readonly benefitListConfig = benefitListConfig;
+
+  actionConfig: ActionButton[] = [
+    { type: ActionButtonName.APPLY, disabled: false },
+    { type: ActionButtonName.VIEW_DETAILS, disabled: false },
+    { type: ActionButtonName.DELETE, disabled: false },
+  ];
 
   public isLoading = true;
 
