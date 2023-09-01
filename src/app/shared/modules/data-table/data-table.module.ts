@@ -35,6 +35,7 @@ import { ActionButtonComponent } from '@shared/components/action-button/action-b
     TableButtonComponent,
     SimplebarAngularModule,
     ActionButtonComponent,
+    ButtonModule,
   ],
 })
 export class DataTableModule {}

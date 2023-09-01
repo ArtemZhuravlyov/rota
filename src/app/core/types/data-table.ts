@@ -32,6 +32,10 @@ export const ColumnType = {
   DATE: 'date',
   CUSTOM: 'custom',
   DESCRIPTIONS: 'descriptions',
+  TOGGLE: 'toggle',
+  FOLDER: 'folder',
+  SHARE_WITH: 'share_with',
+  SIZE: 'size',
 } as const;
 
 export interface TableAction {
@@ -51,4 +55,9 @@ export const TableActionTypes = {
   EXPORT: 'export',
   IMPORT: 'import',
   CHECK: 'check',
+  ANALYSIS: 'analysis',
+  DOWNLOAD: 'download',
+  BULK_LOAD: 'bulk_load',
+  FOLDER_VIEW: 'folder_view',
+  SHARE_WITH: 'share_with',
 } as const;

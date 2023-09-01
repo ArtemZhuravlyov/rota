@@ -201,7 +201,13 @@ table {
 }
 
 //--------------------------------------------//
-
+#folder-link {
+  color: #3E77AA;
+  text-decoration: underline;
+  display: flex;
+  gap: .5rem;
+  cursor: pointer;
+}
 
 .add-button-green {
   width: 30px;
@@ -255,6 +261,7 @@ table {
   flex-wrap: nowrap;
   align-items: center;
   height: 50px;
+  justify-content: space-between;
 
 
   .description-table {
@@ -320,5 +327,22 @@ table {
 
 .filter-padding {
   padding: 12px 0;
+}
+
+.size {
+  border: 1px solid #FFFFFF;
+  border-radius: 12px;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 6px 10px #00000008;
+  opacity: 1;
+  //width: fit-content;
+  //block-size: fit-content;
+  width: 54px;
+  height: 24px;
+  margin-right: auto;
+  margin-left: auto;
+  font: normal normal normal 12px/17px Source Sans Pro;
+  letter-spacing: 0;
+  color: #808080;
 }
 

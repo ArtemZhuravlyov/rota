@@ -356,6 +356,21 @@ const en: LanguageObject = {
   ORGANISATION_CHART: 'Organisation Chart',
   EMPLOYEES_TYPE: 'Employees Type',
   DESCRIPTION: 'Description',
+  ANALYSIS: 'Analysis',
+  DOCUMENT_LIST: 'Document list',
+  FOLDER_LIST: 'Folder list',
+  FOLDER_DETAILS: 'Folder Details',
+  NEW_DOCUMENT: 'New Document',
+  CREATE_NEW_FOLDER: 'Create New Folder',
+  CREATION_DATE: 'Creation Date',
+  UPLOAD_DOCUMENT: 'Upload Document',
+  SHARED: 'Shared',
+  SHARE: 'Share',
+  SHARE_WITH: 'Share with',
+  CHOOSE_FILES: 'Choose files',
+  DOCUMENTS_SUPPORTED_FILES:
+    'Max file size: 25mb, supported file type (xls, doc, pdf)',
+  SHARED_DESC: 'Some short description',
   EMPLOYEES_RECORD: 'Employees Record',
   ROW_ID: 'Row ID',
   NUMBER_OF_EMPLOYEE: '# of Employee',
@@ -368,6 +383,10 @@ const en: LanguageObject = {
   REMAINING_TIME_HEADER: 'Remaining Time',
   REMAINING_TIME_DESCRIPTION:
     'After the time is up your screen will be locked.',
+  BULK_LOAD: 'Bulk Load',
+  SEARCH_USER: 'Search users',
+  EDIT_FOLDER: 'Edit Folder',
+  NEW_FOLDER: 'New Folder',
 };
 
 export const allLanguages: {

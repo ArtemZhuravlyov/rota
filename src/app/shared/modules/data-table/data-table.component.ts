@@ -19,6 +19,7 @@ import { FormField } from '@core/types/form-builder.model';
 import { FormGroup } from '@angular/forms';
 import { TableUtil } from '@shared/utils/tableUtil';
 import { BehaviorSubject } from 'rxjs';
+import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { get, isNumber, toNumber } from 'lodash';
 import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
 import { ActionButton } from '@shared/components/action-button/types/action-button.type';
@@ -60,6 +61,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   actions: ActionButton[] = [];
   forms: any = [];
   form!: FormGroup;
+  protected readonly NavigationPaths = NavigationPaths;
   searchInput = '';
 
   ngAfterViewInit() {

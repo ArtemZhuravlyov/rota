@@ -5,15 +5,9 @@ import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enu
 export const documentsSubMenuConfig: MenusConfig[] = [
   {
     title: TranslateKey.FOLDER_MANAGEMENT,
+    routerLink: `./${NavigationPaths.EMPTY_PATH}`,
     icon: 'search',
-    routerLink: NavigationPaths.FOLDER_MANAGEMENT,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.DOCUMENTS}/${NavigationPaths.FOLDER_MANAGEMENT}`,
-  },
-  {
-    title: TranslateKey.DOCUMENT_MANAGEMENT,
-    icon: 'search',
-    routerLink: NavigationPaths.DOCUMENT_MANAGEMENT,
-    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.DOCUMENTS}/${NavigationPaths.DOCUMENT_MANAGEMENT}`,
+    fullRouterLink: `../${NavigationPaths.DASHBOARD}/${NavigationPaths.DOCUMENTS}/${NavigationPaths.EMPTY_PATH}`,
   },
   {
     title: TranslateKey.EMPLOYEE_DOCUMENT,

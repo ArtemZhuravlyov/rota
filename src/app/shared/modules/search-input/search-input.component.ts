@@ -24,14 +24,14 @@ export class SearchInputComponent {
   get value() {
     return this._value;
   }
-
+  @Input() placeholder: keyof typeof TranslateKey =
+    TranslateKey.SEARCH;
   @Output() valueChanged = new EventEmitter<string>();
   @Output() clearClick = new EventEmitter<void>();
   @Output() closeClick = new EventEmitter<void>();
 
   _value = '';
 
-  protected readonly SEARCH = TranslateKey.SEARCH;
   protected readonly CLEAR = TranslateKey.CLEAR;
 
   protected isFocus = false;

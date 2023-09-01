@@ -71,9 +71,15 @@ export enum NavigationPaths {
   HISTORICAL = 'historical',
 
   //Documents sub-menu paths
-  FOLDER_MANAGEMENT = 'folder-management',
+  //FOLDER_MANAGEMENT = 'folder-management',
   DOCUMENT_MANAGEMENT = 'document-management',
   EMPLOYEE_DOCUMENT = 'employee-document',
+  CREATE_FOLDER = 'create-folder',
+  EDIT_FOLDER = 'edit-folder',
+  UPLOAD_DOCUMENT = 'upload-document',
+  DOWNLOAD_DOCUMENT = 'download-document',
+  CREATE_NEW_DOCUMENT = 'create-new-document',
+  FOLDER_DETAILS = 'folder',
 
   // User Account sub-menu paths
   USER = 'user',

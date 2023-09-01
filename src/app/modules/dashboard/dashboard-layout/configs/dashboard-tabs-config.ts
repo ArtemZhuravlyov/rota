@@ -35,7 +35,7 @@ export const dashboardTabsConfig: MenusConfig[] = [
     title: TranslateKey.DOCUMENTS,
     icon: 'documents',
     routerLink: NavigationPaths.DOCUMENTS,
-    isDisabled: true,
+    isDisabled: false,
   },
   {
     title: TranslateKey.RECRUITMENTS,

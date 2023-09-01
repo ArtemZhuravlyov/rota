@@ -42,6 +42,91 @@
           </ng-container>
 
           <ng-container
+            *ngSwitchCase="ColumnType.FOLDER"
+            [matColumnDef]="col">
+            <th
+              mat-header-cell
+              [hidden]="tableConfig[i].hidden"
+              *matHeaderCellDef>
+              <ng-container
+                [ngTemplateOutlet]="defaultCellHeader"
+                [ngTemplateOutletContext]="{ i }" />
+            </th>
+
+            <td
+              mat-cell
+              [hidden]="tableConfig[i].hidden"
+              *matCellDef="let element">
+              <div
+                id="folder-link"
+                (click)="
+                  onAction({
+                    action: 'folder_view',
+                    payload: element
+                  })
+                ">
+                <mat-icon svgIcon="folder"></mat-icon>
+                {{ element[tableConfig[i].filedName!] }}
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container
+            *ngSwitchCase="ColumnType.TOGGLE"
+            [matColumnDef]="col">
+            <th
+              mat-header-cell
+              [hidden]="tableConfig[i].hidden"
+              *matHeaderCellDef>
+              <ng-container
+                [ngTemplateOutlet]="defaultCellHeader"
+                [ngTemplateOutletContext]="{ i }" />
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [ngStyle]="!isPrinting ? null : { display: 'none' }">
+              <mat-slide-toggle
+                [checked]="selectedItems.has(element.id)" />
+            </td>
+          </ng-container>
+
+          <ng-container
+            *ngSwitchCase="ColumnType.SHARE_WITH"
+            [matColumnDef]="col">
+            <th
+              mat-header-cell
+              [hidden]="tableConfig[i].hidden"
+              *matHeaderCellDef>
+              <ng-container
+                [ngTemplateOutlet]="defaultCellHeader"
+                [ngTemplateOutletContext]="{ i }" />
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [ngStyle]="!isPrinting ? null : { display: 'none' }">
+              <app-button
+                btnType="STROKED"
+                colorTheme="link"
+                [isIconButton]="true"
+                [styleConfig]="{
+                  height: '30px',
+                  width: '83px'
+                }"
+                title="SHARE"
+                iconPosition="beforeText"
+                [iconStyleConfig]="{ width: '23%', height: '21%' }"
+                icon="share"
+                (click)="
+                  onAction({ action: 'share_with', payload: element })
+                "></app-button>
+            </td>
+          </ng-container>
+
+          <ng-container
             *ngSwitchCase="ColumnType.COUNTRY"
             [matColumnDef]="col">
             <th
@@ -60,6 +145,28 @@
               {{
                 element[tableConfig[i].filedName!] | country | async
               }}
+            </td>
+          </ng-container>
+
+          <ng-container
+            *ngSwitchCase="ColumnType.SIZE"
+            [matColumnDef]="col">
+            <th
+              mat-header-cell
+              [hidden]="tableConfig[i].hidden"
+              *matHeaderCellDef>
+              <ng-container
+                [ngTemplateOutlet]="defaultCellHeader"
+                [ngTemplateOutletContext]="{ i }" />
+            </th>
+
+            <td
+              mat-cell
+              [hidden]="tableConfig[i].hidden"
+              *matCellDef="let element">
+              <div class="size">
+                {{ element[tableConfig[i].filedName!] }}
+              </div>
             </td>
           </ng-container>
 
