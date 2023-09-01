@@ -1,8 +1,10 @@
-<div class="form" [formGroup]="form"
-     [ngStyle]="styleConfig">
-
-  <ng-container *ngFor="let formField of formFields" [ngSwitch]="formField.componentType">
-    <h1 class="field-heading" *ngIf="formField.heading">{{formField.heading | translate}}</h1>
+<div class="form" [formGroup]="form" [ngStyle]="styleConfig">
+  <ng-container
+    *ngFor="let formField of formFields"
+    [ngSwitch]="formField.componentType">
+    <h1 class="field-heading" *ngIf="formField.heading">
+      {{ formField.heading | translate }}
+    </h1>
     <div *ngSwitchCase="componentType.TEXTBOX">
       <app-textbox
         [formControlName]="formField.key"
@@ -22,8 +24,7 @@
         [defaultValue]="formField.data"
         [class.disabled]="formField.disabled"
         [button]="formField.button!"
-        [dataType]="formField.dataType!"
-      ></app-textbox>
+        [dataType]="formField.dataType!"></app-textbox>
     </div>
 
     <div *ngSwitchCase="componentType.DROPDOWN">
@@ -40,8 +41,7 @@
         [placeholder]="formField.placeholder!"
         [hintMenu]="formField.hintMenu!"
         [hintHeading]="formField.hintHeading!"
-        [hintDescription]="formField.hintDescription!"
-      ></app-dropdown>
+        [hintDescription]="formField.hintDescription!"></app-dropdown>
     </div>
 
     <div *ngSwitchCase="componentType.PHONE">
@@ -50,8 +50,7 @@
         [title]="formField.label!"
         [data]="formField.data"
         [placeholder]="formField.placeholder!"
-        [icon]="formField.icon!"
-      ></app-phone-select>
+        [icon]="formField.icon!"></app-phone-select>
     </div>
 
     <div *ngSwitchCase="componentType.FILE">
@@ -59,8 +58,7 @@
         [formControlName]="formField.key"
         [formControl]="$any(form.controls[formField.key])"
         [label]="formField.label!"
-        [maxFile]="formField.maxFile!"
-      ></app-file-input>
+        [maxFile]="formField.maxFile!"></app-file-input>
     </div>
 
     <div *ngSwitchCase="componentType.TOGGLE">
@@ -68,8 +66,7 @@
         [formControlName]="formField.key"
         [formControl]="$any(form.controls[formField.key])"
         [label]="formField.label!"
-        [toggleText]="formField.toggleText!"
-      ></app-text-toggle>
+        [toggleText]="formField.toggleText!"></app-text-toggle>
     </div>
 
     <div *ngSwitchCase="componentType.TIME">
@@ -80,25 +77,10 @@
       </app-time-input>
     </div>
 
-    <div *ngSwitchCase="componentType.TEXT">
-      text
-    </div>
-    <div *ngSwitchCase="componentType.DATEPICKER">
-      <app-datepicker
-        [formControlName]="formField.key"
-        [placeholder]="formField.placeholder!"
-        [title]="formField.label!"
-        [data]="formField.data"
-        [styleConfig]="formField.styleConfig!"
-      ></app-datepicker>
-    </div>
+    <div *ngSwitchCase="componentType.TEXT">text</div>
 
-    <div *ngSwitchCase="componentType.NUMERIC">
-      numeric
-    </div>
-    <div *ngSwitchCase="componentType.RADIO">
-      radio
-    </div>
+    <div *ngSwitchCase="componentType.NUMERIC">numeric</div>
+    <div *ngSwitchCase="componentType.RADIO">radio</div>
   </ng-container>
 
   <ng-container *ngIf="actionButtonIncluded">
@@ -106,5 +88,4 @@
       <ng-content></ng-content>
     </div>
   </ng-container>
-
 </div>

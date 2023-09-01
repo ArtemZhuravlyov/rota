@@ -12,7 +12,7 @@ import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { CustomValidators } from '@shared/utils/custom-validators/custom-validators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppActivatedRoute } from '@core/types/app-route.type';
-import { BehaviorSubject, filter, map } from 'rxjs';
+import { BehaviorSubject, filter, map, tap } from 'rxjs';
 import { isNil } from 'lodash';
 import { EmployeeTypeRouteData } from '@modules/dashboard/employee/employees-type/employees-type-routing.module';
 import { EmploymentTypes } from '@core/types/employment-type.model';
@@ -116,6 +116,9 @@ export class CreateEmployeeTypeComponent implements AfterViewInit {
   private initFormFields() {
     this.activatedRoute.data
       .pipe(
+        tap(data => {
+          console.log(data);
+        }),
         map(data => data.employeeTypeData),
         filter(
           (employeeTypeData): employeeTypeData is EmploymentTypes =>

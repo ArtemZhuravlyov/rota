@@ -320,6 +320,7 @@
   "EMPTY": "",
   "ORGANISATION_CHART": "Organisation Chart",
   "EMPLOYEES_TYPE": "Employees Type",
+  "DESCRIPTION": "Description",
   "ANALYSIS": "Analysis",
   "DOCUMENT_LIST": "Document list",
   "FOLDER_LIST": "Folder list",
@@ -334,7 +335,6 @@
   "CHOOSE_FILES": "Choose files",
   "DOCUMENTS_SUPPORTED_FILES": "Max file size: 25mb, supported file type (xls, doc, pdf)",
   "SHARED_DESC": "Some short description",
-  "DESCRIPTION": "Description",
   "EMPLOYEES_RECORD": "Employees Record",
   "ROW_ID": "Row ID",
   "NUMBER_OF_EMPLOYEE": "# of Employee",
@@ -345,5 +345,9 @@
   "HEAD_OF_DEPARTMENT": "Head of Department",
   "DISPLAY_ORDER": "Display Order",
   "REMAINING_TIME_HEADER": "Remaining Time",
-  "REMAINING_TIME_DESCRIPTION": "After the time is up your screen will be locked."
+  "REMAINING_TIME_DESCRIPTION": "After the time is up your screen will be locked.",
+  "BULK_LOAD": "Bulk Load",
+  "SEARCH_USER": "Search users",
+  "EDIT_FOLDER": "Edit Folder",
+  "NEW_FOLDER": "New Folder"
 }

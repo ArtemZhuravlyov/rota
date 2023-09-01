@@ -1,34 +1,78 @@
-<div class="input-dropdown-control" [ngStyle]="styleConfig">
-  <mat-select
-    [formControl]="formControl"
-    (opened)="showDropdown = true"
-    (closed)="showDropdown = false"
-    [placeholder]="placeholder | translate"
-    [(value)]="preselectedValue">
-    <app-search-input
-      (keydown)="$event.stopPropagation()"
-      [styleConfig]="{ width: '100%' }" />
-
-    <mat-option
-      *ngFor="let value of data"
-      [value]="value"
-      (click)="onSelectItem(value)">
-      <!--      <span class="currency">{{ value['currencyCode'] }} </span>-->
-      <!--      <img-->
-      <!--        *ngIf="value['icon']"-->
-      <!--        [src]="value['icon'] | country"-->
-      <!--        alt="icon" />-->
-      <span class="text-value">{{ value[nameField] }}</span>
-    </mat-option>
-  </mat-select>
-
-  <mat-icon
-    matSuffix
-    class="icon-arrow"
+<app-label [value]="value" [name]="label" />
+<div
+  class="input-dropdown-control"
+  [ngStyle]="styleConfig"
+  (clickOutside)="onClickOutside()">
+  <input
+    [ngStyle]="getSelectedItemStyle()"
     [ngClass]="{
-      'icon-arrow-open': showDropdown,
-      'icon-arrow-selected': !showDropdown
+      success: showDropdown,
+      selected: isSelectedValueExist(),
+      error: !showDropdown && isFormControlInvalid()
     }"
-    >keyboard_arrow_down
-  </mat-icon>
+    [formControl]="formControl"
+    (click)="toggleDropdown()"
+    [value]="selectedItem?.name"
+    readonly
+    [placeholder]="placeholder | translate" />
+
+  <div class="dropdown-content" *ngIf="showDropdown">
+    <app-search-input
+      *ngIf="filtered"
+      class="search_input"
+      (click)="$event.stopPropagation()"
+      (clearClick)="filteredData = data"
+      (valueChanged)="onSearchFilter($event)"
+      [styleConfig]="{ width: '100%' }" />
+    <ngx-simplebar
+      class="content"
+      [options]="{ autoHide: false }"
+      [style.max-height.px]="240">
+      <mat-option
+        class="options"
+        [ngClass]="{ selected: item.id === selectedItem?.id }"
+        *ngFor="let item of filteredData"
+        [value]="item"
+        (click)="onSelectItem(item)">
+        <ng-container
+          *ngIf="!item.imgSrc"
+          [ngTemplateOutlet]="default"
+          [ngTemplateOutletContext]="{ item }" />
+
+        <ng-container
+          *ngIf="item.imgSrc"
+          [ngTemplateOutlet]="withImg"
+          [ngTemplateOutletContext]="{ item }" />
+
+        <mat-icon
+          class="icon_selected"
+          *ngIf="item.id === selectedItem?.id"
+          svgIcon="check" />
+      </mat-option>
+    </ngx-simplebar>
+  </div>
+
+  <button
+    [ngClass]="{
+      open: showDropdown,
+      selected: !showDropdown
+    }"
+    class="btn-arrow"
+    (click)="$event.stopPropagation(); toggleDropdown()">
+    <mat-icon class="icon" [svgIcon]="arrow" />
+  </button>
 </div>
+<app-error
+  *ngIf="!showDropdown && isFormControlInvalid()"
+  [errors]="formControl.errors" />
+
+<ng-template #withImg let-item="item">
+  <div class="img-container">
+    <img [ngSrc]="item.imgSrc" alt="icon" width="32" height="32" />
+    <span class="text-value">{{ item.name }}</span>
+  </div>
+</ng-template>
+
+<ng-template #default let-item="item">
+  <span class="text-value">{{ item.name }}</span>
+</ng-template>

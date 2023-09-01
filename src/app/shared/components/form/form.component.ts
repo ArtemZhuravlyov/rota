@@ -16,19 +16,13 @@ import {
 } from '@angular/forms';
 import { FormFieldEntry } from '@shared/components/form/types/form-field-entryl.type';
 import { ComponentTypeEnum } from '@core/enums/component-type.enum';
-import { DatepickerModule } from '@shared/modules/datepicker/datepicker.module';
-import { DropdownModule } from '@shared/modules/dropdown/dropdown.module';
-import { FileInputModule } from '@shared/modules/file-input/file-input.module';
-import { PhoneSelectModule } from '@shared/modules/autocomplete/phone-select.module';
-import { TextToggleModule } from '@shared/modules/text-checkbox/text-toggle.module';
-import { TextboxModule } from '@shared/modules/textbox/textbox.module';
-import { TimeInputModule } from '@shared/modules/time-input/time-input.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormFiledTypeName } from '@shared/components/form/types/form-filed-type-name';
 import { InputComponent } from '@shared/components/input/input.component';
 import { TextareaComponent } from '@shared/components/textarea/textarea.component';
 import { InputPasswordComponent } from '@shared/components/input-password/input-password.component';
 import { InputDropdownComponent } from '@shared/components/input-dropdown/input-dropdown.component';
+import { DatepickerComponent } from '@shared/components/datepicker/datepicker.component';
 
 @Component({
   selector: 'app-form',
@@ -36,18 +30,12 @@ import { InputDropdownComponent } from '@shared/components/input-dropdown/input-
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DatepickerModule,
-    DropdownModule,
-    FileInputModule,
-    PhoneSelectModule,
-    TextToggleModule,
-    TextboxModule,
-    TimeInputModule,
     TranslateModule,
     InputComponent,
     TextareaComponent,
     InputPasswordComponent,
     InputDropdownComponent,
+    DatepickerComponent,
   ],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],

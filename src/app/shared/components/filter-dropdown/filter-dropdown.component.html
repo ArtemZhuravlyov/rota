@@ -13,7 +13,6 @@
   [class]="'filter-menu'"
   [xPosition]="xPosition"
   [yPosition]="yPosition">
-  <div class="triangle-border"></div>
   <div class="filter-container" (click)="$event.stopPropagation()">
     <h1>{{ columnName | translate }}</h1>
     <app-search-input
