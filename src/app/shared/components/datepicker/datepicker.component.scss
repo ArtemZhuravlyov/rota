@@ -10,19 +10,46 @@
     text-align: left;
     font-style: normal;
     font-size: 15px;
-    color: #221F1F;
+    color: #1C9F56;
+    &:focus-visible {
+      outline: none;
+    }
   }
 
   .picker {
     position: absolute;
-    top:0;
-    right: 10px;
+    top:17%;
+    right: 19px;
+    ::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      --mat-mdc-button-persistent-ripple-color: none;
+      &:active {
+        --mat-mdc-button-persistent-ripple-color: transparent !important;
+      }
+      &:hover {
+        background-color: #F3FFF9;
+        ::ng-deep .mat-icon {
+          color: #221F1F;
+        }
+      }
+    }
+
+    ::ng-deep .mat-mdc-icon-button .mat-mdc-button-touch-target {
+      width: 32px;
+      height: 32px;
+
+    }
   }
 }
 
-.fake_input {
-  width: 0 !important;
-  visibility: hidden;
-  position: absolute;
-  right: 0;
+.selected {
+  ::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
+    background-color: #94DCB7;
+  }
 }
+
