@@ -95,7 +95,7 @@ export class EmployeesTypeComponent implements OnInit {
         this.openDescriptionDialog(payload);
         break;
       case ActionButtonName.APPLY:
-        this.redirectToEditEmployeeType(payload.id);
+        this.redirectToEditEmployeeType(payload);
         break;
     }
   }
@@ -128,11 +128,12 @@ export class EmployeesTypeComponent implements OnInit {
       .subscribe();
   }
 
-  private redirectToEditEmployeeType(id: string) {
+  private redirectToEditEmployeeType(type: EmploymentTypes) {
     return this.route.navigate(
-      [NavigationPaths.EDIT_EMPLOYEE_TYPE, id],
+      [NavigationPaths.EDIT_EMPLOYEE_TYPE, type.id],
       {
         relativeTo: this.activatedRoute,
+        state: { name: type.name },
       }
     );
   }

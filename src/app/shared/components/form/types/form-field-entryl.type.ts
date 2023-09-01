@@ -4,32 +4,53 @@ import { Style } from '@core/types/style-model';
 import { TranslateKey } from '../../../../../assets/i18n/enums/translate-key.enum';
 import { ValidatorFn } from '@angular/forms';
 import { CValidatorFn } from '@shared/utils/custom-validators/types/custom-validator.type';
+import { Input } from '@angular/core';
+
+//fields
+
+export type InputFiled = {
+  type: FormFiledTypeName.INPUT;
+  config: InputFormFieldConfig & CommonFieldConfigs;
+  key: string;
+  validators?: ValidatorFn[] | CValidatorFn[];
+};
+
+export type TextareaFiled = {
+  type: FormFiledTypeName.TEXTAREA;
+  config: TextareaFormFieldConfig & CommonFieldConfigs;
+  key: string;
+  validators?: ValidatorFn[] | CValidatorFn[];
+};
+
+export type PasswordFiled = {
+  type: FormFiledTypeName.PASSWORD;
+  config: PasswordFormFieldConfig & CommonFieldConfigs;
+  key: string;
+  validators?: ValidatorFn[] | CValidatorFn[];
+};
+
+export type DropdownFiled = {
+  type: FormFiledTypeName.DROPDOWN;
+  config: DropdownFormFieldConfig & CommonFieldConfigs;
+  key: string;
+  validators?: ValidatorFn[] | CValidatorFn[];
+};
+
+export type DatepickerFiled = {
+  type: FormFiledTypeName.DATEPICKER;
+  config: DatepickerFieldConfig & CommonFieldConfigs;
+  key: string;
+  validators?: ValidatorFn[] | CValidatorFn[];
+};
 
 export type FormFieldEntry =
-  | {
-      type: FormFiledTypeName.INPUT;
-      config: InputFormFieldConfig & CommonFieldConfigs;
-      key: string;
-      validators?: ValidatorFn[] | CValidatorFn[];
-    }
-  | {
-      type: FormFiledTypeName.TEXTAREA;
-      config: TextareaFormFieldConfig & CommonFieldConfigs;
-      key: string;
-      validators?: ValidatorFn[] | CValidatorFn[];
-    }
-  | {
-      type: FormFiledTypeName.PASSWORD;
-      config: PasswordFormFieldConfig & CommonFieldConfigs;
-      key: string;
-      validators?: ValidatorFn[] | CValidatorFn[];
-    }
-  | {
-      type: FormFiledTypeName.DROPDOWN;
-      config: DropdownFormFieldConfig & CommonFieldConfigs;
-      key: string;
-      validators?: ValidatorFn[] | CValidatorFn[];
-    };
+  | InputFiled
+  | TextareaFiled
+  | PasswordFiled
+  | DropdownFiled
+  | DatepickerFiled;
+
+//configs
 
 export interface CommonFieldConfigs {
   styleConfig: Style;
@@ -63,9 +84,18 @@ export interface TextareaFormFieldConfig {
 }
 
 export interface DropdownFormFieldConfig {
+  label: keyof typeof TranslateKey;
+  filtered: boolean;
   data: any[];
   value: any;
   placeholder: string;
   idField: string;
   nameField: string;
+  imgSrcFiled?: string;
+}
+
+export interface DatepickerFieldConfig {
+  value: Date | null;
+  label: keyof typeof TranslateKey;
+  placeholder: string;
 }
