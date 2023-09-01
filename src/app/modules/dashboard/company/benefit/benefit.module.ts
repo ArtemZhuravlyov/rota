@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormBuilderModule } from '@shared/modules/form-builder/form-builder.module';
 import { FormCardModule } from '@shared/modules/form-card/form-card.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormComponent } from '@shared/components/form/form.component';
 
 @NgModule({
   declarations: [BenefitComponent, NewBenefitComponent],
@@ -26,6 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FormBuilderModule,
     FormCardModule,
     TranslateModule,
+    FormComponent,
   ],
 })
 export class BenefitModule {}

@@ -174,6 +174,7 @@ export class InputDropdownComponent
     if (typeof item === 'string' || typeof item === 'number') {
       return new ListItemInput(item);
     } else {
+      console.log(this.nameField);
       return new ListItemInput({
         id: item[this.idField],
         name: item[this.nameField],

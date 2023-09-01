@@ -2,9 +2,9 @@
 <app-form-card>
   <h1 class="heading">{{ 'BENEFIT_SETUP' | translate }}</h1>
 
-  <app-form-builder
-    [formFields]="formFields"
-    (createdForm)="form = $event"></app-form-builder>
+  <app-form
+    [formFields]="formField"
+    (createdForm)="form = $event"></app-form>
 
   <div class="d-flex justify-content-around align-items-center">
     <app-button

@@ -1,42 +1,67 @@
-import { FormField } from '@core/types/form-builder.model';
-import { Validators } from '@angular/forms';
+import { FormFieldEntry } from '@shared/components/form/types/form-field-entryl.type';
+import { FormFiledTypeName } from '@shared/components/form/types/form-filed-type-name';
+import { CustomValidators } from '@shared/utils/custom-validators/custom-validators';
+import { TranslateKey } from '../../../../../../assets/i18n/enums/translate-key.enum';
 
-export const benefitCreateFormConfig: FormField[] = [
+export const benefitCreateFormConfig: FormFieldEntry[] = [
   {
+    type: FormFiledTypeName.INPUT,
     key: 'name',
-    label: 'NAME',
-    componentType: 'textbox',
-    inputType: 'text',
-    validators: [Validators.required],
-    placeholder: 'ENTER',
-    maxLength: 500,
-  },
-  {
-    key: 'description',
-    label: 'DESCRIPTION',
-    componentType: 'textbox',
-    inputType: 'textarea',
-    styleConfig: { height: '150px' },
-    validators: [Validators.required],
-    placeholder: 'ENTER',
-    maxLength: 500,
-  },
-  {
-    key: 'grade_category',
-    label: 'GRADE_CATEGORY',
-    componentType: 'dropdown',
-    inputType: 'textarea',
-    data: [
-      { displayName: 'Some value', value: '  ' },
-      { displayName: 'Looooooooooooooooooooooong text', value: '  ' },
-      {
-        displayName: 'Looooooooooooooooooooooong text too',
-        value: '  ',
-      },
+    validators: [
+      CustomValidators.required,
+      CustomValidators.excludeSymbolsValidator({
+        symbols: ['`'],
+      }),
     ],
-    styleConfig: { height: '150px' },
-    validators: [Validators.required],
-    placeholder: 'SELECT',
-    maxLength: 500,
+    config: {
+      inputType: 'text',
+      styleConfig: {
+        width: '480px',
+        height: '52px',
+      },
+      label: TranslateKey.NAME,
+      maxLength: 100,
+      placeholder: 'ENTER',
+      value: '',
+      readonly: false,
+      excludeSymbols: ['`'],
+    },
+  },
+  {
+    type: FormFiledTypeName.TEXTAREA,
+    key: 'description',
+    validators: [
+      CustomValidators.required,
+      CustomValidators.excludeSymbolsValidator({
+        symbols: ['`'],
+      }),
+    ],
+    config: {
+      styleConfig: {
+        width: '480px',
+        height: '100px',
+      },
+      label: TranslateKey.DESCRIPTION,
+      maxLength: 500,
+      placeholder: 'ENTER',
+      value: '',
+      readonly: false,
+      excludeSymbols: ['`'],
+    },
+  },
+  {
+    type: FormFiledTypeName.DROPDOWN,
+    key: 'grade_category',
+    validators: [CustomValidators.required],
+    config: {
+      label: TranslateKey.GRADE_CATEGORY,
+      filtered: true,
+      styleConfig: { width: '480px', height: '52px' },
+      data: [],
+      value: null,
+      placeholder: 'SELECT',
+      idField: 'id',
+      nameField: 'name',
+    },
   },
 ];
