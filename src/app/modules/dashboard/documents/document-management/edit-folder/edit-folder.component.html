@@ -1,5 +1,5 @@
 <app-page-header
-  [title]="'NEW_FOLDER'"
+  [title]="'EDIT_FOLDER'"
   [isBackBtnShowed]="true"></app-page-header>
 
 <app-form-card>
@@ -11,7 +11,7 @@
 
   <div class="d-flex justify-content-around align-items-center">
     <app-button
-      (click)="createDocument()"
+      (click)="editFolder()"
       [btnType]="ButtonTypeEnum.FLAT"
       [styleConfig]="{ width: '150px', height: '50px' }"
       [isIconButton]="true"

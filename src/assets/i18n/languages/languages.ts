@@ -384,6 +384,9 @@ const en: LanguageObject = {
   REMAINING_TIME_DESCRIPTION:
     'After the time is up your screen will be locked.',
   BULK_LOAD: 'Bulk Load',
+  SEARCH_USER: 'Search users',
+  EDIT_FOLDER: 'Edit Folder',
+  NEW_FOLDER: 'New Folder',
 };
 
 export const allLanguages: {

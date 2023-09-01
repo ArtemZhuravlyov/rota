@@ -9,6 +9,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { AuthService } from '@core/services/account/auth.service';
+import { ApprovalService } from '@core/services/documents/approval.service';
 import { foldersListConfig } from '@app/modules/dashboard/documents/configs/folders-list.config';
 import { DocumentsService } from '@core/services/documents/documents.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -45,7 +46,8 @@ export class DocumentManagementComponent implements OnInit {
     private documentService: DocumentsService,
     private readonly dialog: MatDialog,
     private router: Router,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private appService: ApprovalService
   ) {}
 
   //todo type
@@ -61,6 +63,7 @@ export class DocumentManagementComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.appService.currentValue.subscribe();
     this.initFolderList();
   }
 
@@ -90,6 +93,12 @@ export class DocumentManagementComponent implements OnInit {
       case TableActionTypes.SHARE_WITH:
         //todo open share modal
         this.openShareModal(payload);
+        break;
+      case TableActionTypes.EDIT:
+        this.appService.updateValue(payload);
+        this.router.navigate([NavigationPaths.EDIT_FOLDER], {
+          relativeTo: this.route,
+        });
         break;
     }
   }

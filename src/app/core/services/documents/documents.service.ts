@@ -56,6 +56,19 @@ export class DocumentsService {
     );
   }
 
+  //todo continue(url, add folderId)
+  editFolder(
+    body: Omit<DocumentCreate, 'id'> & { id: string },
+    userId: string,
+    companyId: string
+  ): Observable<any> {
+    console.log(body);
+    return this.http.post<any>(
+      `${this.env.apiUrlDocument}/document-category/create/${userId}/${companyId}`,
+      body
+    );
+  }
+
   deleteFolder(
     id: string,
     userId: string,

@@ -17,8 +17,16 @@
   <div class="text-container">
     <span class="title">{{ data.title }}</span>
     <span class="sub-title">{{ data.description }}</span>
-    <div>
-      <input class="share-search" placeholder="Search users" />
+    <app-search-input
+      [styleConfig]="{
+        width: '100%',
+        height: '20px',
+        background: '#F5F6F8'
+      }"
+      placeholder="SEARCH_USER"
+      (valueChanged)="filterTabs($event)"></app-search-input>
+    <div class="content" *ngFor="let user of users$">
+      {{ user.name }}
     </div>
   </div>
   <div class="footer-btn-container">

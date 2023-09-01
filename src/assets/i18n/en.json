@@ -320,7 +320,6 @@
   "EMPTY": "",
   "ORGANISATION_CHART": "Organisation Chart",
   "EMPLOYEES_TYPE": "Employees Type",
-  "DESCRIPTION": "Description",
   "ANALYSIS": "Analysis",
   "DOCUMENT_LIST": "Document list",
   "FOLDER_LIST": "Folder list",
@@ -334,7 +333,7 @@
   "SHARE_WITH": "Share with",
   "CHOOSE_FILES": "Choose files",
   "DOCUMENTS_SUPPORTED_FILES": "Max file size: 25mb, supported file type (xls, doc, pdf)",
-  "SHARED_DESC": "Some short description"
+  "SHARED_DESC": "Some short description",
   "DESCRIPTION": "Description",
   "EMPLOYEES_RECORD": "Employees Record",
   "ROW_ID": "Row ID",

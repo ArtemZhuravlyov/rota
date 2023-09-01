@@ -6,6 +6,7 @@ import { CreateDocumentComponent } from '@app/modules/dashboard/documents/docume
 import { UploadDocumentComponent } from '@app/modules/dashboard/documents/document-management/upload-document/upload-document.component';
 import { AppRoutes } from '@core/types/app-route.type';
 import { FolderInfoComponent } from '@modules/dashboard/documents/document-management/folder-info/folder-info.component';
+import { EditFolderComponent } from '@modules/dashboard/documents/document-management/edit-folder/edit-folder.component';
 
 const routes: AppRoutes = [
   {
@@ -16,6 +17,11 @@ const routes: AppRoutes = [
     path: NavigationPaths.CREATE_FOLDER,
     component: CreateDocumentComponent,
     data: { breadcrumb: 'CREATE_NEW_FOLDER' },
+  },
+  {
+    path: NavigationPaths.EDIT_FOLDER,
+    component: EditFolderComponent,
+    data: { breadcrumb: 'EDIT_FOLDER', title: 'EDIT_FOLDER' },
   },
   {
     path: `${NavigationPaths.FOLDER_DETAILS}/:id`,

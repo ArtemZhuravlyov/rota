@@ -14,6 +14,7 @@ import { UploadDocumentComponent } from './upload-document/upload-document.compo
 import { FolderSubHeaderComponent } from '@shared/modules/page-header/folder-sub-header/folder-sub-header.component';
 import { FolderInfoComponent } from './folder-info/folder-info.component';
 import { DocumentSubHeaderComponent } from '@shared/modules/page-header/document-sub-header/document-sub-header.component';
+import { EditFolderComponent } from './edit-folder/edit-folder.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DocumentSubHeaderComponent } from '@shared/modules/page-header/document
     FolderSubHeaderComponent,
     DocumentSubHeaderComponent,
     FolderInfoComponent,
+    EditFolderComponent,
   ],
   imports: [
     CommonModule,

@@ -18,6 +18,7 @@ import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 })
 export class ShareWithModalComponent {
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
+  users$: any = [];
 
   constructor(
     public dialogRef: MatDialogRef<ShareWithModalComponent>,
@@ -26,5 +27,12 @@ export class ShareWithModalComponent {
 
   closeModal(): void {
     this.dialogRef.close();
+  }
+
+  filterTabs($event: any) {}
+
+  ngOnInit() {
+    //todo get users list
+    console.log('Get users');
   }
 }

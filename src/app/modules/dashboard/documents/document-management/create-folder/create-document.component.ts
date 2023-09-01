@@ -7,6 +7,7 @@ import { finalize } from 'rxjs';
 import { AuthService } from '@core/services/account/auth.service';
 import { Router } from '@angular/router';
 import { DocumentsService } from '@core/services/documents/documents.service';
+import { folderFormConfig } from '@modules/dashboard/documents/configs/folder-form.config';
 
 @Component({
   selector: 'app-create-folder',
@@ -18,27 +19,7 @@ export class CreateDocumentComponent {
   protected readonly NavigationPaths = NavigationPaths;
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
 
-  formFields: FormField[] = [
-    {
-      key: 'name',
-      label: 'NAME',
-      componentType: 'textbox',
-      inputType: 'text',
-      validators: [Validators.required],
-      placeholder: 'ENTER',
-      maxLength: 500,
-    },
-    {
-      key: 'description',
-      label: 'DESCRIPTION',
-      componentType: 'textbox',
-      inputType: 'textarea',
-      styleConfig: { height: '150px' },
-      validators: [Validators.required],
-      placeholder: 'ENTER',
-      maxLength: 500,
-    },
-  ];
+  formFields: FormField[] = folderFormConfig;
   form!: FormGroup;
 
   constructor(
