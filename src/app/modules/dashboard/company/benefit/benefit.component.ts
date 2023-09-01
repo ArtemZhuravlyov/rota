@@ -16,6 +16,12 @@ import { CommonPaginationParams } from '@core/types/pagination.type';
 import { Benefits } from '@core/types/benefit.model';
 import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
+import { TableActionTypes } from '@core/types/data-table';
+import {
+  InfoModal,
+  InfoModalComponent,
+} from '@shared/modalWindows/info-modal/info-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-benefit',
@@ -28,6 +34,8 @@ export class BenefitComponent implements OnInit {
   private benefitService = inject(BenefitService);
   private authService = inject(AuthService);
   private destroyRef = inject(DestroyRef);
+
+  constructor(private readonly dialog: MatDialog) {}
 
   public readonly CREATE_NEW_BENEFIT =
     NavigationPaths.CREATE_NEW_BENEFIT;
@@ -70,5 +78,38 @@ export class BenefitComponent implements OnInit {
           this.isLoading = false;
         },
       });
+  }
+
+  onActionClick({
+    action,
+    payload,
+  }: {
+    action: string;
+    payload: any;
+  }) {
+    switch (action) {
+      case TableActionTypes.DELETE:
+        //this.deleteFolder(payload.id);
+        break;
+      case TableActionTypes.VIEWDESCRIPTION:
+        this.openDescriptionDialog(payload);
+        break;
+    }
+  }
+
+  private openDescriptionDialog(type: any) {
+    const data = <InfoModal>{
+      title: type.name,
+      description: type.description,
+    };
+    this.dialog
+      .open(InfoModalComponent, {
+        panelClass: 'info-dialog',
+        backdropClass: 'modal-background',
+        disableClose: true,
+        data,
+      })
+      .afterClosed()
+      .subscribe();
   }
 }

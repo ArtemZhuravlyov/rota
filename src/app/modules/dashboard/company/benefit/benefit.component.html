@@ -25,6 +25,7 @@
   [data]="benefits$ | async"
   itemsKey="benefits"
   [tableConfig]="benefitListConfig"
+  (actionClicked)="onActionClick($event)"
   tableStyle="benefitListConfig"
   [isPrinting]="isPrinting$.value"
   [hasCheckboxColumn]="true"
