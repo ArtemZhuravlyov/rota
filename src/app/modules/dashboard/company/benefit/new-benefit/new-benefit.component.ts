@@ -9,11 +9,10 @@ import { FormGroup } from '@angular/forms';
 import { benefitCreateFormConfig } from '@modules/dashboard/company/benefit/config/benefit-create-form.config';
 import { GradeCategoryService } from '@core/services/company/grade-category/grade-category.service';
 import { finalize, Observable } from 'rxjs';
-import { CompanyResponse } from '@core/types/company.interface';
 import { FormFiledTypeName } from '@shared/components/form/types/form-filed-type-name';
 import { GradeCategoryResponse } from '@core/types/grade-category.model';
 import { BenefitService } from '@modules/dashboard/company/benefit/benefit.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-benefit',
@@ -26,13 +25,13 @@ export class NewBenefitComponent implements OnInit {
   protected readonly ButtonTypeEnum = ButtonTypeEnum;
   formField = benefitCreateFormConfig;
   form!: FormGroup;
-  //todo grades response type
   grades$!: Observable<GradeCategoryResponse>;
 
   constructor(
     private gradeCategoryService: GradeCategoryService,
     private benefitService: BenefitService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -49,8 +48,7 @@ export class NewBenefitComponent implements OnInit {
       }
     });
   }
-  createBenefit() {
-    console.log(this.form.getRawValue());
+  createBenefit(): void {
     const body = {
       ...this.form.getRawValue(),
       gradeCategoryId: this.form.getRawValue().gradeCategory.id,
@@ -59,7 +57,9 @@ export class NewBenefitComponent implements OnInit {
       .createBenefit(body)
       .pipe(
         finalize(() => {
-          this.router.navigate([NavigationPaths.BACK]);
+          this.router.navigate([NavigationPaths.BACK], {
+            relativeTo: this.route,
+          });
         })
       )
       .subscribe();

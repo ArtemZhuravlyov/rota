@@ -10,3 +10,5 @@ export type Benefits = {
   totalCount: number;
   benefits: Benefit[];
 };
+
+export type BenefitCreated = Pick<Benefit, 'id'>;

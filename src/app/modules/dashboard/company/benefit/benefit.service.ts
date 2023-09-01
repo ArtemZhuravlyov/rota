@@ -1,10 +1,9 @@
-import { Inject, inject, Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
-import { Benefits } from '@core/types/benefit.model';
+import { BenefitCreated, Benefits } from '@core/types/benefit.model';
 import { CommonPaginationParams } from '@core/types/pagination.type';
-import { CompanyRegisterResult } from '@core/types/company.interface';
 import { ENVIRONMENT } from '@app/app.module';
 import { Environment } from '@core/types/environment';
 import { AuthService } from '@core/services/account/auth.service';
@@ -36,8 +35,8 @@ export class BenefitService {
       );
   }
 
-  createBenefit(body: any) {
-    return this.http.post<any>(
+  createBenefit(body: Benefits): Observable<BenefitCreated> {
+    return this.http.post<BenefitCreated>(
       `${this.env.apiUrlCompany}/benefit/create/${this.user.userId}/${this.user.companyId}`,
       body
     );
