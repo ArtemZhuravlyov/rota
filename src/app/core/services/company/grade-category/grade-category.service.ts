@@ -15,6 +15,7 @@ import {
   GradeCategory,
   GradeCategoryResponse,
 } from '@core/types/grade-category.model';
+import { isNil } from 'lodash';
 
 @Injectable({
   providedIn: 'root',
@@ -32,10 +33,14 @@ export class GradeCategoryService {
   selectedTableAccounts$ = new BehaviorSubject<any>([]);
 
   getGradeCategoriesList(
-    pageSize = 0,
-    pageIndex = 2147483647
+    pageSize?: number,
+    pageIndex?: number
   ): Observable<GradeCategoryResponse> {
-    const params = createHttpParams({});
+    let params = createHttpParams({});
+    if (!isNil(pageSize) && !isNil(pageIndex)) {
+      params = createHttpParams({ pageSize, pageIndex });
+    }
+    //const params = createHttpParams(offset);
     return this.http
       .post<GradeCategoryResponse>(
         `${this.env.apiUrlCompany}/grade-category/${this.user.userId}/${this.user.companyId}`,

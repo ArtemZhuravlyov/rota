@@ -51,7 +51,7 @@ export const benefitCreateFormConfig: FormFieldEntry[] = [
   },
   {
     type: FormFiledTypeName.DROPDOWN,
-    key: 'grade_category',
+    key: 'gradeCategory',
     validators: [CustomValidators.required],
     config: {
       label: TranslateKey.GRADE_CATEGORY,
