@@ -11,23 +11,26 @@
       class="action-buttons d-flex flex-column align-items-center justify-content-between">
       <app-button
         (btnClick)="onSubmit()"
-        [disabled]="!form.valid"
+        [disabled]="!form.invalid"
         title="CONTINUE"
-        [icon]="'long-arrow'"
-        [iconPosition]="'afterText'"
         btnType="FLAT"
+        icon="long-arrow"
+        iconPosition="afterText"
+        colorTheme="primary"
         [isIconButton]="true"
+        [enableTextAnimation]="true"
         [styleConfig]="{ height: '52px' }"
         [iconStyleConfig]="{ transform: 'rotate(-90deg)' }" />
+
       <app-button
-        [routerLink]="routerLinkToRegistration"
-        [queryParams]="{ edit: true }"
         (btnClick)="backToRegister()"
         title="BACK"
         btnType="FLAT"
-        [icon]="'long-arrow'"
-        [iconPosition]="'beforeText'"
-        [colorTheme]="'basic'"
+        icon="long-arrow"
+        iconPosition="beforeText"
+        colorTheme="basic"
+        [isIconButton]="true"
+        [enableTextAnimation]="true"
         [styleConfig]="{ height: '52px' }"
         [iconStyleConfig]="{
           transform: 'rotate(90deg)'

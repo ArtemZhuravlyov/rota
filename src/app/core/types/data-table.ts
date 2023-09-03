@@ -56,6 +56,7 @@ export const TableActionTypes = {
   IMPORT: 'import',
   CHECK: 'check',
   ANALYSIS: 'analysis',
+  ANALYTICS: 'analytics',
   DOWNLOAD: 'download',
   BULK_LOAD: 'bulk_load',
   FOLDER_VIEW: 'folder_view',

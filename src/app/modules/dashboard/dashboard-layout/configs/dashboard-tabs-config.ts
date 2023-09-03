@@ -10,7 +10,7 @@ export const dashboardTabsConfig: MenusConfig[] = [
   },
   {
     title: TranslateKey.EMPLOYEES,
-    icon: 'employee',
+    icon: 'employees',
     routerLink: NavigationPaths.EMPLOYEES,
   },
   {
@@ -71,6 +71,7 @@ export const dashboardTabsConfig: MenusConfig[] = [
     title: TranslateKey.ENGAGEMENT,
     icon: 'engagement',
     routerLink: NavigationPaths.ENGAGEMENT,
+    isDisabled: true,
   },
   {
     title: TranslateKey.REPORTS_ANALYTICS,

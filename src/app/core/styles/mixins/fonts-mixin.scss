@@ -13,7 +13,7 @@ $text-small: 'text-small';
     font-weight: 600;
     font-size: 24px;
     line-height: 35px;
-    color: $text-dark-gray;
+    color: $text-darkest-gray;
   } @else if ($type == $subtitle) {
     font-weight: normal;
     font-size: 15px;
@@ -23,12 +23,12 @@ $text-small: 'text-small';
     font-weight: normal;
     font-size: 17px;
     line-height: 24px;
-    color: $text-dark-gray;
+    color: $text-darkest-gray;
   } @else if ($type == $text-middle-bold) {
     font-weight: bold;
     font-size: 17px;
     line-height: 24px;
-    color: $text-dark-gray;
+    color: $text-darkest-gray;
   } @else if($type == $text-small) {
     font-size: 12px;
     line-height: 17px;
@@ -36,6 +36,6 @@ $text-small: 'text-small';
     font-weight: normal;
     font-size: 14px;
     line-height: 20px;
-    color: $text-dark-gray;
+    color: $text-darkest-gray;
   }
 }

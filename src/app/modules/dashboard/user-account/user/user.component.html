@@ -1,15 +1,26 @@
 <app-page-header [title]="title">
-  <div class="d-flex justify-content-between align-items-center header-action">
+  <div
+    class="d-flex justify-content-between align-items-center header-action">
     <app-button
-      [styleConfig]="{ background: 'transparent', height: '50px', width: '140px'}"
-      [btnType]="'STROKED'"
-      [title]="'IMPORT'"
+      [styleConfig]="{
+        background: 'transparent',
+        height: '50px',
+        width: '140px'
+      }"
+      btnType="STROKED"
+      title="IMPORT"
       [routerLink]="routerLinkToImport"
       [state]="{ tableConfig }"
-      [icon]="'export'"
+      icon="export"
       [isIconButton]="true"
-      [iconStyleConfig]="{ transform: 'rotate(180deg)'}"
-    ></app-button>
-    <app-button [styleConfig]="{  height: '50px', width: '140px'}" [title]="'CREATE_NEW'"></app-button>
+      [iconStyleConfig]="{
+        transform: 'rotate(180deg)'
+      }" />
+    <app-button
+      [styleConfig]="{
+        height: '50px',
+        width: '140px'
+      }"
+      title="CREATE_NEW" />
   </div>
 </app-page-header>

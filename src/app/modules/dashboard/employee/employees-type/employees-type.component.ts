@@ -38,7 +38,7 @@ type RequestParamsType = GetAllEmployeeTypesQuery & {
 };
 
 @Component({
-  selector: 'app-employees-enums',
+  selector: 'app-employees-record-enums',
   templateUrl: './employees-type.component.html',
   styleUrls: ['./employees-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -153,11 +153,12 @@ export class EmployeesTypeComponent implements OnInit {
       .pipe(
         tap(() => (this.isBusy = true)),
         takeUntilDestroyed(this.destroyRef),
-        distinctUntilParamsChanged([
-          'pageIndex',
-          'isItemChanged',
-          'isActive',
-        ]),
+        distinctUntilParamsChanged(
+          ['pageIndex', 'isItemChanged', 'isActive'],
+          () => {
+            this.isBusy = false;
+          }
+        ),
         switchMap(({ pageSize, pageIndex, isActive }) =>
           this.employmentTypeService.getEmploymentTypeList({
             pageSize,

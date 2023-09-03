@@ -42,15 +42,17 @@
 
     <div class="bottom-actions d-flex flex-column">
       <mat-slide-toggle
-        ><span *ngIf="isExpanded">Dark Mode</span>
+        ><span *ngIf="isExpanded">{{ DARK_MODE | translate }}</span>
       </mat-slide-toggle>
 
       <a
         class="navigation-link d-flex justify-content-start align-items-center"
         [routerLink]="NavigationPaths.SETTINGS"
         routerLinkActive="active-link">
-        <mat-icon class="material-icons-outlined">settings</mat-icon>
-        <span *ngIf="isExpanded">Settings</span>
+        <mat-icon
+          class="material-icons-outlined"
+          fontIcon="settings" />
+        <span *ngIf="isExpanded">{{ SETTINGS | translate }}</span>
       </a>
     </div>
   </mat-drawer>

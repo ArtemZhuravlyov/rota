@@ -6,15 +6,15 @@
 <div class="modal-content">
   <app-form-builder
     [formFields]="formFields"
-    (createdForm)="form = $event">
-  </app-form-builder>
+    (createdForm)="form = $event"
+    (selectedFormValue)="setLanguage($event)" />
 </div>
 
 <div
   class="action-buttons d-flex justify-content-center align-items-center">
   <app-button
     (btnClick)="updateUserSettings()"
-    [btnType]="ButtonTypeEnum.FLAT"
+    btnType="FLAT"
     [styleConfig]="{
       width: '150px',
       height: '50px',
@@ -22,15 +22,15 @@
     }"
     [isIconButton]="true"
     title="SAVE"
-    [icon]="'success'"></app-button>
+    [icon]="'success'" />
 
   <app-button
     mat-dialog-close
     [routerLink]="NavigationPaths.BACK"
-    [colorTheme]="'warn'"
+    colorTheme="warn"
     [styleConfig]="{ width: '150px', height: '50px' }"
-    [btnType]="ButtonTypeEnum.FLAT"
+    btnType="FLAT"
     [isIconButton]="true"
     title="CANCEL"
-    [icon]="'cancel'"></app-button>
+    icon="cancel" />
 </div>

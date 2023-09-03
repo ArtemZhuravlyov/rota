@@ -1,0 +1,30 @@
+<div class="container-wrapper">
+  <app-page-header title="EMPLOYEES">
+    <app-button
+      btnType="STROKED"
+      colorTheme="outline-calm"
+      [isIconButton]="true"
+      buttonTextPosition="space-between"
+      title="IMPORT"
+      icon="import" />
+    <app-button
+      [routerLink]="NavigationPaths.CREATE_NEW_EMPLOYEE"
+      btnType="FLAT"
+      [isIconButton]="true"
+      title="CREATE_NEW"
+      icon="add" />
+  </app-page-header>
+  <app-page-sub-header
+    [showAnalyticsButton]="true"
+    [additionalButtonsDisabled]="false" />
+
+  <div class="table-container">
+    <app-data-table
+      [data]="employeesList$ | async"
+      [itemsKey]="'employees-record-enums'"
+      [tableConfig]="employeesListConfig"
+      [hasCheckboxColumn]="true"
+      [isLoading]="false"
+      [tableStyle]="'employee'" />
+  </div>
+</div>
