@@ -10,7 +10,7 @@ import { ImportTableConfig } from '@core/types/import-table-config.interface';
 import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
 
 @Component({
-  selector: 'app-import-employees-enums',
+  selector: 'app-import-employees-record-enums',
   templateUrl: './import-employees.component.html',
   styleUrls: ['./import-employees.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

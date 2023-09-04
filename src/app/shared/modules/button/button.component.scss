@@ -21,11 +21,19 @@ div {
   background: transparent !important;
 }
 
+//extends material button style
+::ng-deep .mdc-button .mdc-button__label {
+  width: 100%;
+}
+
 button {
   //@include fontStyle(middle-text);
   width: 100%;
-  border-radius: 10px;
+  //border-radius: 10px;
 
+  .full-size {
+    width: 100%;
+  }
 
   .flex-container {
     display: flex;
@@ -66,6 +74,9 @@ button {
 }
 
 .primary {
+  color: $white !important;
+  background-color: $background-green !important;
+
   .mdc-icon-button {
     border-radius: 99px;
   }
@@ -79,6 +90,20 @@ button {
     border-radius: 10px;
     background: $button-primary;
     color: $white;
+  }
+}
+
+.link {
+  button {
+    color: #3E77AA;
+  }
+
+  .mat-mdc-outlined-button {
+    border: 1px solid #3E77AA80;
+    &:hover {
+      background: #F0F8FF;
+      border-color: #3E77AA;
+    }
   }
 }
 
@@ -102,19 +127,44 @@ button {
 }
 
 .basic {
+  box-shadow: 0 10px 20px $text-dark-gray!important;
+  background: $white !important;
   button {
-    color: $text-dark-gray;
+    color: $text-darkest-gray;
   }
 
   .mdc-fab, .flat-button {
     border-radius: 10px;
-    box-shadow: 1px 1px 5px $text-gray!important;
-    background: $white;
+
+
     color: $text-gray;
 
     &:hover {
-      color: $text-dark-gray!important;
+      color: $text-darkest-gray !important;
     }
+  }
+}
+
+.outline {
+  background: #F0FFF7 0 0 no-repeat padding-box !important;
+  border: 1px solid #1C9F5680 !important;
+  .mat-icon {
+    color: $background-dark;
+  }
+}
+.outline-calm {
+  background: none !important;
+  border: 1px solid #1C9F5680 !important;
+  .mat-icon {
+  color: $background-dark;
+  }
+}
+
+.ghost {
+  background: none !important;
+  border: none !important;
+  .mat-icon {
+    color: $background-dark;
   }
 }
 
@@ -124,9 +174,30 @@ button {
   }
 }
 
+
+
+.text-hover {
+  span {
+    margin: 0 0;
+    transition: margin 0.2s;
+  }
+  &:hover {
+    span {
+      margin: 0 0.5rem;
+    }
+  }
+}
+
 .afterText {
   .mat-icon {
     margin-left: 5px;
   }
+}
+
+.beforeText {
+  .mat-icon {
+    margin-right: 5px;
+  }
+  flex-direction: row-reverse;
 }
 

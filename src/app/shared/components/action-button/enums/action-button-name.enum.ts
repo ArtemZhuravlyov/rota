@@ -6,4 +6,6 @@ export enum ActionButtonName {
   PAY = 'pay',
   EXPORT = 'export',
   VIEW = 'view',
+  DOWNLOAD = 'download',
+  EDIT = 'edit',
 }

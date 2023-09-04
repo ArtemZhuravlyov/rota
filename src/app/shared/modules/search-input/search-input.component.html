@@ -10,7 +10,7 @@
       matInput
       [ngModel]="value"
       (ngModelChange)="onValueChanged(input.value)"
-      placeholder="{{ SEARCH | translate }}"
+      placeholder="{{ placeholder | translate }}"
       class="search-input" />
     <ng-container *ngIf="onlyClose" [ngTemplateOutlet]="close" />
     <ng-container

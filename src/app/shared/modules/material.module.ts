@@ -58,6 +58,12 @@ export class MaterialModule {
     domSanitizer: DomSanitizer
   ): void {
     matIconRegistry.addSvgIcon(
+      'up-arrow',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/up-arrow.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
       'excel',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/excel.svg'
@@ -166,7 +172,7 @@ export class MaterialModule {
       )
     );
     matIconRegistry.addSvgIcon(
-      'employee',
+      'employees',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/employees.svg'
       )
@@ -259,6 +265,24 @@ export class MaterialModule {
       'scheduling',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/scheduling.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
+      'share',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/share.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
+      'folder',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/folder.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
+      'bulk_load',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/bulk-load.svg'
       )
     );
     matIconRegistry.addSvgIcon(
@@ -465,6 +489,12 @@ export class MaterialModule {
       'linux',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/linux.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
+      'pie-chart',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/pie-chart.svg'
       )
     );
   }

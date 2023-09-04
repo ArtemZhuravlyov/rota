@@ -13,6 +13,7 @@ const routes: AppRoutes = [
   {
     path: NavigationPaths.CREATE_NEW_BENEFIT,
     component: NewBenefitComponent,
+    data: { breadcrumb: 'NEW_BENEFIT' },
   },
   {
     path: NavigationPaths.ANY,

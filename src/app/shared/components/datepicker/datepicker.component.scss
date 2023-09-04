@@ -1,0 +1,55 @@
+.datepicker_control {
+  display: block;
+  position: relative;
+  input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #1C9F5680;
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: left;
+    font-style: normal;
+    font-size: 15px;
+    color: #1C9F56;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  .picker {
+    position: absolute;
+    top:17%;
+    right: 19px;
+    ::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      --mat-mdc-button-persistent-ripple-color: none;
+      &:active {
+        --mat-mdc-button-persistent-ripple-color: transparent !important;
+      }
+      &:hover {
+        background-color: #F3FFF9;
+        ::ng-deep .mat-icon {
+          color: #221F1F;
+        }
+      }
+    }
+
+    ::ng-deep .mat-mdc-icon-button .mat-mdc-button-touch-target {
+      width: 32px;
+      height: 32px;
+
+    }
+  }
+}
+
+.selected {
+  ::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
+    background-color: #94DCB7;
+  }
+}
+

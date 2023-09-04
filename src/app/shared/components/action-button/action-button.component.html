@@ -72,4 +72,30 @@
       Pay
     </button>
   </ng-container>
+
+  <ng-container *ngSwitchCase="ActionButtonName.EDIT">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{ disabled: disabled }"
+      (click)="btnClick.emit()"
+      class="icon-btn view_details"
+      rsTooltip="Edit"
+      [rsTooltipPosition]="RsTooltipPosition.BELOW"
+      [rsTooltipTheme]="RsTooltipTheme.LIGHT">
+      <mat-icon class="icon" svgIcon="edit" />
+    </button>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ActionButtonName.DOWNLOAD">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{ disabled: disabled }"
+      (click)="btnClick.emit()"
+      class="icon-btn view_details"
+      rsTooltip="Download"
+      [rsTooltipPosition]="RsTooltipPosition.BELOW"
+      [rsTooltipTheme]="RsTooltipTheme.LIGHT">
+      <mat-icon class="icon" svgIcon="download" />
+    </button>
+  </ng-container>
 </ng-container>

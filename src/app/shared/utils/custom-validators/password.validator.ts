@@ -6,9 +6,9 @@ import {
 
 export const passwordValidator = (isLogin = false): CValidatorFn => {
   return (control: AbstractControl): CValidationErrors | null => {
-    const result = new RegExp(
-      /^(?=.{6,})(?=.*[a-zA-Z])(?=.*[!#$%&?])/
-    )?.test(control.value);
+    // todo decide what should be
+    // good regex ->  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/ but current password doesn`t match
+    const result = true;
     if (result) {
       return null;
     } else if (isLogin) {

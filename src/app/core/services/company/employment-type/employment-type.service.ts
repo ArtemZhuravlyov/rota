@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ENVIRONMENT } from '@app/app.module';
 import { Environment } from '@core/types/environment';
 import { AuthService } from '@core/services/account/auth.service';
-import { catchError, Observable, of, shareReplay } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { createHttpParams } from '@shared/utils/create-http-params';
 import {
   EmploymentTypeResponse,
@@ -56,11 +56,9 @@ export class EmploymentTypeService {
   getEmploymentTypeById(
     employmentTypeId: string
   ): Observable<EmploymentTypes> {
-    return this.http
-      .get<EmploymentTypes>(
-        `${this.env.apiUrlCompany}/employment-type/${this.user.userId}/${this.user.companyId}/${employmentTypeId}`
-      )
-      .pipe(shareReplay(1));
+    return this.http.get<EmploymentTypes>(
+      `${this.env.apiUrlCompany}/employment-type/${this.user.userId}/${this.user.companyId}/${employmentTypeId}`
+    );
   }
 
   creteNewEmploymentType({

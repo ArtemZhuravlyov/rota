@@ -3,33 +3,53 @@
     <app-switch-bar
       [checked]="isChecked"
       (checkedChange)="checkedChange($event)" />
-    <p>Show In-Active</p>
+    <p>{{ SHOW_IN_ACTIVE | translate }}</p>
   </div>
 
   <div class="action-buttons">
     <app-button
       [disabled]="additionalButtonsDisabled"
       btnType="STROKED"
+      colorTheme="outline"
       [styleConfig]="{
         width: '130px',
         height: '42px',
         'font-weight': '500'
       }"
+      buttonTextPosition="space-between"
       title="EXPORT"
       [isIconButton]="true"
-      [icon]="'export'"
+      icon="export"
       (click)="buttonAction('export')" />
     <app-button
       [disabled]="additionalButtonsDisabled"
       btnType="STROKED"
+      colorTheme="outline"
       [styleConfig]="{
         width: '130px',
         height: '42px',
         'font-weight': '500'
       }"
-      [title]="'PRINT'"
+      buttonTextPosition="space-between"
+      title="PRINT"
       [isIconButton]="true"
-      [icon]="'print'"
+      icon="print"
       (click)="buttonAction('print')" />
+    <ng-container *ngIf="showAnalyticsButton">
+      <app-button
+        [disabled]="additionalButtonsDisabled"
+        btnType="STROKED"
+        colorTheme="outline"
+        [styleConfig]="{
+          width: '130px',
+          height: '42px',
+          'font-weight': '500'
+        }"
+        buttonTextPosition="space-between"
+        title="ANALYTICS"
+        [isIconButton]="true"
+        icon="pie-chart"
+        (click)="buttonAction('analytics')" />
+    </ng-container>
   </div>
 </div>

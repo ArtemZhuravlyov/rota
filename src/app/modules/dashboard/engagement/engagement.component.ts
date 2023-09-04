@@ -6,11 +6,12 @@ import { engagementSubMenu } from '@app/modules/dashboard/engagement/configs/eng
   selector: 'app-engagement',
   templateUrl: './engagement.component.html',
   styleUrls: ['./engagement.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EngagementComponent {
-
-  protected readonly menuConfig = engagementSubMenu;
+  protected readonly engagementSubMenu = engagementSubMenu;
   protected readonly isPrinting$ = this.printService.isPrinting$;
   constructor(private readonly printService: PrintService) {}
+
+  protected readonly sessionStorage = sessionStorage;
 }
