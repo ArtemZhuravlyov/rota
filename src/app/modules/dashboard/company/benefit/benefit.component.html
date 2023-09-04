@@ -20,14 +20,22 @@
       icon="add" />
   </div>
 </app-page-header>
+<app-page-sub-header
+  [additionalButtonsDisabled]="
+    (selectedTableAccs$ | async)?.length < 1
+  "
+  (onActionClicked)="
+    onActionClick({ action: $event, payload: {} })
+  " />
 
 <app-data-table
-  [data]="benefits$ | async"
+  [data]="benefitsList$ | async"
   itemsKey="benefits"
   [tableConfig]="benefitListConfig"
   (actionClicked)="onActionClick($event)"
   tableStyle="benefitListConfig"
   [isPrinting]="isPrinting$.value"
-  [hasCheckboxColumn]="true"
+  [actionConfig]="actionConfig"
+  (pageChange)="onPageChange($event)"
   [isLoading]="isLoading"
-  [actionConfig]="actionConfig" />
+  [hasCheckboxColumn]="true" />

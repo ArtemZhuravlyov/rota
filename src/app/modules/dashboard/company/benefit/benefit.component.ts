@@ -7,13 +7,11 @@ import {
 } from '@angular/core';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { PrintService } from '@core/services/print/print.service';
-import { BehaviorSubject, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, switchMap } from 'rxjs';
 import { benefitListConfig } from '@modules/dashboard/company/configs/benefit-list.config';
 import { BenefitService } from '@modules/dashboard/company/benefit/benefit.service';
 import { AuthService } from '@core/services/account/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { CommonPaginationParams } from '@core/types/pagination.type';
-import { Benefits } from '@core/types/benefit.model';
 import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
 import { TableActionTypes } from '@core/types/data-table';
@@ -22,6 +20,8 @@ import {
   InfoModalComponent,
 } from '@shared/modalWindows/info-modal/info-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { distinctUntilParamsChanged } from '@shared/utils/distinct-until-params-changed';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-benefit',
@@ -48,36 +48,24 @@ export class BenefitComponent implements OnInit {
   ];
 
   public isLoading = true;
-
   protected readonly isPrinting$ = this.printService.isPrinting$;
 
-  public benefitsParams$ =
-    new BehaviorSubject<CommonPaginationParams>({
-      userId: this.authService.user$.value.userId,
-      companyId: this.authService.user$.value.companyId,
-      pageSize: 10,
-      pageIndex: 1,
-    });
-  public benefits$ = new BehaviorSubject({} as Benefits);
+  //todo types
+  requestParams$ = new BehaviorSubject<{
+    pageSize: number;
+    pageIndex: number;
+    isItemChanged: boolean;
+  }>({ isItemChanged: false, pageSize: 10, pageIndex: 0 });
+
+  benefitsList$ = new BehaviorSubject<any>({
+    benefits: [],
+    totalCount: 0,
+  });
+
+  selectedTableAccs$ = this.benefitService.selectedTableAccounts$;
 
   ngOnInit() {
-    this.benefitsParams$
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        switchMap(params => {
-          this.isLoading = true;
-          return this.benefitService.getList(params);
-        })
-      )
-      .subscribe({
-        next: benefits => {
-          this.isLoading = false;
-          this.benefits$.next(benefits);
-        },
-        error: () => {
-          this.isLoading = false;
-        },
-      });
+    this.initBenefitList();
   }
 
   onActionClick({
@@ -89,7 +77,7 @@ export class BenefitComponent implements OnInit {
   }) {
     switch (action) {
       case TableActionTypes.DELETE:
-        //this.deleteFolder(payload.id);
+        this.deleteFolder(payload.id);
         break;
       case TableActionTypes.VIEWDESCRIPTION:
         this.openDescriptionDialog(payload);
@@ -111,5 +99,50 @@ export class BenefitComponent implements OnInit {
       })
       .afterClosed()
       .subscribe();
+  }
+
+  onPageChange({ pageIndex }: PageEvent): void {
+    console.log({ pageIndex });
+    this.updateRequestParams({ pageIndex });
+  }
+
+  private updateRequestParams(
+    params: Partial<{
+      pageSize: number;
+      pageIndex: number;
+      isItemChanged: boolean;
+    }>
+  ) {
+    const value = this.requestParams$.value;
+    this.requestParams$.next({ ...value, ...params });
+  }
+
+  private deleteFolder(id: string) {
+    this.benefitService.deleteBenefit(id).subscribe({
+      next: () => {
+        const { isItemChanged } = this.requestParams$.value;
+        this.updateRequestParams({ isItemChanged: !isItemChanged });
+      },
+    });
+  }
+
+  private initBenefitList() {
+    this.requestParams$
+      .pipe(
+        distinctUntilParamsChanged(['pageIndex', 'isItemChanged']),
+        switchMap(({ pageSize, pageIndex }) => {
+          this.isLoading = true;
+          return this.benefitService.getList({ pageSize, pageIndex });
+        })
+      )
+      .subscribe({
+        next: benefits => {
+          this.isLoading = false;
+          this.benefitsList$.next(benefits);
+        },
+        error: () => {
+          this.isLoading = false;
+        },
+      });
   }
 }
