@@ -4,6 +4,15 @@ export type IconPosition =
   | 'left'
   | 'beforeText';
 
-export type ButtonTheme = 'primary' | 'basic' | 'warn' | 'link';
+export type ButtonTextPosition = 'center' | 'space-between';
+
+export type ButtonTheme =
+  | 'primary'
+  | 'outline'
+  | 'outline-calm'
+  | 'ghost'
+  | 'warn'
+  | 'basic'
+  | 'link';
 
 export type Style = Record<string, string>;

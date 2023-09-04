@@ -107,7 +107,7 @@ export class CreateEmployeeComponent implements OnInit {
             console.log(res, 'ID');
           }),
           finalize(() => {
-            this.router.navigate(['/dashboard/employees']);
+            this.router.navigate(['/dashboard/employees-record']);
           })
         )
         .subscribe();

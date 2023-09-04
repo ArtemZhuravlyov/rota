@@ -349,5 +349,8 @@
   "BULK_LOAD": "Bulk Load",
   "SEARCH_USER": "Search users",
   "EDIT_FOLDER": "Edit Folder",
-  "NEW_FOLDER": "New Folder"
+  "NEW_FOLDER": "New Folder",
+  "ANALYTICS": "Analytics",
+  "SHOW_IN_ACTIVE": "Show In-Active",
+  "DARK_MODE": "Dark Mode"
 }

@@ -1,14 +1,11 @@
 <div class="container-wrapper">
-  <app-page-header [title]="'EMPLOYEES'">
-    <div class="action-buttons">
-      <app-button
-        [routerLink]="NavigationPaths.CREATE_NEW_EMPLOYEE_TYPE"
-        [btnType]="ButtonTypeEnum.FLAT"
-        [isIconButton]="true"
-        [styleConfig]="{ height: '50px', width: '150px' }"
-        [title]="'CREATE_NEW' | translate"
-        [icon]="'add'"></app-button>
-    </div>
+  <app-page-header title="EMPLOYEES">
+    <app-button
+      [routerLink]="NavigationPaths.CREATE_NEW_EMPLOYEE_TYPE"
+      btnType="FLAT"
+      [isIconButton]="true"
+      title="CREATE_NEW"
+      icon="add" />
   </app-page-header>
   <app-page-sub-header
     [additionalButtonsDisabled]="false"

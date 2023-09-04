@@ -16,7 +16,7 @@ import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 })
 export class TimerService {
   private dialogOpen = false;
-  private delay = 60 * 1000 * 10; //todo remove after done 10 minutes
+  private delay = 60 * 1000 * 10; //todo remove 10 minutes after done implementation
   private defaultDialogConfig: MatDialogConfig = {
     width: '640px',
     disableClose: true,

@@ -24,9 +24,8 @@
         [defaultValue]="formField.data"
         [class.disabled]="formField.disabled"
         [button]="formField.button!"
-        [dataType]="formField.dataType!"></app-textbox>
+        [dataType]="formField.dataType!" />
     </div>
-
     <div *ngSwitchCase="componentType.DROPDOWN">
       <app-dropdown
         [formControlName]="formField.key"
@@ -41,7 +40,7 @@
         [placeholder]="formField.placeholder!"
         [hintMenu]="formField.hintMenu!"
         [hintHeading]="formField.hintHeading!"
-        [hintDescription]="formField.hintDescription!"></app-dropdown>
+        [hintDescription]="formField.hintDescription!" />
     </div>
 
     <div *ngSwitchCase="componentType.PHONE">
@@ -50,7 +49,7 @@
         [title]="formField.label!"
         [data]="formField.data"
         [placeholder]="formField.placeholder!"
-        [icon]="formField.icon!"></app-phone-select>
+        [icon]="formField.icon!" />
     </div>
 
     <div *ngSwitchCase="componentType.FILE">
@@ -58,7 +57,7 @@
         [formControlName]="formField.key"
         [formControl]="$any(form.controls[formField.key])"
         [label]="formField.label!"
-        [maxFile]="formField.maxFile!"></app-file-input>
+        [maxFile]="formField.maxFile!" />
     </div>
 
     <div *ngSwitchCase="componentType.TOGGLE">
@@ -66,15 +65,14 @@
         [formControlName]="formField.key"
         [formControl]="$any(form.controls[formField.key])"
         [label]="formField.label!"
-        [toggleText]="formField.toggleText!"></app-text-toggle>
+        [toggleText]="formField.toggleText!" />
     </div>
 
     <div *ngSwitchCase="componentType.TIME">
       <app-time-input
         [formControlName]="formField.key"
         [formControl]="$any(form.controls[formField.key])"
-        [label]="formField.label!">
-      </app-time-input>
+        [label]="formField.label!" />
     </div>
 
     <div *ngSwitchCase="componentType.TEXT">text</div>

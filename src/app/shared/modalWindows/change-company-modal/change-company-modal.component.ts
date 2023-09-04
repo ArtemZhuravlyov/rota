@@ -6,7 +6,6 @@ import {
 import { FormField } from '@core/types/form-builder.model';
 import { FormGroup, Validators } from '@angular/forms';
 import { map, tap } from 'rxjs';
-import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { CompanyService } from '@core/services/company/company.service';
 import { AuthService } from '@core/services/account/auth.service';
@@ -24,7 +23,6 @@ import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeCompanyModalComponent implements OnInit {
-  protected readonly ButtonTypeEnum = ButtonTypeEnum;
   protected readonly NavigationPaths = NavigationPaths;
 
   formFields: FormField[] = [
@@ -74,7 +72,7 @@ export class ChangeCompanyModalComponent implements OnInit {
         map(languages => {
           return languages.map(language => ({
             displayName: language.name,
-            value: language.id,
+            value: language.languageCulture.split('-')[0],
           }));
         })
       ),
@@ -140,6 +138,11 @@ export class ChangeCompanyModalComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  setLanguage(event: { key: string; value: string }) {
+    if (event.key === 'languageId')
+      this.languageService.setLanguage(event.value);
   }
 
   protected readonly SETTINGS = TranslateKey.SETTINGS;

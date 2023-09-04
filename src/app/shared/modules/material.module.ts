@@ -172,7 +172,7 @@ export class MaterialModule {
       )
     );
     matIconRegistry.addSvgIcon(
-      'employee',
+      'employees',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/employees.svg'
       )
@@ -489,6 +489,12 @@ export class MaterialModule {
       'linux',
       domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/linux.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
+      'pie-chart',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/pie-chart.svg'
       )
     );
   }

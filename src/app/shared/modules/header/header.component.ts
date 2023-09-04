@@ -2,11 +2,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   ElementRef,
   HostListener,
   OnInit,
 } from '@angular/core';
-import { ButtonTypeEnum } from '@core/enums/button-type.enum';
 import { SettingsMenuConfig } from '@shared/modules/header/configs/settings-menu-config';
 import { PersonMenuConfig } from '@shared/modules/header/configs/person-menu-config';
 import { NotificationMenuConfig } from '@shared/modules/header/configs/notification-menu-config';
@@ -17,6 +17,7 @@ import { AuthService } from '@core/services/account/auth.service';
 import { tap } from 'rxjs';
 import { NavigationMenusConfig } from '@core/types/navigation-menus-config';
 import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-header',
@@ -28,7 +29,8 @@ export class HeaderComponent implements OnInit {
   protected readonly NOTIFICATIONS = TranslateKey.NOTIFICATIONS;
   protected readonly READ_FULL = TranslateKey.READ_FULL;
 
-  buttonTypeEnum = ButtonTypeEnum;
+  public notificationsCount = 0;
+
   notificationMenuConfig = NotificationMenuConfig;
   settingsMenuConfig = SettingsMenuConfig;
   selectedSettings = 0;
@@ -37,12 +39,16 @@ export class HeaderComponent implements OnInit {
   isSettingsIconClicked = false;
   isPersonIconClicked = false;
   companyName: TranslateKey = TranslateKey.COMPANY;
+
+  public userFullName = '';
+
   constructor(
     private readonly elementRef: ElementRef,
     private readonly dialog: MatDialog,
     private readonly companyService: CompanyService,
     private readonly authService: AuthService,
-    private readonly cdr: ChangeDetectorRef
+    private readonly cdr: ChangeDetectorRef,
+    private readonly destroyRef: DestroyRef
   ) {}
 
   @HostListener('document:click', ['$event.target'])
@@ -55,6 +61,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.user$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(user => {
+        this.userFullName = user.displayName;
+      });
     this.setCurrentCompanyName();
   }
 

@@ -102,9 +102,9 @@ $my-theme: mat.define-light-theme((
 .load > * {
   opacity: 20%;
 }
-.cdk-overlay-connected-position-bounding-box {
-  position: relative !important;
-}
+//.cdk-overlay-connected-position-bounding-box {
+//  position: relative !important;
+//}
 
 .mat-datepicker-content {
   margin-top: 10px;

@@ -5,18 +5,16 @@
   [redirectText]="redirectText"
   [redirectRoute]="redirectRoute"
   [imgUrl]="imgUrl"
-  [isLogoPositionTop]="true"
->
+  [isLogoPositionTop]="true">
   <app-form-builder
     [styleConfig]="{ width: '100%', 'max-width': '520px' }"
     [formFields]="formFields"
-    (createdForm)="form = $event"
-  >
+    (createdForm)="form = $event">
     <app-button
-      [disabled]="!form.valid"
+      [disabled]="form.invalid"
       (btnClick)="onSubmit()"
-      [title]="'LOGIN'"
-      [styleConfig]="{ height: '52px'}"
-    ></app-button>
+      title="LOGIN"
+      colorTheme="primary"
+      [styleConfig]="{ height: '52px' }" />
   </app-form-builder>
 </app-login-page>

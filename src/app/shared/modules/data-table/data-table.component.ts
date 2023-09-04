@@ -20,7 +20,7 @@ import { FormGroup } from '@angular/forms';
 import { TableUtil } from '@shared/utils/tableUtil';
 import { BehaviorSubject } from 'rxjs';
 import { NavigationPaths } from '@core/enums/navigation-paths.enum';
-import { get, isNumber, toNumber } from 'lodash';
+import { get, isEmpty, isNumber, toNumber } from 'lodash';
 import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
 import { ActionButton } from '@shared/components/action-button/types/action-button.type';
 
@@ -33,9 +33,12 @@ import { ActionButton } from '@shared/components/action-button/types/action-butt
 export class DataTableComponent implements OnInit, AfterViewInit {
   @Input({ required: true }) itemsKey!: string;
   @Input({ required: true }) set data(tableData: any) {
-    if (tableData) {
+    if (!isEmpty(tableData)) {
       this.tableData = tableData;
       this.filteredData = tableData[this.itemsKey];
+    } else {
+      this.tableData = [];
+      this.filteredData = [];
     }
   }
   @Input() set actionConfig(actions: ActionButton[]) {

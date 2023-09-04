@@ -5,12 +5,12 @@ import { employeesListConfig } from '@app/modules/dashboard/employee/configs/emp
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-employees-record',
+  templateUrl: './employees-record.component.html',
+  styleUrls: ['./employees-record.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EmployeesComponent {
+export class EmployeesRecordComponent {
   protected readonly employeesListConfig = employeesListConfig;
 
   employeesList$ = this.employeeService.getEmployeesList();

@@ -17,14 +17,17 @@
     </div>
 
     <ng-container *ngIf="!isPrinting">
-      <ng-content></ng-content>
-      <a
-        *ngIf="isBackBtnShowed"
-        class="back-btn d-flex align-items-center"
-        (click)="onBackClick()"
-        ><mat-icon>keyboard_backspace</mat-icon
-        >{{ BACK | translate }}</a
-      >
+      <div class="d-flex gap-1">
+        <ng-content />
+        <a
+          *ngIf="isBackBtnShowed"
+          class="back-btn d-flex align-items-center"
+          (click)="onBackClick()">
+          <mat-icon fontIcon="keyboard_backspace" />{{
+            BACK | translate
+          }}</a
+        >
+      </div>
     </ng-container>
   </div>
 </ng-container>

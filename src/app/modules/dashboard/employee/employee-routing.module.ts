@@ -27,9 +27,9 @@ const routes: AppRoutes = [
           {
             path: NavigationPaths.EMPLOYEES,
             loadChildren: () =>
-              import('./employees/employees.module').then(
-                m => m.EmployeesModule
-              ),
+              import(
+                '@modules/dashboard/employee/employees-record/employees-record.module'
+              ).then(m => m.EmployeesRecordModule),
             data: {
               breadcrumb: 'EMPLOYEES_RECORD',
             },
@@ -52,6 +52,14 @@ const routes: AppRoutes = [
               breadcrumb: 'INFO_EMPLOYEE',
               title: 'INFO_EMPLOYEE',
             },
+          },
+          {
+            path: NavigationPaths.ORGANOGRAM,
+            loadChildren: () =>
+              import(
+                '@modules/dashboard/employee/organogram/organogram.module'
+              ).then(m => m.OrganogramModule),
+            data: { breadcrumb: 'ORGANOGRAM' },
           },
           {
             path: '**',
