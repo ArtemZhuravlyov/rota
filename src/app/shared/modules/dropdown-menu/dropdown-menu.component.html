@@ -1,14 +1,20 @@
 <app-button
-  [btnType]="ButtonTypeEnum.ICON"
+  [btnType]="ButtonTypeEnum.LITTLE_ICON"
+  colorTheme="ghost"
   [icon]="menuIcon"
+  [disabled]="disabled"
+  [isIconButton]="true"
   [matMenuTriggerFor]="menu"
   [iconStyleConfig]="{ background: 'transparent' }"
-  [styleConfig]="buttonStyleConfig"></app-button>
+  [styleConfig]="buttonStyleConfig" />
 
 <mat-menu
   #menu="matMenu"
   [xPosition]="xPosition"
   [yPosition]="yPosition"
-  [class]="customClass ?? ''">
-  <ng-content></ng-content>
+  [class]="customClass ?? ''"
+  overlapTrigger="false">
+  <ng-template matMenuContent>
+    <ng-content />
+  </ng-template>
 </mat-menu>

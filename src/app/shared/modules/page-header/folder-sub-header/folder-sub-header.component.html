@@ -1,0 +1,28 @@
+<div class="sub-header flex">
+  <div class="action-buttons d-flex justify-content-end">
+    <app-button
+      [disabled]="additionalButtonsDisabled"
+      btnType="STROKED"
+      [styleConfig]="{
+        width: '130px',
+        height: '42px',
+        'font-weight': '500'
+      }"
+      title="BULK_LOAD"
+      [isIconButton]="true"
+      icon="bulk_load"
+      (click)="buttonAction('bulk_load')" />
+    <app-button
+      [disabled]="additionalButtonsDisabled"
+      btnType="STROKED"
+      [styleConfig]="{
+        width: '130px',
+        height: '42px',
+        'font-weight': '500'
+      }"
+      title="ANALYSIS"
+      [isIconButton]="true"
+      icon="reports-analytics"
+      (click)="buttonAction('analysis')" />
+  </div>
+</div>

@@ -1,1 +1,25 @@
-<p>document-management works!</p>
+<app-page-header title="FOLDER_LIST">
+  <div class="action-buttons">
+    <app-button
+      [routerLink]="NavigationPaths.CREATE_FOLDER"
+      btnType="FLAT"
+      [isIconButton]="true"
+      [styleConfig]="{
+        height: '50px',
+        width: '230px'
+      }"
+      title="CREATE_NEW_FOLDER"
+      icon="add"></app-button>
+  </div>
+</app-page-header>
+<app-folder-sub-header></app-folder-sub-header>
+
+<app-data-table
+  [data]="foldersList$ | async"
+  [itemsKey]="'documentCategories'"
+  [tableConfig]="foldersListConfig"
+  (actionClicked)="onActionClick($event)"
+  [actionConfig]="actionConfig"
+  (pageChange)="onPageChange($event)"
+  [hasCheckboxColumn]="true">
+</app-data-table>

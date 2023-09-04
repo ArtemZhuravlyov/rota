@@ -3,12 +3,12 @@
 <app-form-card>
   <h1 class="heading">Add Employee</h1>
 
-  <app-form-builder
-    (createdForm)="form = $event"
-    [formFields]="createEmployeeFormConfig" />
+  <app-form
+    [formFields]="createEmployeeFormConfig"
+    (createdForm)="form = $event" />
 </app-form-card>
 
-<div class="action-container" *ngIf="!onSave">
+<div class="action-container">
   <app-button
     btnType="FLAT"
     [isIconButton]="true"
@@ -24,5 +24,5 @@
     [isIconButton]="true"
     title="CANCEL"
     [icon]="'cancel'"
-    [routerLink]="'/dashboard/employees-enums'"></app-button>
+    [routerLink]="'/dashboard/employees-record-enums'"></app-button>
 </div>

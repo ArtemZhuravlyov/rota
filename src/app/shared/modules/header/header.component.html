@@ -7,16 +7,19 @@
     class="company-setting-btn"
     (btnClick)="openChangeCompanyModal()"
     btnType="STROKED"
+    colorTheme="outline"
     [isIconButton]="true"
     [title]="companyName"
+    [styleConfig]="{ height: '40px' }"
     icon="settings" />
 
   <div class="profile-actions">
     <app-dropdown-menu
       [ngClass]="{ 'notification-icon': isNotificationsIconClicked }"
-      [matBadge]="10"
-      [matBadgeColor]="'warn'"
-      [customClass]="'notifications-dropdown'"
+      [matBadge]="notificationsCount"
+      [matBadgeHidden]="notificationsCount <= 0"
+      matBadgeColor="warn"
+      customClass="notifications-dropdown"
       (click)="onIconClick('notifications')"
       [menuIcon]="'notifications'"
       xPosition="before">
@@ -61,7 +64,7 @@
 
     <app-dropdown-menu
       [ngClass]="{ 'settings-icon': isSettingsIconClicked }"
-      [customClass]="'settings-dropdown'"
+      customClass="settings-dropdown"
       (click)="onIconClick('settings')"
       [menuIcon]="'settings'"
       xPosition="before">
@@ -77,16 +80,36 @@
             }">
             <mat-icon [svgIcon]="button.icon" />
             <span>{{ button.title | translate }}</span>
-            <mat-icon *ngIf="selectedSettings === i">check</mat-icon>
+            <mat-icon
+              *ngIf="selectedSettings === i"
+              fontIcon="check" />
           </div>
         </div>
       </div>
     </app-dropdown-menu>
 
-    <app-button btnType="ICON" icon="help" />
+    <app-button
+      btnType="LITTLE_ICON"
+      colorTheme="ghost"
+      icon="help"
+      [styleConfig]="{}"
+      [isIconButton]="true" />
 
     <div class="profile-info">
-      <p class="profile-name">Mocked. Name.</p>
+      <p class="profile-name">
+        {{
+          userFullName
+            | getWord: { index: 0 }
+            | firstLatter: true
+            | uppercase
+        }}
+        {{
+          userFullName
+            | getWord: { index: 1 }
+            | firstLatter: true
+            | uppercase
+        }}
+      </p>
       <div
         class="profile-img"
         [ngStyle]="{

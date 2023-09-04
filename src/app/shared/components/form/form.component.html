@@ -40,13 +40,26 @@
     <ng-container
       *ngIf="formField.type === FormControlNameEnum.DROPDOWN">
       <app-input-dropdown
+        [label]="formField.config.label"
         [formControl]="$any(form.controls[formField.key])"
         [styleConfig]="formField.config.styleConfig"
         [placeholder]="formField.config.placeholder"
         [value]="formField.config.value"
-        [data]="formField.config.data"
+        [nameField]="formField.config.nameField"
         [idField]="formField.config.idField"
-        [nameField]="formField.config.nameField" />
+        [imgSrcFiled]="formField.config.imgSrcFiled ?? 'imgSrc'"
+        [data]="formField.config.data"
+        [filtered]="formField.config.filtered" />
+    </ng-container>
+
+    <ng-container
+      *ngIf="formField.type === FormControlNameEnum.DATEPICKER">
+      <app-datepicker
+        [label]="formField.config.label"
+        [value]="formField.config.value"
+        [formControl]="$any(form.controls[formField.key])"
+        [styleConfig]="formField.config.styleConfig"
+        [placeholder]="formField.config.placeholder" />
     </ng-container>
   </ng-container>
 

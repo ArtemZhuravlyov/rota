@@ -19,14 +19,7 @@ export const ROUTES: AppRoutes = [
             pathMatch: 'full',
             redirectTo: NavigationPaths.ORGANOGRAM,
           },
-          {
-            path: NavigationPaths.ORGANOGRAM,
-            loadChildren: () =>
-              import('./organogram/organogram.module').then(
-                m => m.OrganogramModule
-              ),
-            data: { breadcrumb: 'ORGANOGRAM' },
-          },
+
           {
             path: '**',
             component: TodoComponent,

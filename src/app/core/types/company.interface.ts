@@ -1,8 +1,8 @@
 export interface Country {
-  id:	string;
-  name:	string;
-  twoLetterIsoCode:	string;
-  threeLetterIsoCode:string;
+  id: string;
+  name: string;
+  twoLetterIsoCode: string;
+  threeLetterIsoCode: string;
   dialingCode: string;
   countryFlag: string;
 }

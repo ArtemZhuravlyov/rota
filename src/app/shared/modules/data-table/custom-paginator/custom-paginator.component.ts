@@ -1,4 +1,11 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Optional, } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  Optional,
+} from '@angular/core';
 import {
   _MatPaginatorBase,
   MAT_PAGINATOR_DEFAULT_OPTIONS,
@@ -7,26 +14,27 @@ import {
 } from '@angular/material/paginator';
 
 import { FormControl } from '@angular/forms';
-import { debounceTime, startWith, } from 'rxjs/operators';
-import { ButtonTypeEnum } from "@core/enums/button-type.enum";
+import { debounceTime, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-custom-paginator',
   templateUrl: './custom-paginator.component.html',
   styleUrls: ['./custom-paginator.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomPaginatorComponent extends _MatPaginatorBase<MatPaginatorDefaultOptions> implements AfterViewInit{
-
-  protected readonly ButtonTypeEnum = ButtonTypeEnum;
+export class CustomPaginatorComponent
+  extends _MatPaginatorBase<MatPaginatorDefaultOptions>
+  implements AfterViewInit
+{
   control = new FormControl(0);
   countPages = 8;
 
   constructor(
     private intl: MatPaginatorIntl,
     private changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(MAT_PAGINATOR_DEFAULT_OPTIONS) private defaults?:
-      MatPaginatorDefaultOptions,
+    @Optional()
+    @Inject(MAT_PAGINATOR_DEFAULT_OPTIONS)
+    private defaults?: MatPaginatorDefaultOptions
   ) {
     super(intl, changeDetectorRef, defaults);
   }
@@ -36,7 +44,7 @@ export class CustomPaginatorComponent extends _MatPaginatorBase<MatPaginatorDefa
 
     this.control.valueChanges
       .pipe(startWith(1), debounceTime(200))
-      .subscribe((res) => {
+      .subscribe(res => {
         let page = +res!;
         if (page > this.getNumberOfPages()) {
           page = this.getNumberOfPages() - 1;
@@ -72,13 +80,14 @@ export class CustomPaginatorComponent extends _MatPaginatorBase<MatPaginatorDefa
     if (lastPage < this.countPages) return b.map((_x, i) => '' + i);
 
     const links0_5 = (this.countPages - 1) / 2;
-    let start = this.pageIndex - links0_5 < 0 ? 0 : this.pageIndex - links0_5;
-    let end =
+    let start =
+      this.pageIndex - links0_5 < 0 ? 0 : this.pageIndex - links0_5;
+    const end =
       start == 0
         ? this.countPages - 1
         : this.pageIndex + links0_5 > lastPage
-          ? lastPage
-          : this.pageIndex + links0_5;
+        ? lastPage
+        : this.pageIndex + links0_5;
 
     if (end == lastPage) start = end - this.countPages + 1;
 
@@ -86,12 +95,11 @@ export class CustomPaginatorComponent extends _MatPaginatorBase<MatPaginatorDefa
       return i == 0
         ? '0'
         : i == this.countPages - 1
-          ? '' + lastPage
-          : (i == 1 && start) || (i == this.countPages - 2 && end != lastPage)
-            ? '...'
-            : '' + (i + start);
+        ? '' + lastPage
+        : (i == 1 && start) ||
+          (i == this.countPages - 2 && end != lastPage)
+        ? '...'
+        : '' + (i + start);
     });
-
   }
-
 }

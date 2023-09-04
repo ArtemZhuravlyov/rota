@@ -52,7 +52,7 @@ export const SettingsMenuConfig: NavigationMenusConfig[] = [
   },
   {
     title: TranslateKey.HIRING,
-    icon: 'employee',
+    icon: 'employees',
   },
   {
     title: TranslateKey.PERFORMANCE,

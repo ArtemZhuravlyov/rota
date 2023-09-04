@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "./header.component";
-import { ButtonModule } from "../button/button.module";
-import { MatLegacyButtonModule } from "@angular/material/legacy-button";
-import { MatIconModule } from "@angular/material/icon";
-import {DropdownMenuModule} from "@shared/modules/dropdown-menu/dropdown-menu.module";
-import {TranslateModule} from "@ngx-translate/core";
-import {DropdownModule} from "@shared/modules/dropdown/dropdown.module";
-import {MatBadgeModule} from "@angular/material/badge";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatListModule} from "@angular/material/list";
+import { HeaderComponent } from './header.component';
+import { ButtonModule } from '../button/button.module';
+import { MatLegacyButtonModule } from '@angular/material/legacy-button';
+import { MatIconModule } from '@angular/material/icon';
+import { DropdownMenuModule } from '@shared/modules/dropdown-menu/dropdown-menu.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { DropdownModule } from '@shared/modules/dropdown/dropdown.module';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import { FirstLatterPipe } from '@shared/pipes/first-latter.pipe';
+import { GetWordPipe } from '@shared/pipes/get-word.pipe';
 
 @NgModule({
   declarations: [HeaderComponent],
-  exports: [
-    HeaderComponent
-  ],
+  exports: [HeaderComponent],
   imports: [
     CommonModule,
     ButtonModule,
@@ -27,6 +27,8 @@ import {MatListModule} from "@angular/material/list";
     MatBadgeModule,
     MatMenuModule,
     MatListModule,
-  ]
+    FirstLatterPipe,
+    GetWordPipe,
+  ],
 })
-export class HeaderModule { }
+export class HeaderModule {}

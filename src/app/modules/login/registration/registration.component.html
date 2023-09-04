@@ -4,13 +4,11 @@
   [logoInformation]="logoInformation"
   [redirectText]="redirectText"
   [redirectRoute]="redirectRoute"
-  [imgUrl]="imgUrl"
->
+  [imgUrl]="imgUrl">
   <app-form-builder
     [styleConfig]="{ width: '100%', 'max-width': '480px' }"
     [formFields]="formFields"
-    (createdForm)="form = $event"
-  >
+    (createdForm)="form = $event">
     <app-button
       [disabled]="!form.valid"
       (btnClick)="onSubmit()"
@@ -20,7 +18,6 @@
       [isIconButton]="true"
       [iconPosition]="'afterText'"
       [styleConfig]="{ height: '52px' }"
-      [iconStyleConfig]="{ transform: 'rotate(-90deg)' }"
-    ></app-button>
+      [iconStyleConfig]="{ transform: 'rotate(-90deg)' }" />
   </app-form-builder>
 </app-login-page>

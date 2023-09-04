@@ -2,13 +2,15 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  forwardRef,
   Input,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {
   ControlValueAccessor,
   FormControl,
   FormsModule,
+  NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { isEmpty, isNil } from 'lodash';
@@ -20,12 +22,17 @@ import { ListItemInput } from '@shared/components/input-dropdown/list-dropdown-c
 import { Style } from '@core/types/style-model';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
-import { CountryFlagModule } from '@shared/pipes/country-flag/country-flag.module';
 import { FilterModule } from '@shared/pipes/filter/filter.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchInputModule } from '@shared/modules/search-input/search-input.module';
+import { SimplebarAngularModule } from 'simplebar-angular';
+import { TriangleBorderModule } from '@shared/directives/triangel-border/triangle-border.module';
+import { ClickOutsideModule } from '@shared/directives/click-outside/click-outside.module';
+import { LabelComponent } from '@shared/components/label/label.component';
+import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
+import { ErrorComponent } from '@shared/components/error/error.component';
 @Component({
   selector: 'app-input-dropdown',
   standalone: true,
@@ -35,16 +42,28 @@ import { SearchInputModule } from '@shared/modules/search-input/search-input.mod
     MatInputModule,
     TranslateModule,
     ReactiveFormsModule,
-    CountryFlagModule,
     FilterModule,
     MatIconModule,
     MatOptionModule,
     MatSelectModule,
     SearchInputModule,
+    SimplebarAngularModule,
+    TriangleBorderModule,
+    ClickOutsideModule,
+    LabelComponent,
+    ErrorComponent,
+    NgOptimizedImage,
   ],
   templateUrl: './input-dropdown.component.html',
   styleUrls: ['./input-dropdown.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputDropdownComponent),
+      multi: true,
+    },
+  ],
 })
 export class InputDropdownComponent
   implements
@@ -56,13 +75,19 @@ export class InputDropdownComponent
   private _value: ListItemInput | null = null;
   private sourceDataType = 'object';
 
+  @Input() label: keyof typeof TranslateKey = TranslateKey.EMPTY;
   @Input() formControl!: FormControl;
   @Input() idField = 'id';
   @Input() nameField = 'name';
+  @Input() imgSrcFiled = 'imgSrc';
+  @Input() filtered = false;
   @Input() placeholder = 'SELECT';
   @Input() styleConfig: Style = {};
   @Input() set value(value: any) {
-    this._value = !isNil(value) ? this.deobjectify(value) : null;
+    this._value =
+      !isNil(value) || !isEmpty(value)
+        ? this.deobjectify(value)
+        : null;
     this.preselectedValue = this._value;
   }
 
@@ -76,22 +101,63 @@ export class InputDropdownComponent
     } else {
       this._data = [];
     }
+    this.filteredData = this._data;
   }
 
   get data() {
     return this._data;
   }
 
+  filteredData: ListItemInput[] = [];
+  selectedItem: ListItemInput | null = null;
   preselectedValue: ListItemInput | null = null;
   showDropdown = false;
-
+  arrow: 'arrow' | 'up-arrow' = 'arrow';
   constructor(private cdr: ChangeDetectorRef) {}
 
   protected _onChange: any = () => {};
   protected _onTouched: any = () => {};
 
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+    this.arrow = this.showDropdown ? 'up-arrow' : 'arrow';
+  }
+
+  onClickOutside() {
+    this.showDropdown = false;
+    this.arrow = 'arrow';
+  }
+
+  getSelectedItemStyle() {
+    if (!isNil(this.selectedItem?.imgSrc))
+      return {
+        background: `url(${this.selectedItem?.imgSrc}) no-repeat scroll 17px 9px`,
+        'padding-left': '55px',
+      };
+    return {};
+  }
+
+  onSearchFilter(searchInput: string) {
+    this.filteredData = this.data.filter(item => {
+      return item.name
+        .toLowerCase()
+        .includes(searchInput.toLowerCase());
+    });
+  }
+
+  isSelectedValueExist() {
+    return !isNil(this.selectedItem);
+  }
+
+  isFormControlInvalid() {
+    return (
+      this.formControl.invalid &&
+      (this.formControl.dirty || this.formControl.touched)
+    );
+  }
+
   writeValue(value: any) {
-    if (!isNil(value)) {
+    if (!isNil(value) || !isEmpty(value)) {
       this.value = this.deobjectify(value);
     }
     this._onChange(value);
@@ -108,21 +174,24 @@ export class InputDropdownComponent
     if (typeof item === 'string' || typeof item === 'number') {
       return new ListItemInput(item);
     } else {
+      console.log(this.nameField);
       return new ListItemInput({
         id: item[this.idField],
         name: item[this.nameField],
+        imgSrc: item[this.imgSrcFiled],
       });
     }
   }
 
   public onSelectItem(item: ListItemInput) {
-    this.showDropdown = false;
+    this.selectedItem = item;
+    this.toggleDropdown();
     this.value = item;
     this._onTouched();
     this._onChange(this.emittedValue(item));
   }
 
-  emittedValue(val: any) {
+  private emittedValue(val: any) {
     if (!isNil(val)) {
       return this.objectify(val);
     }
@@ -134,6 +203,7 @@ export class InputDropdownComponent
       const obj: { [key: string]: any } = {};
       obj[this.idField] = val.id;
       obj[this.nameField] = val.name;
+      obj[this.imgSrcFiled] = val.imgSrc;
       return obj;
     }
     if (this.sourceDataType === 'number') {

@@ -26,6 +26,10 @@
       display: none;
     }
 
+    .mat-mdc-form-field-subscript-wrapper {
+      height: 0;
+    }
+
     .mdc-notched-outline__trailing {
       border: none !important;
       border-radius: 10px !important;
@@ -58,10 +62,10 @@
 
       &:hover {
         .icon-prefix {
-          color: $text-dark-gray;
+          color: $text-darkest-gray;
 
         }
-        color: $text-dark-gray!important;
+        color: $text-darkest-gray !important;
       }
     }
   }
