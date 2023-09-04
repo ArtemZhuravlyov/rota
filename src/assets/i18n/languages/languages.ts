@@ -387,6 +387,8 @@ const en: LanguageObject = {
   SEARCH_USER: 'Search users',
   EDIT_FOLDER: 'Edit Folder',
   NEW_FOLDER: 'New Folder',
+  NEW_BENEFIT: 'New Benefit',
+  BENEFIT_SETUP: 'Benefit Setup',
   ANALYTICS: 'Analytics',
   SHOW_IN_ACTIVE: 'Show In-Active',
   DARK_MODE: 'Dark Mode',

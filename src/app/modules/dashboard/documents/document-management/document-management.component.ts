@@ -139,7 +139,7 @@ export class DocumentManagementComponent implements OnInit {
     console.log(type);
     const data = <InfoModal>{
       title: `This folder ${type.name} shared with`,
-      description: 'This people cac access this folder',
+      description: 'This people can access this folder',
     };
     this.dialog
       .open(ShareWithModalComponent, {
