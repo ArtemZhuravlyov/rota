@@ -3,7 +3,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   EventEmitter,
+  inject,
   Input,
   OnInit,
   Output,
@@ -23,6 +25,7 @@ import { NavigationPaths } from '@core/enums/navigation-paths.enum';
 import { get, isEmpty, isNumber, toNumber } from 'lodash';
 import { ActionButtonName } from '@shared/components/action-button/enums/action-button-name.enum';
 import { ActionButton } from '@shared/components/action-button/types/action-button.type';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-data-table',
@@ -67,14 +70,18 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   protected readonly NavigationPaths = NavigationPaths;
   searchInput = '';
 
+  private destroyRef = inject(DestroyRef);
+
   ngAfterViewInit() {
-    this.exporting$.subscribe((table: any) => {
-      console.log('EXPORTING');
-      console.log(table);
-      if (table.length) {
-        this.exportTable(table);
-      }
-    });
+    this.exporting$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((table: any) => {
+        console.log('EXPORTING');
+        console.log(table);
+        if (table.length) {
+          this.exportTable(table);
+        }
+      });
   }
 
   exportTable(table: any) {
@@ -136,6 +143,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     this.filteredData = this.tableData[this.itemsKey];
   }
   onAction(action: TableAction): void {
+    console.log('onAction');
     this.actionClicked.emit(action);
   }
 

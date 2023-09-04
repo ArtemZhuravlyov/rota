@@ -9,7 +9,10 @@
   </app-page-header>
   <app-page-sub-header
     [additionalButtonsDisabled]="false"
-    (onCheckedChange)="onActiveChange($event)" />
+    (onCheckedChange)="onActiveChange($event)"
+    (onActionClicked)="
+      onActionClick({ action: $event, payload: {} })
+    " />
 
   <app-data-table
     [ngClass]="{ load: isBusy }"
@@ -22,6 +25,8 @@
     [actionConfig]="actionConfig"
     [tableStyle]="'employee-type'"
     [isLoading]="false"
+    [exporting$]="exporting$"
     (actionClicked)="onActionClick($event)"
-    (pageChange)="onPageChange($event)" />
+    (pageChange)="onPageChange($event)"
+    (selectedItemsIds)="onSelectedTableItems($event)" />
 </div>

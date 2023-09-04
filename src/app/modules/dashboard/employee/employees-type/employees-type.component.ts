@@ -12,7 +12,10 @@ import {
   EmploymentTypeService,
   GetAllEmployeeTypesQuery,
 } from '@core/services/company/employment-type/employment-type.service';
-import { TableActionTypes } from '@core/types/data-table';
+import {
+  TableAction,
+  TableActionTypes,
+} from '@core/types/data-table';
 import {
   EmploymentTypeResponse,
   EmploymentTypes,
@@ -70,6 +73,9 @@ export class EmployeesTypeComponent implements OnInit {
     employmentTypes: [],
     totalCount: 0,
   });
+  public exporting$ = new BehaviorSubject<any>([]);
+
+  private selectedTableRows: EmploymentTypes[] = [];
 
   actionConfig: ActionButton[] = [
     { type: ActionButtonName.APPLY, disabled: false },
@@ -80,22 +86,29 @@ export class EmployeesTypeComponent implements OnInit {
     this.initEmploymentTypes();
   }
 
-  onActionClick({
-    action,
-    payload,
-  }: {
-    action: string;
-    payload: EmploymentTypes;
-  }) {
+  onActionClick({ action, payload }: TableAction) {
     switch (action) {
       case ActionButtonName.DELETE:
-        this.deleteEmploymentType(payload.id);
+        this.deleteEmploymentType(payload!.id);
         break;
+
+      case TableActionTypes.EXPORT: {
+        const exportTable = this.selectedTableRows.map(
+          employmentType => ({
+            Id: employmentType.id,
+            Name: employmentType.name,
+            Description: employmentType.description,
+            TotalEmployeeNumber: employmentType.totalEmployeeNumber,
+          })
+        );
+        this.exporting$.next(exportTable);
+        break;
+      }
       case TableActionTypes.VIEWDESCRIPTION:
-        this.openDescriptionDialog(payload);
+        this.openDescriptionDialog(payload!);
         break;
       case ActionButtonName.APPLY:
-        this.redirectToEditEmployeeType(payload);
+        this.redirectToEditEmployeeType(payload!);
         break;
     }
   }
@@ -176,5 +189,9 @@ export class EmployeesTypeComponent implements OnInit {
   private updateRequestParams(params: Partial<RequestParamsType>) {
     const value = this.requestParams$.value;
     this.requestParams$.next({ ...value, ...params });
+  }
+
+  public onSelectedTableItems(items: Map<any, any>) {
+    this.selectedTableRows = [...items.values()];
   }
 }
