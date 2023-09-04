@@ -791,6 +791,8 @@ const uk: LanguageObject = {
   ANALYTICS: 'Аналітика',
   SHOW_IN_ACTIVE: 'Показати неактивні',
   DARK_MODE: 'Темна тема',
+  BENEFIT_SETUP: 'Налаштування переваг',
+  NEW_BENEFIT: 'Нова перевага',
 };
 
 export const allLanguages: {
