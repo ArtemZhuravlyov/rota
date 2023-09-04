@@ -3,10 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { BenefitCreated, Benefits } from '@core/types/benefit.model';
-import {
-  CommonPaginationParams,
-  PaginationParams,
-} from '@core/types/pagination.type';
+import { PaginationParams } from '@core/types/pagination.type';
 import { ENVIRONMENT } from '@app/app.module';
 import { Environment } from '@core/types/environment';
 import { AuthService } from '@core/services/account/auth.service';
@@ -49,7 +46,7 @@ export class BenefitService {
     );
   }
 
-  deleteBenefit(benefitId: string) {
+  deleteBenefit(benefitId: string): Observable<object> {
     return this.http.delete(
       `${this.env.apiUrlCompany}/benefit/${this.user.userId}/${this.user.companyId}/${benefitId}`
     );

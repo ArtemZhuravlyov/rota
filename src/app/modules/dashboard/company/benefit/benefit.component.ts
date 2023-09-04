@@ -150,7 +150,6 @@ export class BenefitComponent implements OnInit {
   }
 
   onSelectedTableItems(items: any) {
-    console.log({ items });
     this.benefitService.selectedTableAccounts = [...items.values()];
     this.benefitService.selectedTableAccounts$.next([
       ...items.values(),
