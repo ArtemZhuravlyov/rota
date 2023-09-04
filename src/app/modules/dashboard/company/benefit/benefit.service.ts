@@ -15,6 +15,7 @@ import { AuthService } from '@core/services/account/auth.service';
 export class BenefitService {
   private readonly apiUrlCompany = environment.apiUrlCompany;
   user = this.authService.getCurrentUser();
+  selectedTableAccounts = [] as any;
   selectedTableAccounts$ = new BehaviorSubject<any>([]);
   constructor(
     private http: HttpClient,

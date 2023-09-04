@@ -82,6 +82,9 @@ export class BenefitComponent implements OnInit {
       case TableActionTypes.VIEWDESCRIPTION:
         this.openDescriptionDialog(payload);
         break;
+      case TableActionTypes.EXPORT:
+        console.log('Benefits export');
+        break;
     }
   }
 
@@ -144,5 +147,13 @@ export class BenefitComponent implements OnInit {
           this.isLoading = false;
         },
       });
+  }
+
+  onSelectedTableItems(items: any) {
+    console.log({ items });
+    this.benefitService.selectedTableAccounts = [...items.values()];
+    this.benefitService.selectedTableAccounts$.next([
+      ...items.values(),
+    ]);
   }
 }
