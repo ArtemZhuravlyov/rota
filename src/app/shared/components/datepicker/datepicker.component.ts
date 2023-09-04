@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   forwardRef,
   Input,
@@ -23,6 +24,8 @@ import {
 import { Style } from '@core/types/style-model';
 import { TranslateKey } from '../../../../assets/i18n/enums/translate-key.enum';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DateTime } from 'luxon';
+import { isNil } from 'lodash';
 
 @Component({
   selector: 'app-datepicker',
@@ -60,9 +63,29 @@ export class DatepickerComponent
   @Input() styleConfig: Style = {};
   @Input() value: Date | null = null;
 
+  isOpen = false;
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  onOpen() {
+    this.isOpen = true;
+  }
+
+  onClose() {
+    this.isOpen = false;
+  }
+
+  protected _onChange: any = () => {};
+  protected _onTouched: any = () => {};
   registerOnChange(fn: any): void {}
 
   registerOnTouched(fn: any): void {}
 
-  writeValue(obj: any): void {}
+  writeValue(value: string | null) {
+    if (!isNil(value)) {
+      this.value = DateTime.fromISO(value).toJSDate();
+    }
+    this._onChange(this.value);
+    this._onTouched();
+    this.cdr.detectChanges();
+  }
 }

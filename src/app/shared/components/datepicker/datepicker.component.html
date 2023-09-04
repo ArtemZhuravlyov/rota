@@ -6,10 +6,15 @@
     readonly
     [matDatepicker]="picker"
     [placeholder]="placeholder | translate" />
-  <mat-datepicker-toggle class="picker" [for]="picker">
+  <mat-datepicker-toggle
+    class="picker"
+    [ngClass]="{ selected: isOpen }"
+    [for]="picker">
     <mat-icon matDatepickerToggleIcon>calendar_month</mat-icon>
   </mat-datepicker-toggle>
   <mat-datepicker
+    (opened)="onOpen()"
+    (closed)="onClose()"
     [yPosition]="'below'"
     [xPosition]="'end'"
     #picker></mat-datepicker>
